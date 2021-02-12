@@ -1,0 +1,17 @@
+HEADER
+index
+nouveautés
+nos montres (produits / catégorie )
+Points de vente
+A propos
+Profil
+Panier
+
+--
+
+FOOTER
+newsletter
+contact
+mentions légales & confidentialité
+suivi de commande
+réseaux sociaux
