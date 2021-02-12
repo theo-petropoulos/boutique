@@ -86,6 +86,11 @@ body header #nav_bar #nav_bar2 ul li {
   margin-bottom: auto;
 }
 
+body header #nav_bar #nav_bar2 ul button {
+  background: none;
+  border: none;
+}
+
 #video_container {
   position: relative;
   height: 50vh;
