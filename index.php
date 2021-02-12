@@ -46,12 +46,17 @@
         </header>
 
 		<main>
-			<div id="video_container">
+			<section id="video_container">
 				<video playsinline autoplay muted loop id="bg_vid">
 					<source src="assets/videos/planetarium.mp4" type="video/mp4">
 					Votre navigateur ne prend pas en charge les vidéos intégrées.
 				</video>
-			</div>
+			</section>
+			<section id="staring1">
+				<div class="watch_min">
+					<img src="assets/product-images/audemars-code1159/font-nobg.png">
+				</div>
+			</section>
 		</main>
     </body>
 </html>

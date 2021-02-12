@@ -91,6 +91,10 @@ body header #nav_bar #nav_bar2 ul button {
   border: none;
 }
 
+body header #nav_bar #nav_bar2 ul button:hover {
+  cursor: pointer;
+}
+
 #video_container {
   position: relative;
   height: 50vh;
