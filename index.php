@@ -53,10 +53,74 @@
 				</video>
 			</section>
 			<section id="staring1">
-				<div class="watch_min">
-					<img src="assets/product-images/audemars-code1159/font-nobg.png">
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Van Cleef & Arpels</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Hublot</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Audemars Piguet</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Blancpain</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+			</section>
+			<section id="banner">
+				<div id="banner_desc">
+					<h2>Omega</h2>
+					<p>Description de la marque et du modèle lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
 				</div>
 			</section>
+			<section id="staring2">
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+				<figure class="watch_min">
+					<img src="assets/product-images/audemars-code1159/front-nobg.png">
+					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
+				</figure>
+			</section>
+			<div class="separator">
+			</div>
+			<section id="quote">
+				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Un mec</p>
+			</section>
 		</main>
+
+		<footer>
+			<div id="footer_logo"><h1><span class="h1font">V</span>on <span class="h1font">H</span>arper</h1></div>
+			<div id="footer_nav">
+				<div id="footer_links">
+					<ul id="footer_ul">
+						<li><a href="">Newsletter</a></li>
+						<li><a href="">Nous contacter</a></li>
+						<li><a href="">Mentions légales</a></li>
+						<li><a href="">Suivi de commande</a></li>
+					</ul>
+				</div>
+				<div id="footer_social">
+					<ul id="social_icons">
+						<li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+						<li><a href=""><i class="fab fa-instagram-square"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter-square"></i></a></li>
+						<li><a href=""><i class="fab fa-youtube-square"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
     </body>
 </html>

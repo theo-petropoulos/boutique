@@ -119,4 +119,185 @@ body header #nav_bar #nav_bar2 ul button:hover {
      object-position: center;
   z-index: -1;
 }
+
+#staring1, #staring2 {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 2% auto 2% auto;
+}
+
+#staring1 .watch_min, #staring2 .watch_min {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 16%;
+  min-width: 180px;
+}
+
+#staring1 .watch_min figcaption, #staring2 .watch_min figcaption {
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#banner {
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(20%, black), color-stop(50%, rgba(0, 0, 0, 0)), color-stop(80%, black)), url("../assets/product-images/omega-moonwatch/3861.jpg");
+  background-image: linear-gradient(90deg, black 20%, rgba(0, 0, 0, 0) 50%, black 80%), url("../assets/product-images/omega-moonwatch/3861.jpg");
+}
+
+#banner h2, #banner p {
+  color: white;
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#banner h2 {
+  font-size: 2em;
+  margin-left: 3%;
+  padding: 2%;
+}
+
+#banner p {
+  margin-left: 2%;
+  width: 30%;
+  min-width: 250px;
+}
+
+.separator {
+  height: 3px;
+  width: 70%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(47, 53, 66, 0)), color-stop(50%, black), to(rgba(47, 53, 66, 0)));
+  background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, black 50%, rgba(47, 53, 66, 0) 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#quote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#quote p {
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#quote p:nth-of-type(1) {
+  font-size: 1.5em;
+}
+
+#quote p:nth-of-type(2) {
+  font-size: 1.1em;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: black;
+  color: white;
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer #footer_logo {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_logo .h1font {
+  font-family: 'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer a {
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-decoration: none;
+  color: #BFBFBF;
+}
+
+footer #footer_nav {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_nav #footer_links ul, footer #footer_nav #footer_social ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+footer #footer_nav #footer_links li, footer #footer_nav #footer_social li {
+  list-style-type: none;
+}
+
+footer #footer_nav #footer_links ul {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+footer #footer_nav #footer_social ul {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_nav #footer_social ul li {
+  margin: 2% 2% 0 2%;
+}
+
+footer #footer_nav #footer_social ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer #footer_nav #footer_social ul li a i {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
 /*# sourceMappingURL=boutique.css.map */
