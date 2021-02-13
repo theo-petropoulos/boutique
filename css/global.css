@@ -14,3 +14,9 @@ html ::after,
   justify-content: center;
   box-shadow: 1px 1px 5px black;
 }
+.main_title {
+  padding: 20px;
+}
+.minor_title {
+  padding: 20px;
+}
