@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="css/boutique.css?v=<?php echo time(); ?>">
         <link rel="icon" href="assets/icon.png" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
 		<title>Von Harper</title>
 	</head>
