@@ -1,17 +1,14 @@
-HEADER
-index
-nouveautés
-nos montres (produits / catégorie )
+Index
+Nouveautés
+Nos montres (produits / catégorie )
+Page produit générique
 Points de vente
 A propos
 Profil
 Panier
 
---
-
-FOOTER
-newsletter
-contact
-mentions légales & confidentialité
-suivi de commande
-réseaux sociaux
+Newsletter
+Contact
+Mentions légales & confidentialité
+Suivi de commande
+Réseaux sociaux
