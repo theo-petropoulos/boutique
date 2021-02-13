@@ -9,7 +9,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="css/boutique.css">
+		<link rel="stylesheet" href="css/boutique.css?v=<?php echo time(); ?>">
         <link rel="icon" href="assets/icon.png" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet"> 
@@ -97,7 +97,7 @@
 			<div class="separator">
 			</div>
 			<section id="quote">
-				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Un mec</p>
+				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von Harper</p>
 			</section>
 		</main>
 
