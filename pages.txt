@@ -6,6 +6,7 @@ Points de vente
 A propos
 Profil
 Panier
+Paiement
 
 Newsletter
 Contact
