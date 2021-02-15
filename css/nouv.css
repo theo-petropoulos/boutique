@@ -52,7 +52,7 @@
 /* Underline title */
 .sep_new {
   width: 100%;
-  border: 0.1px solid white(46, 46, 46);
+  border: 0.1px solid white;
   opacity: 0.2;
   margin-bottom: 20px;
 }
