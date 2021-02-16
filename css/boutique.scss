@@ -1,20 +1,41 @@
+@import url('newsletter.css');
+@import url('mentions.css');
+
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 body{
     margin:0;
     padding:0;
     header{
-        h1{
-            margin:0;
-            padding:2%;
-            text-align:center;
-            background:black;
-            font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            color:white;
-            .h1font{
-                font-family:'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        a{
+            text-decoration:none;
+            h1{
+                margin:0;
+                padding:2%;
+                text-align:center;
+                background:black;
+                font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                color:white;
+                .h1font{
+                    font-family:'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    transition:all 0.3s;
+                }
+            }
+            &:hover{
+                .h1font:nth-of-type(1){
+                    color:#003399;
+                    transition:all 0.4s;
+                }
+                .h1font:nth-of-type(2){
+                    color:#FFCC00;
+                    transition:all 0.6s;
+                }
             }
         }
+
         #nav_bar{
             display:flex;
+            position:relative;
             width:100%;
             justify-content: space-between;
             border-bottom:3px solid;
@@ -27,9 +48,32 @@ body{
                 li{
                     list-style-type:none;
                     a{
+                        position:relative;
                         text-decoration:none;
                         color:black;
                         font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                        transition: all 0.3s;
+                        &:hover{
+                            color:#006699;
+                            transition:all 0.5s;
+                        }
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 1px;
+                            bottom: -5px;
+                            left: 0;
+                            visibility: hidden;
+                            transform: scaleX(0);
+                            background-color: #FFCC00;
+                            transition: all 0.4s ease-in-out;
+                        }
+                          
+                        &:hover::before {
+                            visibility: visible;
+                            transform: scaleX(1);
+                        }
                     }
                 }
             }
@@ -62,6 +106,10 @@ body{
             }
         }
     }
+}
+
+#nav_bar_mobile{
+    display:none;
 }
 
 #video_container{
@@ -158,6 +206,12 @@ footer{
         .h1font{
             font-family:'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
+        a{
+            text-decoration:none;
+            h1{
+                color:white;
+            }
+        }
     }
     a{
         font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -181,6 +235,17 @@ footer{
         #footer_links{
             ul{
                 justify-content: space-around;
+                li{
+                    a{
+                        transition:all 0.3s;
+                        &:hover{
+                            color:#FFCC00;
+                            text-decoration:underline #006699;
+                            text-underline-position: under;
+                            transition:all 0.5s;
+                        }
+                    }
+                }
             }
         }
         #footer_social{
@@ -189,11 +254,57 @@ footer{
                 li{
                     margin:2% 2% 0 2%;
                     a{
+                        transition:all 0.3s;
+                        &:hover{
+                            color:#006699;
+                            background:#FFCC00;
+                            transition: all 0.5s;
+                        }
                         display:flex;
                         i{
                             flex-grow:1;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:599px){
+    #nav_bar{
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        #nav_ul1,#nav_ul2, #nav_bar2{
+            flex-direction:column;
+            justify-content: center;
+            align-items:center;
+            form{
+                display:flex;
+                flex-direction:row;
+            }
+        }
+    }
+
+    footer{
+        flex-direction:column;
+        #footer_nav{
+            #footer_links{
+                ul{
+                    display:flex;
+                    padding:0;
+                    flex-direction:column;
+                    justify-content: center;
+                    align-content:center;
+                    align-items:center;
+                }
+            }
+            #footer_social{
+                margin-bottom:5%;
+                ul{
+                    padding:0;
                 }
             }
         }

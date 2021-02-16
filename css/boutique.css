@@ -1,9 +1,15 @@
+@import url("newsletter.css");
+@import url("mentions.css");
 body {
   margin: 0;
   padding: 0;
 }
 
-body header h1 {
+body header a {
+  text-decoration: none;
+}
+
+body header a h1 {
   margin: 0;
   padding: 2%;
   text-align: center;
@@ -12,14 +18,29 @@ body header h1 {
   color: white;
 }
 
-body header h1 .h1font {
+body header a h1 .h1font {
   font-family: 'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+body header a:hover .h1font:nth-of-type(1) {
+  color: #003399;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+body header a:hover .h1font:nth-of-type(2) {
+  color: #FFCC00;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
 }
 
 body header #nav_bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   width: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -44,9 +65,39 @@ body header #nav_bar #nav_ul1 li, body header #nav_bar #nav_ul2 li {
 }
 
 body header #nav_bar #nav_ul1 li a, body header #nav_bar #nav_ul2 li a {
+  position: relative;
   text-decoration: none;
   color: black;
   font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+body header #nav_bar #nav_ul1 li a:hover, body header #nav_bar #nav_ul2 li a:hover {
+  color: #006699;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+body header #nav_bar #nav_ul1 li a::before, body header #nav_bar #nav_ul2 li a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -5px;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  background-color: #FFCC00;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+body header #nav_bar #nav_ul1 li a:hover::before, body header #nav_bar #nav_ul2 li a:hover::before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 body header #nav_bar #nav_bar1 {
@@ -93,6 +144,10 @@ body header #nav_bar #nav_bar2 ul button {
 
 body header #nav_bar #nav_bar2 ul button:hover {
   cursor: pointer;
+}
+
+#nav_bar_mobile {
+  display: none;
 }
 
 #video_container {
@@ -241,6 +296,14 @@ footer #footer_logo .h1font {
   font-family: 'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+footer #footer_logo a {
+  text-decoration: none;
+}
+
+footer #footer_logo a h1 {
+  color: white;
+}
+
 footer a {
   font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-decoration: none;
@@ -279,6 +342,20 @@ footer #footer_nav #footer_links ul {
       justify-content: space-around;
 }
 
+footer #footer_nav #footer_links ul li a {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+footer #footer_nav #footer_links ul li a:hover {
+  color: #FFCC00;
+  -webkit-text-decoration: underline #006699;
+          text-decoration: underline #006699;
+  text-underline-position: under;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 footer #footer_nav #footer_social ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -290,14 +367,92 @@ footer #footer_nav #footer_social ul li {
 }
 
 footer #footer_nav #footer_social ul li a {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+footer #footer_nav #footer_social ul li a:hover {
+  color: #006699;
+  background: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 footer #footer_nav #footer_social ul li a i {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+
+@media (max-width: 599px) {
+  #nav_bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #nav_bar #nav_ul1, #nav_bar #nav_ul2, #nav_bar #nav_bar2 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #nav_bar #nav_ul1 form, #nav_bar #nav_ul2 form, #nav_bar #nav_bar2 form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer #footer_nav #footer_links ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  footer #footer_nav #footer_social {
+    margin-bottom: 5%;
+  }
+  footer #footer_nav #footer_social ul {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=boutique.css.map */
