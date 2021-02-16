@@ -16,7 +16,7 @@
     <body>
     <?php require 'header.php';?>
         <main>
-            <section id="banner_newsletter">
+            <section id="banner_standard">
                 <h2>Inscription à la Newsletter</h2>
             </section>
 

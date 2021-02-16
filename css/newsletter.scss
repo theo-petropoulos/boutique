@@ -1,18 +1,5 @@
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-#banner_newsletter{
-    background:black;
-    display:flex;
-    justify-content: center;
-    box-shadow: 1px 5px 15px 0px rgba(0,0,0,0.65);
-    h2{
-        font-family:$font_base;
-        color:white;
-        font-size:calc(1vw + 20px);
-        font-style:italic;
-    }
-}
-
 #form_newsletter{
     display:flex;
     justify-content: center;

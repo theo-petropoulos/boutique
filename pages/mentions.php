@@ -16,7 +16,7 @@
     <body>
     <?php require 'header.php';?>
         <main id="main_mentions">
-            <section id="banner_mentions">
+            <section id="banner_standard">
                 <h2>Mentions légales &<br>Politique de confidentialité</h2>
             </section>
             <div id="text_mentions">

@@ -112,6 +112,20 @@ body{
     display:none;
 }
 
+#banner_standard{
+    background:black;
+    display:flex;
+    justify-content: center;
+    text-align:center;
+    box-shadow: 1px 5px 15px 0px rgba(0,0,0,0.65);
+    h2{
+        font-family:$font_base;
+        color:white;
+        font-size:calc(1vw + 20px);
+        font-style:italic;
+    }
+}
+
 #video_container{
     position:relative;
     height:50vh;
