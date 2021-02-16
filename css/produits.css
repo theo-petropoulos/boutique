@@ -18,7 +18,7 @@
     background: black;
     margin: 20px 0;
     box-shadow: 2px 2px 10px black;
-    border: 0.5px solid rgba(255,255,255,.5);
+    border: 0.5px solid rgba(255, 255, 255, .5);
 }
 
 .container_product {
@@ -47,7 +47,7 @@
     text-align: center;
     color: white;
     box-shadow: 2px 2px 10px black;
-    border: 0.5px solid rgba(255,255,255,.5);
+    border: 0.5px solid rgba(255, 255, 255, .5);
 }
 
 .conatiner_text_describe {
@@ -94,6 +94,6 @@
 }
 
 .buy {
-background: black;
+    background: black;
     color: white;
 }
