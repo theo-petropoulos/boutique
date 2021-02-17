@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
-        <link rel="icon" href="assets/icon.png" />
+        <link rel="icon" href="/boutique/assets/images/icon.png" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
                     <input type="email" name="mail" placeholder="exemple@mail.com" required>
                     <div id="checkbox_newsletter">
                         <input type="checkbox" name="consent" required>
-                        <label for="consent" id="label_consent">Je reconnais avoir lu les <a href="">termes et conditions</a> 
+                        <label for="consent" id="label_consent">Je reconnais avoir lu les <a href="/boutique/pages/mentions.php">termes et conditions</a> 
                         et accepte de recevoir des communications de la part de Von Harper©. 
                         Je peux à tout moment me rétracter de ce service.</label>
                     </div>

@@ -1,0 +1,124 @@
+#form_contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#form_contact form {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 50%;
+  margin: 2% auto 2% auto;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#form_contact form input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#form_contact form input[type=email] {
+  width: 50%;
+  margin: auto;
+}
+
+#form_contact form input[type=submit] {
+  width: 30%;
+  min-width: 150px;
+  background: black;
+  color: white;
+  padding: 2%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin: auto;
+}
+
+#form_contact form input[type=submit]:hover {
+  cursor: pointer;
+  background: #006699;
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#form_contact form label {
+  margin: 2%;
+}
+
+#form_contact form #contact_infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2% 0 0 0;
+}
+
+#form_contact form #contact_infos label {
+  margin: 0 2% 0 0;
+}
+
+#form_contact form #contact_infos .contact_infos_flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#form_contact form .checkbox_contact {
+  margin-bottom: 2%;
+}
+
+@media screen and (max-width: 599px) {
+  #form_contact form {
+    width: 90%;
+  }
+  #form_contact form input, #form_contact form input[type=email], #form_contact form select {
+    width: 90%;
+    margin: auto;
+  }
+  #form_contact form #contact_infos {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: auto 0 auto 0;
+  }
+  #form_contact form #contact_infos .contact_infos_flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .checkbox_contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-top: 2%;
+  }
+}
+/*# sourceMappingURL=contact.css.map */

@@ -1,0 +1,80 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+#form_contact{
+    display:flex;
+    flex-direction:column;
+    form{
+        font-family:$font_base;
+        width:50%;
+        margin:2% auto 2% auto;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        input{
+            font-family:$font_base;
+            &[type=email]{
+                width:50%;
+                margin:auto;
+            }
+            &[type=submit]{
+                width:30%;
+                min-width:150px;
+                background:black;
+                color:white;
+                padding:2%;
+                transition: all 0.3s;
+                margin:auto;
+                &:hover{
+                    cursor:pointer;
+                    background:#006699;
+                    color:#FFCC00;
+                    transition: all 0.5s;
+                }
+            }
+        }
+        label{
+            margin:2%;
+        }
+        #contact_infos{
+            display:flex;
+            flex-direction:row;
+            margin:2% 0 0 0;
+            label{
+                margin:0 2% 0 0;
+            }
+            .contact_infos_flex{
+                display:flex;
+                flex-direction:row;
+                flex-grow:1;
+                justify-content: center;
+            }
+        }
+        .checkbox_contact{
+            margin-bottom:2%;
+        }
+    }
+}
+
+@media screen and (max-width:599px){
+    #form_contact{
+        form{
+            width:90%;
+            input, input[type=email], select{
+                width:90%;
+                margin:auto;
+            }
+            #contact_infos{
+                flex-direction:column;
+                margin:auto 0 auto 0;
+                .contact_infos_flex{
+                    flex-direction:column;
+                }
+            }
+        }
+    }
+    .checkbox_contact{
+        display:flex;
+        flex-direction:row;
+        margin-top:2%;
+    }
+}
