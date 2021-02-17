@@ -44,6 +44,7 @@
 }
 
 .container_simil {
+    padding: 10px;
     background: lightsalmon;
     height: 350px;
     text-align: center;
@@ -62,4 +63,13 @@
     border: 1px solid black;
     height: 150px;
     width: 150px;
+}
+
+.sep_simil {
+
+}
+
+.title_sim {
+    font-size: 1.5em;
+    margin: 30px auto;
 }

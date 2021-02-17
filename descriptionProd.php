@@ -44,36 +44,23 @@
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
-        <h1 class="main_title">NOM DE LA MARQUE</h1>
+        <h1 class="main_title">"<?= "NOM DE LA MARQUE AFFICHAGE DYNAMIQUE" ?>"</h1>
     </div>
-    <section class="intro_product">
-        <div class="banner_fix">
-            <h1>PARALAX</h1>
-        </div>
-        <article class="container_article">
-            <h2>Découvrez la <?= "nom du produit" ?></h2>
-            <p>
-                Quand la haute horlogerie s’allie à un design soigné
-                Découvrez <?= "Nom de la marque" ?>, une collection de montres connectées à l’esthétique intemporelle,
-                dédiées aux
-                personnes qui veulent un mode de vie plus actif, plus conscient et plus sain.</p>
-        </article>
-    </section>
+
     <section class="product_self">
         <div class="container_pic_prod">
             <h3>Caracteristique principal</h3>
+<!--            <img src="--><?php //"URL de l'image dynamique"  ?><!--" alt="">-->
         </div>
-        <div class="container_text_product">
-            <h4>Voir titre</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur commodi, doloremque
-                eligendi excepturi illo, iusto libero magni porro possimus praesentium quae quo rem sit tempore ullam
-                vero, vitae voluptatem?</p>
-            <button>Ajouter au panier</button>
-        </div>
+        <article>
+            <h2>Découvrez la "<?= "nom du produit dynamique" ?>"</h2>
+                <p><?= "Description produit dynamique" ?></p>
+                <button>Ajouter au panier</button>
+        </article>
     </section>
     <hr class="sep_simil">
     <section class="container_simil">
-        <h3>Produits similaires</h3>
+        <h3 class="title_sim">Produits similaires</h3>
         <div class="container_prod_simil">
             <div>PRODUIT</div>
             <div>PRODUIT</div>
