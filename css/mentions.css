@@ -1,0 +1,34 @@
+#main_mentions {
+  background: #DEDEDE;
+  padding-bottom: 2%;
+}
+
+#text_mentions {
+  width: 90%;
+  background: white;
+  margin: 2% auto 0 auto;
+  border: 1px solid grey;
+}
+
+#text_mentions h3 {
+  margin-top: 0;
+}
+
+#bloc_mentions, #bloc_confid {
+  text-align: center;
+}
+
+#bloc_mentions p, #bloc_confid p {
+  width: 90%;
+  margin: 2% auto 0 auto;
+  padding-bottom: 2%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: calc(10px + 0.3vw);
+}
+
+#bloc_mentions h3, #bloc_confid h3 {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background: #535353;
+  color: white;
+}
+/*# sourceMappingURL=mentions.css.map */

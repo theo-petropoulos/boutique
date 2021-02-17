@@ -1,0 +1,63 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+#form_newsletter{
+    display:flex;
+    justify-content: center;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    #checkbox_newsletter{
+        width:100%;
+        display:flex;
+        input[type=checkbox]{
+            width:3%;
+            margin-right:2%;
+        }
+    }
+    form{
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        align-items:center;
+        &:first-child{
+            margin-top:2%;
+        }
+        label,input{
+            font-family:$font_base;
+            margin-bottom:3%;
+        }
+        label{
+            font-weight:500;
+        }
+        input{
+            &[type=email]{
+                width:30%;
+                min-width:200px;
+            }
+            &[type=submit]{
+                width:30%;
+                min-width:150px;
+                background:black;
+                color:white;
+                padding:2%;
+                transition: all 0.3s;
+                &:hover{
+                    cursor:pointer;
+                    background:#006699;
+                    color:#FFCC00;
+                    transition: all 0.5s;
+                }
+            }
+        }
+    }
+}
+
+#cond_newsletter{
+    width:80%;
+    margin:0 auto 3% auto;
+    p{
+        font-family:$font_base;
+        color:#696C75;
+        font-size:calc(5px + 0.3vw);
+    }
+}
