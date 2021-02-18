@@ -35,6 +35,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background: #01091D;
+  border-bottom: 10px groove #4DAF19;
 }
 
 #about_section #about_header h3 {
@@ -117,6 +118,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  position: relative;
 }
 
 #about_section .about_div1 .div1_haut .block_div {
@@ -194,11 +196,14 @@ body {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
   z-index: 3;
+  position: relative;
 }
 
 #about_section .about_div2 .div2_haut .block_div2 {
   width: 60%;
   position: relative;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #about_section .about_div2 .div2_haut .block_div2 img {
@@ -247,7 +252,7 @@ body {
 
 .whitespace {
   width: 40%;
-  height: 100%;
+  height: 40%;
 }
 
 @-webkit-keyframes color_run {
@@ -437,29 +442,8 @@ body {
         -ms-flex-align: center;
             align-items: center;
   }
-  .about_div1 .div1_haut .block_div img, .about_div1 .div1_haut .block_div2 img, .about_div1 .div1_bas .block_div img, .about_div1 .div1_bas .block_div2 img, .about_div1 .div2_haut .block_div img, .about_div1 .div2_haut .block_div2 img, .about_div1 .div2_bas .block_div img, .about_div1 .div2_bas .block_div2 img, .about_div2 .div1_haut .block_div img, .about_div2 .div1_haut .block_div2 img, .about_div2 .div1_bas .block_div img, .about_div2 .div1_bas .block_div2 img, .about_div2 .div2_haut .block_div img, .about_div2 .div2_haut .block_div2 img, .about_div2 .div2_bas .block_div img, .about_div2 .div2_bas .block_div2 img {
-    position: relative;
-    -webkit-animation: none;
-            animation: none;
-    -webkit-transform: none;
-            transform: none;
-    border: none;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 1;
-  }
   .about_div1 .div1_haut .block_div p, .about_div1 .div1_haut .block_div2 p, .about_div1 .div1_bas .block_div p, .about_div1 .div1_bas .block_div2 p, .about_div1 .div2_haut .block_div p, .about_div1 .div2_haut .block_div2 p, .about_div1 .div2_bas .block_div p, .about_div1 .div2_bas .block_div2 p, .about_div2 .div1_haut .block_div p, .about_div2 .div1_haut .block_div2 p, .about_div2 .div1_bas .block_div p, .about_div2 .div1_bas .block_div2 p, .about_div2 .div2_haut .block_div p, .about_div2 .div2_haut .block_div2 p, .about_div2 .div2_bas .block_div p, .about_div2 .div2_bas .block_div2 p {
-    position: fixed;
-    -webkit-animation: none;
-            animation: none;
-    -webkit-transform: none;
-            transform: none;
-    top: 0;
-    left: 0;
-    border: none;
-    width: 100%;
-    opacity: 1;
+    display: none;
   }
 }
 /*# sourceMappingURL=about.css.map */
