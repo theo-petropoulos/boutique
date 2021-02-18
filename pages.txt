@@ -1,4 +1,4 @@
-Index
+** - Index ( Ajouter SQL produits vedette )
 Nouveautés
 Nos montres (produits / catégorie )
 Page produit générique
@@ -6,10 +6,9 @@ Points de vente
 A propos
 Profil
 Panier
-Paiement
+O - Paiement
 
-Newsletter
-Contact
-Mentions légales & confidentialité
-Suivi de commande
-Réseaux sociaux
+** - Newsletter ( Ajouter SQL adresse si connecté )
+** - Contact ( Ajouter infos si connecté )
+X - Mentions légales & confidentialité
+O - Suivi de commande

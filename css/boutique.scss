@@ -1,8 +1,10 @@
 @import url('newsletter.css');
 @import url('mentions.css');
 @import url('contact.css');
+@import url('about.css');
 
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
 
 body{
     margin:0;
@@ -23,10 +25,10 @@ body{
                 }
             }
             &:hover{
-                .h1font:nth-of-type(1){
-                    color:#003399;
-                    transition:all 0.4s;
-                }
+                // .h1font:nth-of-type(1){
+                //     color:$blue;
+                //     transition:all 0.4s;
+                // }
                 .h1font:nth-of-type(2){
                     color:#FFCC00;
                     transition:all 0.6s;
@@ -55,7 +57,7 @@ body{
                         font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
                         transition: all 0.3s;
                         &:hover{
-                            color:#006699;
+                            color:$blue;
                             transition:all 0.5s;
                         }
                         &::before {
@@ -114,7 +116,7 @@ body{
 }
 
 #banner_standard{
-    background:black;
+    background:$blue;
     display:flex;
     justify-content: center;
     text-align:center;
@@ -122,7 +124,7 @@ body{
     h2{
         font-family:$font_base;
         color:white;
-        font-size:calc(1vw + 20px);
+        font-size:calc(0.7vw + 16px);
         font-style:italic;
     }
 }

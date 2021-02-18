@@ -6,7 +6,7 @@
                 <li id="nav_nouveautes"><a href="">Nouveautés</a></li>
                 <li id="nav_montres"><a href="">Montres</a></li>
                 <li id="nav_adresses"><a href="">Points de vente</a></li>
-                <li id="nav_apropos"><a href="">À propos</a></li>
+                <li id="nav_apropos"><a href="/boutique/pages/about.php">À propos</a></li>
             </ul>
         </div>
         <div id="nav_bar2">

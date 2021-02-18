@@ -1,4 +1,5 @@
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
 
 #form_contact{
     display:flex;
@@ -26,7 +27,7 @@ $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', se
                 margin:auto;
                 &:hover{
                     cursor:pointer;
-                    background:#006699;
+                    background:$blue;
                     color:#FFCC00;
                     transition: all 0.5s;
                 }
@@ -34,6 +35,9 @@ $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', se
         }
         label{
             margin:2%;
+            &:nth-of-type(1){
+                margin:0 auto 2% auto;
+            }
         }
         #contact_infos{
             display:flex;
@@ -62,6 +66,9 @@ $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', se
             input, input[type=email], select{
                 width:90%;
                 margin:auto;
+            }
+            label:nth-of-type(1){
+                margin-bottom:auto;
             }
             #contact_infos{
                 flex-direction:column;
