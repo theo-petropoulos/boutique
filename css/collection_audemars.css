@@ -50,7 +50,7 @@
     border: 0.5px solid rgba(255, 255, 255, .5);
 }
 
-.conatiner_text_describe {
+.container_text_describe {
     display: flex;
     flex-direction: column;
     text-align: justify;
@@ -58,7 +58,7 @@
     justify-content: space-evenly;
 }
 
-.conatiner_text_describe > p {
+.container_text_describe > p {
     margin: 20px 0;
     font-size: 1.2rem;
     font-style: italic;

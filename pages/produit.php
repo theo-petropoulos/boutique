@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a95f1c7873.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/descriptionProd.css">
+    <link rel="stylesheet" href="../css/produit.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
     <link rel="icon" href="../assets/icon.png"/>

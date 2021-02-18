@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a95f1c7873.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/collection_audemars.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
     <link rel="icon" href="../assets/icon.png"/>
@@ -119,7 +119,7 @@
             <section class="container_describe_product">
                 <h2 class="main_title">Collection Audemars Piguet</h2>
                 <hr class="sep_prod">
-                <div class="conatiner_text_describe">
+                <div class="container_text_describe">
                     <p class="p_describe_product">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolorum
                         eaque
                         earum
