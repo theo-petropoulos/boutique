@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/nouv.css">
+    <link rel="stylesheet" href="../css/nouveautes.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@
             <section class="section_new">
                 <!-- Partie gauche section -->
                 <div class="container_img_new">
-                    <img class="img_new" src="assets/images/Prestige.jpg" alt="Montre Audemars Piguet">
+                    <img class="img_new" src="../assets/images/Prestige.jpg" alt="Montre Audemars Piguet">
                 </div>
                 <!-- Partie droite section -->
                 <div class="container_text_new">
@@ -82,14 +82,14 @@
                 </div>
                 <!-- Partie droite section -->
                 <div class="container_img_new">
-                    <img class="img_new" src="assets/images/Nouveautes2.jpg" alt="Montre Aquatique Blanc Pain" alt="">
+                    <img class="img_new" src="../assets/images/Nouveautes2.jpg" alt="Montre Aquatique Blanc Pain" alt="">
                 </div>
             </section>
             <!-- SECTION NOUVEAUTE 1 -->
             <section class="section_new">
                 <!-- Partie gauche section -->
                 <div class="container_img_new">
-                    <img class="img_new" src="assets/images/hublotTK.jpg" alt="Montre Aquatique Blanc Pain"
+                    <img class="img_new" src="../assets/images/hublotTK.jpg" alt="Montre Aquatique Blanc Pain"
                          alt="Montre Hubot">
                 </div>
                 <!-- Partie droite section -->

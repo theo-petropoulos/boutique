@@ -1,4 +1,5 @@
 <?php ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@
             <!--Section produits-->
             <section class="container_products">
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP1.jpg" alt="Montre Audemars Piguet">
+                    <img class="product_pic" src="../assets/images/product_audemars/AP1.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, sit!
@@ -61,7 +62,7 @@
                     <button class="buy"><i class="far fa-plus-square"></i>Ajouter</button>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP2.jpg" alt="Montre Audemars Piguet">
+                    <img class="product_pic" src="../assets/images/product_audemars/AP2.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, quidem?
@@ -71,7 +72,7 @@
                     <button class="buy"><i class="far fa-plus-square"></i>Ajouter</button>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP3.jpg" alt="Montre Audemars Piguet">
+                    <img class="product_pic" src="../assets/images/product_audemars/AP3.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nostrum?
@@ -80,7 +81,7 @@
                     <button class="buy"><i class="far fa-plus-square"></i>Ajouter</button>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP5.jpg" alt="Montre Audemars Piguet">
+                    <img class="product_pic" src="../assets/images/product_audemars/AP5.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, numquam!
@@ -91,7 +92,7 @@
                     <button class="buy"><i class="far fa-plus-square"></i>Ajouter</button>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP4.jpg" alt="Montre Audemars Piguet">
+                    <img class="product_pic" src="../assets/images/product_audemars/AP4.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, quia.
@@ -102,7 +103,8 @@
                     <button class="buy"><i class="far fa-plus-square"></i>Ajouter</button>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="assets/images/product_audemars/AP6.jpg" alt="Montre Audemars Piguet">
+
+                    <img class="product_pic" src="../assets/images/product_audemars/AP6.jpg" alt="Montre Audemars Piguet">
                     <h4 class="product_title">Product name</h4>
                     <p class="p_product">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, nisi.
