@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 19 fév. 2021 à 10:22
+-- Généré le : ven. 19 fév. 2021 à 13:20
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Structure de la table `adresses`
 --
 
-<<<<<<< HEAD
 DROP TABLE IF EXISTS `adresses`;
 CREATE TABLE IF NOT EXISTS `adresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -55,16 +54,6 @@ CREATE TABLE IF NOT EXISTS `adresses` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_client` (`id_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-=======
-CREATE TABLE `adresses` (
-  `id` int NOT NULL,
-  `id_client` int NOT NULL,
-  `numero` int NOT NULL,
-  `rue` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `complement` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `code_postal` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> bebe588ae2a963dde36ceff77a4546fbcf15d718
 
 -- --------------------------------------------------------
 
@@ -82,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `telephone` varchar(50) NOT NULL,
   `login` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
+  `ip` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   KEY `fk_email_client` (`id_email`)
