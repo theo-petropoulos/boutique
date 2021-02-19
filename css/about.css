@@ -169,6 +169,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  border-top: 10px groove #369BE8;
 }
 
 #about_section .about_div1 .div1_bas p {
@@ -197,6 +198,7 @@ body {
           flex-direction: row-reverse;
   z-index: 3;
   position: relative;
+  border-top: 10px groove #FFCC00;
 }
 
 #about_section .about_div2 .div2_haut .block_div2 {
