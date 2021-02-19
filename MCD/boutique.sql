@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : jeu. 18 fév. 2021 à 11:46
--- Version du serveur :  8.0.23-0ubuntu0.20.04.1
--- Version de PHP : 7.4.3
+-- Hôte : 127.0.0.1:3306
+-- Généré le : ven. 19 fév. 2021 à 10:22
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,11 +27,14 @@ SET time_zone = "+00:00";
 -- Structure de la table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int NOT NULL,
-  `login` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -40,14 +42,18 @@ CREATE TABLE `admin` (
 -- Structure de la table `adresses`
 --
 
-CREATE TABLE `adresses` (
-  `id` int NOT NULL,
-  `id_client` int NOT NULL,
-  `numero` int NOT NULL,
-  `rue` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `complement` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `code_postale` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `adresses`;
+CREATE TABLE IF NOT EXISTS `adresses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_client` int(11) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `rue` varchar(100) NOT NULL,
+  `complement` varchar(100) NOT NULL,
+  `code_postale` int(11) NOT NULL,
+  `ville` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_client` (`id_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -55,16 +61,20 @@ CREATE TABLE `adresses` (
 -- Structure de la table `clients`
 --
 
-CREATE TABLE `clients` (
-  `id` int NOT NULL,
-  `id_adresse` int NOT NULL,
-  `nom` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `prenom` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `telephone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `login` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_adresse` int(11) NOT NULL,
+  `nom` varchar(150) NOT NULL,
+  `prenom` varchar(150) NOT NULL,
+  `id_email` int(11) NOT NULL,
+  `telephone` varchar(50) NOT NULL,
+  `login` varchar(150) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`),
+  KEY `fk_email_client` (`id_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -72,28 +82,33 @@ CREATE TABLE `clients` (
 -- Structure de la table `commandes`
 --
 
-CREATE TABLE `commandes` (
-  `id` int NOT NULL,
-  `id_client` int NOT NULL,
-  `id_produit` int NOT NULL,
-  `quantite_produit` int NOT NULL,
-  `date_commande` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `commandes`;
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_client` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  `quantite_produit` int(11) NOT NULL,
+  `date_commande` datetime NOT NULL,
+  `prix` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_client` (`id_client`),
+  KEY `id_produit` (`id_produit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `factures`
+-- Structure de la table `email`
 --
 
-CREATE TABLE `factures` (
-  `id` int NOT NULL,
-  `id_client` int NOT NULL,
-  `numero` int NOT NULL,
-  `id_commande` int NOT NULL,
-  `date_facture` date NOT NULL,
-  `prix_ttc` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `email`;
+CREATE TABLE IF NOT EXISTS `email` (
+  `id` int(11) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `newsletter` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -101,10 +116,13 @@ CREATE TABLE `factures` (
 -- Structure de la table `marques`
 --
 
-CREATE TABLE `marques` (
-  `id` int NOT NULL,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `marques`;
+CREATE TABLE IF NOT EXISTS `marques` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nom` (`nom`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -112,116 +130,18 @@ CREATE TABLE `marques` (
 -- Structure de la table `produits`
 --
 
-CREATE TABLE `produits` (
-  `id` int NOT NULL,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+DROP TABLE IF EXISTS `produits`;
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
   `prix` float NOT NULL,
-  `stock` int NOT NULL,
-  `id_marque` int NOT NULL,
-  `image` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`);
-
---
--- Index pour la table `adresses`
---
-ALTER TABLE `adresses`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_client` (`id_client`);
-
---
--- Index pour la table `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`);
-
---
--- Index pour la table `commandes`
---
-ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `id_produit` (`id_produit`);
-
---
--- Index pour la table `factures`
---
-ALTER TABLE `factures`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `id_commande` (`id_commande`);
-
---
--- Index pour la table `marques`
---
-ALTER TABLE `marques`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nom` (`nom`);
-
---
--- Index pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nom` (`nom`),
-  ADD KEY `id_marque` (`id_marque`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `adresses`
---
-ALTER TABLE `adresses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `clients`
---
-ALTER TABLE `clients`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `commandes`
---
-ALTER TABLE `commandes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `factures`
---
-ALTER TABLE `factures`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `marques`
---
-ALTER TABLE `marques`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `produits`
---
-ALTER TABLE `produits`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  `stock` int(11) NOT NULL,
+  `id_marque` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nom` (`nom`),
+  KEY `id_marque` (`id_marque`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contraintes pour les tables déchargées
@@ -235,19 +155,17 @@ ALTER TABLE `adresses`
   ADD CONSTRAINT `adresses_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`);
 
 --
+-- Contraintes pour la table `clients`
+--
+ALTER TABLE `clients`
+  ADD CONSTRAINT `fk_email_client` FOREIGN KEY (`id_email`) REFERENCES `email` (`id`);
+
+--
 -- Contraintes pour la table `commandes`
 --
 ALTER TABLE `commandes`
   ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`),
   ADD CONSTRAINT `commandes_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id`);
-
---
--- Contraintes pour la table `factures`
---
-ALTER TABLE `factures`
-  ADD CONSTRAINT `factures_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `factures_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `factures_ibfk_3` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id`);
 
 --
 -- Contraintes pour la table `produits`
