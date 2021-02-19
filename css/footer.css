@@ -1,0 +1,116 @@
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: black;
+  color: white;
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer #footer_logo {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_logo .h1font {
+  font-family: 'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer #footer_logo a {
+  text-decoration: none;
+}
+
+footer #footer_logo a h1 {
+  color: white;
+}
+
+footer a {
+  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-decoration: none;
+  color: #BFBFBF;
+}
+
+footer #footer_nav {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_nav #footer_links ul, footer #footer_nav #footer_social ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+footer #footer_nav #footer_links li, footer #footer_nav #footer_social li {
+  list-style-type: none;
+}
+
+footer #footer_nav #footer_links ul {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+footer #footer_nav #footer_links ul li a {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+footer #footer_nav #footer_links ul li a:hover {
+  color: #FFCC00;
+  -webkit-text-decoration: underline #006699;
+          text-decoration: underline #006699;
+  text-underline-position: under;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+footer #footer_nav #footer_social ul {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer #footer_nav #footer_social ul li {
+  margin: 2% 2% 0 2%;
+}
+
+footer #footer_nav #footer_social ul li a {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer #footer_nav #footer_social ul li a:hover {
+  color: #006699;
+  background: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+footer #footer_nav #footer_social ul li a i {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+/*# sourceMappingURL=footer.css.map */

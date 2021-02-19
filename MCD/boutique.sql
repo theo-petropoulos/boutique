@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Structure de la table `adresses`
 --
 
+<<<<<<< HEAD
 DROP TABLE IF EXISTS `adresses`;
 CREATE TABLE IF NOT EXISTS `adresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,6 +55,16 @@ CREATE TABLE IF NOT EXISTS `adresses` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_client` (`id_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+=======
+CREATE TABLE `adresses` (
+  `id` int NOT NULL,
+  `id_client` int NOT NULL,
+  `numero` int NOT NULL,
+  `rue` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `complement` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `code_postal` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> bebe588ae2a963dde36ceff77a4546fbcf15d718
 
 -- --------------------------------------------------------
 

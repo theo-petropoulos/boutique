@@ -1,0 +1,46 @@
+produits
+-id
+-nom
+-marque
+-prix
+-stock
+-image
+
+marques
+-id
+-nom
+-image ?
+
+utilisateurs
+-id
+-nom
+-prenom
+-mail->id
+-password
+-telephone
+-adresse->id
+
+adresses
+-id
+-numero
+-rue
+-complement
+-arrondissement
+-ville
+
+mail
+-id
+-adresse
+-newsletter (oui/non)
+
+commande
+-id
+-date
+-utilisateurs->id
+-produits->id
+-produits->prix
+
+facture
+-id
+-commande->id
+-pdf ?

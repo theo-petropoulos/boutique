@@ -1,0 +1,79 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
+
+footer{
+    display:flex;
+    background:black;
+    color:white;
+    font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    #footer_logo{
+        flex-grow:1;
+        display:flex;
+        justify-content: center;
+        .h1font{
+            font-family:'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        a{
+            text-decoration:none;
+            h1{
+                color:white;
+            }
+        }
+    }
+    a{
+        font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-decoration:none;
+        color:#BFBFBF;
+    }
+    #footer_nav{
+        flex-grow:3;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        #footer_links, #footer_social{
+            ul{
+                display:flex;
+                margin:0;
+            }
+            li{
+                list-style-type:none;
+            }
+        }
+        #footer_links{
+            ul{
+                justify-content: space-around;
+                li{
+                    a{
+                        transition:all 0.3s;
+                        &:hover{
+                            color:#FFCC00;
+                            text-decoration:underline #006699;
+                            text-underline-position: under;
+                            transition:all 0.5s;
+                        }
+                    }
+                }
+            }
+        }
+        #footer_social{
+            ul{
+                justify-content: center;
+                li{
+                    margin:2% 2% 0 2%;
+                    a{
+                        transition:all 0.3s;
+                        &:hover{
+                            color:#006699;
+                            background:#FFCC00;
+                            transition: all 0.5s;
+                        }
+                        display:flex;
+                        i{
+                            flex-grow:1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

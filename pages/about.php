@@ -86,9 +86,11 @@
                 </div>
                 <div class="div2_bas">
                     <h3>Joignables en tout temps</h3>
-                    <p>Notre équipe d'assistance se fait un plaisir de vous répondre, tous les jours de la semaine, de 09h00 à 19h00.
-                        Que ce soit pour une question, un conseil ou faire valoir votre garantie, nos conseillers sauront vous 
-                        apporter une solution. Disponibles par téléphone, par chat ou par mail.
+                    <p>Notre équipe d'<em class="strtxt">assistance</em> se fait un plaisir de vous répondre, <span class="ita">tous les 
+                        jours</span> de la semaine, de 09h00 à 19h00. Que ce soit pour une <em class="ita">question</em>, un 
+                        <em class="ita">conseil</em> ou faire valoir votre <em class="ita">garantie</em>, nos conseillers sauront vous 
+                        apporter une solution. Disponibles par <strong class="strtxt">téléphone</strong>, par 
+                        <strong class="strtxt">chat</strong> ou par <strong class="strtxt">mail</strong>.
                     </p>
                     <div class="separator"></div>
                 </div>
