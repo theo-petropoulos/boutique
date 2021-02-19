@@ -13,7 +13,6 @@
             <ul id="nav_ul2">
                 <li id="nav_profil">
                     <a href="/boutique/pages/profil.php"><i class="fas fa-user-tie"></i></a>
-                    <div class="hidden_text">Mon compte</div>
                 </li>
                 <li id="nav_panier"><a href=""><i class="fas fa-shopping-cart"></i></a></li>
                 <li id="search_bar">

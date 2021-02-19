@@ -129,6 +129,7 @@ body {
 }
 
 #about_section .about_div1 .div1_haut .block_div img {
+  position: relative;
   width: 100%;
   height: auto;
   -o-object-fit: cover;
@@ -136,8 +137,10 @@ body {
   border-top: 10px solid white;
   border-left: 10px solid white;
   opacity: 0;
-  -webkit-animation: slide_right 0.6s 0.3s ease-in forwards;
-          animation: slide_right 0.6s 0.3s ease-in forwards;
+  -webkit-animation: fade_in 0.9s 0.3s ease-in forwards;
+          animation: fade_in 0.9s 0.3s ease-in forwards;
+  -webkit-box-shadow: 10px 10px 15px grey;
+          box-shadow: 10px 10px 15px grey;
 }
 
 #about_section .about_div1 .div1_haut .block_div p {
@@ -155,8 +158,8 @@ body {
   border: 10px groove #1c3896;
   width: 60%;
   opacity: 0;
-  -webkit-animation: slide_left 0.6s 0.3s ease-in forwards;
-          animation: slide_left 0.6s 0.3s ease-in forwards;
+  -webkit-animation: fade_in 0.9s 0.8s ease-in forwards;
+          animation: fade_in 0.9s 0.8s ease-in forwards;
 }
 
 #about_section .about_div1 .div1_bas {
@@ -214,10 +217,12 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
-  -webkit-animation: slide_left2 0.5s 0.8s ease-in forwards;
-          animation: slide_left2 0.5s 0.8s ease-in forwards;
+  -webkit-animation: fade_in 0.9s 0.3s ease-in forwards;
+          animation: fade_in 0.9s 0.3s ease-in forwards;
   border-top: 10px solid white;
   border-right: 10px solid white;
+  -webkit-box-shadow: -10px 10px 15px grey;
+          box-shadow: -10px 10px 15px grey;
 }
 
 #about_section .about_div2 .div2_haut .block_div2 p {
@@ -235,8 +240,8 @@ body {
   border: 10px groove #1c3896;
   width: 60%;
   opacity: 0;
-  -webkit-animation: slide_right2 0.5s 0.8s ease-in forwards;
-          animation: slide_right2 0.5s 0.8s ease-in forwards;
+  -webkit-animation: fade_in 0.9s 0.8s ease-in forwards;
+          animation: fade_in 0.9s 0.8s ease-in forwards;
 }
 
 #about_section .about_div2 .div2_bas {
@@ -405,6 +410,24 @@ body {
   100% {
     -webkit-transform: translate(-5%, 0);
             transform: translate(-5%, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
