@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `adresses` (
   `numero` int(11) NOT NULL,
   `rue` varchar(100) NOT NULL,
   `complement` varchar(100) NOT NULL,
-  `code_postale` int(11) NOT NULL,
+  `code_postal` int(11) NOT NULL,
   `ville` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_client` (`id_client`)
@@ -69,11 +69,9 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `prenom` varchar(150) NOT NULL,
   `id_email` int(11) NOT NULL,
   `telephone` varchar(50) NOT NULL,
-  `login` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
   `ip` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`login`),
   KEY `fk_email_client` (`id_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

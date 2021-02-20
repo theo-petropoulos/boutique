@@ -1,10 +1,11 @@
+@import url("footer.css");
+@import url("header.css");
 @import url("newsletter.css");
 @import url("mentions.css");
 @import url("contact.css");
 @import url("about.css");
 @import url("globalrules.css");
-@import url("footer.css");
-@import url("header.css");
+@import url("profil.css");
 body {
   margin: 0;
   padding: 0;
