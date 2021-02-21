@@ -1,21 +1,31 @@
-<?php require_once '../model/class/Manager.php' ?>
-
 <?php
-$_GET['collection'] = 3;
-
-$man = new \App\Manager();
+//Voir pour redefinir les chemin + namespace  si Theo MVC
+require_once '../model/class/Manager.php';
+require_once '../model/class/ManProduct.php';
+//Parametre passé par onglet collection du header 1 pour audemars 2 pour blancpain 3 pour Omega
+//Nouvel object Manager produit
+$man = new ManProduct;
+//Chemin vers image
+$path_pics = null;
 $marques = $man->getCollection();
+//Condition permettant de définir la collection
 if (isset($_GET['collection']) && $_GET['collection'] == 1) {
     $produits = $man->getProductByCollection(1);
+    $path_pics = "product_audemars";
+    $collection = ucfirst("audemars") . ' ' . ucfirst('piguet');
 } elseif (isset($_GET['collection']) && $_GET['collection'] == 2) {
     $produits = $man->getProductByCollection(2);
+    $collection = ucfirst("blancpain");
+    $path_pics = "product_blancpain";
 } elseif
 (isset($_GET['collection']) && $_GET['collection'] == 3) {
     $produits = $man->getProductByCollection(3);
+    $path_pics = "product_omega";
+    $collection = ucfirst("omega");
+    //Si aucune collection n'est définit affiche les produits audemars
 } else {
     $produits = $man->getProductByCollection(1);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,84 +54,67 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
             <!--Section produits-->
             <section class="container_products">
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[0]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[0]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[0]['nom'] ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, sit!
-                    </p>
                     <span><?= $produits[0]['prix'] . '€' ?></span>
 
                     <a href="produit.php?produit=<?= $produits[0]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[1]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[1]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[1]['nom'] ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, quidem?
-                    </p>
+
                     <span><?= $produits[1]['prix'] . '€' ?></span>
 
                     <a href="produit.php?produit=<?= $produits[1]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[2]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[2]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[2]['nom'] ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nostrum?
-                    </p>
                     <span><?= $produits[2]['prix'] . '€' ?></span>
                     <a href="produit.php?produit=<?= $produits[2]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[3]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[3]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[3]['nom'] ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, numquam!
 
-                    </p>
                     <span><?= $produits[3]['prix'] . '€' ?></span>
 
                     <a href="produit.php?produit=<?= $produits[3]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[4]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[4]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[4]['nom'] ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, quia.
 
-                    </p>
                     <span><?= $produits[4]['prix'] . '€' ?></span>
 
                     <a href="produit.php?produit=<?= $produits[4]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
 
-                    <img class="product_pic" src="../assets/images/product_audemars/<?= $produits[5]['image'] ?>"
+                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[5]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[5]['nom'] . '€' ?></h4>
-                    <p class="p_product">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, nisi.
 
-                    </p>
                     <span><?= $produits[5]['prix'] . '€' ?></span>
 
                     <a href="produit.php?produit=<?= $produits[5]['id'] ?>>&collection=<?= $marques[0]['id'] ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Ajouter</a>
+                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
             </section>
             <!--Section description de la gamme -->
             <section class="container_describe_product">
-                <h2 class="main_title">Collection Audemars Piguet</h2>
+                <h2 class="main_title"><?= "Collection" . ' ' . $collection ?></h2>
                 <hr class="sep_prod">
                 <div class="container_text_describe">
                     <p class="p_describe_product">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolorum
