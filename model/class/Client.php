@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+//namespace App;
 class Client extends User
 {
     private string $_lastName;

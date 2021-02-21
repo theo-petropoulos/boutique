@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+//namespace App;
 class Product
 {
     private string $_nom;

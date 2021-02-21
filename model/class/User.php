@@ -1,12 +1,10 @@
 <?php
-
-namespace App;
+//namespace App;
 
 abstract class User
 {
     protected string $_login;
     protected string $_password;
-
     protected function hydrate(array $array)
     {
         foreach ($array as $index => $item) {
