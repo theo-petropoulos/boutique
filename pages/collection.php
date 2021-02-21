@@ -100,7 +100,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
 
                     <span><?= $produits[4]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>>&collection=<?=$marques?>"
+                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
