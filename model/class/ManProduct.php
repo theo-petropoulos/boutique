@@ -25,19 +25,21 @@ class ManProduct extends Manager
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    /** Prends en paramètre un Objet produit et l'insert en base de donnée
-     * @param Product $product
+    /** Retourne un tableau destiné à hydrater un objet produit
+     * @param int $idCollection numero de la collection Voir pour traduire numero en fonction du nom de la collection pour L UI
+     * @param int $idProduct numero du produit Voir pour traduire numero en fonction du nom produit pour l'UI Admin
+     * @return array Retourne un tableau contenant les infos d'un produit spécifique
      */
-    public function insert_product(Product $product): void
+    public function getProduct(int $idCollection, int $idProduct): array
     {
-        $sql = 'INSERT INTO produits (nom, prix, stock, id_marque, image) VALUES (?,?,?,?,?)';
-        $stmt = $this->getPdo()->prepare($sql);
-        $stmt->bindValue(1, $product->getNom());
-        $stmt->bindValue(2, $product->getPrix());
-        $stmt->bindValue(3, $product->getStock());
-        $stmt->bindValue(4, $product->getMarque());
-        $stmt->bindValue(5, $product->getImage());
-        $stmt->execute();
+        $sql = 'SELECT * FROM produits WHERE id_marque=' . $idCollection . ' AND id=' . $idProduct;
+        $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $array = [
+            'nom' => $result[0]['nom'],
+            'marque' => $result[0]['id_marque'],
+            'stock' => $result[0]['stock'],
+            'prix' => $result[0]['prix'],
+            'nomImage' => $result[0]['image'],
+        ];
     }
-
 }

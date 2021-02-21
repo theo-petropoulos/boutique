@@ -65,7 +65,7 @@ header{
                         background-color: #FFCC00;
                         transition: all 0.4s ease-in-out;
                     }
-                      
+
                     &:hover::before {
                         visibility: visible;
                         transform: scaleX(1);
@@ -147,39 +147,45 @@ header{
     }
 }
 
-@media (max-width:599px){
-    #nav_bar{
-        display:flex;
-        flex-direction:column;
+@media (max-width:599px) {
+    #nav_bar {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items:center;
-        #nav_ul1,#nav_ul2, #nav_bar2{
-            flex-direction:column;
+        align-items: center;
+
+        #nav_ul1, #nav_ul2, #nav_bar2 {
+            flex-direction: column;
             justify-content: center;
-            align-items:center;
-            form{
-                display:flex;
-                flex-direction:row;
+            align-items: center;
+
+            form {
+                display: flex;
+                flex-direction: row;
             }
-            #nav_montres{
-                position:relative;
-                ul{
-                    position:initial;
-                    display:block;
-                    left:0;
-                    bottom:0;
-                    right:0;
-                    top:0;
-                    transform:none;
-                    background:white;
-                    padding:0;
-                    width:inherit;
-                    li{
-                        text-align:center;
-                        margin-bottom:13%;
-                        width:100%;
+
+            #nav_montres {
+                position: relative;
+
+                ul {
+                    position: initial;
+                    display: block;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    top: 0;
+                    transform: none;
+                    background: white;
+                    padding: 0;
+                    width: inherit;
+
+                    li {
+                        text-align: center;
+                        margin-bottom: 13%;
+                        width: 100%;
                     }
                 }
             }
         }
     }
+}

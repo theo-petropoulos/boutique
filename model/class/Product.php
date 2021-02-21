@@ -3,18 +3,18 @@
 //namespace App;
 class Product
 {
-    private string $_nom;
-    private string $_marque;
-    private int $_stock;
-    private float $_prix;
-    private string $_image;
+    private $_nom;
+    private $_marque;
+    private $_stock;
+    private $_prix;
+    private $_NomImage;
 
-    protected function hydrate(array $array)
+    public function hydrate(array $array)
     {
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
-                $this->$method($index);
+                $this->$method($item);
             }
         }
     }
@@ -54,9 +54,9 @@ class Product
     /**
      * @return string
      */
-    public function getImage(): string
+    public function getNomImage(): string
     {
-        return $this->_image;
+        return $this->_NomImage;
     }
 
     /**
@@ -76,26 +76,28 @@ class Product
     }
 
     /**
-     * @param float $prix
+     * @param string $prix
      */
-    public function setPrix(float $prix): void
+    public function setPrix(string $prix): void
     {
+        $prix = floatval($prix);
         $this->_prix = $prix;
     }
 
     /**
-     * @param int $stock
+     * @param string $stock
      */
-    public function setStock(int $stock): void
+    public function setStock(string $stock): void
     {
+        $stock = intval($stock);
         $this->_stock = $stock;
     }
 
     /**
      * @param string $image
      */
-    public function setImage(string $image): void
+    public function setNomImage(string $image): void
     {
-        $this->_image = $image;
+        $this->_NomImage = $image;
     }
 }
