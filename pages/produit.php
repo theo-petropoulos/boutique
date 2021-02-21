@@ -1,5 +1,13 @@
 <?php
 var_dump($_GET);
+include_once '../model/class/Manager.php';
+include_once '../model/class/ManProduct.php';
+include_once '../model/class/Product.php';
+
+$Product = new Product();
+$Man = new ManProduct();
+$arrayProduct = $Man->getProduct(intval($_GET['collection']), intval($_GET['produit']));
+$Product->hydrate($arrayProduct);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +35,12 @@ var_dump($_GET);
     <section class="product_self">
         <div class="container_pic_prod">
             <h3>Caracteristique principal</h3>
-<!--            <img src="--><?php //"URL de l'image dynamique"  ?><!--" alt="">-->
+            <!--            <img src="--><?php //"URL de l'image dynamique"  ?><!--" alt="">-->
         </div>
         <article>
             <h2>Découvrez la "<?= "nom du produit dynamique" ?>"</h2>
-                <p><?= "Description produit dynamique" ?></p>
-                <button>Ajouter au panier</button>
+            <p><?= "Description produit dynamique" ?></p>
+            <button>Ajouter au panier</button>
         </article>
     </section>
     <hr class="sep_simil">

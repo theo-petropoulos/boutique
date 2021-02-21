@@ -9,25 +9,25 @@ $man = new ManProduct;
 $path_pics = null;
 $marques = $man->getCollection();
 //Condition permettant de définir la collection
-if (isset($_GET['collection']) && $_GET['collection'] == 1) {
+if (isset($_GET['collection']) AND $_GET['collection'] == 1 ||$_GET['collection'] != isset($_GET['collection'])) {
     $produits = $man->getProductByCollection(1);
     $path_pics = "product_audemars";
     $collection = ucfirst($marques[0]['nom']);
     $marque=$marques[0]['id'];
-} elseif (isset($_GET['collection']) && $_GET['collection'] == 2) {
+} elseif (isset($_GET['collection']) AND $_GET['collection'] == 2) {
     $produits = $man->getProductByCollection(2);
     $collection = ucfirst($marques[1]['nom']);
     $path_pics = "product_blancpain";
     $marque=$marques[1]['id'];
 } elseif
-(isset($_GET['collection']) && $_GET['collection'] == 3) {
+(isset($_GET['collection']) AND $_GET['collection'] == 3) {
     $produits = $man->getProductByCollection(3);
     $path_pics = "product_omega";
     $collection = ucfirst($marques[2]['nom']);
     $marque=$marques[2]['id'];
     //Si aucune collection n'est définit affiche les produits audemars
 } else {
-    $produits = $man->getProductByCollection(1);
+    header('location:../index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
 
                     <span><?= $produits[1]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[1]['id'] ?>>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[1]['id'] ?>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
@@ -80,7 +80,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[2]['nom'] ?></h4>
                     <span><?= $produits[2]['prix'] . '€' ?></span>
-                    <a href="produit.php?produit=<?= $produits[2]['id'] ?>>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[2]['id'] ?>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
@@ -90,7 +90,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
 
                     <span><?= $produits[3]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[3]['id'] ?>>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[3]['id'] ?>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
@@ -100,7 +100,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
 
                     <span><?= $produits[4]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
@@ -111,7 +111,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
 
                     <span><?= $produits[5]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[5]['id'] ?>>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[5]['id'] ?>&collection=<?=$marque?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
             </section>
