@@ -4,13 +4,13 @@
         <div id="nav_bar1">
             <ul id="nav_ul1">
                 <li id="nav_nouveautes"><a href="">Nouveautés</a></li>
-                <li id="nav_montres"><a href="">Montres</a></li>
-                <ul class="sous-menu">
-                    <li id="nav_montres"><a href="">Collection</a></li>
-                    <li><a href="collection.php?collection=1">Audemars Piguet</a></li>
-                    <li><a href="collection.php?collection=2">Blancpain</a></li>
-                    <li><a href="collection.php?collection=3">Omega</a></li>
-                </ul>
+                <li id="nav_montres"><a href="">Montres</a>
+                    <ul class="sous-menu">
+                        <li><a href="collection.php?collection=1">Audemars Piguet</a></li>
+                        <li><a href="collection.php?collection=2">Blancpain</a></li>
+                        <li><a href="collection.php?collection=3">Omega</a></li>
+                    </ul>
+                </li>
                 <li id="nav_adresses"><a href="">Points de vente</a></li>
                 <li id="nav_apropos"><a href="/boutique/pages/about.php">À propos</a></li>
             </ul>

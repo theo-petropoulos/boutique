@@ -193,6 +193,25 @@ body {
         -ms-flex-direction: row;
             flex-direction: row;
   }
+  #nav_bar #nav_montres {
+    position: relative;
+  }
+  #nav_bar #nav_montres ul {
+    position: relative;
+    background: white;
+    padding: 0;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 300%;
+  }
+  #nav_bar #nav_montres ul li {
+    text-align: center;
+    margin-bottom: 13%;
+    width: 100%;
+  }
+  #nav_bar #nav_montres ul li:nth-of-type(1) {
+    margin-top: 13%;
+  }
   footer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

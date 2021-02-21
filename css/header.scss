@@ -87,6 +87,35 @@ header{
                     }
                 }
             }
+            #nav_montres{
+                position:relative;
+                ul{
+                    position:absolute;
+                    display:none;
+                    left:50%;
+                    bottom:0%;
+                    transform:translate(-50%,100%);
+                    background:white;
+                    padding:0;
+                    border-bottom-right-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    width:300%;
+                    li{
+                        text-align:center;
+                        margin-bottom:13%;
+                        width:100%;
+                        &:nth-of-type(1){
+                            margin-top:13%;
+                        }
+                    }
+                }
+                &:hover{
+                    ul{
+                        display:block;
+                        z-index:3;
+                    }
+                }
+            }
         }
         #nav_bar1{
             flex-grow:2;
@@ -117,3 +146,40 @@ header{
         }
     }
 }
+
+@media (max-width:599px){
+    #nav_bar{
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        #nav_ul1,#nav_ul2, #nav_bar2{
+            flex-direction:column;
+            justify-content: center;
+            align-items:center;
+            form{
+                display:flex;
+                flex-direction:row;
+            }
+            #nav_montres{
+                position:relative;
+                ul{
+                    position:initial;
+                    display:block;
+                    left:0;
+                    bottom:0;
+                    right:0;
+                    top:0;
+                    transform:none;
+                    background:white;
+                    padding:0;
+                    width:inherit;
+                    li{
+                        text-align:center;
+                        margin-bottom:13%;
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }

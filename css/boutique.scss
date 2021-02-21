@@ -130,6 +130,25 @@ body{
                 flex-direction:row;
             }
         }
+        #nav_montres{
+            position:relative;
+            ul{
+                position:relative;
+                background:white;
+                padding:0;
+                border-bottom-right-radius: 15px;
+                border-bottom-left-radius: 15px;
+                width:300%;
+                li{
+                    text-align:center;
+                    margin-bottom:13%;
+                    width:100%;
+                    &:nth-of-type(1){
+                        margin-top:13%;
+                    }
+                }
+            }
+        }
     }
 
     footer{
