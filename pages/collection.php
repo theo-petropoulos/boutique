@@ -46,7 +46,7 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
     <title>Document</title>
 </head>
 <body>
-<?php include_once 'header.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -141,6 +141,6 @@ if (isset($_GET['collection']) && $_GET['collection'] == 1) {
         </div>
     </div>
 </main>
-<?php include_once 'footer.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
 </body>
 </html>

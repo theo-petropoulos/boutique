@@ -22,7 +22,7 @@
 	</head>
 
     <body>
-        <?php require 'pages/header.php';?>
+		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 		<main>
 			<section id="video_container">
 				<video playsinline autoplay muted loop id="bg_vid">
@@ -78,6 +78,6 @@
 				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von Harper</p>
 			</section>
 		</main>
-		<?php require 'pages/footer.php';?>
+		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
 </html>
