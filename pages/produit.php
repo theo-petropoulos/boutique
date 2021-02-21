@@ -25,7 +25,7 @@ $Product->hydrate($arrayProduct);
     <title>Document</title>
 </head>
 <body>
-<?php include_once 'header.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -54,6 +54,6 @@ $Product->hydrate($arrayProduct);
         </div>
     </section>
 </main>
-<?php include_once 'footer.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
 </body>
 </html>

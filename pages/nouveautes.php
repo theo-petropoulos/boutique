@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php include_once 'header.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 <!-- TITRE (NOVUEAUTÉS) -->
 <main>
     <div class="container_main_title">
@@ -82,6 +82,6 @@
         </div>
     </div>
 </main>
-<?php include_once 'footer.php' ?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
 </body>
 </html>
