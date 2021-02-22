@@ -2,6 +2,7 @@
 //Voir pour redefinir les chemin + namespace  si Theo MVC
 require_once '../model/class/Manager.php';
 require_once '../model/class/ManProduct.php';
+session_start();
 //Parametre passé par onglet collection du header 1 pour audemars 2 pour blancpain 3 pour Omega
 //Nouvel object Manager produit
 $man = new ManProduct;
@@ -9,26 +10,34 @@ $man = new ManProduct;
 $path_pics = null;
 $marques = $man->getCollection();
 //Condition permettant de définir la collection
-if (isset($_GET['collection']) AND $_GET['collection'] == 1 ||$_GET['collection'] != isset($_GET['collection'])) {
+if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection'] != isset($_GET['collection'])) {
     $produits = $man->getProductByCollection(1);
-    $path_pics = "product_audemars";
+    $path_pics = "../assets/images/product_audemars";
+    $_SESSION['path_pic']= $path_pics;
     $collection = ucfirst($marques[0]['nom']);
-    $marque=$marques[0]['id'];
-} elseif (isset($_GET['collection']) AND $_GET['collection'] == 2) {
+    $marque = $marques[0]['id'];
+    $_SESSION['marque'] = $marques[0]['nom'];
+} elseif (isset($_GET['collection']) and $_GET['collection'] == 2) {
     $produits = $man->getProductByCollection(2);
     $collection = ucfirst($marques[1]['nom']);
-    $path_pics = "product_blancpain";
-    $marque=$marques[1]['id'];
+    $path_pics = "../assets/images/product_blancpain";
+    $_SESSION['path_pic']= $path_pics;
+    $marque = $marques[1]['id'];
+    $_SESSION['marque'] = $marques[1]['nom'];
 } elseif
-(isset($_GET['collection']) AND $_GET['collection'] == 3) {
+(isset($_GET['collection']) and $_GET['collection'] == 3) {
     $produits = $man->getProductByCollection(3);
-    $path_pics = "product_omega";
+    $path_pics = "../assets/images/product_omega";
+    $_SESSION['path_pic']= $path_pics;
     $collection = ucfirst($marques[2]['nom']);
-    $marque=$marques[2]['id'];
+    $marque = $marques[2]['id'];
+    $_SESSION['marque'] = $marques[2]['nom'];
+
     //Si aucune collection n'est définit affiche les produits audemars
 } else {
     header('location:../index.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +55,7 @@ if (isset($_GET['collection']) AND $_GET['collection'] == 1 ||$_GET['collection'
     <title>Document</title>
 </head>
 <body>
-<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php'; ?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -57,61 +66,61 @@ if (isset($_GET['collection']) AND $_GET['collection'] == 1 ||$_GET['collection'
             <!--Section produits-->
             <section class="container_products">
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[0]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[0]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[0]['nom'] ?></h4>
                     <span><?= $produits[0]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[0]['id'] ?>&collection=<?=$marque ?>"
+                    <a href="produit.php?produit=<?= $produits[0]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[1]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[1]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[1]['nom'] ?></h4>
 
                     <span><?= $produits[1]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[1]['id'] ?>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[1]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[2]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[2]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[2]['nom'] ?></h4>
                     <span><?= $produits[2]['prix'] . '€' ?></span>
-                    <a href="produit.php?produit=<?= $produits[2]['id'] ?>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[2]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[3]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[3]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[3]['nom'] ?></h4>
 
                     <span><?= $produits[3]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[3]['id'] ?>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[3]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[4]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[4]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[4]['nom'] ?></h4>
 
                     <span><?= $produits[4]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
                 <div class="container_product">
 
-                    <img class="product_pic" src="../assets/images/<?= $path_pics ?>/<?= $produits[5]['image'] ?>"
+                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[5]['image'] ?>"
                          alt="Montre Audemars Piguet">
                     <h4 class="product_title"><?= $produits[5]['nom'] . '€' ?></h4>
 
                     <span><?= $produits[5]['prix'] . '€' ?></span>
 
-                    <a href="produit.php?produit=<?= $produits[5]['id'] ?>&collection=<?=$marque?>"
+                    <a href="produit.php?produit=<?= $produits[5]['id'] ?>&collection=<?= $marque ?>"
                        class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
                 </div>
             </section>
@@ -141,6 +150,6 @@ if (isset($_GET['collection']) AND $_GET['collection'] == 1 ||$_GET['collection'
         </div>
     </div>
 </main>
-<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php'; ?>
 </body>
 </html>
