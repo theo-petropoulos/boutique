@@ -17,7 +17,7 @@ var_dump($_GET);
     <title>Document</title>
 </head>
 <body>
-<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -46,6 +46,6 @@ var_dump($_GET);
         </div>
     </section>
 </main>
-<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
 </body>
 </html>
