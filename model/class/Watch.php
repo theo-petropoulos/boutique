@@ -1,13 +1,19 @@
 <?php
 
 //namespace App;
-class Product
+class Watch
 {
     private $_nom;
     private $_marque;
     private $_stock;
     private $_prix;
     private $_NomImage;
+    private $diametre;
+    private $epaisseur;
+    private $boitier;
+    private $mouvement;
+    private $reserve;
+    private $etancheite;
 
     public function hydrate(array $array)
     {
@@ -60,6 +66,54 @@ class Product
     }
 
     /**
+     * @return mixed
+     */
+    public function getBoitier()
+    {
+        return $this->boitier;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDiametre()
+    {
+        return $this->diametre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEpaisseur()
+    {
+        return $this->epaisseur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtancheite()
+    {
+        return $this->etancheite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMouvement()
+    {
+        return $this->mouvement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReserve()
+    {
+        return $this->reserve;
+    }
+
+    /**
      * @param string $nom
      */
     public function setNom(string $nom): void
@@ -99,5 +153,53 @@ class Product
     public function setNomImage(string $image): void
     {
         $this->_NomImage = $image;
+    }
+
+    /**
+     * @param mixed $boitier
+     */
+    public function setBoitier($boitier): void
+    {
+        $this->boitier = $boitier;
+    }
+
+    /**
+     * @param mixed $diametre
+     */
+    public function setDiametre($diametre): void
+    {
+        $this->diametre = $diametre;
+    }
+
+    /**
+     * @param mixed $epaisseur
+     */
+    public function setEpaisseur($epaisseur): void
+    {
+        $this->epaisseur = $epaisseur;
+    }
+
+    /**
+     * @param mixed $etancheite
+     */
+    public function setEtancheite($etancheite): void
+    {
+        $this->etancheite = $etancheite;
+    }
+
+    /**
+     * @param mixed $mouvement
+     */
+    public function setMouvement($mouvement): void
+    {
+        $this->mouvement = $mouvement;
+    }
+
+    /**
+     * @param mixed $reserve
+     */
+    public function setReserve($reserve): void
+    {
+        $this->reserve = $reserve;
     }
 }

@@ -1,10 +1,10 @@
 <?php
 include_once '../model/class/Manager.php';
 include_once '../model/class/ManProduct.php';
-include_once '../model/class/Product.php';
+include_once '../model/class/Watch.php';
 session_start();
 
-$Product = new Product();
+$Product = new Watch();
 $Man = new ManProduct();
 $arrayProduct = $Man->getProduct(intval($_GET['collection']), intval($_GET['produit']));
 $Product->hydrate($arrayProduct);
