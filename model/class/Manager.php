@@ -4,7 +4,7 @@
 
 abstract class Manager
 {
-    private $_pdo;
+    protected $_pdo;
 
     /**
      * Demarre une instance de PDO
