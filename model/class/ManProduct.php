@@ -1,4 +1,5 @@
 <?php
+require_once 'Manager.php';
 
 //namespace App;
 
@@ -25,6 +26,27 @@ class ManProduct extends Manager
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /** Retourne les caracteristique d'un produit prend le produit en paramètre
+     * @param int $productId
+     * @return array
+     */
+    public function get_carac(int $productId): array
+    {
+        $sql = 'SELECT * FROM caracteristiques WHERE produit=' . $productId;
+        $query = $this->getPdo()->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $array = [
+            'diametre' => $result[0]['Diamètre'],
+            'epaisseur' => $result[0]['Épaisseur'],
+            'boitier' => $result[0]['Boitier'],
+            'mouvement' => $result[0]['Mouvement'],
+            'reserve' => $result[0]['Reserve'],
+            'etancheite' => $result[0]['Étanchéité']
+        ];
+
+    }
+
     /** Retourne un tableau destiné à hydrater un objet produit
      * @param int $idCollection numero de la collection Voir pour traduire numero en fonction du nom de la collection pour L UI
      * @param int $idProduct numero du produit Voir pour traduire numero en fonction du nom produit pour l'UI Admin
@@ -35,11 +57,13 @@ class ManProduct extends Manager
         $sql = 'SELECT * FROM produits WHERE id_marque=' . $idCollection . ' AND id=' . $idProduct;
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return $array = [
+            'id' => $result[0]['id'],
             'nom' => $result[0]['nom'],
             'marque' => $result[0]['id_marque'],
             'stock' => $result[0]['stock'],
             'prix' => $result[0]['prix'],
             'nomImage' => $result[0]['image'],
+            'description' => $result[0]['description']
         ];
     }
 }

@@ -18,8 +18,8 @@ class ManAdmin extends Manager
         $sql = "INSERT INTO admin(login, password) VALUES (?,?)";
         $stmt = $this->getPdo()->prepare($sql);
         $password = password_hash($password, CRYPT_BLOWFISH);
-        $stmt->bindValues(1, $login);
-        $stmt->bindValues(2, $password);
+        $stmt->bindValue(1, $login);
+        $stmt->bindValue(2, $password);
         $stmt->execute();
     }
 
@@ -72,11 +72,10 @@ class ManAdmin extends Manager
      * @param string $etancheite
      * @param $idProduit
      */
-    public function insert_caractertistique_product(float $diametre, float $epaisseur, string $boitier, string $mouvement, string $reserve, string $etancheite, $idProduit): void
+    public function insert_caractertistique_product(float $diametre, float $epaisseur, string $boitier, string $mouvement, string $reserve, string $etancheite, int $idProduit): void
     {
         $sql = "INSERT INTO caracteristiques (Diamètre, Épaisseur, Boitier, Mouvement, Reserve, Étanchéité, produit) VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->getPdo()->prepare($sql);
-        var_dump($stmt);
         $stmt->bindValue(1, $diametre);
         $stmt->bindValue(2, $epaisseur);
         $stmt->bindValue(3, $boitier);
@@ -85,7 +84,6 @@ class ManAdmin extends Manager
         $stmt->bindValue(6, $etancheite);
         $stmt->bindValue(7, $idProduit);
         $stmt->execute();
-
     }
 
     /** Insertion d'une nouvelle collection
@@ -130,3 +128,4 @@ class ManAdmin extends Manager
     }
     //Statut des commandes a voir necessite la refonte de la BDD
 }
+
