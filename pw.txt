@@ -1,0 +1,23 @@
+login
+password
+ip
+token
+
+COMMENT FONCTIONNE LE TOKEN
+BESOIN identifiant/login
+BESOIN clé d'accès->stockée
+
+token = 
+
+
+inscription :
+INSERT login
+INSERT password
+INSERT ip
+DONNE token
+
+
+$salt = openssl_random_pseudo_bytes(16);
+PBKDF2 
+Iteration = random 50000-90000
+HMAC-SHA-256

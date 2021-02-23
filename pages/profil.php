@@ -1,7 +1,8 @@
 <?php
-    session_start();
-    require '../core/functions.php';
-    $ip=$_SERVER['REMOTE_ADDR'];
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/session.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/user.php';
+
+    //Si l'utilisateur possède un token d'authentification
     if(isset($_COOKIE['login']) && $_COOKIE['login'] && isset($_COOKIE['password']) && $_COOKIE['password']){
         $mail=$_COOKIE['login'];
         $password=$_COOKIE['password'];
@@ -35,7 +36,7 @@
         $_SESSION['connected']=FALSE;
     }
     if(isset($_POST) && $_POST){
-        verify_sub($_POST);
+        $return=verify_sub($_POST);
     }
 ?>
 
@@ -55,35 +56,60 @@
 	</head>
 
     <body>
-        <?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 		<main><?php
             if(isset($_SESSION['connected']) && $_SESSION['connected']){
 
             }
             else if(!isset($_POST['mail']) || !$_POST['mail']){?>
                 <form method="post" action="profil.php" id="form_sub">
+                    <label for="lastname">Nom :</label>
+                    <input type="text" name="lastname" maxlength=30 required>
+                    <label for="firstname">Prénom :</label>
+                    <input type="text" name="firstname" maxlength=30 required>
                     <label for="mail">Adresse mail : </label>
-                    <input type="email" name="mail" required>
+                    <input type="email" name="mail" maxlength=60 required>
                     <label for="password">Mot de passe :</label>
-                    <input type="password" name="password" required>
+                    <input type="password" name="password" minlenght=8 maxlenght=40 required>
                     <label for="cpassword">Confirmez le mot de passe :</label>
-                    <input type="password" name="cpassword" required>
-                    <label for="numrue">Numéro de l'adresse :</label>
-                    <input type="text" name="numrue">
-                    <label for="adresse">Adresse :</label>
-                    <input type="text" name="adresse" required>
-                    <label for="compadresse">Complément d'adresse :</label>
-                    <input type="text" name="compadresse">
-                    <label for="codepostal">Code postal :</label>
-                    <input type="int" name="codepostal" required>
-                    <label for="ville">Ville :</label>
-                    <input type="text" name="ville" required>
-                    <label for="telephone">Téléphone :</label>
-                    <input type="tel" name="telephone">
+                    <input type="password" name="cpassword" minlenght=8 maxlenght=40 required>
+                    <label for="numadress">Numéro de l'adresse :</label>
+                    <input type="text" name="numadress" maxlenght=10>
+                    <label for="adress">Adresse :</label>
+                    <input type="text" name="adress" required>
+                    <label for="compadress">Complément d'adresse :</label>
+                    <input type="text" name="compadress" maxlenght=25>
+                    <label for="postal">Code postal :</label>
+                    <input type="int" name="postal" pattern="[0-9]{5}" required>
+                    <label for="city">Ville :</label>
+                    <input type="text" name="city" maxlenght=30 required>
+                    <label for="phone">Téléphone :</label>
+                    <input type="tel" name="phone" pattern="[0-9]{10}" required>
                     <input type="submit" value="Envoyer">
                 </form><?php
             }
+            else if(isset($_POST) && $_POST){
+                switch($return){
+                    case 'errmatch':?>
+                        <p>Les mots de passe ne correspondent pas. Veuillez <a href="profil.php">Réessayer</a>.</p>
+                        <?php break;
+                    case 'errpwd':?>
+                        <p>Le mot de passe n'est pas assez fort. Il doit contenir :<br>
+                        -Au moins une majuscule<br>
+                        -Au moins une minscule<br>
+                        -Au moins un chiffre<br>
+                        -Au moins un caractère spécial<br>
+                        Veuillez <a href="profil.php">Réessayer</a>.</p>
+                        <?php break;
+                    case 'errinput':?>
+                        <p>Il y a eut une erreur de saisie. Veuillez <a href="profil.php">Réessayer</a>.</p>
+                        <?php break;
+                    case 'errpost':?>
+                        <p>Une erreur inattendue est survenue. Veuillez <a href="profil.php">Réessayer</a>.</p>
+                        <?php break;
+                }
+            }
 		?></main>
-		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
 </html>

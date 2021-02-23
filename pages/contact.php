@@ -14,7 +14,7 @@
 	</head>
 
     <body>
-        <?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
         <section id="banner_standard">
             <h2>Formulaire de contact</h2>
         </section>
@@ -80,6 +80,6 @@
                 </p>
             </div>
         </section>
-		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
 </html>

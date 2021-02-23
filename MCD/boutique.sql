@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `prenom` varchar(150) NOT NULL,
   `id_email` int(11) NOT NULL,
   `telephone` varchar(50) NOT NULL,
-  `password` varchar(150) NOT NULL,
-  `ip` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `authkey` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_email_client` (`id_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `email` (
   `newsletter` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 

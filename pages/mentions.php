@@ -14,7 +14,7 @@
 	</head>
 
     <body>
-        <?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
         <main id="main_mentions">
             <section id="banner_standard">
                 <h2>Mentions légales &<br>Politique de confidentialité</h2>
@@ -229,6 +229,6 @@
                 </section>
             </div>
         </main>
-        <?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
 </html>

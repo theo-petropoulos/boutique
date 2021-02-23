@@ -1,9 +1,5 @@
 <?php
-	$link= new PDO('mysql:host=localhost;', 'root', '');
-	$link->query('CREATE DATABASE IF NOT EXISTS `boutique`');
-	$db= new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-	$sql= file_get_contents('MCD/boutique.sql');
-	$sql_cr= $db->exec($sql);
+	require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/session.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +18,7 @@
 	</head>
 
     <body>
-		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 		<main>
 			<section id="video_container">
 				<video playsinline autoplay muted loop id="bg_vid">
@@ -78,6 +74,6 @@
 				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von Harper</p>
 			</section>
 		</main>
-		<?php require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
 </html>
