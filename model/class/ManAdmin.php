@@ -47,6 +47,16 @@ class ManAdmin extends Manager
 
     }
 
+    /**Affiche les comtpes admin sur la page d'administration
+     * @return array
+     */
+    public function display_Admin()
+    {
+        $sql = "SELECT * FROM admin";
+        $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
+    }
+
     /** Prends en paramètre un Objet produit et l'insert en base de donnée
      * @param Watch $product
      */
