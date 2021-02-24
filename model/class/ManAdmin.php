@@ -29,6 +29,7 @@ class ManAdmin extends Manager
     public function updateAdmin()
     {
 
+
     }
 
     /**
@@ -50,11 +51,11 @@ class ManAdmin extends Manager
     /**Affiche les comtpes admin sur la page d'administration
      * @return array
      */
-    public function display_Admin()
+    public function display_Admin(): array
     {
         $sql = "SELECT * FROM admin";
-        $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
+       return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
     /** Prends en paramètre un Objet produit et l'insert en base de donnée
@@ -138,4 +139,6 @@ class ManAdmin extends Manager
     }
     //Statut des commandes a voir necessite la refonte de la BDD
 }
+
+$man = new ManAdmin();
 
