@@ -31,57 +31,59 @@
 
         public function register(){
             //Look for mail and/or ip in the db
-            $query=$db->prepare("SELECT 
-                (SELECT `id` FROM `mail` WHERE `mail`=?) AS `id_mail`,
-                SELECT `id` FROM `ip` WHERE `ip`=?) AS `id_ip`");
+            $query=self::$db->prepare("SELECT 
+                (SELECT `id` FROM `mails` WHERE `mail`=?) AS `id_mail`,
+                (SELECT `id` FROM `ip` WHERE `ip`=?) AS `id_ip`");
             $query->execute([$this->mail, $this->ip]);
             $exist=$query->fetch(PDO::FETCH_ASSOC);
+            foreach($exist as $key=>$value){
+                if($value!==NULL){
+                    $exist[$key]=intval($value);
+                }
+            }
 
             //Select max id from mail,adresses,clients
-            $query=$db->query("SELECT
-                (SELECT MAX(id) FROM `mail`) as `id_mail`,
-                (SELECT MAX(id) FROM `adresses`) as `id_adresse`,
-                (SELECT MAX(id) FROM `clients`) as `id_clients`");
+            $query=self::$db->query("SELECT
+                (SELECT MAX(id) FROM `mails`) as `id_mail`,
+                (SELECT MAX(id) FROM `clients`) as `id_client`");
             $res=$query->fetch(PDO::FETCH_ASSOC);
 
             //If there's a match in mail, the id_mail to insert in client is this match's id
-            if(!is_bool($exist['id_mail'])){
+            if($exist['id_mail']!==NULL){
                 $res['id_mail']=$exist['id_mail'];
             }
             //If there's no match for mail in the db
-            else {
+            else{
                 //If there's at least one entry in mail, the id_mail to insert is this entry's id++, else it's 1
-                if(!is_bool($res['id_mail'])){
+                if($res['id_mail']!==NULL){
                     $res['id_mail']++;
                 }else $res['id_mail']=1;
-                $query=self::$db->prepare('INSERT INTO `mail` (mail,newsletter) VALUES (?,0)');
+                $query=self::$db->prepare('INSERT INTO `mails` (mail,newsletter) VALUES (?,0)');
                 $query->execute([$this->mail]);
             }
-            //If there's at least one entry in adresse...
-            if(!is_bool($res['id_adresse'])){
-                $res['id_adresse']++;
-            }else $res['id_adresse']=1;
             //If there's at least one entry in clients...
-            if(!is_bool($res['id_clients'])){
-                $res['id_clients']++;
-            }else $res['id_clients']=1;
-
-            //If there is a match for ip in the db, the id_client from ip is updated to the new user's id
-            if(!is_bool($exist['id_ip'])){
-                $query=self::$db->prepare("UPDATE `ip` SET `id_client`=?");
-                $query->execute([$res['id_client']]);
-            }else{
-                $query=self::$db->prepare("INSERT INTO `ip` (ip, id_client) VALUES (?,'$id_client'");
-                $query->execute([$this->ip]);
-            }
-
-            //Insert into table adresses the adress from the new user
-            $query=self::$db->prepare('INSERT INTO `adresses` (numero,rue,complement,code_postal,ville) VALUES(?,?,?,?,?)');
-            $query->execute([$this->numadress, $this->adress, $this->$compadress, $this->postal, $this->city]);
+            if($res['id_client']!==NULL){
+                $res['id_client']++;
+            }else $res['id_client']=1;
 
             //Authtoken will be used to keep the user connected through a cookie when he will tick 'remember me' while logging in
             //It will be updated upon every login
-            $query=self::$db->prepare('INSERT INTO `clients` (id_adresse,nom,prenom,id_mail,telephone,`password`,authkey) VALUES(?,?,?,?,?,?,?)');
-            $query->execute([$res['id_adresse'], $this->nom, $this->prenom, $res['id_mail'], $this->phone, $this->password, $authkey]);
+            $authtoken=createToken();
+            $query=self::$db->prepare('INSERT INTO `clients` (nom,prenom,id_mail,telephone,password,authkey) VALUES(?,?,?,?,?,?)');
+            $query->execute([$this->lastname, $this->firstname, $res['id_mail'], $this->phone, $this->password, $authtoken]);
+
+            //If there is a match for ip in the db, the id_client from ip is updated to the new user's id
+            if($exist['id_ip']!==NULL){
+                $query=self::$db->prepare("UPDATE `ip` SET `id_client`=?");
+                $query->execute([$res['id_client']]);
+            }else{
+                echo $res['id_client'];
+                $query=self::$db->prepare("INSERT INTO `ip` (ip, id_client, blacklist) VALUES (?,?,0)");
+                $query->execute([$this->ip, $res['id_client']]);
+            }
+
+            //Insert into table adresses the adress from the new user
+            $query=self::$db->prepare('INSERT INTO `adresses` (id_client,numero,rue,complement,code_postal,ville) VALUES(?,?,?,?,?,?)');
+            $query->execute([$res['id_client'],$this->numadress, $this->adress, $this->compadress, $this->postal, $this->city]);
         }
     }

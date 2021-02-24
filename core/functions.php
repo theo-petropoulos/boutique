@@ -12,7 +12,7 @@
                 foreach($post as $key=>$value){
                     $array=explode(' ',$post[$key]);
                     foreach($array as $key2=>$value2){
-                        if(preg_match_all('#\b(select|from|insert|into|remove|delete|sort by|)\b#i',$array[$key])){
+                        if(preg_match_all('#\b(select|from|insert|into|remove|delete|sort by)\b#i',$array[$key2])){
                             $inj_report++;
                         }
                     }
@@ -45,10 +45,10 @@
                 //Verify if there is already an user using this mail, else attempt to create user
                 else{
                     $db=db_link();
-                    $stmt=$db->prepare('SELECT `id` FROM `clients` WHERE `id_mail`=(SELECT `id` FROM `mail` WHERE `mail`=?)');
+                    $stmt=$db->prepare('SELECT `id` FROM `clients` WHERE `id_mail`=(SELECT `id` FROM `mails` WHERE `mail`=?)');
                     $stmt->execute([$post['mail']]);
                     $stmt=$stmt->fetchAll(PDO::FETCH_ASSOC);
-                    if(!is_bool($stmt)){
+                    if(!empty($stmt)){
                         return 'errexist';
                     }
                     else{
@@ -65,4 +65,19 @@
         else{
             return 'errpost';
         }
+    }
+
+    //Create an authtoken
+    function createToken(){
+        $date = (new DateTime())->getTimeStamp();
+        $ip=$_SERVER['REMOTE_ADDR'];
+        $start=random_int(1000,9999);
+        $end=random_int(1000,9999);
+        $token=$start . "-" . $date . ":" . $ip . "+" . $end;
+        $iterations = random_int(30000,90000);
+
+        $salt = openssl_random_pseudo_bytes(16);
+
+        $hash = hash_pbkdf2("sha256", $token, $salt, $iterations, 32);
+        return $hash;
     }

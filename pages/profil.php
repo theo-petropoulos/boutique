@@ -37,6 +37,7 @@
     }
     if(isset($_POST) && $_POST){
         $return=verify_sub($_POST);
+        echo $return;
     }
 ?>
 

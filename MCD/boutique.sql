@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 CREATE TABLE IF NOT EXISTS `mails` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` varchar(255) NOT NULL,
   `newsletter` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `commandes` (
 --
 
 CREATE TABLE IF NOT EXISTS `ip` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(255) NOT NULL,
   `id_client` int(11) NOT NULL,
   `blacklist` tinyint(1) NOT NULL,
