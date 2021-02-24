@@ -107,6 +107,10 @@
                     case 'errpost':?>
                         <p>Une erreur inattendue est survenue. Veuillez <a href="profil.php">Réessayer</a>.</p>
                         <?php break;
+                    case 'errexist':?>
+                        <p>Cette adresse mail est déjà utilisée.<br><a href="">Mot de passe oublié ?</a><br>
+                        <a href="profil.php">Réessayer.</a></p>
+                        <?php break;
                 }
             }
 		?></main>
