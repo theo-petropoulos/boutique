@@ -1,3 +1,12 @@
+<?php
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/session.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/newsletter.php';
+
+    if(isset($_POST) && $_POST){
+        $news=sub_newsletter($_POST);
+    }
+?>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -20,6 +29,7 @@
                 <h2>Inscription à la Newsletter</h2>
             </section>
 
+            <?php if(!isset($_POST) || !$_POST){?>
             <section id="form_newsletter">
                 <form action="newsletter.php" method="post">
                     <label for="mail">Adresse mail* :</label>
@@ -50,6 +60,23 @@
                         concernant, veuillez vous adresser à privacy@vonharper.com.
                 </p>
             </div>
+            <?php } else if(isset($_POST) && $_POST){
+                switch($news){
+                    //If user is already registered, update its newsletter status to 1
+                    case 'subchanged':?>
+                        <p>Vos préférences ont été mises à jour.</p>
+                        <?php break;
+                    //If the mail doesn't exist in the db, add it and set its newsletter status to 1
+                    case 'subsuccess':?>
+                        <p>Votre inscription a bien été prise en compte.<br>Un e-mail de confirmation vous a été envoyé.</p>
+                        <!-- TODO /PHPMAILER/ -->
+                        <?php break;
+                    //If something went wrong
+                    default:?>
+                        <p>Un problème est survenu. Veuillez <a href="newsletter.php">réessayer</a>.</p>
+                        <?php break;
+                }
+            }?>
         </main>
         <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>

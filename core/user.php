@@ -85,5 +85,6 @@
             //Insert into table adresses the adress from the new user
             $query=self::$db->prepare('INSERT INTO `adresses` (id_client,numero,rue,complement,code_postal,ville) VALUES(?,?,?,?,?,?)');
             $query->execute([$res['id_client'],$this->numadress, $this->adress, $this->compadress, $this->postal, $this->city]);
+            return 'subsuccess';
         }
     }

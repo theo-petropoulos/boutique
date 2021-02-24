@@ -8,5 +8,3 @@
         $sql_cr= $db->exec($sql);
         return $db;
     }
-
-    $db=db_link();

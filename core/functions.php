@@ -54,7 +54,7 @@
                     else{
                         try{
                             $user= new User($post, $db);
-                            $user->register();
+                            return $user->register();
                         } catch(Exception $e){
                             echo $e->getMessage(), "\n";
                         }
@@ -80,4 +80,11 @@
 
         $hash = hash_pbkdf2("sha256", $token, $salt, $iterations, 32);
         return $hash;
+    }
+
+    //Sub to newsletter
+    function sub_newsletter(array $post){
+        $db=db_link();
+        $newsletter= new Newsletter($post, $db);
+        return $newsletter->subscribe();
     }
