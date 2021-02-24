@@ -3,17 +3,20 @@
 //namespace App;
 class Watch
 {
-    private $_nom;
-    private $_marque;
-    private $_stock;
-    private $_prix;
-    private $_NomImage;
-    private $diametre;
-    private $epaisseur;
-    private $boitier;
-    private $mouvement;
-    private $reserve;
-    private $etancheite;
+    private int $_id;
+    private string $_nom;
+    private string $_marque;
+    private int $_stock;
+    private float $_prix;
+    private string $_NomImage;
+    private string $description;
+
+    private float $diametre;
+    private float $epaisseur;
+    private string $boitier;
+    private string $mouvement;
+    private string $reserve;
+    private string $etancheite;
 
     public function hydrate(array $array)
     {
@@ -23,6 +26,14 @@ class Watch
                 $this->$method($item);
             }
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->_id;
     }
 
     /**
@@ -66,51 +77,67 @@ class Watch
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getBoitier()
+    public function getReserve(): string
     {
-        return $this->boitier;
+        return $this->reserve;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDiametre()
-    {
-        return $this->diametre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEpaisseur()
-    {
-        return $this->epaisseur;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEtancheite()
-    {
-        return $this->etancheite;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMouvement()
+    public function getMouvement(): string
     {
         return $this->mouvement;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getReserve()
+    public function getEtancheite(): string
     {
-        return $this->reserve;
+        return $this->etancheite;
+    }
+
+    /**
+     * @return float
+     */
+    public function getEpaisseur(): float
+    {
+        return $this->epaisseur;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDiametre(): float
+    {
+        return $this->diametre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBoitier(): string
+    {
+        return $this->boitier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->_id = $id;
     }
 
     /**
@@ -156,50 +183,58 @@ class Watch
     }
 
     /**
-     * @param mixed $boitier
+     * @param string $reserve
      */
-    public function setBoitier($boitier): void
+    public function setReserve(string $reserve): void
     {
-        $this->boitier = $boitier;
+        $this->reserve = $reserve;
     }
 
     /**
-     * @param mixed $diametre
+     * @param string $mouvement
      */
-    public function setDiametre($diametre): void
-    {
-        $this->diametre = $diametre;
-    }
-
-    /**
-     * @param mixed $epaisseur
-     */
-    public function setEpaisseur($epaisseur): void
-    {
-        $this->epaisseur = $epaisseur;
-    }
-
-    /**
-     * @param mixed $etancheite
-     */
-    public function setEtancheite($etancheite): void
-    {
-        $this->etancheite = $etancheite;
-    }
-
-    /**
-     * @param mixed $mouvement
-     */
-    public function setMouvement($mouvement): void
+    public function setMouvement(string $mouvement): void
     {
         $this->mouvement = $mouvement;
     }
 
     /**
-     * @param mixed $reserve
+     * @param string $etancheite
      */
-    public function setReserve($reserve): void
+    public function setEtancheite(string $etancheite): void
     {
-        $this->reserve = $reserve;
+        $this->etancheite = $etancheite;
+    }
+
+    /**
+     * @param float $epaisseur
+     */
+    public function setEpaisseur(float $epaisseur): void
+    {
+        $this->epaisseur = $epaisseur;
+    }
+
+    /**
+     * @param float $diametre
+     */
+    public function setDiametre(float $diametre): void
+    {
+        $this->diametre = $diametre;
+    }
+
+    /**
+     * @param string $boitier
+     */
+    public function setBoitier(string $boitier): void
+    {
+        $this->boitier = $boitier;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 }
