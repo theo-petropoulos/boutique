@@ -6,6 +6,7 @@ require_once 'Manager.php';
 class ManProduct extends Manager
 {
 
+
     /**
      * @param int $id Prend en paramètre un entier representant la marque "1" = Audemars Piguet, "2" = Blancpin, "3" = Omega
      * @return array Retourne un tableau de produit de la marque correspondant à l'id passé en parametre

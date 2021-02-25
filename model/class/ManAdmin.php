@@ -54,8 +54,18 @@ class ManAdmin extends Manager
     public function display_Admin(): array
     {
         $sql = "SELECT * FROM admin";
-       return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+//    DISPLAY COMMANDE VOIR METHODE OU FONCTION THEO POUR L ENTREE DES COMMANDES
+
+    /** Retourne tout le produit sous forme de tableau d'objet à mettre en forme sur la page d'administration
+     * @return array
+     */
+    public function display_products(): array
+    {
+        $sql = 'SELECT * FROM produits';
+        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_OBJ);
     }
 
     /** Prends en paramètre un Objet produit et l'insert en base de donnée
@@ -102,31 +112,20 @@ class ManAdmin extends Manager
      */
     public function insert_collection(string $collection)
     {
-
+        $sql = 'INSERT INTO marques (nom) VALUES (?)';
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $collection);
+        $stmt->execute();
     }
 
     /** Modifier le nombre d'un produit specifique en stock
      * @param Watch $product
      */
-    public function update_Stock(Watch $product)
+    public function update_PS(Watch $product)
     {
-
-    }
-
-    /**Affiche la liste des produits commercialisé sur le site et leur disponibilité ainsi que leur stock
-     * @return array
-     */
-    public function display_product(): array
-    {
-
-    }
-
-    /**Modifie le prix d'un produit
-     * @param Watch $product
-     */
-    public function update_price(Watch $product)
-    {
-
+        $sql = 'UPDATE produits SET 
+                prix = ' . $product->getPrix() . ', stock=' . $product->getStock() . ',
+                WHERE' . $product->getId();
     }
 
     /** Retourne le prix promotionnel d'un produit a affiché si la promo éxiste
