@@ -92,25 +92,25 @@
         //Connect a user
         public function connect(){
             $stmt=self::$db->prepare(
-                "SELECT `password`,`id` FROM `clients` WHERE `id_mail`=
-                (SELECT `id` FROM `mails` WHERE `mail`=?)");
+                "SELECT clients.password,clients.id, ip.id_client, ip.ip FROM `clients` INNER JOIN `ip`
+                WHERE `id_mail`=(SELECT `id` FROM `mails` WHERE `mail`=?)
+                ");
             $stmt->execute([$this->mail]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
-            if($res['password']!==NULL){
+            var_dump($res);
+            if(!is_bool($res['password'])){
                 if(password_verify($this->password, $res['password'])){
-                    $stmt2=self::$db->prepare("SELECT `id_client` FROM `ip` WHERE `ip`=?");
-                    $stmt2->execute([$this->ip]);
-                    $res2=$stmt2->fetch(PDO::FETCH_ASSOC);
-                    if(isset($res2['id_client'])){
-                        if($res['id']==$res2['id_client']){
+                    if($this->ip==$res['ip']){
+                        if($res['id']==$res['id_client']){
                             $authtoken=createToken();
                             setcookie('authtoken', $authtoken,time()+360000);
                             $query=self::$db->prepare("UPDATE `clients` SET `authkey`=? WHERE `id`=?");
                             $query->execute([$authtoken, $res['id']]);
-                            return 'authsuccess';
+                            return 'auth_success';
                         }
+                        else return 'auth_new_ip';
                     }
-                    else return 'auth_ip_err';
+                    else return 'auth_new_ip';
                 }
                 else return 'auth_pwd_err';
             }
@@ -144,11 +144,14 @@
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
             if($res['ip']!==NULL){
                 if($res['ip']==$this->ip){
-                    return 'connected';
+                    return 'cookie_connected';
                 }
+                else return 'cookie_err';
             }
             else{
-                
+                $stmt=self::$db->prepare('UPDATE `ip` SET `id_client`=(SELECT `id` FROM `clients` WHERE `authtoken`=?)');
+                $stmt->execute([$this->authtoken]);
+                return 'cookie_connected';
             }
         }
     }

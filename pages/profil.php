@@ -2,15 +2,27 @@
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/user.php';
 
-    //Si l'utilisateur possède un token d'authentification
+    //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
         $token=verify_token($_COOKIE);
+        switch($token){
+            case 'cookie_connected':
+                $authorized=1;
+                break;
+            case 'cookie_err':
+                setcookie('authotken', '', -1);
+                break;
+            default:
+                setcookie('authotken', '', -1);
+                break;                
+        }
     }
-
+    //If the user is trying to register
     if(isset($_POST) && $_POST && !isset($_POST['mail_connect']) && !isset($_POST['password_connect'])
         && !isset($_POST['register']) && !isset($_POST['connect'])){
         $return=verify_sub($_POST);
     }
+    //If the user is trying to connect
     else if(isset($_POST['mail_connect']) && $_POST['mail_connect'] && isset($_POST['password_connect']) && $_POST['password_connect']){
         $connect=verify_connect($_POST);
     }
@@ -35,11 +47,25 @@
         <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
 		<main>   
         <?php
-            //Si l'utilisateur possède un token d'authentification
-            if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
-                echo "bonjour";
-            }
+            //If the user has a valid authentication token
+            if(isset($authorized) && $authorized==1){ ?>
+               <p>Vous êtes connecté.</p>
+            <?php }
 
+            else if(isset($connect) && $connect){
+                switch($connect){
+                    case 'auth_new_ip':?>
+                        <p>Vous tentez de vous connecter depuis un nouvel appareil.<br>
+                        Veuillez confirmer votre connexion par mail.</p>
+                        <?php break;
+                    case 'auth_pwd_err':?>
+                        <p>Adresse mail ou mot de passe incorrect.</p>
+                        <?php break;
+                    case 'auth_gen_err':?>
+                        <p>Une erreur est survenue. Veuillez <a href="profil.php">réessayer</a>.</p>
+                        <?php break;
+                }
+            }
             else{
                 if( ((!isset($_POST['connect']) || !$_POST['connect']) && (!isset($_POST['register']) || !$_POST['register']))
                     && (!isset($return) || !$return)

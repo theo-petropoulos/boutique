@@ -96,11 +96,13 @@
     function verify_connect(array $post){
         if(isset($post['mail_connect']) && $post['mail_connect'] && isset($post['password_connect']) && $post['password_connect']){
             if(filter_var($post['mail_connect'], FILTER_VALIDATE_EMAIL)){
+                $db=db_link();
                 $array=['mail'=>$post['mail_connect'], 'password'=>$post['password_connect']];
                 $user=new User($array, $db);
                 return $user->connect();
             }
         }
+        else return 'auth_gen_err';
     }
 
     //Verify a user's authentification token
@@ -108,7 +110,7 @@
         if(isset($cookie['authtoken']) && $cookie['authtoken']){
             $db=db_link();
             $user=new User($cookie, $db);
-            $user->authenticate();
+            return $user->authenticate();
         }
         else{
             return 'cookie_err';
