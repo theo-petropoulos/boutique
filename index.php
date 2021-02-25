@@ -1,5 +1,5 @@
 <?php
-	require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/session.php';
+	require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 ?>
 
 <!DOCTYPE html>

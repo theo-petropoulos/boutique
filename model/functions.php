@@ -1,6 +1,16 @@
 <?php
 
-    //Verify the user's input
+    //Sub to newsletter
+    function sub_newsletter(array $post){
+        if(filter_var($post['mail'], FILTER_VALIDATE_EMAIL)){
+            $db=db_link();
+            $newsletter= new User($post, $db);
+            return $newsletter->subscribe();
+        }
+        else return 'suberr';
+    }
+
+    //Verify the user's registration
     function verify_sub(array $post){
         if( isset($post['firstname']) && $post['firstname'] && isset($post['lastname']) && $post['lastname'] &&
             isset($post['mail']) && $post['mail'] && isset($post['password']) && $post['password'] &&
@@ -82,9 +92,25 @@
         return $hash;
     }
 
-    //Sub to newsletter
-    function sub_newsletter(array $post){
-        $db=db_link();
-        $newsletter= new Newsletter($post, $db);
-        return $newsletter->subscribe();
+    //Verify a user's connection
+    function verify_connect(array $post){
+        if(isset($post['mail_connect']) && $post['mail_connect'] && isset($post['password_connect']) && $post['password_connect']){
+            if(filter_var($post['mail_connect'], FILTER_VALIDATE_EMAIL)){
+                $array=['mail'=>$post['mail_connect'], 'password'=>$post['password_connect']];
+                $user=new User($array, $db);
+                return $user->connect();
+            }
+        }
+    }
+
+    //Verify a user's authentification token
+    function verify_token(array $cookie){
+        if(isset($cookie['authtoken']) && $cookie['authtoken']){
+            $db=db_link();
+            $user=new User($cookie, $db);
+            $user->authenticate();
+        }
+        else{
+            return 'cookie_err';
+        }
     }

@@ -4,7 +4,7 @@
         public $firstname;
         public $lastname;
         public $mail;
-        public $password;
+        protected $password;
         public $numadress;
         public $adress;
         public $compadress;
@@ -12,19 +12,19 @@
         public $postal;
         public $city;
         public $ip;
+        protected $authtoken;
         public static $db;
 
         public function __construct($post, $db){
-            $this->firstname=ucfirst(strtolower($post['firstname']));
-            $this->lastname=ucfirst(strtolower($post['lastname']));
-            $this->mail=$post['mail'];
-            $this->password=password_hash($post['password'], PASSWORD_DEFAULT);
-            $this->numadress=$post['numadress'];
-            $this->adress=$post['adress'];
-            $this->compadress=$post['compadress'];
-            $this->phone=$post['phone'];
-            $this->postal=$post['postal'];
-            $this->city=ucfirst(strtolower($post['city']));
+            foreach($post as $key=>$value){
+                if($key=='firstname' || $key=='lastname' || $key=='city'){
+                    $this->$key=ucfirst(strtolower($value));
+                }
+                else if($key=='cpassword'){}
+                else{
+                    $this->$key=$value;
+                }
+            }
             $this->ip=$_SERVER['REMOTE_ADDR'];
             self::$db=$db;
         }
@@ -69,6 +69,7 @@
             //Authtoken will be used to keep the user connected through a cookie when he will tick 'remember me' while logging in
             //It will be updated upon every login
             $authtoken=createToken();
+            $this->password=password_hash($this->password, PASSWORD_DEFAULT);
             $query=self::$db->prepare('INSERT INTO `clients` (nom,prenom,id_mail,telephone,password,authkey) VALUES(?,?,?,?,?,?)');
             $query->execute([$this->lastname, $this->firstname, $res['id_mail'], $this->phone, $this->password, $authtoken]);
 
@@ -86,5 +87,68 @@
             $query=self::$db->prepare('INSERT INTO `adresses` (id_client,numero,rue,complement,code_postal,ville) VALUES(?,?,?,?,?,?)');
             $query->execute([$res['id_client'],$this->numadress, $this->adress, $this->compadress, $this->postal, $this->city]);
             return 'subsuccess';
+        }
+
+        //Connect a user
+        public function connect(){
+            $stmt=self::$db->prepare(
+                "SELECT `password`,`id` FROM `clients` WHERE `id_mail`=
+                (SELECT `id` FROM `mails` WHERE `mail`=?)");
+            $stmt->execute([$this->mail]);
+            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+            if($res['password']!==NULL){
+                if(password_verify($this->password, $res['password'])){
+                    $stmt2=self::$db->prepare("SELECT `id_client` FROM `ip` WHERE `ip`=?");
+                    $stmt2->execute([$this->ip]);
+                    $res2=$stmt2->fetch(PDO::FETCH_ASSOC);
+                    if(isset($res2['id_client'])){
+                        if($res['id']==$res2['id_client']){
+                            $authtoken=createToken();
+                            setcookie('authtoken', $authtoken,time()+360000);
+                            $query=self::$db->prepare("UPDATE `clients` SET `authkey`=? WHERE `id`=?");
+                            $query->execute([$authtoken, $res['id']]);
+                            return 'authsuccess';
+                        }
+                    }
+                    else return 'auth_ip_err';
+                }
+                else return 'auth_pwd_err';
+            }
+            else return 'auth_gen_err';
+        }
+
+        //Subscribe a mail to the newsletter
+        public function subscribe(){
+            $stmt=self::$db->prepare('SELECT * FROM `mails` WHERE `mail`=?');
+            $stmt->execute([$this->mail]);
+            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+            if(isset($res['newsletter'])){
+                $stmt=self::$db->prepare('UPDATE `mails` SET `newsletter`=1 WHERE `mail`=?');
+                $stmt->execute([$this->mail]);
+                return 'subchanged';
+            }
+            else{
+                $stmt=self::$db->prepare('INSERT INTO `mails` (mail,newsletter) VALUES (?,?)');
+                $stmt->execute([$this->mail,1]);
+                return 'subsuccess';
+            }
+        }
+
+        //Authenticate the user
+        public function authenticate(){
+            $stmt=self::$db->prepare(
+                'SELECT `ip` FROM `ip` WHERE `id_client`=
+                (SELECT `authtoken` FROM `clients` WHERE `authtoken`=?)
+                ');
+            $stmt->execute([$this->authtoken]);
+            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+            if($res['ip']!==NULL){
+                if($res['ip']==$this->ip){
+                    return 'connected';
+                }
+            }
+            else{
+                
+            }
         }
     }

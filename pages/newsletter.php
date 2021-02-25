@@ -1,6 +1,6 @@
 <?php
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/session.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/core/newsletter.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/user.php';
 
     if(isset($_POST) && $_POST){
         $news=sub_newsletter($_POST);
@@ -62,6 +62,10 @@
             </div>
             <?php } else if(isset($_POST) && $_POST){
                 switch($news){
+                    //If user's input isn't correct
+                    case 'suberr':?>
+                    <p>L'adresse mail est invalide. Veuillez <a href="newsletter.php">réessayer</a>.</p>
+                    <?php break;
                     //If user is already registered, update its newsletter status to 1
                     case 'subchanged':?>
                         <p>Vos préférences ont été mises à jour.</p>
