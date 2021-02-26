@@ -85,36 +85,50 @@ var_dump($_POST);
                 <button type="submit" name="submit">Valider</button>
             </form>
         </div>
-        -<div class="manage_box box_admin">
-            <h3>Ajouter un Produit</h3>
-            <form class="form_Prod" action="" method="post">
-                <label for="id_prod">Nom</label>
+        -
+        <div class="manage_box box_admin">
+            <div>
+                <h3>Ajouter un Produit</h3>
+                <form class="form_add_prod" action="" method="post">
+                    <label for="id_prod">Nom</label>
+                    <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                    <label for="id_prod">Marque</label>
+                    <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                    <label for="id_prod">Nombre en stock <label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Nom exact de l'image du produit avec extension</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Description</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Diamètre</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Epaisseur</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Boitier</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Mouvement</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Reserve</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                            <label for="id_prod">Étanchéité</label>
+                            <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                </form>
+            </div>
+            <div>
+                <h3>Ajouter ou supprimer une Collection</h3>
+                <form class="form_add_coll" action="" method="post">
+                    <label for="id_prod">Nom de la collection</label>
+                    <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                </form>
+            </div>
+        </div>
+        <div class="manage_box box_admin">
+            <h3>Créer une promotion</h3>
+            <form class="form_add_coll" action="" method="post">
+                <label for="id_prod">Valeur en pourcentage de la promotion</label>
                 <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                <label for="id_prod">Marque</label>
+                <label for="id_prod">Identifiant du produit sur lequel appliquer la promotion</label>
                 <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                <label for="id_prod">Nombre en stock <label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Nom exact de l'image du produit avec extension</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Description</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Diamètre</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Epaisseur</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Boitier</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Mouvement</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Reserve</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-                        <label for="id_prod">Étanchéité</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-
-                        <h3>Ajouter ou supprimer une Collection</h3>
-                        <label for="id_prod">Nom de la collection</label>
-                        <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
-
             </form>
         </div>
     </section>

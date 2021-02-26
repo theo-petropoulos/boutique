@@ -155,5 +155,3 @@ class ManAdmin extends Manager
     }
     //Statut des commandes a voir necessite la refonte de la BDD
 }
-
-$man = new ManAdmin();
