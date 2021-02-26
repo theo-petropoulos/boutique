@@ -17,3 +17,10 @@ strong, em{
     background:linear-gradient(90deg, rgba(47,53,66,0) 0%,rgba(0,0,0,1) 30%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 75%, rgba(47,53,66,0) 100%);
     margin:2%;
 }
+
+.separator_white{
+    height:2px;
+    width:80%;
+    background:linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
+    margin:2%;
+}

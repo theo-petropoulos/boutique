@@ -78,7 +78,7 @@
     }
 
     //Create an authtoken
-    function createToken(){
+    function create_token(){
         $date = (new DateTime())->getTimeStamp();
         $ip=$_SERVER['REMOTE_ADDR'];
         $start=random_int(1000,9999);
@@ -103,16 +103,4 @@
             }
         }
         else return 'auth_gen_err';
-    }
-
-    //Verify a user's authentification token
-    function verify_token(array $cookie){
-        if(isset($cookie['authtoken']) && $cookie['authtoken']){
-            $db=db_link();
-            $user=new User($cookie, $db);
-            return $user->authenticate();
-        }
-        else{
-            return 'cookie_err';
-        }
     }

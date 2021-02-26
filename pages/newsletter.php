@@ -1,5 +1,4 @@
 <?php
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/user.php';
 
     if(isset($_POST) && $_POST){

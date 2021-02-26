@@ -18,4 +18,12 @@ strong, em {
   background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, black 30%, black 50%, black 75%, rgba(47, 53, 66, 0) 100%);
   margin: 2%;
 }
+
+.separator_white {
+  height: 2px;
+  width: 80%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(30%, white), color-stop(50%, white), color-stop(75%, white), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%, white 50%, white 75%, rgba(255, 255, 255, 0) 100%);
+  margin: 2%;
+}
 /*# sourceMappingURL=globalrules.css.map */

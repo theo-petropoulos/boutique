@@ -29,6 +29,10 @@
             self::$db=$db;
         }
 
+        public function getAllData(){
+            return $this;
+        }
+
         public function register(){
             //Look for mail and/or ip in the db
             $query=self::$db->prepare("SELECT 
@@ -68,7 +72,7 @@
 
             //Authtoken will be used to keep the user connected through a cookie when he will tick 'remember me' while logging in
             //It will be updated upon every login
-            $authtoken=createToken();
+            $authtoken=create_token();
             $this->password=password_hash($this->password, PASSWORD_DEFAULT);
             $query=self::$db->prepare('INSERT INTO `clients` (nom,prenom,id_mail,telephone,password,authkey) VALUES(?,?,?,?,?,?)');
             $query->execute([$this->lastname, $this->firstname, $res['id_mail'], $this->phone, $this->password, $authtoken]);
@@ -97,12 +101,11 @@
                 ");
             $stmt->execute([$this->mail]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
-            var_dump($res);
             if(!is_bool($res['password'])){
                 if(password_verify($this->password, $res['password'])){
                     if($this->ip==$res['ip']){
                         if($res['id']==$res['id_client']){
-                            $authtoken=createToken();
+                            $authtoken=create_token();
                             setcookie('authtoken', $authtoken,time()+360000);
                             $query=self::$db->prepare("UPDATE `clients` SET `authkey`=? WHERE `id`=?");
                             $query->execute([$authtoken, $res['id']]);
@@ -136,22 +139,42 @@
 
         //Authenticate the user
         public function authenticate(){
-            $stmt=self::$db->prepare(
-                'SELECT `ip` FROM `ip` WHERE `id_client`=
-                (SELECT `authtoken` FROM `clients` WHERE `authtoken`=?)
-                ');
+            $stmt=self::$db->prepare('SELECT `id` FROM `clients` WHERE `authkey`=?');
             $stmt->execute([$this->authtoken]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
-            if($res['ip']!==NULL){
-                if($res['ip']==$this->ip){
-                    return 'cookie_connected';
+            if($res['id']!==NULL && !is_bool($res['id'])){
+                $stmt=self::$db->prepare('SELECT `ip` FROM `ip` WHERE `id_client`=?');
+                $stmt->execute([$res['id']]);
+                $res2=$stmt->fetch(PDO::FETCH_ASSOC);
+                if($res2['ip']!==NULL && !is_bool($res2['ip'])){
+                    if($res2['ip']==$this->ip){
+                        self::updateFromID($res['id']);
+                        return 'cookie_connected';
+                    }
                 }
                 else return 'cookie_err';
             }
-            else{
-                $stmt=self::$db->prepare('UPDATE `ip` SET `id_client`=(SELECT `id` FROM `clients` WHERE `authtoken`=?)');
-                $stmt->execute([$this->authtoken]);
-                return 'cookie_connected';
-            }
+            else return 'cookie_err';
         }
+
+        //Update class via ID
+        public function updateFromID(int $i){
+            $client_q=self::$db->prepare(
+                'SELECT `nom` as `lastname`,`prenom` as `firstname`,`id_mail`,`telephone` as `phone`,
+                `authkey` as `authtoken` FROM `clients` WHERE `id`=?');
+            $client_q->execute([$i]);
+            $client=$client_q->fetch(PDO::FETCH_ASSOC);
+            $mail_q=self::$db->prepare('SELECT `mail`,`newsletter` FROM `mails` WHERE `id`=?');
+            $mail_q->execute([$client['id_mail']]);
+            $client=array_merge($client,$mail_q->fetch(PDO::FETCH_ASSOC));
+            $adresse_q=self::$db->prepare(
+                'SELECT `numero` as `numadress`, `rue` as `adress`, `complement` as `compadress`,
+                `code_postal` as `postal`, `ville` as `city` FROM `adresses` WHERE `id_client`=?');
+            $adresse_q->execute([$i]);
+            $client=array_merge($client,$adresse_q->fetch(PDO::FETCH_ASSOC));
+            unset($client['id_mail']);
+            foreach($client as $a=>$b){
+                $this->$a=$b;
+            }
+        } 
     }

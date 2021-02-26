@@ -1,5 +1,6 @@
 <?php
 
+    //Create connection to the database
     function db_link(){
         $link= new PDO('mysql:host=localhost;', 'root', '');
         $link->query('CREATE DATABASE IF NOT EXISTS `boutique`');
