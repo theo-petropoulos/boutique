@@ -295,6 +295,20 @@ $yellow:#FFCC00;
             margin-bottom:0;
         }
     }
+    #block_orders{
+        table{
+            color:white;
+            text-align:center;
+            td{
+                justify-content: center;
+                align-items:center;
+                text-align:center;
+                table{
+                    width:100%;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width:599px){

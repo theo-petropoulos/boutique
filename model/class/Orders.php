@@ -8,7 +8,11 @@
         public function __construct($userID,$db){
             $this->userID=$userID;
             self::$db=$db;
-            $this->fetchOrders();
+            self::fetchOrders();
+        }
+
+        public function getOrders(){
+            return $this->orders;
         }
 
         public function fetchOrders(){
@@ -19,7 +23,7 @@
                 for($i=0;isset($res[$i]) && $res[$i];$i++){
                     $date=$res[$i]['date'];
                     $stmt2=self::$db->prepare(
-                        'SELECT `id_produit` AS `productID`, `quantite_produit` AS `quantity`, 
+                        'SELECT `id` AS `orderID`, `id_produit` AS `productID`, `quantite_produit` AS `quantity`, 
                         `prix` AS `price` FROM `commandes` WHERE `date_commande`=?');
                     $stmt2->execute([$date]);
                     $res2[$date]=$stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -29,9 +33,5 @@
             else{
                 $this->orders='none';
             }
-        }
-
-        public function getOrders(){
-            return $this->orders;
         }
     }
