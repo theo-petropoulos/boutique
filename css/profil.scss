@@ -275,6 +275,28 @@ $yellow:#FFCC00;
     }
 }
 
+#profil_connected{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    #block_haut{
+        font-family:$font_base;
+        color:white;
+        text-align:center;
+        width:70%;
+        h3{
+            font-size:calc(16px + 1vw);
+            margin-bottom:0;
+        }
+        h4{
+            font-size:calc(12px+0.8vw);
+            margin-bottom:0;
+        }
+    }
+}
+
 @media screen and (max-width:599px){
     #main_profil{
         .profil_forms{

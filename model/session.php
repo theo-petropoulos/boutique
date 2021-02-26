@@ -2,7 +2,8 @@
     session_start();
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/functions.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/sql.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/user.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/User.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Orders.php';
 
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){

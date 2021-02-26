@@ -1,6 +1,7 @@
 <?php
 
     class User{
+        public $id;
         public $firstname;
         public $lastname;
         public $mail;
@@ -149,6 +150,7 @@
                 if($res2['ip']!==NULL && !is_bool($res2['ip'])){
                     if($res2['ip']==$this->ip){
                         self::updateFromID($res['id']);
+                        $this->id=$res['id'];
                         return 'cookie_connected';
                     }
                 }
