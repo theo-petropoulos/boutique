@@ -5,7 +5,33 @@ require_once 'Manager.php';
 
 class ManProduct extends Manager
 {
+    /**Récupere le produit dont on a passé l'id en parametre et retourne un tableau destiné à hydraté partiellement l'objet Watch
+     * @param int $id ID du produit
+     * @return array retourne un tableau destiné à hydraté l'objet Watch
+     */
+    public function get_one_product(int $id): array
+    {
+        $sql = 'SELECT * FROM produits WHERE id=' . $id;
+        $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return [
+            'id' => $result[0]['id'],
+            'nom' => $result[0]['nom'],
+            'marque' => $result[0]['id_marque'],
+            'stock' => $result[0]['stock'],
+            'prix' => $result[0]['prix'],
+            'nomImage' => $result[0]['image'],
+            'description' => $result[0]['description']
+        ];
+    }
 
+    /** Retourne tout les produits sous forme de tableau d'objet à mettre en forme sur la page d'administration
+     * @return array
+     */
+    public function get_products(): array
+    {
+        $sql = 'SELECT * FROM produits';
+        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
 
     /**
      * @param int $id Prend en paramètre un entier representant la marque "1" = Audemars Piguet, "2" = Blancpin, "3" = Omega

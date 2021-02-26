@@ -128,7 +128,7 @@
     font-size: 1.8em;
     padding: 10px;
     list-style-type: none;
-    text-shadow: 10px 10px 10px black;
+    text-shadow: 10px 10px 2px #e6e6e6;
 }
 
 .carac_cont {

@@ -25,18 +25,23 @@ class ManAdmin extends Manager
 
     /**
      * Modification des données de connexion d'un administrateur
+     * @param $id
      */
-    public function updateAdmin()
+    public function updateAdmin($id)
     {
-
+        $sql = 'UPDATE admin SET 
+                login = ?, password= ? ,
+                WHERE id=' . $id;
 
     }
 
     /**
-     * Suppression d'un compte administrateur
+     * Suppression d'un compte administrateur ppar son id passé en param
+     * @param $id
      */
-    public function deleteAdmin()
+    public function deleteAdmin($id)
     {
+        $sql = 'DELETE FROM admin WHERE id=' . $id;
 
     }
 
@@ -59,14 +64,6 @@ class ManAdmin extends Manager
 
 //    DISPLAY COMMANDE VOIR METHODE OU FONCTION THEO POUR L ENTREE DES COMMANDES
 
-    /** Retourne tout le produit sous forme de tableau d'objet à mettre en forme sur la page d'administration
-     * @return array
-     */
-    public function display_products(): array
-    {
-        $sql = 'SELECT * FROM produits';
-        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_OBJ);
-    }
 
     /** Prends en paramètre un Objet produit et l'insert en base de donnée
      * @param Watch $product
@@ -107,6 +104,27 @@ class ManAdmin extends Manager
         $stmt->execute();
     }
 
+    /** Modifie le stock et le prix du produit instancié (coché sur la page administration
+     * @param Watch $product
+     */
+    public function update_Product(Watch $product)
+    {
+        $sql = 'UPDATE produits SET
+                prix = ?, stock= ? ,
+                WHERE id=' . $product->getId();
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $product->getPrix());
+        $stmt->bindValue(2, $product->getStock());
+    }
+
+
+    /**
+     * Supprime un produitde la BDD
+     */
+    public function delete_product()
+    {
+    }
+
     /** Insertion d'une nouvelle collection
      * @param string $collection
      */
@@ -118,26 +136,24 @@ class ManAdmin extends Manager
         $stmt->execute();
     }
 
-    /** Modifier le nombre d'un produit specifique en stock
-     * @param Watch $product
+    /**
+     * Supprime une ollection
      */
-    public function update_PS(Watch $product)
+    public function delete_collection()
     {
-        $sql = 'UPDATE produits SET 
-                prix = ' . $product->getPrix() . ', stock=' . $product->getStock() . ',
-                WHERE' . $product->getId();
     }
 
     /** Retourne le prix promotionnel d'un produit a affiché si la promo éxiste
+     * @param Watch $product le produit concerné par la remise
      * @param int Entier representant la remise en pourcentage
      * @return float
      */
-    public function apply_promo(int $pourcent): float
+    public
+    function apply_promo(Watch $product, int $remise): float
     {
-
+        return ($remise * $product->getPrix()) % 100;
     }
     //Statut des commandes a voir necessite la refonte de la BDD
 }
 
 $man = new ManAdmin();
-
