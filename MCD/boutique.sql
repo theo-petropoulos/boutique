@@ -132,9 +132,11 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `quantite_produit` int(11) NOT NULL,
   `date_commande` datetime NOT NULL,
   `prix` float NOT NULL,
+  `id_facture` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_client`) REFERENCES `clients`(`id`),
-  FOREIGN KEY (`id_produit`) REFERENCES `produits`(`id`)
+  FOREIGN KEY (`id_produit`) REFERENCES `produits`(`id`),
+  FOREIGN KEY (`id_facture`) REFERENCES `factures`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
