@@ -392,18 +392,72 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(18, 29, 126, 0)), color-stop(20%, rgba(18, 29, 126, 0.4)), color-stop(50%, rgba(51, 59, 133, 0.6)), color-stop(80%, rgba(18, 29, 126, 0.4)), to(rgba(51, 59, 133, 0)));
+  background: linear-gradient(to right, rgba(18, 29, 126, 0) 0%, rgba(18, 29, 126, 0.4) 20%, rgba(51, 59, 133, 0.6) 50%, rgba(18, 29, 126, 0.4) 80%, rgba(51, 59, 133, 0) 100%);
 }
 
 #profil_connected #block_haut {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: white;
   text-align: center;
   width: 70%;
 }
 
-#profil_connected #block_haut h3 {
+#profil_connected #block_haut form input {
+  background: transparent;
+  border: none;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  outline: 0;
+  color: white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#profil_connected #block_haut form input:hover {
+  cursor: pointer;
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#profil_connected #block_haut .separator_white {
+  margin-bottom: 0;
+}
+
+#profil_connected #block_haut span {
+  display: inline-block;
+  width: 100%;
+}
+
+#profil_connected #block_haut span h3 {
   font-size: calc(16px + 1vw);
   margin-bottom: 0;
+  display: inline-block;
+}
+
+#profil_connected #block_haut span h3::first-letter {
+  color: #FFCC00;
+}
+
+#profil_connected #block_haut span h3:nth-of-type(1) {
+  margin-right: 1%;
+}
+
+#profil_connected #block_haut span h3:nth-of-type(2) {
+  margin-left: 1%;
 }
 
 #profil_connected #block_haut h4 {
@@ -411,12 +465,205 @@
   margin-bottom: 0;
 }
 
-#profil_connected #block_orders table {
+#profil_connected #block_bas {
+  width: 70%;
+  min-height: calc(400px + 20vh);
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#profil_connected #block_bas a {
+  text-decoration: none;
+  color: #AAD3EB;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#profil_connected #block_bas a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#profil_connected #block_bas ul#profil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: 3px solid;
+  -o-border-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%, white 50%, white 75%, rgba(255, 255, 255, 0) 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(30%, white), color-stop(50%, white), color-stop(75%, white), to(rgba(255, 255, 255, 0)));
+     border-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%, white 50%, white 75%, rgba(255, 255, 255, 0) 100%);
+  border-image-slice: 2;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block {
+  width: 33.33%;
+  list-style-type: none;
+  position: relative;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block {
+  height: 400px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: calc(10px + 0.5vw);
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  width: 300%;
+  color: white;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container {
+  width: 65%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div input {
+  width: 60%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 150px;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div input:not([type=submit]) {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: calc(10px + 0.5vw);
+  background: transparent;
+  outline: 0;
+  border: none;
+  border-bottom: 2px solid #FFCC00;
+  color: rgba(255, 255, 255, 0.7);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div input:not([type=submit]):focus {
+  color: black;
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div input:not([type=submit]):focus ~ label {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form div label {
+  width: 30%;
+  -webkit-box-flex: 0.5;
+      -ms-flex-positive: 0.5;
+          flex-grow: 0.5;
+  text-align: start;
+  min-width: 100px;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form input[type=submit] {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2% 0 2% 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form input[type=submit]:hover {
+  cursor: pointer;
+  color: yellow;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_orders {
+  position: absolute;
+  width: 300%;
+  left: -25%;
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_services {
+  position: absolute;
+  width: 300%;
+  left: -50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block p {
+  margin-top: 0;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  height: 70%;
+  width: 92%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table {
   color: white;
   text-align: center;
 }
 
-#profil_connected #block_orders table td {
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -426,8 +673,96 @@
   text-align: center;
 }
 
-#profil_connected #block_orders table td table {
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td table {
   width: 100%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block input[type=radio] {
+  display: none;
+  list-style-type: none;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block input[type=radio] ~ section {
+  opacity: 0;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block input[type=radio]:checked ~ section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 3;
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block label {
+  text-align: center;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block label p {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin: 0;
+  padding: 5% 0 5% 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block label p:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFCC00;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes grow {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: initial;
+  }
+}
+
+@keyframes grow {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: initial;
+  }
 }
 
 @media screen and (max-width: 599px) {

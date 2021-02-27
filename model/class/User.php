@@ -46,8 +46,6 @@
                     $exist[$key]=intval($value);
                 }
             }
-
-            //Select max id from mail,adresses,clients
             $query=self::$db->query("SELECT
                 (SELECT MAX(id) FROM `mails`) as `id_mail`,
                 (SELECT MAX(id) FROM `clients`) as `id_client`");
@@ -178,5 +176,35 @@
             foreach($client as $a=>$b){
                 $this->$a=$b;
             }
-        } 
+        }
+
+        //Update user infos via ID
+        public function setNewInfos(){
+            $stmt=self::$db->prepare(
+                'UPDATE `adresses` SET `numero`=?,`rue`=?,`complement`=?,`code_postal`=?,`ville`=?
+                WHERE `id_client`=?');
+            $stmt->execute([$this->numadress,$this->adress,$this->compadress,$this->postal,$this->city,$this->id]);
+            $stmt2=self::$db->prepare('UPDATE `clients` SET `telephone`=? WHERE `id`=?');
+            $stmt2->execute([$this->phone,$this->id]);
+            $stmt3=self::$db->prepare('SELECT `id` FROM `mails` WHERE `mail`=?');
+            $stmt3->execute([$this->mail]);
+            $exist=$stmt3->fetch(PDO::FETCH_ASSOC);
+            $mailid=self::$db->prepare('SELECT `id_mail` FROM `clients` WHERE `id`=?');
+            $mailid->execute([$this->id]);
+            $mailid=$mailid->fetch(PDO::FETCH_ASSOC);
+            if(isset($exist['id'])){
+                if($exist['id']==$mailid['id_mail']){}
+                else return 'exist';
+            }
+            $stmt4=self::$db->prepare('UPDATE `mails` SET `mail`=? WHERE `id`=(SELECT `id_mail` FROM `clients` WHERE `id`=?)');
+            $stmt4->execute([$this->mail, $this->id]);
+            return 'success';
+        }
+
+        //Update user's password via ID
+        public function setNewPassword(){
+            $this->password=password_hash($this->password, PASSWORD_DEFAULT);
+            $stmt=self::$db->prepare('UPDATE `clients` SET `password`=? WHERE `id`=?');
+            $stmt->execute([$this->password,$this->id]);
+        }
     }

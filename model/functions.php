@@ -35,11 +35,7 @@
                     return 'errmatch';
                 }
                 //Verify if the password is strong
-                else if(
-                    !preg_match('@[A-Z]@', $post['password']) || !preg_match('@[a-z]@', $post['password']) ||
-                    !preg_match('@[0-9]@', $post['password']) || !preg_match('@[^\w]@', $post['password']) ||
-                    strlen($post['password'])<8
-                ){
+                else if(!verify_pwd($post['password'])){
                     return 'errpwd';
                 }
                 //Verify if there is unauthorized characters in mail, name, city and postal code
@@ -47,8 +43,10 @@
                     (!filter_var($post['mail'], FILTER_VALIDATE_EMAIL)) ||
                     (!preg_match("/^[a-zA-Z-'âàéèêôîûÂÀÉÈÊ ]*$/",$post['lastname'])) || 
                     (!preg_match("/^[a-zA-Z-'âàéèêôîûÂÀÉÈÊ ]*$/",$post['firstname'])) ||
+                    (!preg_match("/^[0-9]*$/",$post['postal'])) || 
                     (!preg_match("/^[0-9]*$/",$post['postal'])) ||
-                    (preg_match("@[0-9]@", $post['city']))
+                    (preg_match("@[0-9]@", $post['city']) ||
+                    $post['postal']<1 || $post['postal']>99999)
                 ){
                     return 'errinput';
                 }
@@ -85,9 +83,7 @@
         $end=random_int(1000,9999);
         $token=$start . "-" . $date . ":" . $ip . "+" . $end;
         $iterations = random_int(30000,90000);
-
         $salt = openssl_random_pseudo_bytes(16);
-
         $hash = hash_pbkdf2("sha256", $token, $salt, $iterations, 32);
         return $hash;
     }
@@ -103,4 +99,44 @@
             }
         }
         else return 'auth_gen_err';
+    }
+
+    //Set correct keys for update
+    function update_keys(array $post){
+        unset($post['modify_infos']);
+        foreach($post as $key=>$value){
+            $word='';
+            for($j=7;$j<strlen($key);$j++){
+                $word.=$key[$j];
+            }
+            $post[$word]=$value;
+            unset($post[$key]);
+        }
+        return $post;
+    }
+
+    //Verify the user's update
+    function verify_update(array $post){
+        if (
+            (!filter_var($post['mail'], FILTER_VALIDATE_EMAIL)) ||
+            (!preg_match("/^[0-9]*$/",$post['postal'])) ||
+            (!preg_match("/^[0-9]*$/",$post['phone'])) ||
+            (preg_match("@[0-9]@", $post['city']) ||
+            (intval($post['postal'])<1 || intval($post['postal'])>99999))
+        ){
+            return 0;
+        }
+        return 1;
+    }
+
+    //Verify if the password is strong
+    function verify_pwd(string $password){
+        if( !preg_match('@[A-Z]@', $password) || !preg_match('@[a-z]@', $password) ||
+            !preg_match('@[0-9]@', $password) || !preg_match('@[^\w]@', $password) ||
+            strlen($password)<8 ){
+                return 0;
+            }
+        else{
+            return 1;
+        }
     }

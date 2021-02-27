@@ -12,7 +12,7 @@
         $token=$user->authenticate();
         switch($token){
             case 'cookie_connected':
-                $data=$user->getAllData();
+                $user=$user->getAllData();
                 $authorized=1;
                 break;
             case 'cookie_err':
