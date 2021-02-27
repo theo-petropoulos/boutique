@@ -91,7 +91,7 @@ var_dump($_POST);
                 <h3>Ajouter un Produit</h3>
                 <form class="form_add_prod" action="" method="post">
                     <label for="id_prod">Nom</label>
-                    <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
+                    <input type="text" id="id_prod" name="nom" placeholder="Identifiant produit">
                     <label for="id_prod">Marque</label>
                     <input type="text" id="id_prod" name="newstock" placeholder="Identifiant produit">
                     <label for="id_prod">Nombre en stock <label>
