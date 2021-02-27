@@ -10,7 +10,6 @@ class Watch
     private float $_prix;
     private string $_NomImage;
     private string $description;
-
     private float $diametre;
     private float $epaisseur;
     private string $boitier;

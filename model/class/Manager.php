@@ -11,7 +11,6 @@ abstract class Manager
      */
     public function __construct()
     {
-
         try {
             $PDO = new PDO('mysql:dbname=boutique;host=localhost', 'root', '');
             $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
