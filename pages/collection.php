@@ -24,6 +24,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
     $_SESSION['path_pic']= $path_pics;
     $marque = $marques[1]['id'];
     $_SESSION['marque'] = $marques[1]['nom'];
+    $size = '100px';
 } elseif
 (isset($_GET['collection']) and $_GET['collection'] == 3) {
     $produits = $man->getProductByCollection(3);
@@ -46,7 +47,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a95f1c7873.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/collection_audemars.css">
+    <link rel="stylesheet" href="../css/collection.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
     <link rel="icon" href="../assets/icon.png"/>

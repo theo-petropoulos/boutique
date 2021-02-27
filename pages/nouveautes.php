@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php'; ?>
 <!-- TITRE (NOVUEAUTÉS) -->
 <main>
     <div class="container_main_title">
@@ -39,8 +39,7 @@
                         culpa ratione eligendi dignissimos architecto, aliquam quae odio nisi
                         corporis! Eius eum placeat dolorum laboriosam expedita dolorem architecto
                         voluptatibus!</p>
-                    <a class="link_new" href="#">Consulter la collection</a>
-
+                    <a class="link_new" href="collection.php?collection=1">Consulter la collection</a>
                 </div>
             </section>
             <!-- SECTION NOUVEAUTE 1 -->
@@ -53,11 +52,12 @@
                         culpa ratione eligendi dignissimos architecto, aliquam quae odio nisi
                         corporis! Eius eum placeat dolorum laboriosam expedita dolorem architecto
                         voluptatibus!</p>
-                    <a class="link_new" href="#">Consulter la collection</a>
+                    <a class="link_new" href="collection.php?collection=2">Consulter la collection</a>
                 </div>
                 <!-- Partie droite section -->
                 <div class="container_img_new">
-                    <img class="img_new" src="../assets/images/Nouveautes2.jpg" alt="Montre Aquatique Blanc Pain" alt="">
+                    <img class="img_new" src="../assets/images/Nouveautes2.jpg" alt="Montre Aquatique Blanc Pain"
+                         alt="">
                 </div>
             </section>
             <!-- SECTION NOUVEAUTE 1 -->
@@ -75,13 +75,12 @@
                         culpa ratione eligendi dignissimos architecto, aliquam quae odio nisi
                         corporis! Eius eum placeat dolorum laboriosam expedita dolorem architecto
                         voluptatibus!</p>
-                    <a class="link_new" href="#">Consulter la collection</a>
-
+                    <a class="link_new" href="collection.php?collection=3">Consulter la collection</a>
                 </div>
             </section>
         </div>
     </div>
 </main>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php'; ?>
 </body>
 </html>
