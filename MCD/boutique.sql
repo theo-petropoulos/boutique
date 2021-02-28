@@ -35,23 +35,21 @@ CREATE TABLE IF NOT EXISTS `admin` (
   UNIQUE KEY `login` (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `adresses`
+-- Structure de la table `mails`
 --
 
-CREATE TABLE IF NOT EXISTS `adresses` (
+CREATE TABLE IF NOT EXISTS `mails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_client` int(11) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `rue` varchar(100) NOT NULL,
-  `complement` varchar(100) NOT NULL,
-  `code_postal` int(11) NOT NULL,
-  `ville` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `newsletter` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -68,28 +66,27 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `password` varchar(255) NOT NULL,
   `authkey` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_mail` (`id_mail`)
+  FOREIGN KEY (`id_mail`) REFERENCES `mails`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commandes`
+-- Structure de la table `adresses`
 --
 
-CREATE TABLE IF NOT EXISTS `commandes` (
+CREATE TABLE IF NOT EXISTS `adresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_client` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `quantite_produit` int(11) NOT NULL,
-  `date_commande` datetime NOT NULL,
-  `prix` float NOT NULL,
-  `id_facture` int(11) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `rue` varchar(100) NOT NULL,
+  `complement` varchar(100) NOT NULL,
+  `code_postal` int(11) NOT NULL,
+  `ville` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`),
-  KEY `id_produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (`id_client`) REFERENCES `clients`(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 
 -- --------------------------------------------------------
@@ -102,8 +99,8 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_client` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `prix` float NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_client`) REFERENCES `clients`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -118,23 +115,8 @@ CREATE TABLE IF NOT EXISTS `ip` (
   `id_client` int(11) NOT NULL,
   `blacklist` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`)
+  FOREIGN KEY (`id_client`) REFERENCES `clients`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `mails`
---
-
-CREATE TABLE IF NOT EXISTS `mails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(255) NOT NULL,
-  `newsletter` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 
 -- --------------------------------------------------------
@@ -167,10 +149,26 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `description` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`),
-  KEY `id_marque` (`id_marque`),
   FOREIGN KEY (`id_marque`) REFERENCES `marques` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL,
+  `id_facture` int(11) NOT NULL,
+  `quantite_produit` int(11) NOT NULL,
+  `prix` float NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_produit`) REFERENCES `produits`(`id`),
+  FOREIGN KEY (`id_facture`) REFERENCES `factures`(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
