@@ -39,7 +39,7 @@ class ManProduct extends Manager
     public function getProductByCollection(int $id): array
     {
         $sql = 'SELECT * FROM produits WHERE id_marque=' . $id;
-        return $this->getPdo()->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -49,7 +49,7 @@ class ManProduct extends Manager
     {
         $sql = "SELECT * FROM marques";
         $result = $this->getPdo()->query($sql);
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /** Retourne les caracteristique d'un produit prend le produit en paramètre

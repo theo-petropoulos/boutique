@@ -7,30 +7,40 @@ include_once 'Manager.php';
 class ManAdmin extends Manager
 {
     /**Creation d'un compte administrateur
-     * @param string $login
+     * @param string $mail
      * @param string $password
+     * @return bool
      */
-    public function createAdmin(string $login, string $password)
+    public function createAdmin(string $mail, string $password): bool
     {
-        $login = htmlspecialchars($login);
+        $mail = htmlspecialchars($mail);
+        $mailCheck = filter_has_var($mail, FILTER_VALIDATE_EMAIL);
         $password = htmlspecialchars($password);
         $sql = "INSERT INTO admin(login, password) VALUES (?,?)";
-        $stmt = $this->getPdo()->prepare($sql);
-        $password = password_hash($password, CRYPT_BLOWFISH);
-        $stmt->bindValue(1, $login);
-        $stmt->bindValue(2, $password);
-        $stmt->execute();
+        if ($mailCheck == true) {
+            $stmt = $this->getPdo()->prepare($sql);
+            $password = password_hash($password, CRYPT_BLOWFISH);
+            $stmt->bindValue(1, $mail);
+            $stmt->bindValue(2, $password);
+            return $stmt->execute();
+        }
     }
 
     /**
      * Modification des données de connexion d'un administrateur
      * @param $id
+     * @param Admin $admin
+     * @return bool
      */
-    public function updateAdmin($id)
+    public function updateAdmin($id, Admin $admin): bool
     {
         $sql = 'UPDATE admin SET 
                 login = ?, password= ? ,
                 WHERE id=' . $id;
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $admin->getMail());
+        $stmt->bindValue(2, $admin->getPassword());
+        return $stmt->execute();
     }
 
     /**
@@ -40,15 +50,15 @@ class ManAdmin extends Manager
     public function deleteAdmin($id)
     {
         $sql = 'DELETE FROM admin WHERE id=' . $id;
-
+        $stmt = $this->getPdo()->query($sql);
     }
 
     /** Verification du status d'administrateur
      * @return bool
      */
-    public function isAdmin(): bool
+    public function isAdmin(Admin $admin): bool
     {
-        //VOIR USER THEO
+        return ($admin->getRole() == "administrateur") ? true : false;
     }
 
     /**Affiche les comtpes admin sur la page d'administration
@@ -57,6 +67,15 @@ class ManAdmin extends Manager
     public function display_Admin(): array
     {
         $sql = "SELECT * FROM admin";
+        return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**Affiche les Infos clients sur la page d'administration
+     * @return array
+     */
+    public function display_clients(): array
+    {
+        $sql = "SELECT * FROM clients";
         return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -146,7 +165,7 @@ class ManAdmin extends Manager
     public
     function apply_promo(Watch $product, int $remise): float
     {
-        return ($remise * $product->getPrix()) % 100;
+        return ($remise * $product->getPrix()) / 100;
     }
-    //Statut des commandes a voir necessite la refonte de la BDD
+
 }

@@ -13,7 +13,7 @@ $marques = $man->getCollection();
 if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection'] != isset($_GET['collection'])) {
     $produits = $man->getProductByCollection(1);
     $path_pics = "../assets/images/product_audemars";
-    $_SESSION['path_pic']= $path_pics;
+    $_SESSION['path_pic'] = $path_pics;
     $collection = ucfirst($marques[0]['nom']);
     $marque = $marques[0]['id'];
     $_SESSION['marque'] = $marques[0]['nom'];
@@ -21,7 +21,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
     $produits = $man->getProductByCollection(2);
     $collection = ucfirst($marques[1]['nom']);
     $path_pics = "../assets/images/product_blancpain";
-    $_SESSION['path_pic']= $path_pics;
+    $_SESSION['path_pic'] = $path_pics;
     $marque = $marques[1]['id'];
     $_SESSION['marque'] = $marques[1]['nom'];
     $size = '100px';
@@ -29,7 +29,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
 (isset($_GET['collection']) and $_GET['collection'] == 3) {
     $produits = $man->getProductByCollection(3);
     $path_pics = "../assets/images/product_omega";
-    $_SESSION['path_pic']= $path_pics;
+    $_SESSION['path_pic'] = $path_pics;
     $collection = ucfirst($marques[2]['nom']);
     $marque = $marques[2]['id'];
     $_SESSION['marque'] = $marques[2]['nom'];
@@ -56,7 +56,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
     <title>Document</title>
 </head>
 <body>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+<?php require_once 'header.php'; ?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -151,6 +151,6 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
         </div>
     </div>
 </main>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+<?php require_once 'footer.php'; ?>
 </body>
 </html>

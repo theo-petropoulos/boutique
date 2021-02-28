@@ -34,7 +34,7 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
     <title>Document</title>
 </head>
 <body>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+<?php require_once  'header.php';?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -91,6 +91,6 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
 
     </section>
 </main>
-<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+<?php require_once  'footer.php';?>
 </body>
 </html>

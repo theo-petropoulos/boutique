@@ -1,8 +1,11 @@
 <?php
-class Admin
+
+class Admin extends User
 {
-    protected string $_login;
-    protected string $_password;
+    private string $_mail;
+    private string $_password;
+    private string $_role = "administrateur";
+
 
     protected function hydrate(array $array)
     {
@@ -13,6 +16,47 @@ class Admin
             }
         }
     }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->_role;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->_password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->_password = $password;
+    }
+
+    /**
+     * @param mixed $mail
+     */
+    public function setMail(mixed $mail): void
+    {
+        $this->mail = $mail;
+    }
+
 }
 
 
