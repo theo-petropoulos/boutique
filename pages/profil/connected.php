@@ -166,7 +166,28 @@
                     <p>Mes services</p>
                 </label>
                 <section class="active_block active_block_services">
-                    <p>BLOCK 3C</p>
+                    <div id="services_gallery">
+                        <section class="services_section service1">
+                            <p><a href="">Mes garanties</a></p>
+                            <img src="../assets/images/watchmaker.jpg">
+                        </section>
+                        <section class="services_section service2">
+                            <p><a href="">Mes collections</a></p>
+                            <img src="../assets/images/watch_box.webp">
+                        </section>
+                        <section class="services_section service3">
+                            <p><a href="">Mon conseiller</a></p>
+                            <img src="../assets/images/counselor.jpg">
+                        </section>
+                        <section class="services_section service4">
+                            <p><a href="">Mes articles</a></p>
+                            <img src="../assets/images/watch_articles.jpg">
+                        </section>
+                        <section class="services_section service5">
+                            <p><a href="">Mon magasin</a></p>
+                            <img src="../assets/images/watch_store.jpg">
+                        </section>
+                    </div>
                 </section>
             </li>
         </ul>

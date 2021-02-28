@@ -340,6 +340,7 @@ $yellow:#FFCC00;
         color:white;
         justify-content: center;
         text-align:center;
+        position:relative;
         a{
             text-decoration:none;
             color:#AAD3EB;
@@ -444,6 +445,77 @@ $yellow:#FFCC00;
                         width:300%;
                         left:-50%;
                         transform:translateX(-50%);
+                        #services_gallery{
+                            position:relative;
+                            width:90%;
+                            height:90%;
+                            display:flex;
+                            border:3px solid; 
+                            border-image:linear-gradient(45deg, rgba(255,204,0,1) 0%, rgba(255,204,0,1) 15%, rgba(255,204,0,0) 30%, rgba(255,204,0,0) 70%, rgba(255,204,0,1) 85%, rgba(255,204,0,1) 100%);
+                            border-image-slice:1;
+                            .services_section{
+                                width:20%;
+                                height:100%;
+                                transition:all 0.5s ease-out;
+                                position:relative;
+                                p{
+                                    position:absolute;
+                                    top:50%;
+                                    left:50%;
+                                    transform:translate(-50%,-50%);
+                                    opacity:0;
+                                    width:30%;
+                                    display:flex;
+                                    a{
+                                        flex-grow:1;
+                                        width:100%;
+                                        padding:2% 5% 2% 5%;
+                                        background:rgba(255, 255, 255, 0.8);
+                                        color:$blue;
+                                        border:2px solid $blue;
+                                        transition: all 0.3s;
+                                    }
+                                }
+                                img{
+                                    width:100%;
+                                    height:100%;
+                                    object-fit: cover;
+                                }
+                                &:hover{
+                                    width:100%;
+                                    transition:all 0.7s ease-in;
+                                    p{
+                                        opacity:1;
+                                        transition: all 0.6s 0.5s ease-in;
+                                        z-index:2;
+                                        &~img{
+                                            transition:all 0.3s ease-out;
+                                        }
+                                        &:hover{
+                                            a{
+                                                z-index:2;
+                                            }
+                                            &~img{
+                                                filter:blur(3px);
+                                                transition:all 0.6s ease-out;
+                                            }
+                                        }
+                                        a{
+                                            &:hover{
+                                                color:$yellow;
+                                                background:$blue;
+                                                border:2px solid $yellow;
+                                                transition:all 0.4s;
+                                                &~img{
+                                                    filter:blur(10px);
+                                                    transition:all 0.5s;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     p{
                         margin-top:0;
@@ -564,6 +636,12 @@ $yellow:#FFCC00;
                 input[type=submit]{
                     width:100%;
                 }
+            }
+        }
+        #block_bas{
+            width:100%;
+            .active_block{
+                height:100%;
             }
         }
     }
