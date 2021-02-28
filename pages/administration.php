@@ -9,7 +9,9 @@ $manProduct = new ManProduct();
 $watch = new Watch();
 $display_watches = $manProduct->get_products();
 $display_admins = $manAdmin->display_Admin();
+$display_clients=$manAdmin->display_clients();
 var_dump($_POST);
+var_dump($display_admins);
 
 ?>
 <!DOCTYPE html>
@@ -29,25 +31,48 @@ var_dump($_POST);
 <body>
 <?php include_once 'header.php'; ?>
 <main class="container_page">
-    <section class="administration">
-        <h2>Gestion des comptes Administrateurs</h2>
+    <section class="administration administration_compte">
+        <div>
+        <h2>Gestions des comptes</h2>
         <div class="display_box box_admin">
-
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Identifiant</th>
+                    <th>Email/Login</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Adresse Postale</th>
+                    <th>Adresse IP</th>
+                </tr>
+                <?php foreach ($display_admins as $index => $display_admin): ?>
+                <tr class="tr_admin">
+                    <td></td>
+                    <td><?= $display_admin['id']?></td>
+                    <td><?= $display_admin['login']?></td>
+                </tr>
+                <?php endforeach; ?>
+                <?php foreach ($display_clients as $index => $display_client): ?>
+                <tr class="tr_client">
+                    <td></td>
+                    <td><?= $display_client['id']?></td>
+                    <td><?= $display_client['login']?></td>
+                    <td><?= $display_client['id']?></td>
+                    <td><?= $display_client['login']?></td>
+                    <td><?= $display_client['id']?></td>
+                    <td><?= $display_client['login']?></td>
+                    <td><?= $display_client['id']?></td>
+                    <td><?= $display_client['login']?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
         <div class="manage_box box_admin">
             FORMULAIRE
         </div>
     </section>
-    <section class="administration">
-        <h2>Gestion des commandes clients</h2>
-        <div class="display_box box_admin">
-            AFFICHAGE
-        </div>
-        <div class="manage_box box_admin">
-            FORMULAIRE
-        </div>
-    </section>
-    <section class="administration">
+    <section class="administration administration_magasin">
         <h2>Gestion du Magasin </h2>
         <div class="display_box box_admin">
             <h3>Liste des produits</h3></h4>

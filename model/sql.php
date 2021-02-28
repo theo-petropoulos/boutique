@@ -16,4 +16,3 @@
     }
 
     $db=db_link();
-    insert_data($db);
