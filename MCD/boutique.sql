@@ -221,26 +221,6 @@ INSERT INTO `produits` (`id`, `nom`, `prix`, `stock`, `id_marque`, `image`, `des
 (17,	'PRESTIGE S',	31240,	3,	3,	'PRESTIGE S.png',	'Grâce à son design classique et élégant, la collection OMEGA De Ville Prestige a su attirer une clientèle large et fidèle. Ces montres au design intemporel se distinguent par leur style épuré aux finitions luxueuses.\r\n\r\nCe modèle est doté d’un cadran blanc argenté avec finition opaline, décoré d’un motif rappelant la soie. Les aiguilles facettées sont noircies, à l\'instar des chatons des six diamants et des six chiffres romains utilisés en guise d\'index.\r\n\r\nLe boîtier de 27,4 mm en acier inoxydable repose sur un bracelet Prestige en acier inoxydable poli. Ce garde-temps est animé par le calibre OMEGA 1376.'),
 (18,	'SEA MASTER PLANET OCEAN',	11500,	12,	3,	'SEA MASTER PLANET OCEAN.png',	'En 2005, OMEGA a lancé sa ligne Planet Ocean, en gardant à l’esprit son héritage maritime. Aujourd\'hui, l\'élégante OMEGA Seamaster Planet Ocean 600M Master Chronometer rend hommage au patrimoine de la montre de plongée OMEGA.\r\n\r\nCe modèle est pourvu d’un verre saphir inrayable et d’un cadran en céramique noire doté de chiffres arabes et d’un guichet de date à 6 heures. Le cadran est pourvu d\'une petite seconde ainsi que des compteurs 60 minutes et 12 heures pour une lecture intuitive du temps écoulé. La lunette, qui associe pour la première fois céramique noire et caoutchouc orange, est montée sur un boîtier de 45,5 mm en acier inoxydable et présente une échelle de plongée en Liquidmetal™.\r\n\r\nLa montre se distingue également par son fond vissé au design alvéolaire et son bracelet en acier inoxydable fermé par une boucle déployante extensible brevetée.\r\n\r\nLe chronographe OMEGA Seamaster Planet Ocean 600M Master Chronometer est étanche à 600 mètres (60 bars / 2 000 pieds) et équipé d\'une valve à hélium. Le calibre OMEGA Master Chronometer 9900 situé au cœur de cette montre est visible à travers le fond du boîtier transparent. Pour obtenir la certification Master Chronometer, il a dû réussir huit tests rigoureux établis par le METAS, l\'Institut fédéral suisse de métrologie.');
 
--- INSERT INTO `caracteristiques` (`Diamètre`, `Épaisseur`, `Boitier`, `Mouvement`, `Reserve`, `Étanchéité`, `produit`) VALUES
--- (40,	14.6,	'Bi-ton or rose & acier',	'Calibre Audemars Piguet 4409',	'70 heures',	'20 mètres (qui aurait la brillante idée de se baigner avec ?)',	1),
--- (32,	14.3,	'Fond saphir',	'4302',	'70 heures',	'30  mètres (qui aurait la brillante idée de se baigner avec ?)',	2),
--- (39,	7,	'Or gris 18 carats',	'Automatique',	'60 heures',	'Non',	3),
--- (39.5,	9.8,	'Or rose',	'Mécanique à remontage manuel',	'49 heures',	'20m',	4),
--- (42,	12.8,	'Titane',	'Mécanique à remontage automatique',	'40 heures',	'100m',	5),
--- (30.9,	6.24,	'Acier fond saphir',	'Mécanique à remontage automatique',	'65 heures',	'50m',	6),
--- (43.6,	13.83,	'Ceramic',	'Automatique',	'120 heures',	'300m',	7),
--- (43,	16,	'Titane',	'Automatique',	'110 heures',	'150m',	8),
--- (40.3,	13.23,	'Lunette erre fond saphir',	'Automatique',	'NC',	'300m',	9),
--- (45,	17.2,	'Acier Verre Saphir',	'Remontage automatique',	'40 h',	'300m',	10),
--- (45,	15.5,	'Acier',	'Remontage automatique',	'50 h',	'200m',	11),
--- (45,	14.7,	'Or blanc',	'Remontage automatique',	'NC',	'300m',	12),
--- (4.25,	21,	'Ceramique noir verre saphir',	'Automatique',	'NC',	'50m',	13),
--- (39,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	14),
--- (41,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	15),
--- (34,	20,	'Or rouge verre saphir',	'Automatique',	'NC',	'100m',	16),
--- (39.8,	19,	'Acier verre saphir',	'Automatique',	'NC',	'30m',	17),
--- (42,	20,	'Acier verre saphir',	'Automatique',	'NC',	'600m',	18);
-
 INSERT INTO `mails` (`id`, `mail`, `newsletter`) VALUES
 (1, 'patrick.jane@gmail.com', 0),
 (2, 'john.doe@gmail.com', 1),
@@ -284,3 +264,23 @@ INSERT INTO `adresses` (`id`, `id_client`, `numero`, `rue`, `complement`, `code_
 (9, 9, 18, 'Bd des cerisiers', '', 69280, 'Tours'),
 (10, 10, 520, 'Avenue du Marechal Ferrain', 'F', 93200, 'Menton'),
 (11, 11, 25, 'Av montmartre', 'E', 93257, 'Cergy-pontoise');
+
+INSERT INTO `caracteristiques` (`Diamètre`, `Épaisseur`, `Boitier`, `Mouvement`, `Reserve`, `Étanchéité`, `produit`) VALUES
+(40,	14.6,	'Bi-ton or rose & acier',	'Calibre Audemars Piguet 4409',	'70 heures',	'20 mètres (qui aurait la brillante idée de se baigner avec ?)',	1),
+(32,	14.3,	'Fond saphir',	'4302',	'70 heures',	'30  mètres (qui aurait la brillante idée de se baigner avec ?)',	2),
+(39,	7,	'Or gris 18 carats',	'Automatique',	'60 heures',	'Non',	3),
+(39.5,	9.8,	'Or rose',	'Mécanique à remontage manuel',	'49 heures',	'20m',	4),
+(42,	12.8,	'Titane',	'Mécanique à remontage automatique',	'40 heures',	'100m',	5),
+(30.9,	6.24,	'Acier fond saphir',	'Mécanique à remontage automatique',	'65 heures',	'50m',	6),
+(43.6,	13.83,	'Ceramic',	'Automatique',	'120 heures',	'300m',	7),
+(43,	16,	'Titane',	'Automatique',	'110 heures',	'150m',	8),
+(40.3,	13.23,	'Lunette erre fond saphir',	'Automatique',	'NC',	'300m',	9),
+(45,	17.2,	'Acier Verre Saphir',	'Remontage automatique',	'40 h',	'300m',	10),
+(45,	15.5,	'Acier',	'Remontage automatique',	'50 h',	'200m',	11),
+(45,	14.7,	'Or blanc',	'Remontage automatique',	'NC',	'300m',	12),
+(4.25,	21,	'Ceramique noir verre saphir',	'Automatique',	'NC',	'50m',	13),
+(39,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	14),
+(41,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	15),
+(34,	20,	'Or rouge verre saphir',	'Automatique',	'NC',	'100m',	16),
+(39.8,	19,	'Acier verre saphir',	'Automatique',	'NC',	'30m',	17),
+(42,	20,	'Acier verre saphir',	'Automatique',	'NC',	'600m',	18);
