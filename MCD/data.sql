@@ -1,201 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : sam. 27 fév. 2021 à 21:38
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `boutique`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `adresses`
---
-
-CREATE TABLE IF NOT EXISTS `adresses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_client` int(11) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `rue` varchar(100) NOT NULL,
-  `complement` varchar(100) NOT NULL,
-  `code_postal` int(11) NOT NULL,
-  `ville` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `clients`
---
-
-CREATE TABLE IF NOT EXISTS `clients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(150) NOT NULL,
-  `prenom` varchar(150) NOT NULL,
-  `id_mail` int(11) NOT NULL,
-  `telephone` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `authkey` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_mail` (`id_mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `commandes`
---
-
-CREATE TABLE IF NOT EXISTS `commandes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_client` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `quantite_produit` int(11) NOT NULL,
-  `date_commande` datetime NOT NULL,
-  `prix` float NOT NULL,
-  `id_facture` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`),
-  KEY `id_produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `factures`
---
-
-CREATE TABLE IF NOT EXISTS `factures` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_client` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `prix` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ip`
---
-
-CREATE TABLE IF NOT EXISTS `ip` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(255) NOT NULL,
-  `id_client` int(11) NOT NULL,
-  `blacklist` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `mails`
---
-
-CREATE TABLE IF NOT EXISTS `mails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(255) NOT NULL,
-  `newsletter` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `marques`
---
-
-CREATE TABLE IF NOT EXISTS `marques` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nom` (`nom`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `produits`
---
-
-CREATE TABLE IF NOT EXISTS `produits` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `prix` float NOT NULL,
-  `stock` int(11) NOT NULL,
-  `id_marque` int(11) NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nom` (`nom`),
-  KEY `id_marque` (`id_marque`),
-  FOREIGN KEY (`id_marque`) REFERENCES `marques` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `caracteristiques`
---
-
-
-CREATE TABLE IF NOT EXISTS`caracteristiques` (
-  `Diamètre` float NOT NULL,
-  `Épaisseur` float NOT NULL,
-  `Boitier` text CHARACTER SET utf8mb4 NOT NULL,
-  `Mouvement` text CHARACTER SET utf8mb4 NOT NULL,
-  `Reserve` text CHARACTER SET utf8mb4 NOT NULL,
-  `Étanchéité` text CHARACTER SET utf8mb4 NOT NULL,
-  `produit` int(11) NOT NULL,
-  UNIQUE KEY `produit` (`produit`),
-  FOREIGN KEY (`produit`) REFERENCES `produits` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 INSERT INTO `marques` (`id`, `nom`) VALUES
 (1,	'Audemars Piguet'),
 (2,	'Blancpain'),
@@ -221,25 +23,25 @@ INSERT INTO `produits` (`id`, `nom`, `prix`, `stock`, `id_marque`, `image`, `des
 (17,	'PRESTIGE S',	31240,	3,	3,	'PRESTIGE S.png',	'Grâce à son design classique et élégant, la collection OMEGA De Ville Prestige a su attirer une clientèle large et fidèle. Ces montres au design intemporel se distinguent par leur style épuré aux finitions luxueuses.\r\n\r\nCe modèle est doté d’un cadran blanc argenté avec finition opaline, décoré d’un motif rappelant la soie. Les aiguilles facettées sont noircies, à l\'instar des chatons des six diamants et des six chiffres romains utilisés en guise d\'index.\r\n\r\nLe boîtier de 27,4 mm en acier inoxydable repose sur un bracelet Prestige en acier inoxydable poli. Ce garde-temps est animé par le calibre OMEGA 1376.'),
 (18,	'SEA MASTER PLANET OCEAN',	11500,	12,	3,	'SEA MASTER PLANET OCEAN.png',	'En 2005, OMEGA a lancé sa ligne Planet Ocean, en gardant à l’esprit son héritage maritime. Aujourd\'hui, l\'élégante OMEGA Seamaster Planet Ocean 600M Master Chronometer rend hommage au patrimoine de la montre de plongée OMEGA.\r\n\r\nCe modèle est pourvu d’un verre saphir inrayable et d’un cadran en céramique noire doté de chiffres arabes et d’un guichet de date à 6 heures. Le cadran est pourvu d\'une petite seconde ainsi que des compteurs 60 minutes et 12 heures pour une lecture intuitive du temps écoulé. La lunette, qui associe pour la première fois céramique noire et caoutchouc orange, est montée sur un boîtier de 45,5 mm en acier inoxydable et présente une échelle de plongée en Liquidmetal™.\r\n\r\nLa montre se distingue également par son fond vissé au design alvéolaire et son bracelet en acier inoxydable fermé par une boucle déployante extensible brevetée.\r\n\r\nLe chronographe OMEGA Seamaster Planet Ocean 600M Master Chronometer est étanche à 600 mètres (60 bars / 2 000 pieds) et équipé d\'une valve à hélium. Le calibre OMEGA Master Chronometer 9900 situé au cœur de cette montre est visible à travers le fond du boîtier transparent. Pour obtenir la certification Master Chronometer, il a dû réussir huit tests rigoureux établis par le METAS, l\'Institut fédéral suisse de métrologie.');
 
--- INSERT INTO `caracteristiques` (`Diamètre`, `Épaisseur`, `Boitier`, `Mouvement`, `Reserve`, `Étanchéité`, `produit`) VALUES
--- (40,	14.6,	'Bi-ton or rose & acier',	'Calibre Audemars Piguet 4409',	'70 heures',	'20 mètres (qui aurait la brillante idée de se baigner avec ?)',	1),
--- (32,	14.3,	'Fond saphir',	'4302',	'70 heures',	'30  mètres (qui aurait la brillante idée de se baigner avec ?)',	2),
--- (39,	7,	'Or gris 18 carats',	'Automatique',	'60 heures',	'Non',	3),
--- (39.5,	9.8,	'Or rose',	'Mécanique à remontage manuel',	'49 heures',	'20m',	4),
--- (42,	12.8,	'Titane',	'Mécanique à remontage automatique',	'40 heures',	'100m',	5),
--- (30.9,	6.24,	'Acier fond saphir',	'Mécanique à remontage automatique',	'65 heures',	'50m',	6),
--- (43.6,	13.83,	'Ceramic',	'Automatique',	'120 heures',	'300m',	7),
--- (43,	16,	'Titane',	'Automatique',	'110 heures',	'150m',	8),
--- (40.3,	13.23,	'Lunette erre fond saphir',	'Automatique',	'NC',	'300m',	9),
--- (45,	17.2,	'Acier Verre Saphir',	'Remontage automatique',	'40 h',	'300m',	10),
--- (45,	15.5,	'Acier',	'Remontage automatique',	'50 h',	'200m',	11),
--- (45,	14.7,	'Or blanc',	'Remontage automatique',	'NC',	'300m',	12),
--- (4.25,	21,	'Ceramique noir verre saphir',	'Automatique',	'NC',	'50m',	13),
--- (39,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	14),
--- (41,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	15),
--- (34,	20,	'Or rouge verre saphir',	'Automatique',	'NC',	'100m',	16),
--- (39.8,	19,	'Acier verre saphir',	'Automatique',	'NC',	'30m',	17),
--- (42,	20,	'Acier verre saphir',	'Automatique',	'NC',	'600m',	18);
+INSERT INTO `caracteristiques` (`Diamètre`, `Épaisseur`, `Boitier`, `Mouvement`, `Reserve`, `Étanchéité`, `produit`) VALUES
+(40,	14.6,	'Bi-ton or rose & acier',	'Calibre Audemars Piguet 4409',	'70 heures',	'20 mètres (qui aurait la brillante idée de se baigner avec ?)',	1),
+(32,	14.3,	'Fond saphir',	'4302',	'70 heures',	'30  mètres (qui aurait la brillante idée de se baigner avec ?)',	2),
+(39,	7,	'Or gris 18 carats',	'Automatique',	'60 heures',	'Non',	3),
+(39.5,	9.8,	'Or rose',	'Mécanique à remontage manuel',	'49 heures',	'20m',	4),
+(42,	12.8,	'Titane',	'Mécanique à remontage automatique',	'40 heures',	'100m',	5),
+(30.9,	6.24,	'Acier fond saphir',	'Mécanique à remontage automatique',	'65 heures',	'50m',	6),
+(43.6,	13.83,	'Ceramic',	'Automatique',	'120 heures',	'300m',	7),
+(43,	16,	'Titane',	'Automatique',	'110 heures',	'150m',	8),
+(40.3,	13.23,	'Lunette erre fond saphir',	'Automatique',	'NC',	'300m',	9),
+(45,	17.2,	'Acier Verre Saphir',	'Remontage automatique',	'40 h',	'300m',	10),
+(45,	15.5,	'Acier',	'Remontage automatique',	'50 h',	'200m',	11),
+(45,	14.7,	'Or blanc',	'Remontage automatique',	'NC',	'300m',	12),
+(4.25,	21,	'Ceramique noir verre saphir',	'Automatique',	'NC',	'50m',	13),
+(39,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	14),
+(41,	20,	'Acier verre saphir',	'Automatique',	'NC',	'100m',	15),
+(34,	20,	'Or rouge verre saphir',	'Automatique',	'NC',	'100m',	16),
+(39.8,	19,	'Acier verre saphir',	'Automatique',	'NC',	'30m',	17),
+(42,	20,	'Acier verre saphir',	'Automatique',	'NC',	'600m',	18);
 
 INSERT INTO `mails` (`id`, `mail`, `newsletter`) VALUES
 (1, 'patrick.jane@gmail.com', 0),

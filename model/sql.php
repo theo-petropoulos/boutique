@@ -10,4 +10,10 @@
         return $db;
     }
 
+    function insert_data($db){
+        $sql= file_get_contents(realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/MCD/data.sql');
+        $db->exec($sql);
+    }
+
     $db=db_link();
+    insert_data($db);
