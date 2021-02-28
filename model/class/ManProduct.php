@@ -1,7 +1,6 @@
 <?php
 require_once 'Manager.php';
 
-//namespace App;
 
 class ManProduct extends Manager
 {

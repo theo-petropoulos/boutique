@@ -1,6 +1,4 @@
 <?php
-//namespace App;
-
 class Admin
 {
     protected string $_login;

@@ -1,6 +1,5 @@
 <?php
 include_once 'Manager.php';
-//namespace App;
 
 /**
  * Class ManAdmin Regroupe toute les fonctionnalité de gestion de L'UI d'administration du site.
