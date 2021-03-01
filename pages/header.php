@@ -21,7 +21,7 @@
                 <li id="nav_profil">
                     <a href="/boutique/pages/profil.php"><i class="fas fa-user-tie"></i></a>
                 </li>
-                <li id="nav_panier"><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+                <li id="nav_panier"><a href="/boutique/pages/panier.php"><i class="fas fa-shopping-cart"></i></a></li>
                 <li id="search_bar">
                     <form method="post" action="">
                         <input type="text" id="search" name="search">

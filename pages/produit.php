@@ -2,7 +2,19 @@
 include_once '../model/class/Manager.php';
 include_once '../model/class/ManProduct.php';
 include_once '../model/class/Watch.php';
-session_start();
+require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+
+if(isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']){
+    if(verify_product($_POST['addbasket'])=='valid'){
+        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
+            $basket=$_COOKIE['basket'];
+            $basket.='&id=' . $_POST['addbasket'];
+        }
+        else $basket='&id=' . $_POST['addbasket'];
+        setcookie('basket', $basket, time()+36000);
+    }
+    else die("Une erreur s'est produite.");
+}
 //Nouvel Objet Montre
 $Product = new Watch();
 //Nouvel Objet Manager Montre
@@ -67,7 +79,10 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
             </div>
             <div class="container_price">
                 <p class="price">Prix TTC</p><span class="price_prod"><?= $Product->getPrix() . '€' ?></span>
-                <a class="add_to_cart" href="#">Ajouter au panier <i class="fas fa-shopping-cart"></i></a>
+                <form method="post" action="">
+                    <input type="hidden" name="addbasket" value="<?=$Product->getId();?>">
+                    <input type="submit" value="Ajouter au panier">
+                </form>
                 <p class="stock">Nombre en stock: <?=  $Product->getStock(); ?></p>
             </div>
         </article>

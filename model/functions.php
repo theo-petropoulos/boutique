@@ -140,3 +140,21 @@
             return 1;
         }
     }
+
+    //Verify if value is a product
+    function verify_product(int $a){
+        $db=db_link();
+        $search=$db->prepare('SELECT `nom` FROM `produits` WHERE `id`=?');
+        $search->execute([$a]);
+        $found=$search->fetch(PDO::FETCH_ASSOC);
+        if(isset($found['nom']) && $found['nom']){
+            return 'valid';
+        }
+        else return 0;
+    }
+
+    //Organize an array
+    function organize_array(array $array){
+        $sortedarray=[];
+        foreach($array as $key=>$value);
+    }

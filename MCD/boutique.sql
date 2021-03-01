@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_client`) REFERENCES `clients`(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
