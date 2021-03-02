@@ -1,11 +1,11 @@
 <?php
 //Voir pour redefinir les chemin + namespace  si Theo MVC
 require_once '../model/class/Manager.php';
-require_once '../model/class/ManProduct.php';
+require_once '../model/class/ManWatch.php';
 session_start();
 //Parametre passé par onglet collection du header 1 pour audemars 2 pour blancpain 3 pour Omega
 //Nouvel object Manager produit
-$man = new ManProduct;
+$man = new ManWatch;
 //Chemin vers image
 $path_pics = null;
 $marques = $man->getCollection();

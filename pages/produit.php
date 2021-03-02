@@ -1,12 +1,12 @@
 <?php
 include_once '../model/class/Manager.php';
-include_once '../model/class/ManProduct.php';
+include_once '../model/class/ManWatch.php';
 include_once '../model/class/Watch.php';
 session_start();
 //Nouvel Objet Montre
 $Product = new Watch();
 //Nouvel Objet Manager Montre
-$Man = new ManProduct();
+$Man = new ManWatch();
 //Method recup produit par id de produit et id de collection via le param GET
 $arrayProduct = $Man->getProduct(intval($_GET['collection']), intval($_GET['produit']));
 //Hydrate l'objet Watch avec ses infos global

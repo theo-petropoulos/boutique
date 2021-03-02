@@ -2,26 +2,27 @@
 
 class Watch
 {
-    private $_id;
-    private $_nom;
-    private $_marque;
-    private $_stock;
-    private $_prix;
-    private $_NomImage;
-    private $description;
-    private $diametre;
-    private $epaisseur;
-    private $boitier;
-    private $mouvement;
-    private $reserve;
-    private $etancheite;
+    private int $_id;
+    private string $_nom;
+    private string $_marque;
+    private int $_stock;
+    private float $_prix;
+    private string $_NomImage;
+
+    private string $description;
+    private float $diametre;
+    private float $epaisseur;
+    private string $boitier;
+    private string $mouvement;
+    private string $reserve;
+    private string $etancheite;
 
     public function hydrate(array $array)
     {
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
-                $this->$method($item);
+                $this->$method(htmlspecialchars($item));
             }
         }
     }
@@ -135,6 +136,7 @@ class Watch
      */
     public function setId(int $id): void
     {
+        $id = intval(htmlspecialchars($id));
         $this->_id = $id;
     }
 
@@ -143,6 +145,7 @@ class Watch
      */
     public function setNom(string $nom): void
     {
+        $nom = htmlspecialchars($nom);
         $this->_nom = $nom;
     }
 
@@ -151,13 +154,14 @@ class Watch
      */
     public function setMarque(string $marque): void
     {
+        $marque = htmlspecialchars($marque);
         $this->_marque = $marque;
     }
 
     /**
-     * @param string $prix
+     * @param float|int $prix
      */
-    public function setPrix(string $prix): void
+    public function setPrix(float|int $prix): void
     {
         $prix = floatval($prix);
         $this->_prix = $prix;
@@ -168,7 +172,8 @@ class Watch
      */
     public function setStock(string $stock): void
     {
-        $stock = intval($stock);
+
+        $stock = intval(htmlspecialchars($stock));
         $this->_stock = $stock;
     }
 
@@ -177,6 +182,7 @@ class Watch
      */
     public function setNomImage(string $image): void
     {
+        $image = htmlspecialchars($image);
         $this->_NomImage = $image;
     }
 
@@ -185,6 +191,7 @@ class Watch
      */
     public function setReserve(string $reserve): void
     {
+        $reserve = htmlspecialchars($reserve);
         $this->reserve = $reserve;
     }
 
@@ -193,6 +200,7 @@ class Watch
      */
     public function setMouvement(string $mouvement): void
     {
+        $mouvement = htmlspecialchars($mouvement);
         $this->mouvement = $mouvement;
     }
 
@@ -201,6 +209,7 @@ class Watch
      */
     public function setEtancheite(string $etancheite): void
     {
+        $etancheite = htmlspecialchars($etancheite);
         $this->etancheite = $etancheite;
     }
 
@@ -209,6 +218,7 @@ class Watch
      */
     public function setEpaisseur(float $epaisseur): void
     {
+        $epaisseur = htmlspecialchars($epaisseur);
         $this->epaisseur = $epaisseur;
     }
 
@@ -217,6 +227,7 @@ class Watch
      */
     public function setDiametre(float $diametre): void
     {
+        $diametre = htmlspecialchars($diametre);
         $this->diametre = $diametre;
     }
 
