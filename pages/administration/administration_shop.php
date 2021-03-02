@@ -59,14 +59,17 @@ if (isset($_POST['add_collection']) && $_POST['add_collection'] === "submit"):
         $manAdmin->insert_collection($_POST['collection']);
     }
 endif;
+    $Promo=null;
+var_dump($Promo);
 //AJOUT PROMOTION
-if (isset($_POST['promotion']) == 'submit'):
-    if (!empty($_POST['promo']) && !empty($_POST['product_promo'])) {
-        $promo = htmlspecialchars($_POST['promo']);
-
-    }
+if (isset($_POST['promotion']) === 'submit'):
+    $_POST['idProduit'] = intval($_POST['idProduit']);
+    $_POST['pourcentage'] = intval($_POST['pourcentage']);
+    $Promo = new Promo();
+    $Promo->hydrate($_POST);
 endif;
-
+var_dump($Promo);
+var_dump($_POST);
 
 ?>
 <!DOCTYPE html>
@@ -219,13 +222,18 @@ endif;
             <h3>Créer une promotion</h3>
             <form class="form_add_coll" method="post">
                 <div>
-                    <label for="promo">Valeur en pourcentage de la promotion</label>
-                    <input type="text" id="promo" name="promo" placeholder="Promotion à appliquer">
+                    <label for="promo_name">Nom de l'évenement promotionnel</label>
+                    <input type="text" id="promo_name" name="nom" placeholder="Identifiant produit a soldé">
                 </div>
                 <div>
                     <label for="id_prod">Identifiant du produit sur lequel vous souhaiter appliqué une promotion</label>
-                    <input type="text" id="id_prod" name="product_promo" placeholder="Identifiant produit a soldé">
+                    <input type="text" id="id_prod" name="idProduit" placeholder="Identifiant produit a soldé">
                 </div>
+                <div>
+                    <label for="promo">Valeur en pourcentage de la promotion</label>
+                    <input type="text" id="promo" name="pourcentage" placeholder="Promotion à appliquer">
+                </div>
+
                 <div>
                     <label for="date_debut">Date de début </label>
                     <input type="date" id="date_debut" name="dateDebut" placeholder="Debut de la promotion">

@@ -3,7 +3,7 @@
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/functions.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/sql.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/User.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Orders.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Order.php';
 
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){

@@ -140,3 +140,39 @@
             return 1;
         }
     }
+
+    //Verify if value is a product
+    function verify_product(int $a){
+        $db=db_link();
+        $search=$db->prepare('SELECT `nom` FROM `produits` WHERE `id`=?');
+        $search->execute([$a]);
+        $found=$search->fetch(PDO::FETCH_ASSOC);
+        if(isset($found['nom']) && $found['nom']){
+            return 'valid';
+        }
+        else return 0;
+    }
+
+    //Verify is a basket is valid
+    function verify_checkout(string $string){
+        $basket=array_filter(explode('&id=', $string));
+        $basket=organize_array($basket);
+        foreach($basket as $key=>$value){
+            if(!verify_product($key)){
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+    //Organize an array
+    function organize_array(array $array){
+        $ord=[];
+        foreach($array as $key=>$value){
+            if(isset($ord[$value]) && $ord[$value]){
+                $ord[$value]++;
+            }
+            else $ord[$value]=1;
+        }
+        return $ord;
+    }
