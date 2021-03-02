@@ -1,6 +1,6 @@
 <?php
 
-    class Orders{
+    class Order{
         public $userID;
         public $orders;
         public static $db;

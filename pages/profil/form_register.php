@@ -26,7 +26,7 @@
         <label for="compadress">Complément d'adresse :</label>
         <input type="text" name="compadress" maxlenght=25>
         <label for="postal">Code postal :</label>
-        <input type="int" name="postal" pattern="[0-9]{5}" required>
+        <input type="text" name="postal" pattern="[0-9]{5}" required>
         <label for="city">Ville :</label>
         <input type="text" name="city" maxlenght=30 required>
     </div>

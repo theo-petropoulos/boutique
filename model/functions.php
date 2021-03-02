@@ -153,8 +153,26 @@
         else return 0;
     }
 
+    //Verify is a basket is valid
+    function verify_checkout(string $string){
+        $basket=array_filter(explode('&id=', $string));
+        $basket=organize_array($basket);
+        foreach($basket as $key=>$value){
+            if(!verify_product($key)){
+                return 0;
+            }
+        }
+        return 1;
+    }
+
     //Organize an array
     function organize_array(array $array){
-        $sortedarray=[];
-        foreach($array as $key=>$value);
+        $ord=[];
+        foreach($array as $key=>$value){
+            if(isset($ord[$value]) && $ord[$value]){
+                $ord[$value]++;
+            }
+            else $ord[$value]=1;
+        }
+        return $ord;
     }

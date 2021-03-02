@@ -235,4 +235,15 @@ class Watch
     {
         $this->description = $description;
     }
+
+    public function getSpecs($db){
+        $stmt=$db->prepare('SELECT * FROM `produits` WHERE `id`=?');
+        $stmt->execute([$this->_id]);
+        $results=$stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt2=$db->prepare('SELECT `nom` FROM `marques` WHERE `id`=?');
+        $stmt2->execute([$results['id_marque']]);
+        $marque=$stmt2->fetch(PDO::FETCH_ASSOC);
+        $results['marque']=$marque['nom'];
+        return $results;
+    }
 }

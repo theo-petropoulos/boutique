@@ -96,59 +96,29 @@
                 </label>
                 <section class="active_block active_block_orders">
                     <div id="orders_wrap"><?php
-                    $order_list=new Orders($user->id, $db);
-                    $orders=$order_list->getOrders();
+                    $orders=new Order(intval($user->id));
+                    $orders=$orders->fetchOrders();
                     if($orders!=='none'){?>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Numéro de commande</th>
+                                    <th>Numéro</th>
                                     <th>Date</th>
-                                    <th>Produits commandés</th>
-                                    <th>Quantité</th>
                                     <th>Prix</th>
+                                    <th>État</th>
                                     <th>Facture</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($orders as $key=>$value){?>
+                                <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){?>
                                 <tr>
-                                    <td><p>ID COMMANDE ?</p></td>
-                                    <td><?=$key;?></td>
-                                    <td>
-                                        <table>
-                                            <?php for($i=0;isset($orders[$key][$i]) && $orders[$key][$i];$i++){?>
-                                            <tr>
-                                                <td>
-                                                    <?=$orders[$key][$i]['productID'];?>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table>
-                                            <?php for($i=0;isset($orders[$key][$i]) && $orders[$key][$i];$i++){?>
-                                            <tr>
-                                                <td>
-                                                    <?=$orders[$key][$i]['quantity'];?>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table>
-                                            <?php for($i=0;isset($orders[$key][$i]) && $orders[$key][$i];$i++){?>
-                                            <tr>
-                                                <td>
-                                                    <?=$orders[$key][$i]['price'];?>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </td>
-                                    <td>FACTURE</td>
+                                    <td><p><?=$orders[$i]['id'];?></p></td>
+                                    <td><p><?=$orders[$i]['date'];?></p></td>
+                                    <td><p><?=$orders[$i]['total'];?></p></td>
+                                    <td><p><?=$orders[$i]['etat'];
+                                    if(isset($orders[$i]['suivi']) && $orders[$i]['suivi']){?><br>Suivi : <?=$orders[$i]['suivi'];}?>
+                                    </p></td>
+                                    <td>FACTURE PDF</td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
