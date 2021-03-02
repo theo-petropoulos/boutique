@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `adresses` (
 CREATE TABLE IF NOT EXISTS `factures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_client` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   `etat` varchar(100) NOT NULL,
   `suivi` varchar(100),
   `total` int(11) NOT NULL,

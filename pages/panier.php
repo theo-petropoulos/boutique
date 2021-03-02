@@ -1,6 +1,7 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 
     if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
         $basket=array_filter(explode('&id=', $_COOKIE['basket']));
@@ -25,15 +26,21 @@
 
     <body>
     <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
+        //If a basket is set, show all items in it
         if(isset($basket) && $basket){
+            $total_price=0;
             foreach($basket as $key=>$value){?>
             <div class="order_items">
                 <?php 
-                $item=new Watch();
-                $item->setId($key);
-                $specs=$item->getSpecs($db);
-                echo 'nom = ' . $specs['marque'] . ' - ' . $specs['nom'] . '// quantite = ' . $value . '// prix = ' . $specs['prix']*$value;
+                $array=new ManWatch();
+                $watch=new Watch();
+                $watch->hydrate($array->get_one_product($key));
+                $total_price=intval($total_price)+intval($watch->getPrix()*$value);
+                echo 'nom = ' . $watch->getMarque() . ' - ' . $watch->getNom() . '// quantite = ' . $value . '// prix = ' . $watch->getPrix()*$value;
             }?>
+            </div>
+            <div class="order_total">
+                <?='total = ' . $total_price;?>
             </div>
             <div id="order_pay">
                 <form method="post" action="checkout.php">
@@ -41,7 +48,8 @@
                     <input type="submit" value="Procéder au paiement">
                 </form>
             </div>
-    <?php } 
+    <?php }
+        //Redirect on panier.php upon payment ( checkout only accessible while paying )
         else if(isset($_SESSION['purchase']) && $_SESSION['purchase']=='success'){
             echo "paiement succès.";
             unset($_SESSION['purchase']);

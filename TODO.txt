@@ -1,2 +1,5 @@
 index ( produits / marque dynamiques )
-cookie refresh ( auth & basket )
+X cookie refresh ( auth & basket )
+search bar
+tracking
+shop locator
