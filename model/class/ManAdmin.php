@@ -32,7 +32,7 @@ class ManAdmin extends Manager
      * @param Admin $admin
      * @return bool
      */
-    public function updateAdmin($id, Admin $admin): bool
+    public function updateAdmin(int $id, Admin $admin): bool
     {
         $sql = 'UPDATE admin SET 
                 login = ?, password= ? ,
@@ -47,8 +47,9 @@ class ManAdmin extends Manager
      * Suppression d'un compte administrateur ppar son id passé en param
      * @param $id
      */
-    public function deleteAdmin($id)
+    public function deleteAdmin(int $id)
     {
+        $id = htmlspecialchars($id);
         $sql = 'DELETE FROM admin WHERE id=' . $id;
         $stmt = $this->getPdo()->query($sql);
     }
@@ -83,9 +84,9 @@ class ManAdmin extends Manager
 
 
     /** Prends en paramètre un Objet produit et l'insert en base de donnée
-     * @param Watch $product
+     * @param Watch $watch
      */
-    public function insert_product(Watch $product): void
+    public function insert_product(Watch $watch): void
     {
         $sql = 'INSERT INTO produits (nom, prix, stock, id_marque, image, description) VALUES (?,?,?,?,?,?)';
         $sql2 = "INSERT INTO caracteristiques (Diamètre, Épaisseur, Boitier, Mouvement, Reserve, Étanchéité, produit) VALUES (?,?,?,?,?,?,?)";
@@ -93,36 +94,51 @@ class ManAdmin extends Manager
         $stmt = $this->getPdo()->prepare($sql);
         $stmt2 = $this->getPdo()->prepare($sql2);
 
-        $stmt->bindValue(1, $product->getNom());
-        $stmt->bindValue(2, $product->getPrix());
-        $stmt->bindValue(3, $product->getStock());
-        $stmt->bindValue(4, $product->getMarque());
-        $stmt->bindValue(5, $product->getNomImage());
-        $stmt->bindValue(6, $product->getDescription());
+        $stmt->bindValue(1, $watch->getNom());
+        $stmt->bindValue(2, $watch->getPrix());
+        $stmt->bindValue(3, $watch->getStock());
+        $stmt->bindValue(4, $watch->getMarque());
+        $stmt->bindValue(5, $watch->getNomImage());
+        $stmt->bindValue(6, $watch->getDescription());
         $stmt->execute();
 
-        $stmt2->bindValue(1, $product->getDiametre());
-        $stmt2->bindValue(2, $product->getEpaisseur());
-        $stmt2->bindValue(3, $product->getBoitier());
-        $stmt2->bindValue(4, $product->getMouvement());
-        $stmt2->bindValue(5, $product->getReserve());
-        $stmt2->bindValue(6, $product->getEtancheite());
-        $stmt2->bindValue(7, $product->getId());
+        $stmt2->bindValue(1, $watch->getDiametre());
+        $stmt2->bindValue(2, $watch->getEpaisseur());
+        $stmt2->bindValue(3, $watch->getBoitier());
+        $stmt2->bindValue(4, $watch->getMouvement());
+        $stmt2->bindValue(5, $watch->getReserve());
+        $stmt2->bindValue(6, $watch->getEtancheite());
+        $stmt2->bindValue(7, $watch->getId());
         $stmt2->execute();
     }
 
 
-    /** Modifie le stock et le prix du produit instancié (coché sur la page administration
-     * @param Watch $product
+    /** Modifie le prix du produit passé en param
+     * @param Watch $watch
      */
-    public function update_Product(Watch $product)
+    public function update_price(Watch $watch)
     {
         $sql = 'UPDATE produits SET
-                prix = ?, stock= ? ,
-                WHERE id=' . $product->getId();
+                prix = ?
+                WHERE  id= ?';
         $stmt = $this->getPdo()->prepare($sql);
-        $stmt->bindValue(1, $product->getPrix());
-        $stmt->bindValue(2, $product->getStock());
+        $stmt->bindValue(1, $watch->getPrix());
+        $stmt->bindValue(2, $watch->getId());
+        $stmt->execute();
+    }
+
+    /** Modifie le stock  du  produit passé en parametre
+     * @param Watch $watch
+     */
+    public function update_stock(Watch $watch)
+    {
+        $sql = 'UPDATE produits SET
+                stock = ?
+                WHERE  id= ?';
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $watch->getStock());
+        $stmt->bindValue(2, $watch->getId());
+        $stmt->execute();
     }
 
 
@@ -141,6 +157,7 @@ class ManAdmin extends Manager
      */
     public function insert_collection(string $collection)
     {
+        $collection = htmlspecialchars($collection);
         $sql = 'INSERT INTO marques (nom) VALUES (?)';
         $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindValue(1, $collection);
