@@ -7,6 +7,7 @@ class Watch
     private string $_marque;
     private int $_stock;
     private float $_prix;
+    private float|null $_prixPromo;
     private string $_NomImage;
 
     private string $description;
@@ -22,7 +23,8 @@ class Watch
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
-                $this->$method(htmlspecialchars($item));
+                $securitem = strip_tags($item);
+                $this->$method(htmlspecialchars($securitem));
             }
         }
     }
@@ -65,6 +67,14 @@ class Watch
     public function getPrix(): float
     {
         return $this->_prix;
+    }
+
+    /**
+     * @return float|NULL
+     */
+    public function getPrixPromo(): float|NULL
+    {
+        return $this->_prixPromo;
     }
 
     /**
@@ -178,6 +188,14 @@ class Watch
     }
 
     /**
+     * @param float|NULL $prixPromo
+     */
+    public function setPrixPromo(float|NULL $prixPromo): void
+    {
+        $this->_prixPromo = $prixPromo;
+    }
+
+    /**
      * @param string $image
      */
     public function setNomImage(string $image): void
@@ -247,14 +265,15 @@ class Watch
         $this->description = $description;
     }
 
-    public function getSpecs($db){
-        $stmt=$db->prepare('SELECT * FROM `produits` WHERE `id`=?');
+    public function getSpecs($db)
+    {
+        $stmt = $db->prepare('SELECT * FROM `produits` WHERE `id`=?');
         $stmt->execute([$this->_id]);
-        $results=$stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt2=$db->prepare('SELECT `nom` FROM `marques` WHERE `id`=?');
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt2 = $db->prepare('SELECT `nom` FROM `marques` WHERE `id`=?');
         $stmt2->execute([$results['id_marque']]);
-        $marque=$stmt2->fetch(PDO::FETCH_ASSOC);
-        $results['marque']=$marque['nom'];
+        $marque = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $results['marque'] = $marque['nom'];
         return $results;
     }
 }

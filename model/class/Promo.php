@@ -1,6 +1,6 @@
 <?php
 
-class Promo extends Watch
+class Promo
 {
     private string $_nom;
     private int $_idProduit;
@@ -8,10 +8,22 @@ class Promo extends Watch
     private string $_dateDebut;
     private string $_dateFin;
 
+    public function hydrate(array $array)
+    {
+        foreach ($array as $index => $item) {
+            $method = 'set' . ucfirst($index);
+            if (method_exists($this, $method)) {
+                $securitem = strip_tags($item);
+                $this->$method(htmlspecialchars($securitem));
+            }
+        }
+    }
+
     /**
      * @return string
      */
-    public function getNom(): string
+    public
+    function getNom(): string
     {
         return $this->_nom;
     }
@@ -19,7 +31,8 @@ class Promo extends Watch
     /**
      * @param string $nom
      */
-    public function setNom(string $nom): void
+    public
+    function setNom(string $nom): void
     {
         $this->_nom = $nom;
     }
@@ -27,7 +40,8 @@ class Promo extends Watch
     /**
      * @return int
      */
-    public function getIdProduit(): int
+    public
+    function getIdProduit(): int
     {
         return $this->_idProduit;
     }
@@ -35,7 +49,8 @@ class Promo extends Watch
     /**
      * @param int $produit
      */
-    public function setIdProduit(int $produit): void
+    public
+    function setIdProduit(int $produit): void
     {
         $this->_idProduit = $produit;
     }
@@ -43,7 +58,8 @@ class Promo extends Watch
     /**
      * @return int
      */
-    public function getPourcentage(): int
+    public
+    function getPourcentage(): int
     {
         return $this->_pourcentage;
     }
@@ -51,7 +67,8 @@ class Promo extends Watch
     /**
      * @param int $promotion
      */
-    public function setPourcentage(int $promotion): void
+    public
+    function setPourcentage(int $promotion): void
     {
         $this->_pourcentage = $promotion;
     }
@@ -59,7 +76,8 @@ class Promo extends Watch
     /**
      * @return string
      */
-    public function getDateDebut(): string
+    public
+    function getDateDebut(): string
     {
         return $this->_dateDebut;
     }
@@ -67,7 +85,8 @@ class Promo extends Watch
     /**
      * @param string $dateDebut
      */
-    public function setDateDebut(string $dateDebut): void
+    public
+    function setDateDebut(string $dateDebut): void
     {
         $this->_dateDebut = $dateDebut;
     }
@@ -75,7 +94,8 @@ class Promo extends Watch
     /**
      * @return string
      */
-    public function getDateFin(): string
+    public
+    function getDateFin(): string
     {
         return $this->_dateFin;
     }
@@ -83,7 +103,8 @@ class Promo extends Watch
     /**
      * @param string $dateFin
      */
-    public function setDateFin(string $dateFin): void
+    public
+    function setDateFin(string $dateFin): void
     {
         $this->_dateFin = $dateFin;
     }

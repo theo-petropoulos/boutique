@@ -2,23 +2,27 @@
 //Voir pour redefinir les chemin + namespace  si Theo MVC
 require_once '../model/class/Manager.php';
 require_once '../model/class/ManWatch.php';
+require_once '../model/class/Promo.php';
+require_once '../model/class/ManPromo.php';
 session_start();
 //Parametre passé par onglet collection du header 1 pour audemars 2 pour blancpain 3 pour Omega
 //Nouvel object Manager produit
-$man = new ManWatch;
+$ManWatch = new ManWatch;
+$ManPromo = new ManPromo();
 //Chemin vers image
 $path_pics = null;
-$marques = $man->getCollection();
+$PromoProd = [];
+$marques = $ManWatch->getCollection();
 //Condition permettant de définir la collection
 if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection'] != isset($_GET['collection'])) {
-    $produits = $man->getProductByCollection(1);
+    $produits = $ManWatch->getProductByCollection(1);
     $path_pics = "../assets/images/product_audemars";
     $_SESSION['path_pic'] = $path_pics;
     $collection = ucfirst($marques[0]['nom']);
     $marque = $marques[0]['id'];
     $_SESSION['marque'] = $marques[0]['nom'];
 } elseif (isset($_GET['collection']) and $_GET['collection'] == 2) {
-    $produits = $man->getProductByCollection(2);
+    $produits = $ManWatch->getProductByCollection(2);
     $collection = ucfirst($marques[1]['nom']);
     $path_pics = "../assets/images/product_blancpain";
     $_SESSION['path_pic'] = $path_pics;
@@ -27,7 +31,7 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
     $size = '100px';
 } elseif
 (isset($_GET['collection']) and $_GET['collection'] == 3) {
-    $produits = $man->getProductByCollection(3);
+    $produits = $ManWatch->getProductByCollection(3);
     $path_pics = "../assets/images/product_omega";
     $_SESSION['path_pic'] = $path_pics;
     $collection = ucfirst($marques[2]['nom']);
