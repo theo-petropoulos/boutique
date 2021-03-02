@@ -2,33 +2,36 @@
 include_once '../model/class/Manager.php';
 include_once '../model/class/ManWatch.php';
 include_once '../model/class/Watch.php';
+include_once '../model/class/Promo.php';
+include_once '../model/class/ManPromo.php';
+
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
-if(isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']){
-    if(verify_product($_POST['addbasket'])=='valid'){
-        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-            $basket=$_COOKIE['basket'];
-            $basket.='&id=' . $_POST['addbasket'];
-        }
-        else $basket='&id=' . $_POST['addbasket'];
-        setcookie('basket', $basket, time()+360000);
-    }
-    else die("Une erreur s'est produite.");
+if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']) {
+    if (verify_product($_POST['addbasket']) == 'valid') {
+        if (isset($_COOKIE['basket']) && $_COOKIE['basket']) {
+            $basket = $_COOKIE['basket'];
+            $basket .= '&id=' . $_POST['addbasket'];
+        } else $basket = '&id=' . $_POST['addbasket'];
+        setcookie('basket', $basket, time() + 36000);
+    } else die("Une erreur s'est produite.");
 }
-//Nouvel Objet Montre
+//Instance Objet et variables utilitaire
+$Promo = new Promo();
+$ManPromo = new ManPromo();
 $Product = new Watch();
-//Nouvel Objet Manager Montre
-$Man = new ManWatch();
-//Method recup produit par id de produit et id de collection via le param GET
-$arrayProduct = $Man->getProduct(intval($_GET['collection']), intval($_GET['produit']));
-//Hydrate l'objet Watch avec ses infos global
+$ManWatch = new ManWatch();
+$arrayProduct = $ManWatch->getProduct(intval($_GET['collection']), intval($_GET['produit']));
 $Product->hydrate($arrayProduct);
-//Recup les carac produit via l'id du produit récuperer en amont
-$arraycaracProduct = $Man->get_carac($Product->getId());
-//Hydrate l'objet Watch avec ses caracteristique
+$Price = $Product->getPrix();
+//Affiche promotion si existante
+$ArrayPromo = $ManPromo->get_promo($Product);
+isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
+isset($newprice) ? $Product->setPrixPromo($newprice) : $Product->setPrixPromo(NULL);
+//Ajoute les caracteristiques au produit
+$arraycaracProduct = $ManWatch->get_carac($Product->getId());
 $Product->hydrate($arraycaracProduct);
-//Récupère les produits de la même collection pour les afficher dans similaires
-$Similary = $Man->getProductByCollection($Product->getMarque());
+$Similary = $ManWatch->getProductByCollection($Product->getMarque());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +49,7 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
     <title>Document</title>
 </head>
 <body>
-<?php require_once  'header.php';?>
+<?php require_once 'header.php'; ?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -78,17 +81,13 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
                 </ul>
             </div>
             <div class="container_price">
-                <p class="price">Prix TTC</p><span class="price_prod"><?= $Product->getPrix() . '€' ?></span>
-                <?php if(intval($Product->getStock())>0){?>
-                    <form method="post" action="">
-                        <input type="hidden" name="addbasket" value="<?=$Product->getId();?>">
-                        <input type="submit" value="Ajouter au panier">
-                    </form>
-                    <p class="stock">Nombre en stock: <?=  $Product->getStock(); ?></p>
-                <?php }
-                else{?>
-                    <p>Rupture de stock</p>
-                <?php } ?>
+                <p class="price">Prix
+                    TTC</p><?= $Product->getPrixPromo() != NULL ? '<span class="textPromo">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPrice">' . $Product->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPrice">' . $Product->getPrix() . '€' . '</span>' : '<span class="normalPrice">' . $Product->getPrix() . '€' . '</span>' ?>
+                <form method="post" action="">
+                    <input type="hidden" name="addbasket" value="<?= $Product->getId(); ?>">
+                    <input type="submit" value="Ajouter au panier">
+                </form>
+                <p class="stock">Nombre en stock: <?= $Product->getStock(); ?></p>
             </div>
         </article>
 
@@ -111,6 +110,6 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
 
     </section>
 </main>
-<?php require_once  'footer.php';?>
+<?php require_once 'footer.php'; ?>
 </body>
 </html>

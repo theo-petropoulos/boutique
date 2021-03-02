@@ -2,7 +2,9 @@
 include_once '../../model/class/Manager.php';
 include_once '../../model/class/ManAdmin.php';
 include_once '../../model/class/ManWatch.php';
+include_once '../../model/class/ManPromo.php';
 include_once '../../model/class/Watch.php';
+include_once '../../model/class/Promo.php';
 session_start();
 //Initialisation des variables et des objet utilitaires
 $manAdmin = new ManAdmin();
@@ -59,18 +61,17 @@ if (isset($_POST['add_collection']) && $_POST['add_collection'] === "submit"):
         $manAdmin->insert_collection($_POST['collection']);
     }
 endif;
-    $Promo=null;
-var_dump($Promo);
 //AJOUT PROMOTION
-if (isset($_POST['promotion']) === 'submit'):
-    $_POST['idProduit'] = intval($_POST['idProduit']);
-    $_POST['pourcentage'] = intval($_POST['pourcentage']);
-    $Promo = new Promo();
-    $Promo->hydrate($_POST);
+if (isset($_POST['promotion']) && $_POST['promotion'] === 'submit'):
+    if (!empty($_POST['idProduit']) && !empty($_POST['nom']) && !empty($_POST['pourcentage']) && !empty($_POST['dateDebut']) && !empty($_POST['dateFin'])) {
+        $_POST['idProduit'] = intval($_POST['idProduit']);
+        $_POST['pourcentage'] = intval($_POST['pourcentage']);
+        $Promo = new Promo();
+        $ManPromo = new  ManPromo();
+        $Promo->hydrate($_POST);
+        $ManPromo->insert_promo($Promo);
+    }
 endif;
-var_dump($Promo);
-var_dump($_POST);
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">

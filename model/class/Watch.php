@@ -2,27 +2,29 @@
 
 class Watch
 {
-    private $_id;
-    private $_nom;
-    private $_marque;
-    private $_stock;
-    private $_prix;
-    private $_NomImage;
+    private int $_id;
+    private string $_nom;
+    private string $_marque;
+    private int $_stock;
+    private float $_prix;
+    private float|null $_prixPromo;
+    private string $_NomImage;
 
-    private $description;
-    private $diametre;
-    private $epaisseur;
-    private $boitier;
-    private $mouvement;
-    private $reserve;
-    private $etancheite;
+    private string $description;
+    private float $diametre;
+    private float $epaisseur;
+    private string $boitier;
+    private string $mouvement;
+    private string $reserve;
+    private string $etancheite;
 
     public function hydrate(array $array)
     {
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
-                $this->$method(htmlspecialchars($item));
+                $securitem = strip_tags($item);
+                $this->$method(htmlspecialchars($securitem));
             }
         }
     }
@@ -65,6 +67,14 @@ class Watch
     public function getPrix(): float
     {
         return $this->_prix;
+    }
+
+    /**
+     * @return float|NULL
+     */
+    public function getPrixPromo(): float|NULL
+    {
+        return $this->_prixPromo;
     }
 
     /**
@@ -161,7 +171,7 @@ class Watch
     /**
      * @param float|int $prix
      */
-    public function setPrix( $prix): void
+    public function setPrix(float|int $prix): void
     {
         $prix = floatval($prix);
         $this->_prix = $prix;
@@ -175,6 +185,14 @@ class Watch
 
         $stock = intval(htmlspecialchars($stock));
         $this->_stock = $stock;
+    }
+
+    /**
+     * @param float|NULL $prixPromo
+     */
+    public function setPrixPromo(float|NULL $prixPromo): void
+    {
+        $this->_prixPromo = $prixPromo;
     }
 
     /**
@@ -247,19 +265,15 @@ class Watch
         $this->description = $description;
     }
 
-    //Buy an item, update stock if available
-    public function bought(int $qty, int $id_facture, $db){
-        $stockq=$db->prepare('SELECT `stock` FROM `produits` WHERE `id`=?');
-        $stockq->execute([$this->_id]);
-        $stock=$stockq->fetch(PDO::FETCH_ASSOC);
-        if($stock['stock']>=$qty){
-            $this->_stock=$this->_stock - $qty;
-            $stmt=$db->prepare('UPDATE `produits` SET `stock`=? WHERE `id`=?');
-            $stmt->execute([$this->_stock, $this->_id]);
-            $commande=$db->prepare('INSERT INTO `commandes`(`id_produit`,`id_facture`,`quantite_produit`,`prix`) VALUES (?,?,?,?)');
-            $commande->execute([$this->_id,$id_facture,$qty,$this->_prix]);
-            return 1;
-        }
-        else return 0;
+    public function getSpecs($db)
+    {
+        $stmt = $db->prepare('SELECT * FROM `produits` WHERE `id`=?');
+        $stmt->execute([$this->_id]);
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt2 = $db->prepare('SELECT `nom` FROM `marques` WHERE `id`=?');
+        $stmt2->execute([$results['id_marque']]);
+        $marque = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $results['marque'] = $marque['nom'];
+        return $results;
     }
 }

@@ -134,18 +134,15 @@
 .carac_cont {
     margin: 10px;
 }
-.price{
+
+.price {
     font-size: 2em;
     color: white;
     text-shadow: 1px 1px 5px white;
 }
-.price_prod {
-    font-size: 2em;
-    color: green;
-    font-weight: bold;
-    margin: 20px;
-}
-.stock{
+
+/*AJOUTER STYLE PRIX page produit.php*/
+.stock {
     margin: 30px;
     color: red;
     font-style: italic;
@@ -160,7 +157,8 @@
     border: 2px solid white;
     padding: 20px;
 }
-.add_to_cart:hover{
+
+.add_to_cart:hover {
     transition: 2s;
     color: black;
     background: white;
