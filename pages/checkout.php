@@ -26,7 +26,10 @@
 
     <body>
     <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
-        if(isset($total_price) && is_int($total_price) && $total_price){?>
+        if(isset($instock) && $instock==0){
+            echo "out of stock";
+        }
+        else if(isset($total_price) && is_int($total_price) && $total_price){?>
         <form method="post" action="checkout.php">
             <input type="hidden" name="checkout" value="<?=$_POST['checkout'];?>">
             <label for="creditcard">Numéro de carte : </label>

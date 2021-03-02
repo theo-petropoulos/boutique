@@ -1,5 +1,8 @@
 index ( produits / marque dynamiques )
 X cookie refresh ( auth & basket )
+invite orders
 search bar
 tracking
 shop locator
+prevent user from adding 'more than stock' items to basket
+hide stock, add message low stock

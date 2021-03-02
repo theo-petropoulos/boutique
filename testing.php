@@ -1,9 +1,9 @@
 <?php
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManProduct.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     $db=db_link();
-    $man=new ManWatch();
+    $man=new ManProduct();
     $orderItem=$man->get_one_product(7);
     $watch= new Watch();
     $watch->hydrate($orderItem);
