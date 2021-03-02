@@ -99,4 +99,18 @@ class ManWatch extends Manager
             'description' => $result[0]['description']
         ];
     }
+
+    public function getProductByID(int $id){
+        $sql = 'SELECT * FROM produits WHERE id=' . $id;
+        $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return [
+            'id' => $result[0]['id'],
+            'nom' => $result[0]['nom'],
+            'marque' => $result[0]['id_marque'],
+            'stock' => $result[0]['stock'],
+            'prix' => $result[0]['prix'],
+            'nomImage' => $result[0]['image'],
+            'description' => $result[0]['description']
+        ];
+    }
 }

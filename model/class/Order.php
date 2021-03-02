@@ -15,15 +15,19 @@
 
         public function createOrder(array $items){
             $total=0;
-            foreach($items as $key=>$value){
+            foreach($items as $id=>$qty){
                 $orderitem=new ManWatch();
                 $watch = new Watch();
-                $watch->hydrate($orderitem->get_one_product($key));
-                $total=$total+($watch->getPrix()*$value);
+                $watch->hydrate($orderitem->getProductByID($id));
+                $total=$total+($watch->getPrix()*$qty);
+                if($qty>$watch->getStock()){
+                    return 0;
+                }
             }
             $this->total=$total;
             $this->etat='Payé';
             self::insertOrder($items);
+            return 1;
         }
 
         public function fetchOrders(){
@@ -43,8 +47,8 @@
             foreach($items as $key=>$value){
                 $orderitem=new ManWatch();
                 $watch = new Watch();
-                $watch->hydrate($orderitem->get_one_product($key));
-                $watch->bought($value,$facture['id'],self::$db);
+                $watch->hydrate($orderitem->getProductByID($key));
+                $instock=$watch->bought($value,$facture['id'],self::$db);
             }
         }
     }

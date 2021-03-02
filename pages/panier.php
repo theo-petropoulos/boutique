@@ -1,7 +1,7 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManProduct.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 
     if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
         $basket=array_filter(explode('&id=', $_COOKIE['basket']));
@@ -32,7 +32,7 @@
             foreach($basket as $key=>$value){?>
             <div class="order_items">
                 <?php 
-                $array=new ManProduct();
+                $array=new ManWatch();
                 $watch=new Watch();
                 $watch->hydrate($array->get_one_product($key));
                 $total_price=intval($total_price)+intval($watch->getPrix()*$value);
