@@ -11,7 +11,7 @@ if(isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['
             $basket.='&id=' . $_POST['addbasket'];
         }
         else $basket='&id=' . $_POST['addbasket'];
-        setcookie('basket', $basket, time()+36000);
+        setcookie('basket', $basket, time()+360000);
     }
     else die("Une erreur s'est produite.");
 }
@@ -79,11 +79,16 @@ $Similary = $Man->getProductByCollection($Product->getMarque());
             </div>
             <div class="container_price">
                 <p class="price">Prix TTC</p><span class="price_prod"><?= $Product->getPrix() . '€' ?></span>
-                <form method="post" action="">
-                    <input type="hidden" name="addbasket" value="<?=$Product->getId();?>">
-                    <input type="submit" value="Ajouter au panier">
-                </form>
-                <p class="stock">Nombre en stock: <?=  $Product->getStock(); ?></p>
+                <?php if(intval($Product->getStock())>0){?>
+                    <form method="post" action="">
+                        <input type="hidden" name="addbasket" value="<?=$Product->getId();?>">
+                        <input type="submit" value="Ajouter au panier">
+                    </form>
+                    <p class="stock">Nombre en stock: <?=  $Product->getStock(); ?></p>
+                <?php }
+                else{?>
+                    <p>Rupture de stock</p>
+                <?php } ?>
             </div>
         </article>
 

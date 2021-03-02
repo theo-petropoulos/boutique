@@ -1,6 +1,7 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManProduct.php';
 
     //Access to checkout is only granted upon data sent by post
     if(isset($_POST) && $_POST){
@@ -25,7 +26,7 @@
 
     <body>
     <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
-        if(isset($total_price) && is_int($total_price) && $total_price){ echo date("d/m/Y");?>
+        if(isset($total_price) && is_int($total_price) && $total_price){?>
         <form method="post" action="checkout.php">
             <input type="hidden" name="checkout" value="<?=$_POST['checkout'];?>">
             <label for="creditcard">Numéro de carte : </label>

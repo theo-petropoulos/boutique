@@ -1,4 +1,5 @@
 <?php
+
 //If the user access via cart page
 if(isset($_POST['checkout']) && $_POST['checkout'] && isset($_COOKIE['basket']) && $_COOKIE['basket']){
     $checkout_valid='';
@@ -15,10 +16,10 @@ if(isset($_POST['checkout']) && $_POST['checkout'] && isset($_COOKIE['basket']) 
             $items=organize_array($items);
             $total_price=0;
             foreach($items as $itemID=>$quantity){
-                $item=new Watch();
-                $item->setId($itemID);
-                $specs=$item->getSpecs($db);
-                $total_price=intval($total_price)+intval($specs['prix'])*intval($quantity);
+                $array=new ManProduct();
+                $watch=new Watch();
+                $watch->hydrate($array->get_one_product($itemID));
+                $total_price=intval($total_price)+intval($watch->getPrix())*intval($quantity);
             }
         }
         //Payment process

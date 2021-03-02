@@ -1,5 +1,4 @@
 <?php
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/OrderItem.php';
 
     class Order{
         public $id;
@@ -17,12 +16,14 @@
         public function createOrder(array $items){
             $total=0;
             foreach($items as $key=>$value){
-                $orderitem=new OrderItem(intval($key), intval($value));
-                $total=$total+$orderitem->prix;
+                $orderitem=new ManProduct();
+                $watch = new Watch();
+                $watch->hydrate($orderitem->get_one_product($key));
+                $total=$total+($watch->getPrix()*$value);
             }
             $this->total=$total;
             $this->etat='Payé';
-            self::insertOrder();
+            self::insertOrder($items);
         }
 
         public function fetchOrders(){
@@ -34,9 +35,16 @@
             }else return 'none';
         }
 
-        private function insertOrder(){
+        private function insertOrder(array $items){
             $stmt=self::$db->prepare("INSERT INTO `factures`(`id_client`,`date`,`etat`,`total`) VALUES (?,CURRENT_DATE(),?,?)");
             $stmt->execute([$this->id_client, $this->etat, $this->total]);
+            $facture=self::$db->query('SELECT max(`id`) as `id` FROM `factures`');
+            $facture=$facture->fetch(PDO::FETCH_ASSOC);
+            foreach($items as $key=>$value){
+                $orderitem=new ManProduct();
+                $watch = new Watch();
+                $watch->hydrate($orderitem->get_one_product($key));
+                $watch->bought($value,$facture['id'],self::$db);
+            }
         }
-
     }
