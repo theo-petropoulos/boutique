@@ -192,6 +192,24 @@ CREATE TABLE IF NOT EXISTS`caracteristiques` (
   FOREIGN KEY (`produit`) REFERENCES `produits` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `promotion`
+--
+
+
+CREATE TABLE IF NOT EXISTS`promotion` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `nom` varchar(255) NOT NULL,
+    `pourcentage` int(11) NOT NULL,
+    `debut` date NOT NULL,
+    `fin` date NOT NULL,
+    `id_produit` int(11) NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `id_produit` (`id_produit`),
+    CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -253,7 +271,7 @@ INSERT INTO `clients` (`id`, `nom`, `prenom`, `id_mail`, `telephone`, `password`
 INSERT INTO `ip` (`id`, `ip`, `id_client`, `blacklist`) VALUES
 (1, '127.0.0.1', 10, 0);
 
-INSERT INTO `adresses` (`id`, `id_client`, `numero`, `rue`, `complement`, `code_postal`, `ville`) VALUES 
+INSERT INTO `adresses` (`id`, `id_client`, `numero`, `rue`, `complement`, `code_postal`, `ville`) VALUES
 (1, 1, 50, 'Rue Montauband', '', 13000, 'Marseille'),
 (2, 2, 16, 'Avenue Longchamps', 'F', 95300, 'Paris'),
 (3, 3, 50, 'Madrague de Wellington', '', 2450, 'Orlã©ans'),
