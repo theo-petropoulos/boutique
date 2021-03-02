@@ -16,7 +16,7 @@ if(isset($_POST['checkout']) && $_POST['checkout'] && isset($_COOKIE['basket']) 
             $items=organize_array($items);
             $total_price=0;
             foreach($items as $itemID=>$quantity){
-                $array=new ManProduct();
+                $array=new ManWatch();
                 $watch=new Watch();
                 $watch->hydrate($array->get_one_product($itemID));
                 $total_price=intval($total_price)+intval($watch->getPrix())*intval($quantity);

@@ -1,7 +1,7 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManProduct.php';
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 
     //Access to checkout is only granted upon data sent by post
     if(isset($_POST) && $_POST){
