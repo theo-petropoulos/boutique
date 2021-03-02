@@ -2,20 +2,20 @@
 
 class Watch
 {
-    private int $_id;
-    private string $_nom;
-    private string $_marque;
-    private int $_stock;
-    private float $_prix;
-    private string $_NomImage;
+    private $_id;
+    private $_nom;
+    private $_marque;
+    private $_stock;
+    private $_prix;
+    private $_NomImage;
 
-    private string $description;
-    private float $diametre;
-    private float $epaisseur;
-    private string $boitier;
-    private string $mouvement;
-    private string $reserve;
-    private string $etancheite;
+    private $description;
+    private $diametre;
+    private $epaisseur;
+    private $boitier;
+    private $mouvement;
+    private $reserve;
+    private $etancheite;
 
     public function hydrate(array $array)
     {
@@ -161,7 +161,7 @@ class Watch
     /**
      * @param float|int $prix
      */
-    public function setPrix(float|int $prix): void
+    public function setPrix( $prix): void
     {
         $prix = floatval($prix);
         $this->_prix = $prix;

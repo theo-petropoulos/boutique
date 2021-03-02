@@ -16,7 +16,7 @@
         public function createOrder(array $items){
             $total=0;
             foreach($items as $key=>$value){
-                $orderitem=new ManProduct();
+                $orderitem=new ManWatch();
                 $watch = new Watch();
                 $watch->hydrate($orderitem->get_one_product($key));
                 $total=$total+($watch->getPrix()*$value);
@@ -41,7 +41,7 @@
             $facture=self::$db->query('SELECT max(`id`) as `id` FROM `factures`');
             $facture=$facture->fetch(PDO::FETCH_ASSOC);
             foreach($items as $key=>$value){
-                $orderitem=new ManProduct();
+                $orderitem=new ManWatch();
                 $watch = new Watch();
                 $watch->hydrate($orderitem->get_one_product($key));
                 $watch->bought($value,$facture['id'],self::$db);
