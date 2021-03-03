@@ -6,6 +6,7 @@
 @import url("about.css");
 @import url("globalrules.css");
 @import url("profil.css");
+@import url("panier.css");
 body {
   margin: 0;
   padding: 0;

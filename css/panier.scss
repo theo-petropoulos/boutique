@@ -1,0 +1,13 @@
+.suggestions{
+    display:flex;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    .sugg_product{
+        width:auto;
+        img{
+            width:100%;
+            background:black;
+        }
+    }
+}
