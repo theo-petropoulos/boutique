@@ -7,7 +7,6 @@
 
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
-        echo "auth ok";
         $db=db_link();
         $user=new User($_COOKIE, $db);
         $token=$user->authenticate();

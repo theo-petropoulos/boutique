@@ -2,17 +2,12 @@
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
-
+ob_clean();
 $invoice_num=$_GET['id'];
 $date=$_GET['date'];
 
 $order=new Order();
 $items=$order->fetchOneOrder($_GET['id']);
-
-var_dump($_GET);
-var_dump($items);
-var_dump($user);
-var_dump($_COOKIE);
 
 $firstname=$user->firstname;
 $lastname=$user->lastname;
@@ -37,7 +32,7 @@ for($i=0;isset($items[$i]) && $items[$i];$i++){
     $subtotal=$subtotal+${"total$i"};
 }
 
-$shipping=7.95*(50/100*$i*7.95);
+$shipping=number_format((7.95*(50/100*$i*7.95)),2,'.',',');
 
 $total=$subtotal + $shipping;
 
@@ -124,8 +119,8 @@ ${"html_product$i"}='
         <td align="center">' . ${"id_produit$i"} . '</td>
         <td align="center">' . ${"quantite$i"} . '</td>
         <td>' . ${"nom_produit$i"} . ' - ' . ${"marque$i"} . '</td>
-        <td class="cost">' . ${"prix$i"} . '€</td>
-        <td class="cost">' . ${"total$i"} . '€</td>
+        <td class="cost" align="right">' . ${"prix$i"} . '€</td>
+        <td class="cost" align="right">' . ${"total$i"} . '€</td>
         </tr>';
 }
 
