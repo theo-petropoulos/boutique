@@ -10,7 +10,6 @@ class ManWatch extends Manager
      */
     public function get_one_product(int $id): array
     {
-//        $sql = 'SELECT * FROM produits WHERE id=' . $id;
         $sql = 'SELECT * FROM produits INNER JOIN caracteristiques on produits.id = caracteristiques.produit';
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return [
@@ -46,7 +45,8 @@ class ManWatch extends Manager
     public function getProductByCollection(int $id): array
     {
         $sql = 'SELECT * FROM produits WHERE id_marque=' . $id;
-        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
     /**
@@ -56,7 +56,7 @@ class ManWatch extends Manager
     {
         $sql = "SELECT * FROM marques";
         $result = $this->getPdo()->query($sql);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        return $result->fetchAll(PDO::FETCH_OBJ);
     }
 
     /** Retourne les caracteristique d'un produit prend le produit en paramètre
@@ -100,7 +100,8 @@ class ManWatch extends Manager
         ];
     }
 
-    public function getProductByID(int $id){
+    public function getProductByID(int $id)
+    {
         $sql = 'SELECT * FROM produits WHERE id=' . $id;
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return [
