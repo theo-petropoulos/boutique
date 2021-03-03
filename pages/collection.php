@@ -31,7 +31,6 @@ if (isset($_GET['collection'])) :
     endforeach;
 else: header('location:../index.php');
 endif;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +70,7 @@ endif;
                              alt="Montre">
                         <h4 class="product_title"><?= $Watch->getNom() ?></h4>
                         <!--- Check promo-->
-                        <?php //Affiche promotion si existante
+                        <?php //Affiche promotion si existante Sinon affiche le prix normal
                         $ArrayPromo = $ManPromo->get_promo($Watch);
                         isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
                         isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>

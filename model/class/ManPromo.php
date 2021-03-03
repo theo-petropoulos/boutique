@@ -54,6 +54,12 @@ class ManPromo extends Manager
         return $array;
     }
 
+    public function get_promotions(): array
+    {
+        $sql = "SELECT * FROM promotion";
+        return $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function del_promo(int $id)
     {
 
