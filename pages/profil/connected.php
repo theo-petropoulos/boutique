@@ -96,8 +96,8 @@
                 </label>
                 <section class="active_block active_block_orders">
                     <div id="orders_wrap"><?php
-                    $orders=new Order(intval($user->id));
-                    $orders=$orders->fetchOrders();
+                    $orders=new Order();
+                    $orders=$orders->fetchOrders(intval($user->id));
                     if($orders!=='none'){?>
                         <table>
                             <thead>
@@ -110,7 +110,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){?>
+                                <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){
+                                    $url="/boutique/model/mailer.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];
+                                    ?>
                                 <tr>
                                     <td><p><?=$orders[$i]['id'];?></p></td>
                                     <td><p><?=$orders[$i]['date'];?></p></td>
@@ -118,7 +120,9 @@
                                     <td><p><?=$orders[$i]['etat'];
                                     if(isset($orders[$i]['suivi']) && $orders[$i]['suivi']){?><br>Suivi : <?=$orders[$i]['suivi'];}?>
                                     </p></td>
-                                    <td>FACTURE PDF</td>
+                                    <td>
+                                    <a href="<?=$url;?>">Télécharger la facture</a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

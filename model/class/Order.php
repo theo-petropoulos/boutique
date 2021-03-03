@@ -8,12 +8,12 @@
         public $total;
         public static $db;
 
-        public function __construct(int $id){
-            $this->id_client=$id;
+        public function __construct(){
             self::$db=db_link();
         }
 
-        public function createOrder(array $items){
+        public function createOrder(int $id,array $items){
+            $this->id_client=$id;
             $total=0;
             foreach($items as $id=>$qty){
                 $orderitem=new ManWatch();
@@ -30,7 +30,15 @@
             return 1;
         }
 
-        public function fetchOrders(){
+        public function fetchOneOrder(int $id){
+            $this->id=$id;
+            $stmt=self::$db->prepare("SELECT * FROM `commandes` WHERE `id_facture`=?");
+            $stmt->execute([$this->id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function fetchOrders(int $id){
+            $this->id_client=$id;
             $stmt=self::$db->prepare("SELECT * FROM `factures` WHERE `id_client`=? ORDER BY `id`");
             $stmt->execute([$this->id_client]);
             $factures=$stmt->fetchAll(PDO::FETCH_ASSOC);

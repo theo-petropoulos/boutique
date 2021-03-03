@@ -31,8 +31,8 @@ if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
                 isset($_POST['expiration']) && $_POST['expiration'] && isset($_POST['checkout']) && $_POST['checkout'] && 
                 isset($_POST['cryptogram']) && is_int(intval($_POST['cryptogram']))){
                     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
-                        $order=new Order(intval($user->id));
-                        $instock=$order->createOrder($items);
+                        $order=new Order();
+                        $instock=$order->createOrder(intval($user->id),$items);
                         if($instock==1){
                             unset($order);
                             foreach($_POST as $key=>$value){

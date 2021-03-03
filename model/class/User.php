@@ -105,7 +105,7 @@
                     if($this->ip==$res['ip']){
                         if($res['id']==$res['id_client']){
                             $authtoken=create_token();
-                            setcookie('authtoken', $authtoken,time()+360000);
+                            setcookie('authtoken', $authtoken,time()+360000, '/');
                             $query=self::$db->prepare("UPDATE `clients` SET `authkey`=? WHERE `id`=?");
                             $query->execute([$authtoken, $res['id']]);
                             return 'auth_success';

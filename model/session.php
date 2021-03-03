@@ -7,6 +7,7 @@
 
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
+        echo "auth ok";
         $db=db_link();
         $user=new User($_COOKIE, $db);
         $token=$user->authenticate();
@@ -15,19 +16,19 @@
                 $user=$user->getAllData();
                 $authorized=1;
                 //Refresh the auth cookie upon every visit
-                setcookie('authtoken',$_COOKIE['authtoken'],time()+360000);
+                setcookie('authtoken',$_COOKIE['authtoken'],time()+360000, '/');
                 break;
             //If something is wrong with the auth cookie, it is deleted
             case 'cookie_err':
-                setcookie('authtoken', '', -1);
+                setcookie('authtoken', '', -1, '/');
                 break;
             default:
-                setcookie('authtoken', '', -1);
+                setcookie('authtoken', '', -1, '/');
                 break;                
         }
     }
 
     //Refresh basket cookie upon every visit
     if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-        setcookie('basket',$_COOKIE['basket'],time()+360000);
+        setcookie('basket',$_COOKIE['basket'],time()+360000, '/');
     }

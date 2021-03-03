@@ -30,7 +30,7 @@
 
     //If the user wants to disconnect
     else if(isset($_POST['disconnect']) && $_POST['disconnect']==1){
-        setcookie('authtoken', '', 1);
+        setcookie('authtoken', '', -1, '/');
         header("Refresh: 0.2; url='profil.php'");
     }
 
