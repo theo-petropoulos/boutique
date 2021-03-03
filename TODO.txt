@@ -1,5 +1,6 @@
 index ( produits / marque dynamiques )
 X cookie refresh ( auth & basket )
+X pdf facture
 invite orders
 search bar
 tracking

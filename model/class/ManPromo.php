@@ -38,18 +38,18 @@ class ManPromo extends Manager
     }
 
     /** Verifie si une promo existe retourne la promotion en question sous forme de tableau (Method version normal pour page collection)
-     * @param object $Obj
-     * @return null
+     * @param int $id
+     * @return array|null
      */
-    public function get_promo_objects(object $Obj)
+    public function get_promo_page_collection(int $id): array|null
     {
-        $array [] = null;
+        $array = null;
         $dateTime = new DateTime('now');
         $date = $dateTime->format('Y-m-d');
-        $sql = 'SELECT * FROM promotion WHERE id =' . $Obj->id;
+        $sql = 'SELECT * FROM promotion WHERE id =' . $id;
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $index => $item) {
-            $date >= $item['debut'] && $date <= $item['fin'] ? array_push($array, $Obj->prix, $item['pourcentage']) : $array = NULL;
+            $date >= $item['debut'] && $date <= $item['fin'] ? $array = $item : $array = NULL;
         }
         return $array;
     }

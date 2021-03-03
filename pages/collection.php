@@ -17,7 +17,6 @@ $marques = $ManWatch->getCollection();
 //Condition permettant de définir la collection
 if (isset($_GET['collection'])) :
     $produits = $ManWatch->getProductByCollection($_GET['collection']);
-    var_dump($produits);
     $path_pics = "../assets/images/produits";
     $_SESSION['path_pic'] = $path_pics;
     foreach ($marques as $marque):

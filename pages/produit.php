@@ -12,7 +12,7 @@ if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST[
             $basket = $_COOKIE['basket'];
             $basket .= '&id=' . $_POST['addbasket'];
         } else $basket = '&id=' . $_POST['addbasket'];
-        setcookie('basket', $basket, time() + 36000);
+        setcookie('basket', $basket, time() + 36000, '/');
     } else die("Une erreur s'est produite.");
 }
 //Instance Objet et variables utilitaire
@@ -98,11 +98,11 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
             <?php foreach ($Similary as $item): ?>
                 <div>
                     <?php if (isset($_GET['collection']) && $_GET['collection'] > 0): ?>
-                        <a href=""><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item->image ?> " alt=""></a>
+                        <a href=""><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?> " alt=""></a>
                     <?php else: ?>
-                        <a href=""><img width="100px" src="<?= $_SESSION['path_pic'] . '/' . $item->image ?>" alt=""></a>
+                        <a href=""><img width="100px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?>" alt=""></a>
                     <?php endif; ?>
-                    <h5 class="product_simi"><?= $item->nom ?></h5>
+                    <h5 class="product_simi"><?= $item['nom'] ?></h5>
                 </div>
             <?php endforeach; ?>
         </div>

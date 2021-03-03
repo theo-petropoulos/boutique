@@ -38,11 +38,11 @@ if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
                             foreach($_POST as $key=>$value){
                                 unset($_POST[$key]);
                             }
-                            setcookie('basket', '', -1);
+                            setcookie('basket', '', -1, '/');
                             $_SESSION['purchase']='success';
                             header("Location: ../pages/panier.php");
                         }
-                        else{unset($order);setcookie('basket', '', -1);}
+                        else{unset($order);setcookie('basket', '', -1, '/');}
                     }
                     else if(isset($_COOKIE['invited']) && $_COOKIE['invited']){
 
