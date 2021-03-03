@@ -55,7 +55,7 @@
             unset($_SESSION['purchase']);
         }
         else{
-            echo "panier vide";
+            require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/empty.php';
         }
     include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
     </body>
