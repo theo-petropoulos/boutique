@@ -27,9 +27,11 @@
         $url='/boutique/assets/images/produits/'.$sugg['image'];?>
 
         <div class="sugg_product">
-            <img src='<?=$url;?>'>
-            <p><?=$marque['nom'];?></p>
-            <p><?=$sugg['nom'];?></p>
+            <a href="/boutique/pages/produit.php?produit=<?=$sugg['id'];?>&collection=<?=$sugg['id_marque'];?>">
+                <img src='<?=$url;?>'>
+            </a>
+            <p class="strtxt"><?=strtoupper($marque['nom']);?></p>
+            <p><?=ucfirst(strtolower($sugg['nom']));?></p>
             <p><?=$sugg['prix'];?> €</p>
             <form method="post" action="">
                 <input type="hidden" name="addbasket" value="<?=$sugg['id'];?>">

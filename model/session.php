@@ -31,3 +31,14 @@
     if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
         setcookie('basket',$_COOKIE['basket'],time()+360000, '/');
     }
+
+    //If the user add a product to the basket from anywhere
+    if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']) {
+        if (verify_product($_POST['addbasket']) == 'valid') {
+            if (isset($_COOKIE['basket']) && $_COOKIE['basket']) {
+                $basket = $_COOKIE['basket'];
+                $basket .= '&id=' . $_POST['addbasket'];
+            } else $basket = '&id=' . $_POST['addbasket'];
+            setcookie('basket', $basket, time() + 36000, '/');
+        } else die("Une erreur s'est produite.");
+    }

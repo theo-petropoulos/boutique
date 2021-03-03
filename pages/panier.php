@@ -3,9 +3,8 @@
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 
-    if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-        $basket=array_filter(explode('&id=', $_COOKIE['basket']));
-        $basket=organize_array($basket);
+    if(isset($_POST['addbasket']) && $_POST['addbasket']){
+        header('Refresh:0;');
     }
 ?>
 
@@ -27,7 +26,9 @@
     <body>
     <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
         //If a basket is set, show all items in it
-        if(isset($basket) && $basket){
+        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
+            $basket=array_filter(explode('&id=', $_COOKIE['basket']));
+            $basket=organize_array($basket);
             $total_price=0;
             foreach($basket as $key=>$value){?>
             <div class="order_items">

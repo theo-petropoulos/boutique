@@ -1,18 +1,165 @@
-.suggestions {
+.basket {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 70%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket #block_haut .text {
+  margin: 5% 0;
+}
+
+.suggestions {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
+  background: black;
+  border-top: 4px solid #FFCC00;
+  border-bottom: 2px solid;
+  -o-border-image: linear-gradient(90deg, black 30%, white 40%, white 50%, white 60%, black 70%);
+     border-image: -webkit-gradient(linear, left top, right top, color-stop(30%, black), color-stop(40%, white), color-stop(50%, white), color-stop(60%, white), color-stop(70%, black));
+     border-image: linear-gradient(90deg, black 30%, white 40%, white 50%, white 60%, black 70%);
+  border-image-slice: 2;
 }
 
 .suggestions .sugg_product {
-  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2% 0;
+  width: 15%;
+  min-width: 150px;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  color: white;
 }
 
-.suggestions .sugg_product img {
+.suggestions .sugg_product a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 40%;
+  height: 70%;
+}
+
+.suggestions .sugg_product a img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.suggestions .sugg_product a:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.suggestions .sugg_product p {
+  margin: 0;
+  z-index: 2;
   background: black;
+}
+
+.suggestions .sugg_product form input {
+  margin-top: 1%;
+  padding: 2% 4%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background: #04133D;
+  color: #FFCC00;
+  border: 1px solid #FFCC00;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.suggestions .sugg_product form input:hover {
+  cursor: pointer;
+  background: #14389b;
+  color: white;
+  border: 1px solid white;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.suggestions_text {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.suggestions_text .line {
+  bottom: 50%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  position: absolute;
+  height: 7px;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(25%, #04133d), color-stop(50%, #ffcc00), color-stop(75%, #04133d));
+  background: linear-gradient(90deg, #04133d 25%, #ffcc00 50%, #04133d 75%);
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.suggestions_text p {
+  margin: 1% 0;
+  vertical-align: middle;
+  background: #04133D;
+  color: #FFCC00;
+  border: 1px solid #FFCC00;
+  z-index: 2;
+  padding: 1% 2%;
+  width: auto;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 599px) {
+  .suggestions_text {
+    display: none;
+  }
 }
 /*# sourceMappingURL=panier.css.map */
