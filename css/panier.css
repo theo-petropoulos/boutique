@@ -1,0 +1,18 @@
+.suggestions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.suggestions .sugg_product {
+  width: auto;
+}
+
+.suggestions .sugg_product img {
+  width: 100%;
+  background: black;
+}
+/*# sourceMappingURL=panier.css.map */

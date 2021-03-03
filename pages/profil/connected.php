@@ -111,7 +111,7 @@
                             </thead>
                             <tbody>
                                 <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){
-                                    $url="/boutique/model/mailer.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];
+                                    $url="/boutique/model/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];
                                     ?>
                                 <tr>
                                     <td><p><?=$orders[$i]['id'];?></p></td>

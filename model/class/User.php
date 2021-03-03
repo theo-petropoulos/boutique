@@ -141,7 +141,7 @@
             $stmt=self::$db->prepare('SELECT `id` FROM `clients` WHERE `authkey`=?');
             $stmt->execute([$this->authtoken]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
-            if($res['id']!==NULL && !is_bool($res['id'])){
+            if(!is_bool($res['id']) && $res['id']!==NULL){
                 $stmt=self::$db->prepare('SELECT `ip` FROM `ip` WHERE `id_client`=?');
                 $stmt->execute([$res['id']]);
                 $res2=$stmt->fetch(PDO::FETCH_ASSOC);

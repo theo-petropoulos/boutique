@@ -32,7 +32,7 @@ for($i=0;isset($items[$i]) && $items[$i];$i++){
     $subtotal=$subtotal+${"total$i"};
 }
 
-$shipping=7.95*(50/100*$i*7.95);
+$shipping=number_format((7.95*(50/100*$i*7.95)),2,'.',',');
 
 $total=$subtotal + $shipping;
 
@@ -151,8 +151,9 @@ for($i=0;isset(${"html_product$i"}) && ${"html_product$i"};$i++){
 }
 $html.=$html_end;
 
-$path = (getenv('MPDF_ROOT')) ? getenv('MPDF_ROOT') : __DIR__;
-require_once $path . '/vendor/autoload.php';
+$path = realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/vendor/autoload.php';
+var_dump($path);
+require_once $path;
 
 $mpdf = new \Mpdf\Mpdf([
 	'margin_left' => 20,
