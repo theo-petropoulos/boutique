@@ -1,15 +1,21 @@
-.administration{
+.administration {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black ;
+    border: 1px solid black;
 }
-.box_admin{
+
+.container_form {
+    display: flex;
+}
+
+.box_admin {
     width: 80%;
     border: 2px solid black;
     margin: 20px;
 }
+
 /*AFFICHAGE EDIT PRODUIT*/
-.display{
+.display {
     /*display: none;*/
 }

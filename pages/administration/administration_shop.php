@@ -9,13 +9,15 @@ session_start();
 //Initialisation des variables et des objet utilitaires
 $manAdmin = new ManAdmin();
 $manProduct = new ManWatch();
+$manPromotion = new  ManPromo();
 $watch = new Watch();
 $AllreadySet = null;
 $SetProd = null;
 //Objets d'affichages
 $display_watches = $manProduct->get_products();
 $display_admins = $manAdmin->display_Admin();
-$display_clients = $manAdmin->display_clients();
+$display_collection = $manProduct->getCollection();
+$display_promotions = $manPromotion->get_promotions();
 //MODIFICATION PRODUIT
 if (isset($_POST['edit_product']) === "submit" && isset($_POST['id_prod']) && !empty($_POST['id_prod'])):
     $Watch2 = new Watch();
@@ -79,7 +81,7 @@ endif;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../css/administration.css">
+    <link rel="stylesheet" href="../../css/admin.css">
     <link rel="icon" href="../../assets/images/icon.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
@@ -116,29 +118,40 @@ endif;
             </table>
         </div>
         <div class="manage_box box_admin">
-            <h3>Modifier ou supprimer un Produit</h3></h4>
-            <form class="form_SP" method="post">
-                <div>
+            <h3>Modifier ou supprimer un Produit</h3>
+            <div class="container_form">
+                <form class="form_SP" method="post">
                     <div>
-                        <label for="id_prod">Entrez l'identifiant produit que vous souhaité modifier</label>
+                        <div>
+                            <label for="id_prod">Entrez l'identifiant produit que vous souhaité modifier</label>
+                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                        </div>
+                    </div>
+                    <div class="display">
+                        <label for="stock"><b>Nouveau stock</b> pour le produit</label>
+                        <input type="text" id="stock" name="newstock" placeholder="Nouveau Stock">
+                    </div>
+                    <div class="display">
+                        <label for="price"><b>Nouveau prix</b> pour le produit</label>
+                        <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
+                    </div>
+                    <div class="error_box">
+                        <?= $AllreadySet === false ? "<span class='errors'>Les informations renseignés sont incorrect, Merci de renseigner l'identifiant du produit, son nombre en stock, son nouveau prix ou bien les 2..</span>" : '' ?>
+                    </div>
+                    <div>
+                        <button type="submit" name="edit_product" value="submit">Valider</button>
+                    </div>
+                </form>
+                <form action="" method="post">
+                    <div>
+                        <label for="id_prod">Entrez l'identifiant produit que vous souhaitez supprimer</label>
                         <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
                     </div>
-                </div>
-                <div class="display">
-                    <label for="stock"><b>Nouveau stock</b> pour le produit</label>
-                    <input type="text" id="stock" name="newstock" placeholder="Nouveau Stock">
-                </div>
-                <div class="display">
-                    <label for="price"><b>Nouveau prix</b> pour le produit</label>
-                    <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
-                </div>
-                <div class="error_box">
-                    <?= $AllreadySet === false ? "<span class='errors'>Les informations renseignés sont incorrect, Merci de renseigner l'identifiant du produit, son nombre en stock, son nouveau prix ou bien les 2..</span>" : '' ?>
-                </div>
-                <div>
-                    <button type="submit" name="edit_product" value="submit">Valider</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" name="del_product" value="submit">Valider</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="manage_box box_admin">
@@ -183,18 +196,15 @@ endif;
                     </div>
                     <div>
                         <label for="boitier">Boitier</label>
-                        <input type="text" id="boitier" name="boitier"
-                               placeholder="Infos boitier de la montre">
+                        <input type="text" id="boitier" name="boitier" placeholder="Infos boitier de la montre">
                     </div>
                     <div>
                         <label for="mouv">Mouvement</label>
-                        <input type="text" id="mouv" name="mouvement">
-                        placeholder="Type de mouvement de la montre">
+                        <input type="text" id="mouv" name="mouvement" placeholder="Type de mouvement de la montre">
                     </div>
                     <div>
                         <label for="res">Reserve</label>
-                        <input type="text" id="res" name="reserve"
-                               placeholder="Reserve en heure de la montre">
+                        <input type="text" id="res" name="reserve" placeholder="Reserve en heure de la montre">
                     </div>
                     <div>
                         <label for="etanche">Étanchéité</label>
@@ -206,8 +216,29 @@ endif;
                     </div>
                 </form>
             </div>
-            <div>
-                <h3>Ajouter ou supprimer une Collection</h3>
+        </div>
+
+        <div class="display_box box_admin">
+            <h3>Liste des collections</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Identifiant de la collection</th>
+                    <th>Nom de la colection</th>
+                </tr>
+                <?php foreach ($display_collection as $index => $coll): ?>
+                    <tr>
+                        <td></td>
+                        <td><?= $coll->id ?></td>
+                        <td><?= $coll->nom ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div class="manage_box box_admin">
+            <h3>Ajouter ou supprimer une Collection</h3>
+            <div class="container_form">
                 <form class="form_add_coll" method="post">
                     <div>
                         <label for="id_coll">Nom de la collection</label>
@@ -217,36 +248,81 @@ endif;
                         <button type="submit" name="add_collection" value="submit">Valider</button>
                     </div>
                 </form>
+                <form action="" method="post">
+                    <div>
+                        <label for="id_prod">Entrez l'identifiant de la collection que vosu souhaitez supprimer</label>
+                        <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                    </div>
+                    <div>
+                        <button type="submit" name="del_collection" value="submit">Valider</button>
+                    </div>
+                </form>
             </div>
         </div>
+
+        <div class="display_box box_admin">
+            <h3>Liste des promotions </h3>
+            <table>
+                <tr>
+                    <th>Identifiant de la promotion</th>
+                    <th>Nom de la promotion</th>
+                    <th>Remise en pourcentage</th>
+                    <th>Produit concerné par la promotion</th>
+                    <th>Durée de la promotion</th>
+                </tr>
+                <?php foreach ($display_promotions as $promo): ?>
+                    <?php $Prod = $manProduct->getProductByID($promo['id_produit']); ?>
+                    <tr>
+                        <td><?= $promo['id'] ?></td>
+                        <td><?= $promo['nom'] ?></td>
+                        <td><?= $promo['pourcentage'] ?></td>
+                        <td><?= $Prod['nom'] ?></td>
+                        <td><?= 'Du' . ' ' . $promo['debut'] . ' ' . 'au' . ' ' . $promo['fin'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+
         <div class="manage_box box_admin">
             <h3>Créer une promotion</h3>
-            <form class="form_add_coll" method="post">
-                <div>
-                    <label for="promo_name">Nom de l'évenement promotionnel</label>
-                    <input type="text" id="promo_name" name="nom" placeholder="Identifiant produit a soldé">
-                </div>
-                <div>
-                    <label for="id_prod">Identifiant du produit sur lequel vous souhaiter appliqué une promotion</label>
-                    <input type="text" id="id_prod" name="idProduit" placeholder="Identifiant produit a soldé">
-                </div>
-                <div>
-                    <label for="promo">Valeur en pourcentage de la promotion</label>
-                    <input type="text" id="promo" name="pourcentage" placeholder="Promotion à appliquer">
-                </div>
+            <div class="container_form">
+                <form class="form_add_coll" method="post">
+                    <div>
+                        <label for="promo_name">Nom de l'évenement promotionnel</label>
+                        <input type="text" id="promo_name" name="nom" placeholder="Identifiant produit a soldé">
+                    </div>
+                    <div>
+                        <label for="id_prod">Identifiant du produit sur lequel vous souhaiter appliqué une
+                            promotion</label>
+                        <input type="text" id="id_prod" name="idProduit" placeholder="Identifiant produit a soldé">
+                    </div>
+                    <div>
+                        <label for="promo">Valeur en pourcentage de la promotion</label>
+                        <input type="text" id="promo" name="pourcentage" placeholder="Promotion à appliquer">
+                    </div>
 
-                <div>
-                    <label for="date_debut">Date de début </label>
-                    <input type="date" id="date_debut" name="dateDebut" placeholder="Debut de la promotion">
-                </div>
-                <div>
-                    <label for="date_fin">Date de Fin</label>
-                    <input type="date" id="date_fin" name="dateFin" placeholder="Fin de la promotion"
-                </div>
-                <div>
-                    <button type="submit" name="promotion" value="submit">Valider</button>
-                </div>
-            </form>
+                    <div>
+                        <label for="date_debut">Date de début </label>
+                        <input type="date" id="date_debut" name="dateDebut" placeholder="Debut de la promotion">
+                    </div>
+                    <div>
+                        <label for="date_fin">Date de Fin</label>
+                        <input type="date" id="date_fin" name="dateFin" placeholder="Fin de la promotion"
+                    </div>
+                    <div>
+                        <button type="submit" name="promotion" value="submit">Valider</button>
+                    </div>
+                </form>
+                <form action="" method="post">
+                    <div>
+                        <label for="id_prod">Entrez l'identifiant de la promotion que vous souhaitez supprimer</label>
+                        <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                    </div>
+                    <div>
+                        <button type="submit" name="del_promotion" value="submit">Valider</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 </main>

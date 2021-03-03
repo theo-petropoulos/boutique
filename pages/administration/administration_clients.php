@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../css/administration.css">
+    <link rel="stylesheet" href="../../css/admin.css">
     <link rel="icon" href="../../assets/images/icon.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
