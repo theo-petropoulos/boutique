@@ -24,7 +24,7 @@ class ManPromo extends Manager
      * @param Watch $watch
      * @return array|NULL
      */
-    public function get_promo(Watch $watch)
+    public function get_promo(Watch $watch): array|null
     {
         $array = null;
         $dateTime = new DateTime('now');
@@ -41,7 +41,7 @@ class ManPromo extends Manager
      * @param int $id
      * @return array|null
      */
-    public function get_promo_page_collection(int $id)
+    public function get_promo_page_collection(int $id): array|null
     {
         $array = null;
         $dateTime = new DateTime('now');

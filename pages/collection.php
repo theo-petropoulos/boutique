@@ -9,39 +9,28 @@ session_start();
 //Nouvel object Manager produit
 $ManWatch = new ManWatch;
 $ManPromo = new ManPromo();
-//Chemin vers image
+$PromoInfos = null;
 $path_pics = null;
 $PromoProd = [];
 $marques = $ManWatch->getCollection();
-//Condition permettant de définir la collection
-if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection'] != isset($_GET['collection'])) {
-    $produits = $ManWatch->getProductByCollection(1);
-    $path_pics = "../assets/images/product_audemars";
-    $_SESSION['path_pic'] = $path_pics;
-    $collection = ucfirst($marques[0]['nom']);
-    $marque = $marques[0]['id'];
-    $_SESSION['marque'] = $marques[0]['nom'];
-} elseif (isset($_GET['collection']) and $_GET['collection'] == 2) {
-    $produits = $ManWatch->getProductByCollection(2);
-    $collection = ucfirst($marques[1]['nom']);
-    $path_pics = "../assets/images/product_blancpain";
-    $_SESSION['path_pic'] = $path_pics;
-    $marque = $marques[1]['id'];
-    $_SESSION['marque'] = $marques[1]['nom'];
-    $size = '100px';
-} elseif
-(isset($_GET['collection']) and $_GET['collection'] == 3) {
-    $produits = $ManWatch->getProductByCollection(3);
-    $path_pics = "../assets/images/product_omega";
-    $_SESSION['path_pic'] = $path_pics;
-    $collection = ucfirst($marques[2]['nom']);
-    $marque = $marques[2]['id'];
-    $_SESSION['marque'] = $marques[2]['nom'];
 
-    //Si aucune collection n'est définit affiche les produits audemars
-} else {
-    header('location:../index.php');
-}
+//Condition permettant de définir la collection
+if (isset($_GET['collection'])) :
+    $produits = $ManWatch->getProductByCollection($_GET['collection']);
+    $path_pics = "../assets/images/produits";
+    $_SESSION['path_pic'] = $path_pics;
+    foreach ($marques as $marque):
+        if ($marque->id == $_GET['collection']) {
+            $collection = ucfirst($marque->nom);
+            $marque = $marque->id;
+        } else {
+            $collection = ucfirst($marques[0]->nom);
+            $marque = $marques[0]->id;
+            $_SESSION['marque'] = $marques[0]->nom;
+        }
+    endforeach;
+else: header('location:../index.php');
+endif;
 
 ?>
 <!DOCTYPE html>
@@ -70,64 +59,27 @@ if (isset($_GET['collection']) and $_GET['collection'] == 1 || $_GET['collection
         <div class="container_page_product">
             <!--Section produits-->
             <section class="container_products">
-                <div class="container_product">
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[0]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[0]['nom'] ?></h4>
-                    <span><?= $produits[0]['prix'] . '€' ?></span>
-
-                    <a href="produit.php?produit=<?= $produits[0]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
-                <div class="container_product">
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[1]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[1]['nom'] ?></h4>
-
-                    <span><?= $produits[1]['prix'] . '€' ?></span>
-
-                    <a href="produit.php?produit=<?= $produits[1]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
-                <div class="container_product">
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[2]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[2]['nom'] ?></h4>
-                    <span><?= $produits[2]['prix'] . '€' ?></span>
-                    <a href="produit.php?produit=<?= $produits[2]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
-                <div class="container_product">
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[3]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[3]['nom'] ?></h4>
-
-                    <span><?= $produits[3]['prix'] . '€' ?></span>
-
-                    <a href="produit.php?produit=<?= $produits[3]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
-                <div class="container_product">
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[4]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[4]['nom'] ?></h4>
-
-                    <span><?= $produits[4]['prix'] . '€' ?></span>
-
-                    <a href="produit.php?produit=<?= $produits[4]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
-                <div class="container_product">
-
-                    <img class="product_pic" src="<?= $path_pics ?>/<?= $produits[5]['image'] ?>"
-                         alt="Montre Audemars Piguet">
-                    <h4 class="product_title"><?= $produits[5]['nom'] . '€' ?></h4>
-
-                    <span><?= $produits[5]['prix'] . '€' ?></span>
-
-                    <a href="produit.php?produit=<?= $produits[5]['id'] ?>&collection=<?= $marque ?>"
-                       class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
-                </div>
+                <?php foreach ($produits as $prod): ?>
+                    <?php
+                    $Watch = new Watch();
+                    $Watch->hydrate($prod);
+                    $Watch->setNomImage($prod['image']);
+                    $Price = $Watch->getPrix();
+                    ?>
+                    <div class="container_product">
+                        <img class="product_pic" src="<?= $path_pics ?>/<?= $Watch->getNomImage() ?>"
+                             alt="Montre">
+                        <h4 class="product_title"><?= $Watch->getNom() ?></h4>
+                        <!--- Check promo-->
+                        <?php //Affiche promotion si existante
+                        $ArrayPromo = $ManPromo->get_promo($Watch);
+                        isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
+                        isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>
+                        <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
+                        <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $marque ?>"
+                           class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
+                    </div>
+                <?php endforeach; ?>
             </section>
             <!--Section description de la gamme -->
             <section class="container_describe_product">

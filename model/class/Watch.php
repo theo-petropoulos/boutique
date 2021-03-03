@@ -7,7 +7,7 @@ class Watch
     private string $_marque;
     private int $_stock;
     private float $_prix;
-    private $_prixPromo;
+    private  $_prixPromo;
     private string $_NomImage;
 
     private string $description;
@@ -69,9 +69,7 @@ class Watch
         return $this->_prix;
     }
 
-    /**
-     * @return float|NULL
-     */
+
     public function getPrixPromo()
     {
         return $this->_prixPromo;
@@ -188,9 +186,9 @@ class Watch
     }
 
     /**
-     * @param float|NULL $prixPromo
+     * @param  $prixPromo
      */
-    public function setPrixPromo($prixPromo): void
+    public function setPrixPromo( $prixPromo): void
     {
         $this->_prixPromo = $prixPromo;
     }

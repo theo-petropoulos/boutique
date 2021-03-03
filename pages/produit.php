@@ -4,7 +4,6 @@ include_once '../model/class/ManWatch.php';
 include_once '../model/class/Watch.php';
 include_once '../model/class/Promo.php';
 include_once '../model/class/ManPromo.php';
-
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
 if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']) {
@@ -98,8 +97,8 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
         <div class="container_prod_simil">
             <?php foreach ($Similary as $item): ?>
                 <div>
-                    <?php if ($_GET['collection'] == 2): ?>
-                        <a href=""><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?>" *alt=""></a>
+                    <?php if (isset($_GET['collection']) && $_GET['collection'] > 0): ?>
+                        <a href=""><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?> " alt=""></a>
                     <?php else: ?>
                         <a href=""><img width="100px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?>" alt=""></a>
                     <?php endif; ?>
