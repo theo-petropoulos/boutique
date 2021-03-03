@@ -23,7 +23,6 @@ if (isset($_GET['collection'])) :
         if ($marque->id == $_GET['collection']) {
             $collection = ucfirst($marque->nom);
             $marque = $marque->id;
-            $_SESSION['marque'] = $marque->nom;
         } else {
             $collection = ucfirst($marques[0]->nom);
             $marque = $marques[0]->id;
