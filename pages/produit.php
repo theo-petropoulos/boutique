@@ -13,7 +13,7 @@ if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST[
             $basket = $_COOKIE['basket'];
             $basket .= '&id=' . $_POST['addbasket'];
         } else $basket = '&id=' . $_POST['addbasket'];
-        setcookie('basket', $basket, time() + 36000);
+        setcookie('basket', $basket, time() + 36000, '/');
     } else die("Une erreur s'est produite.");
 }
 //Instance Objet et variables utilitaire

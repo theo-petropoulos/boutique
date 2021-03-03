@@ -13,6 +13,7 @@
         }
 
         public function createOrder(int $id,array $items){
+            echo "create";
             $this->id_client=$id;
             $total=0;
             foreach($items as $id=>$qty){
@@ -48,6 +49,7 @@
         }
 
         private function insertOrder(array $items){
+            echo "insert order";
             $stmt=self::$db->prepare("INSERT INTO `factures`(`id_client`,`date`,`etat`,`total`) VALUES (?,CURRENT_DATE(),?,?)");
             $stmt->execute([$this->id_client, $this->etat, $this->total]);
             $facture=self::$db->query('SELECT max(`id`) as `id` FROM `factures`');

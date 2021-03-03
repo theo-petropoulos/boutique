@@ -276,4 +276,20 @@ class Watch
         $results['marque'] = $marque['nom'];
         return $results;
     }
+
+    //Buy an item, update stock if available
+    public function bought(int $qty, int $id_facture, $db){
+        $stockq=$db->prepare('SELECT `stock` FROM `produits` WHERE `id`=?');
+        $stockq->execute([$this->_id]);
+        $stock=$stockq->fetch(PDO::FETCH_ASSOC);
+        if($stock['stock']>=$qty){
+            $this->_stock=$this->_stock - $qty;
+            $stmt=$db->prepare('UPDATE `produits` SET `stock`=? WHERE `id`=?');
+            $stmt->execute([$this->_stock, $this->_id]);
+            $commande=$db->prepare('INSERT INTO `commandes`(`id_produit`,`id_facture`,`quantite_produit`,`prix`) VALUES (?,?,?,?)');
+            $commande->execute([$this->_id,$id_facture,$qty,$this->_prix]);
+            return 1;
+        }
+        else return 0;
+    }
 }
