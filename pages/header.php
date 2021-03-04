@@ -13,12 +13,12 @@
                 </li>
                 <li id="nav_adresses"><a href="">Points de vente</a></li>
                 <li id="nav_apropos"><a href="/boutique/pages/about.php">À propos</a></li>
-                <li id="nav_admin"><a href="/boutique/pages/administration.php">Administration</a>
+                <!-- <li id="nav_admin"><a href="/boutique/pages/administration.php">Administration</a>
                     <ul class="sous-menu">
                         <li><a href="/boutique/pages/administration/administration_shop.php">Magasin</a></li>
                         <li><a href="/boutique/pages/administration/administration_clients.php">Clients</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div id="nav_bar2">

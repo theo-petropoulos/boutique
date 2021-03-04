@@ -278,8 +278,8 @@ body {
   padding: 2% 0% 3% 2%;
   min-width: 250px;
   color: white;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.8)), color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(0%, rgba(0, 0, 0, 0)));
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 0%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.8)), color-stop(85%, rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 #banner #banner_desc #banner_right {

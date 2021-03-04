@@ -25,31 +25,13 @@
 
     <body>
     <?php include $root . 'pages/header.php';
+        ?><main class="basket"><?php
         //If a basket is set, show all items in it
-        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-            $basket=array_filter(explode('&id=', $_COOKIE['basket']));
-            $basket=organize_array($basket);
-            $total_price=0;
-            foreach($basket as $key=>$value){?>
-            <div class="order_items">
-                <?php 
-                $array=new ManWatch();
-                $watch=new Watch();
-                $watch->hydrate($array->get_one_product($key));
-                $total_price=intval($total_price)+intval($watch->getPrix()*$value);
-                echo 'nom = ' . $watch->getMarque() . ' - ' . $watch->getNom() . '// quantite = ' . $value . '// prix = ' . $watch->getPrix()*$value;
-            }?>
-            </div>
-            <div class="order_total">
-                <?='total = ' . $total_price;?>
-            </div>
-            <div id="order_pay">
-                <form method="post" action="checkout.php">
-                    <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
-                    <input type="submit" value="Procéder au paiement">
-                </form>
-            </div>
-    <?php }
+        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){?>
+            <section id="notempty"><?php
+                require $root . 'pages/panier/notempty.php';
+            ?></section><?php
+        }
         //Redirect on panier.php upon payment ( checkout only accessible while paying )
         else if(isset($_SESSION['purchase']) && $_SESSION['purchase']=='success'){
             echo "paiement succès.";
@@ -58,6 +40,7 @@
         else{
             require $root . 'pages/panier/empty.php';
         }
+        ?></main><?php
     include $root . 'pages/footer.php';?>
     </body>
 
