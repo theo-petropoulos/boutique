@@ -45,7 +45,7 @@
                 </div>
                 <div class="name">
                     <h4><?=ucfirst(strtolower($sugg['nom']));?></h4>
-                    <p><?=$sugg['prix'];?> €</p>
+                    <p><?=number_format(intval($sugg['prix']),2,'.',',');?> €</p>
                 </div>
                 <form method="post" action="">
                     <input type="hidden" name="addbasket" value="<?=$sugg['id'];?>">

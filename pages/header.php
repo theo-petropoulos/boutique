@@ -3,16 +3,16 @@
     <div id="nav_bar">
         <div id="nav_bar1">
             <ul id="nav_ul1">
-                <li id="nav_nouveautes"><a href="/boutique/pages/nouveautes.php">Nouveautés</a></li>
-                <li id="nav_montres"><a href="">Les collections</a>
+                <li id="nav_nouveautes"><a class="link" href="/boutique/pages/nouveautes.php">Nouveautés</a></li>
+                <li id="nav_montres"><a class="link" href="">Les collections</a>
                     <ul class="sous-menu">
-                        <li><a href="/boutique/pages/collection.php?collection=1">Audemars Piguet</a></li>
-                        <li><a href="/boutique/pages/collection.php?collection=2">Blancpain</a></li>
-                        <li><a href="/boutique/pages/collection.php?collection=3">Omega</a></li>
+                        <li><a class="link" href="/boutique/pages/collection.php?collection=1">Audemars Piguet</a></li>
+                        <li><a class="link" href="/boutique/pages/collection.php?collection=2">Blancpain</a></li>
+                        <li><a class="link" href="/boutique/pages/collection.php?collection=3">Omega</a></li>
                     </ul>
                 </li>
-                <li id="nav_adresses"><a href="">Points de vente</a></li>
-                <li id="nav_apropos"><a href="/boutique/pages/about.php">À propos</a></li>
+                <li id="nav_adresses"><a class="link" href="">Points de vente</a></li>
+                <li id="nav_apropos"><a class="link" href="/boutique/pages/about.php">À propos</a></li>
                 <!-- <li id="nav_admin"><a href="/boutique/pages/administration.php">Administration</a>
                     <ul class="sous-menu">
                         <li><a href="/boutique/pages/administration/administration_shop.php">Magasin</a></li>

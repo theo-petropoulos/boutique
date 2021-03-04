@@ -23,7 +23,7 @@
 
     <body>
         <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
-        <main>
+        <main id="main_newsletter">
             <section id="banner_standard">
                 <h2>Inscription à la Newsletter</h2>
             </section>

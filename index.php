@@ -13,6 +13,7 @@
         <link rel="icon" href="/boutique/assets/images/icon.png" />
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
 		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
 		<title>Von Harper</title>
 	</head>
@@ -42,7 +43,7 @@
 			<div class="separator">
 			</div>
 			<section id="quote">
-				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von Harper</p>
+				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von <span class="color">H</span>arper</p>
 			</section>
 		</main>
 		<?php include $root . 'pages/footer.php';?>

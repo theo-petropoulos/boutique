@@ -7,6 +7,7 @@
 @import url('globalrules.css');
 @import url('profil.css');
 @import url('panier.css');
+@import url('suggestions.css');
 
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 $blue:#04133D;
@@ -231,11 +232,11 @@ body{
 }
 
 .separator{
-    height:3px;
-    width:70%;
-    background:linear-gradient(90deg, rgba(47,53,66,0) 0%, rgba(0,0,0,1) 50%, rgba(47,53,66,0) 100%);;
-    margin-left:auto;
-    margin-right:auto;
+    width:100%;
+    position:relative;
+    background:black;
+    height:5vh;
+    margin:0;
 }
 
 #quote{
@@ -243,13 +244,20 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items:center;
+    background:black;
     p{
         font-family:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color:white;
         &:nth-of-type(1){
-            font-size:1.5em;
+            font-size:1.9em;
         }
         &:nth-of-type(2){
             font-size:1.1em;
+        }
+        .color{
+            font-size:1.1em;
+            font-weight:800;
+            color:$yellow;
         }
     }
 }
