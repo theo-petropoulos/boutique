@@ -1,3 +1,7 @@
+<?php
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+?>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -14,7 +18,7 @@
 	</head>
 
     <body>
-        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+        <?php include $root . 'pages/header.php';?>
         <section id="about_section">
             <div id="about_header">
                 <h3><span class="h1font">V</span><span>o</span><span>n</span> <span class="h1font">H</span><span>a</span><span>r</span><span>p</span><span>e</span><span>r</span></h3>
@@ -97,6 +101,6 @@
             </div>
         </section>
 
-		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include $root . 'pages/footer.php';?>
     </body>
 </html>

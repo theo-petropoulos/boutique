@@ -1,3 +1,7 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
+$yellow:#FFCC00;
+
 strong, em{
     font-weight:inherit;
     font-style:inherit;
@@ -23,4 +27,23 @@ strong, em{
     width:80%;
     background:linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
     margin:2%;
+}
+
+.addbasket{
+    background:$yellow;
+    color:$blue;
+    font-size:1.2em;
+    padding:1% 4%;
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:$font_base;
+    border-radius:15px;
+    animation:0.6s 0.6s ease-in fade-out forwards;
+}
+
+@keyframes fade-out{
+    0%{opacity:1;}
+    100%{opacity:0;}
 }

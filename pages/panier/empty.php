@@ -4,6 +4,6 @@
     </section>
     <div class="suggestions_text"><p>Suggestions</p><span class="line"></span></div>
     <section class="suggestions">
-        <?php $sugg_qty=5; require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/suggestions.php';?>
+        <?php $sugg_qty=5; include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/suggestions.php';?>
     </section>
 </main>

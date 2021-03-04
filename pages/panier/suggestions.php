@@ -1,8 +1,6 @@
 <?php
-    require_once realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
     require_once realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
-    $db=db_link();
     $query=$db->query('SELECT * FROM `produits`');
     $items=$query->fetchAll(PDO::FETCH_ASSOC);
 

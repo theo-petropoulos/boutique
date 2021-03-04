@@ -1,7 +1,7 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
+    require $root . 'model/class/Watch.php';
+    require $root . 'model/class/ManWatch.php';
 
     if(isset($_POST['addbasket']) && $_POST['addbasket']){
         header('Refresh:0;');
@@ -24,7 +24,7 @@
 	</head>
 
     <body>
-    <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
+    <?php include $root . 'pages/header.php';
         //If a basket is set, show all items in it
         if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
             $basket=array_filter(explode('&id=', $_COOKIE['basket']));
@@ -56,9 +56,9 @@
             unset($_SESSION['purchase']);
         }
         else{
-            require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/empty.php';
+            require $root . 'pages/panier/empty.php';
         }
-    include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+    include $root . 'pages/footer.php';?>
     </body>
 
 </html>

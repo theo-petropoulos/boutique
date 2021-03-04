@@ -36,8 +36,8 @@
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  background: black;
-  border-top: 4px solid #FFCC00;
+  background: -webkit-gradient(linear, left top, right top, from(#04133d), color-stop(15%, black), color-stop(85%, black), to(#04133d));
+  background: linear-gradient(90deg, #04133d 0%, black 15%, black 85%, #04133d 100%);
   border-bottom: 2px solid;
   -o-border-image: linear-gradient(90deg, black 30%, white 40%, white 50%, white 60%, black 70%);
      border-image: -webkit-gradient(linear, left top, right top, color-stop(30%, black), color-stop(40%, white), color-stop(50%, white), color-stop(60%, white), color-stop(70%, black));

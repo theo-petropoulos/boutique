@@ -18,62 +18,33 @@
 	</head>
 
     <body>
-		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
-		<main>
+		<?php include $root . 'pages/header.php';?>
+		<main id="main_index">
 			<section id="video_container">
 				<video playsinline autoplay muted loop id="bg_vid">
 					<source src="assets/videos/planetarium.mp4" type="video/mp4">
 					Votre navigateur ne prend pas en charge les vidéos intégrées.
 				</video>
 			</section>
+
 			<section id="staring1">
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Van Cleef & Arpels</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Hublot</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Audemars Piguet</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Blancpain</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
+				<?php include $root . 'pages/index/staring1.php'; $memrand=$rand?>
 			</section>
+
 			<section id="banner">
-				<div id="banner_desc">
-					<h2>Omega</h2>
-					<p>Description de la marque et du modèle lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
-				</div>
+				<?php include $root . 'pages/index/banner.php';?>
 			</section>
+
 			<section id="staring2">
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
-				<figure class="watch_min">
-					<img src="assets/product-images/audemars-code1159/front-nobg.png">
-					<figcaption><h3>Omega</h3>Description de la montre lorem ipsum lorem ipsum lorem ipsum</figcaption>
-				</figure>
+				<?php include $root . 'pages/index/staring1.php'; $memrand=$rand?>
 			</section>
+			
 			<div class="separator">
 			</div>
 			<section id="quote">
 				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von Harper</p>
 			</section>
 		</main>
-		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include $root . 'pages/footer.php';?>
     </body>
 </html>

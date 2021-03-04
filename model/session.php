@@ -1,9 +1,11 @@
 <?php
     session_start();
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/functions.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/sql.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/User.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Order.php';
+    $root=realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/';
+
+    require $root . 'model/functions.php';
+    require $root . 'model/sql.php';
+    require $root . 'model/class/User.php';
+    require $root . 'model/class/Order.php';
 
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
@@ -40,5 +42,6 @@
                 $basket .= '&id=' . $_POST['addbasket'];
             } else $basket = '&id=' . $_POST['addbasket'];
             setcookie('basket', $basket, time() + 36000, '/');
+            ?><div class="addbasket">Produit ajouté au panier.</div><?php
         } else die("Une erreur s'est produite.");
     }
