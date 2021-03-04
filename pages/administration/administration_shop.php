@@ -81,7 +81,7 @@ endif;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/administration.css">
     <link rel="icon" href="../../assets/images/icon.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
@@ -96,9 +96,8 @@ endif;
         <h2>Gestion du Magasin </h2>
         <div class="display_box box_admin">
             <h3>Liste des produits</h3>
-            <table>
+            <table class="tab_prod">
                 <tr>
-                    <th></th>
                     <th>Identifiant produit</th>
                     <th>Produit</th>
                     <th>Numero de Collection</th>
@@ -107,113 +106,126 @@ endif;
                 </tr>
                 <?php foreach ($display_watches as $index => $display_watch): ?>
                     <tr>
-                        <td></td>
                         <td><?= $display_watch->id ?></td>
                         <td><?= $display_watch->nom ?></td>
                         <td><?= $display_watch->id_marque ?></td>
-                        <td><?= $display_watch->prix ?></td>
-                        <td><?= $display_watch->stock ?></td>
+                        <td><?= $display_watch->prix . '€' ?></td>
+                        <td>
+                            <span class="<?= $display_watch->stock <= 3 ? 'stock_low' : 'stock_high' ?>"><?= $display_watch->stock ?></span>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
         </div>
         <div class="manage_box box_admin">
-            <h3>Modifier ou supprimer un Produit</h3>
             <div class="container_form">
-                <form class="form_SP" method="post">
-                    <div>
+                <form method="post">
+                    <fieldset class="form_edit_prod form_manage">
+                        <legend class="title_form">Modifier un produit</legend>
                         <div>
                             <label for="id_prod">Entrez l'identifiant produit que vous souhaité modifier</label>
                             <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
                         </div>
-                    </div>
-                    <div class="display">
-                        <label for="stock"><b>Nouveau stock</b> pour le produit</label>
-                        <input type="text" id="stock" name="newstock" placeholder="Nouveau Stock">
-                    </div>
-                    <div class="display">
-                        <label for="price"><b>Nouveau prix</b> pour le produit</label>
-                        <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
-                    </div>
-                    <div class="error_box">
-                        <?= $AllreadySet === false ? "<span class='errors'>Les informations renseignés sont incorrect, Merci de renseigner l'identifiant du produit, son nombre en stock, son nouveau prix ou bien les 2..</span>" : '' ?>
-                    </div>
-                    <div>
-                        <button type="submit" name="edit_product" value="submit">Valider</button>
-                    </div>
+                        <div class="display">
+                            <label for="stock"><b>Nouveau stock</b> pour le produit</label>
+                            <input type="text" id="stock" name="newstock" placeholder="Nouveau Stock">
+                        </div>
+                        <div class="display">
+                            <label for="price"><b>Nouveau prix</b> pour le produit</label>
+                            <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
+                        </div>
+                        <div class="error_box">
+                            <?= $AllreadySet === false ? "<span class='errors'>Les informations renseignés sont incorrect, Merci de renseigner l'identifiant du produit, son nombre en stock, son nouveau prix ou bien les 2..</span>" : '' ?>
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="edit_product" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
                 <form action="" method="post">
-                    <div>
-                        <label for="id_prod">Entrez l'identifiant produit que vous souhaitez supprimer</label>
-                        <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
-                    </div>
-                    <div>
-                        <button type="submit" name="del_product" value="submit">Valider</button>
-                    </div>
+                    <fieldset class="form_del_prod form_manage">
+                        <legend class="title_form">Supprimer un produit</legend>
+                        <div>
+                            <label for="id_prod">Entrez l'identifiant produit que vous souhaitez supprimer</label>
+                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="del_product" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
 
         <div class="manage_box box_admin">
             <div>
-                <h3>Ajouter un Produit</h3>
-                <form class="form_add_prod" method="post">
-                    <div>
-                        <label for="id_nom">Nom</label>
-                        <input type="text" id="id_nom" name="nom" placeholder="Nom du produit">
-                    </div>
-                    <div>
-                        <label for="id_marque">Marque</label>
-                        <input type="text" id="id_marque" name="marque" placeholder="Marque du produit">
-                    </div>
-                    <div>
-                        <label for="nb_stock">Stock</label>
-                        <input type="text" id="nb_stock" name="stock" placeholder="Quantité en stock">
-                    </div>
-                    <div>
-                        <label for="prix">Prix</label>
-                        <input type="text" id="prix" name="prix" placeholder="Prix de la Montre">
-                    </div>
-                    <div>
-                        <label for="pic">Nom de l'image</label>
-                        <input type="text" id="pic" name="nomImage"
-                               placeholder="Nom execte de l'image ex: 'Montre.png'">
-                    </div>
-                    <div>
-                        <label for="describe">Description</label>
-                        <input type="text" id="describe" name="description"
-                               placeholder="Description de la montre">
-                    </div>
-                    <div>
-                        <label for="diametre">Diamètre</label>
-                        <input type="text" id="diametre" name="diametre"
-                               placeholder="Diametre de la montre">
-                    </div>
-                    <div>
-                        <label for="epaisseur">Épaisseur</label>
-                        <input type="text" id="epaisseur" name="epaisseur"
-                               placeholder="Epaisseur de la montre">
-                    </div>
-                    <div>
-                        <label for="boitier">Boitier</label>
-                        <input type="text" id="boitier" name="boitier" placeholder="Infos boitier de la montre">
-                    </div>
-                    <div>
-                        <label for="mouv">Mouvement</label>
-                        <input type="text" id="mouv" name="mouvement" placeholder="Type de mouvement de la montre">
-                    </div>
-                    <div>
-                        <label for="res">Reserve</label>
-                        <input type="text" id="res" name="reserve" placeholder="Reserve en heure de la montre">
-                    </div>
-                    <div>
-                        <label for="etanche">Étanchéité</label>
-                        <input type="text" id="etanche" name="etancheite"
-                               placeholder="Étanchéité (profondeur en mètre) de la montre">
-                    </div>
-                    <div>
-                        <button type="submit" name="add_product" value="submit">Valider</button>
-                    </div>
+                <form method="post">
+                    <fieldset class="form_add_prod">
+                        <legend class="title_form">Ajouter un produit</legend>
+                        <div>
+                            <div>
+                                <label for="id_nom">Nom</label>
+                                <input type="text" id="id_nom" name="nom" placeholder="Nom">
+                            </div>
+
+                            <div>
+                                <label for="id_marque">Marque</label>
+                                <input type="text" id="id_marque" name="marque" placeholder="Marque">
+                            </div>
+                            <div>
+                                <label for="nb_stock">Stock</label>
+                                <input type="text" id="nb_stock" name="stock" placeholder="Quantité en stock">
+                            </div>
+                            <div>
+                                <label for="prix">Prix</label>
+                                <input type="text" id="prix" name="prix" placeholder="Prix">
+                            </div>
+                            <div>
+                                <label for="pic">Nom de l'image</label>
+                                <input type="text" id="pic" name="nomImage"
+                                       placeholder="Nom execte de l'image">
+                            </div>
+                            <div>
+                                <label for="describe">Description</label>
+                                <input type="text" id="describe" name="description"
+                                       placeholder="Description">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="diametre">Diamètre</label>
+                                <input type="text" id="diametre" name="diametre"
+                                       placeholder="Diamètre">
+                            </div>
+                            <div>
+                                <label for="epaisseur">Épaisseur</label>
+                                <input type="text" id="epaisseur" name="epaisseur"
+                                       placeholder="Épaisseur">
+                            </div>
+                            <div>
+                                <label for="boitier">Boitier</label>
+                                <input type="text" id="boitier" name="boitier" placeholder="Infos boitier">
+                            </div>
+                            <div>
+                                <label for="mouv">Mouvement</label>
+                                <input type="text" id="mouv" name="mouvement"
+                                       placeholder="Type de mouvement">
+                            </div>
+                            <div>
+                                <label for="res">Reserve</label>
+                                <input type="text" id="res" name="reserve" placeholder="Reserve en heure">
+                            </div>
+                            <div>
+                                <label for="etanche">Étanchéité</label>
+                                <input type="text" id="etanche" name="etancheite"
+                                       placeholder="Étanchéité en mètre">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="add_product" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
+
                 </form>
             </div>
         </div>
@@ -222,13 +234,11 @@ endif;
             <h3>Liste des collections</h3>
             <table>
                 <tr>
-                    <th></th>
                     <th>Identifiant de la collection</th>
                     <th>Nom de la colection</th>
                 </tr>
                 <?php foreach ($display_collection as $index => $coll): ?>
                     <tr>
-                        <td></td>
                         <td><?= $coll->id ?></td>
                         <td><?= $coll->nom ?></td>
                     </tr>
@@ -237,25 +247,33 @@ endif;
         </div>
 
         <div class="manage_box box_admin">
-            <h3>Ajouter ou supprimer une Collection</h3>
+
             <div class="container_form">
-                <form class="form_add_coll" method="post">
-                    <div>
-                        <label for="id_coll">Nom de la collection</label>
-                        <input type="text" id="id_coll" name="collection" placeholder="Entrez la nouvelle Marque">
-                    </div>
-                    <div>
-                        <button type="submit" name="add_collection" value="submit">Valider</button>
-                    </div>
+                <form method="post">
+                    <fieldset class="form_add_coll form_manage">
+                        <legend class="title_form">Ajouter une collection</legend>
+                        <div>
+                            <label for="id_coll">Nom de la collection</label>
+                            <input type="text" id="id_coll" name="collection" placeholder="Entrez la nouvelle Marque">
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="add_collection" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
+
                 <form action="" method="post">
-                    <div>
-                        <label for="id_prod">Entrez l'identifiant de la collection que vosu souhaitez supprimer</label>
-                        <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
-                    </div>
-                    <div>
-                        <button type="submit" name="del_collection" value="submit">Valider</button>
-                    </div>
+                    <fieldset class="form_del_collection form_manage">
+                        <legend class="title_form">Supprimer une collection</legend>
+                        <div>
+                            <label for="id_prod">Entrez l'identifiant de la collection que vous souhaitez
+                                supprimer</label>
+                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="del_collection" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
@@ -284,43 +302,49 @@ endif;
         </div>
 
         <div class="manage_box box_admin">
-            <h3>Créer une promotion</h3>
             <div class="container_form">
-                <form class="form_add_coll" method="post">
-                    <div>
-                        <label for="promo_name">Nom de l'évenement promotionnel</label>
-                        <input type="text" id="promo_name" name="nom" placeholder="Identifiant produit a soldé">
-                    </div>
-                    <div>
-                        <label for="id_prod">Identifiant du produit sur lequel vous souhaiter appliqué une
-                            promotion</label>
-                        <input type="text" id="id_prod" name="idProduit" placeholder="Identifiant produit a soldé">
-                    </div>
-                    <div>
-                        <label for="promo">Valeur en pourcentage de la promotion</label>
-                        <input type="text" id="promo" name="pourcentage" placeholder="Promotion à appliquer">
-                    </div>
+                <form method="post">
+                    <fieldset class="form_add_promo form_manage">
+                        <legend class="title_form">Créer une promotion</legend>
+                        <div>
+                            <label for="promo_name">Nom de l'évenement promotionnel</label>
+                            <input type="text" id="promo_name" name="nom" placeholder="Identifiant produit a soldé">
+                        </div>
+                        <div>
+                            <label for="id_prod">Identifiant du produit sur lequel vous souhaiter appliqué une
+                                promotion</label>
+                            <input type="text" id="id_prod" name="idProduit" placeholder="Identifiant produit a soldé">
+                        </div>
+                        <div>
+                            <label for="promo">Valeur en pourcentage de la promotion</label>
+                            <input type="text" id="promo" name="pourcentage" placeholder="Promotion à appliquer">
+                        </div>
 
-                    <div>
-                        <label for="date_debut">Date de début </label>
-                        <input type="date" id="date_debut" name="dateDebut" placeholder="Debut de la promotion">
-                    </div>
-                    <div>
-                        <label for="date_fin">Date de Fin</label>
-                        <input type="date" id="date_fin" name="dateFin" placeholder="Fin de la promotion"
-                    </div>
-                    <div>
-                        <button type="submit" name="promotion" value="submit">Valider</button>
-                    </div>
+                        <div>
+                            <label for="date_debut">Date de début </label>
+                            <input type="date" id="date_debut" name="dateDebut" placeholder="Debut de la promotion">
+                        </div>
+                        <div>
+                            <label for="date_fin">Date de Fin</label>
+                            <input type="date" id="date_fin" name="dateFin" placeholder="Fin de la promotion"
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="promotion" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
                 <form action="" method="post">
-                    <div>
-                        <label for="id_prod">Entrez l'identifiant de la promotion que vous souhaitez supprimer</label>
-                        <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
-                    </div>
-                    <div>
-                        <button type="submit" name="del_promotion" value="submit">Valider</button>
-                    </div>
+                    <fieldset class="form_del_promo form_manage">
+                        <legend class="title_form">Supprimer une promotion</legend>
+                        <div>
+                            <label for="id_prod">Entrez l'identifiant de la promotion que vous souhaitez
+                                supprimer</label>
+                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" name="del_promotion" value="submit">Valider</button>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </div>

@@ -1,0 +1,157 @@
+/*Style global des Elements*/
+body {
+}
+
+table {
+    border: 5px gray double;
+    font-size: 1.1rem;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
+    color: white;
+}
+
+tr td {
+    border: .5px solid white;
+    background: no-repeat center url("../assets/images/bg-admin.jpg");
+    background-size: cover;
+    padding: 5px;
+}
+
+tr th {
+    background: rgba(0, 0, 0, .5);
+    border: 1px solid rgba(255, 255, 255, .4);
+    font-style: italic;
+    padding: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+.form_manage > div {
+    padding: 10px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form_manage > div > input {
+    height: 3rem;
+    width: 20rem;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+label {
+    margin: 15px;
+}
+
+/*CONTAINER*/
+.administration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.container_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.box_admin {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+    margin: 20px;
+}
+
+/*FORMULAIRE AJOUT PRODUIT*/
+.form_add_prod {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    border: 5px gray double;
+    margin: auto;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
+    background: no-repeat center url("../assets/images/bg-admin.jpg");
+    background-size: cover;
+    color: white;
+}
+
+.form_add_prod > div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+.form_add_prod input {
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    margin: 10px;
+    font-size: 1.1rem;
+}
+
+/*FORMULAIRE GENERAL (Excluant ajout produit)*/
+.form_manage {
+    background: no-repeat center url("../assets/images/bg-admin.jpg");
+    background-size: cover;
+    color: white;
+    padding: 30px;
+    font-size: 1.1rem;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
+    border: 5px gray double;
+
+}
+
+.form_manage > div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*BOUTTON*/
+.btn {
+    background: black;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 10rem;
+    height: 3rem;
+    margin: 20px auto;
+}
+
+/*TITRE FORMULAIRES*/
+.title_form {
+    color: white;
+    background: rgba(0, 0, 0, .5);
+    border: 1px solid rgba(255, 255, 255, .4);
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.stock_low {
+    color: red;
+}
+
+.stock_high {
+    color: #4DAF19;
+}
