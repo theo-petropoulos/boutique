@@ -1,6 +1,6 @@
 #main_profil {
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background: url("../assets/images/night_bg.jpg") bottom 100% center no-repeat;
+  background: url("../assets/images/night_bg.jpg") top 50% center fixed no-repeat;
   position: relative;
 }
 
@@ -773,6 +773,15 @@
 }
 
 #profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td table {
+  width: 100%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tdimg {
+  position: relative;
+  width: 6%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tdimg img {
   width: 100%;
 }
 

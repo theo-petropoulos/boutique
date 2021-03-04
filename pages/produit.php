@@ -6,15 +6,6 @@ include_once '../model/class/Promo.php';
 include_once '../model/class/ManPromo.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
-if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']) {
-    if (verify_product($_POST['addbasket']) == 'valid') {
-        if (isset($_COOKIE['basket']) && $_COOKIE['basket']) {
-            $basket = $_COOKIE['basket'];
-            $basket .= '&id=' . $_POST['addbasket'];
-        } else $basket = '&id=' . $_POST['addbasket'];
-        setcookie('basket', $basket, time() + 36000, '/');
-    } else die("Une erreur s'est produite.");
-}
 //Instance Objet et variables utilitaire
 $Promo = new Promo();
 $ManPromo = new ManPromo();

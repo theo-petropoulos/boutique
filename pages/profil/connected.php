@@ -116,12 +116,10 @@
                                 <tr>
                                     <td><p><?=$orders[$i]['id'];?></p></td>
                                     <td><p><?=$orders[$i]['date'];?></p></td>
-                                    <td><p><?=$orders[$i]['total'];?></p></td>
-                                    <td><p><?=$orders[$i]['etat'];
-                                    if(isset($orders[$i]['suivi']) && $orders[$i]['suivi']){?><br>Suivi : <?=$orders[$i]['suivi'];}?>
-                                    </p></td>
-                                    <td>
-                                    <a href="<?=$url;?>">Télécharger la facture</a>
+                                    <td><p><?=number_format(intval($orders[$i]['total']),2,'.',',');?> €</p></td>
+                                    <td><p><?=$orders[$i]['etat'];?></p></td>
+                                    <td class="tdimg">
+                                        <a href="<?=$url;?>"><img src="/boutique/assets/images/icone-pdf.png"></a>
                                     </td>
                                 </tr>
                                 <?php } ?>

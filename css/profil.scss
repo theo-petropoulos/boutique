@@ -4,7 +4,7 @@ $yellow:#FFCC00;
 
 #main_profil{
     font-family:$font_base;
-    background:url('../assets/images/night_bg.jpg') bottom 100% center no-repeat;
+    background:url('../assets/images/night_bg.jpg') top 50% center fixed no-repeat;
     position:relative;
     .err_occured{
         min-height:50vh;
@@ -538,6 +538,13 @@ $yellow:#FFCC00;
                                 text-align:center;
                                 table{
                                     width:100%;
+                                }
+                                &.tdimg{
+                                    position:relative;
+                                    width:6%;
+                                    img{
+                                        width:100%;
+                                    }
                                 }
                             }
                         }

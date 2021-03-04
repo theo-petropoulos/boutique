@@ -4,7 +4,7 @@ header a {
 
 header a h1 {
   margin: 0;
-  padding: 2%;
+  padding: 1.75%;
   text-align: center;
   background: black;
   font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -12,7 +12,7 @@ header a h1 {
 }
 
 header a h1 .h1font {
-  font-family: 'Beth Ellen', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Lobster', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -32,10 +32,11 @@ header #nav_bar {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background: #010614;
   border-bottom: 3px solid;
-  -o-border-image: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, black 50%, rgba(47, 53, 66, 0) 100%);
-     border-image: -webkit-gradient(linear, left top, right top, from(rgba(47, 53, 66, 0)), color-stop(50%, black), to(rgba(47, 53, 66, 0)));
-     border-image: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, black 50%, rgba(47, 53, 66, 0) 100%);
+  -o-border-image: linear-gradient(90deg, rgba(168, 183, 202, 0) 0%, rgba(168, 183, 202, 0.3) 50%, rgba(168, 183, 202, 0) 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(rgba(168, 183, 202, 0)), color-stop(50%, rgba(168, 183, 202, 0.3)), to(rgba(168, 183, 202, 0)));
+     border-image: linear-gradient(90deg, rgba(168, 183, 202, 0) 0%, rgba(168, 183, 202, 0.3) 50%, rgba(168, 183, 202, 0) 100%);
   border-image-slice: 1;
 }
 
@@ -43,7 +44,7 @@ header #nav_bar #nav_ul1, header #nav_bar #nav_ul2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2% 0 2% 0;
+  padding: 1% 0;
   margin: 0;
 }
 
@@ -52,22 +53,58 @@ header #nav_bar #nav_ul1 li, header #nav_bar #nav_ul2 li {
   position: relative;
 }
 
+header #nav_bar #nav_ul1 li form input, header #nav_bar #nav_ul2 li form input {
+  background: #a8b7ca;
+  border-radius: 2px;
+  border: 0;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #04133D;
+}
+
+header #nav_bar #nav_ul1 li form input:focus, header #nav_bar #nav_ul2 li form input:focus {
+  outline: 0;
+  border: 1px solid #FFCC00;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+header #nav_bar #nav_ul1 li form button, header #nav_bar #nav_ul2 li form button {
+  color: #a8b7ca;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header #nav_bar #nav_ul1 li form button:hover, header #nav_bar #nav_ul2 li form button:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
 header #nav_bar #nav_ul1 li a, header #nav_bar #nav_ul2 li a {
   position: relative;
   text-decoration: none;
-  color: black;
+  color: #a8b7ca;
   font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 header #nav_bar #nav_ul1 li a:hover, header #nav_bar #nav_ul2 li a:hover {
-  color: #04133D;
+  color: white;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-header #nav_bar #nav_ul1 li a::before, header #nav_bar #nav_ul2 li a::before {
+header #nav_bar #nav_ul1 li a:hover i, header #nav_bar #nav_ul2 li a:hover i {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+header #nav_bar #nav_ul1 li a.link::before, header #nav_bar #nav_ul2 li a.link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -82,7 +119,7 @@ header #nav_bar #nav_ul1 li a::before, header #nav_bar #nav_ul2 li a::before {
   transition: all 0.4s ease-in-out;
 }
 
-header #nav_bar #nav_ul1 li a:hover::before, header #nav_bar #nav_ul2 li a:hover::before {
+header #nav_bar #nav_ul1 li a.link:hover::before, header #nav_bar #nav_ul2 li a.link:hover::before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
@@ -99,7 +136,7 @@ header #nav_bar #nav_ul1 #nav_montres ul, header #nav_bar #nav_ul2 #nav_montres 
   bottom: 0%;
   -webkit-transform: translate(-50%, 100%);
           transform: translate(-50%, 100%);
-  background: white;
+  background: #010614;
   padding: 0;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;

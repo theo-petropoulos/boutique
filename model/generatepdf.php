@@ -3,7 +3,7 @@ require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
 
-$invoice_num=$_GET['id'];
+$invoice_num=sprintf("%06d",$_GET['id']);
 $date=$_GET['date'];
 
 $order=new Order();
@@ -23,18 +23,19 @@ for($i=0;isset($items[$i]) && $items[$i];$i++){
     $array=new ManWatch();
     $watch=new Watch();
     $watch->hydrate($array->getProductByID($items[$i]['id_produit']));
-    ${"id_produit$i"}=$items[$i]['id_produit'];
+    ${"id_produit$i"}=sprintf("%05d",$items[$i]['id_produit']);
     ${"quantite$i"}=$items[$i]['quantite_produit'];
-    ${"prix$i"}=$items[$i]['prix'];
-    ${"total$i"}=(${"prix$i"})*${"quantite$i"};
+    ${"prix$i"}=number_format($items[$i]['prix'],2,'.',',');
+    ${"total$i"}=number_format((intval(str_replace(',','',${"prix$i"}))*intval(str_replace(',','',${"quantite$i"}))),2,'.',',');
     ${"nom_produit$i"}=$watch->getNom();
     ${"marque$i"}=$watch->getMarque();
-    $subtotal=$subtotal+${"total$i"};
+    $subtotal=intval($subtotal) + (intval(str_replace(',','',${"total$i"})));
 }
 
+$subtotal=number_format($subtotal,2,'.',',');
 $shipping=number_format((7.95*(50/100*$i*7.95)),2,'.',',');
 
-$total=$subtotal + $shipping;
+$total=number_format(intval(str_replace(',','',$subtotal)) + intval(str_replace(',','',$shipping)),2,'.',',');
 
 $html_start = '
 <html>

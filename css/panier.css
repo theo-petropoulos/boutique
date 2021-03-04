@@ -1,18 +1,163 @@
-.suggestions {
+.basket {
+  position: relative;
+  width: 100%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.suggestions .sugg_product {
-  width: auto;
-}
-
-.suggestions .sugg_product img {
-  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: black;
+  background-image: url("/boutique/assets/images/firewatch_purple.png");
+  background-repeat: no-repeat;
+}
+
+.basket #notempty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.basket #notempty #table_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+.basket #notempty #table_section table {
+  width: 100%;
+  color: white;
+  border-collapse: collapse;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.basket #notempty #table_section table thead {
+  background: #04133D;
+  border-bottom: 2px solid;
+  -o-border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(black), color-stop(30%, black), to(white));
+     border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+  border-image-slice: 2;
+}
+
+.basket #notempty #table_section table thead tr th {
+  padding: 2% 0;
+  font-size: calc(12px + 0.3vw);
+}
+
+.basket #notempty #table_section table tbody tr:nth-of-type(1n) {
+  background: rgba(255, 204, 0, 0.25);
+}
+
+.basket #notempty #table_section table tbody tr:nth-of-type(2n) {
+  background: rgba(4, 19, 61, 0.25);
+}
+
+.basket #notempty #table_section table tbody td {
+  border-bottom: 2px solid;
+  -o-border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(black), color-stop(30%, black), to(white));
+     border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+  border-image-slice: 2;
+}
+
+.basket #notempty #table_section table tbody td.tdimg {
+  background: -webkit-gradient(linear, left top, right top, from(black), color-stop(50%, black), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, black 0%, black 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.basket #notempty #table_section table tbody td.tdimg img {
+  padding: 2%;
+  width: 5%;
+  min-width: 25px;
+}
+
+.basket #notempty #table_section table tbody td.totals {
+  border-left: 2px solid white;
+  padding: 5px 5px;
+}
+
+.basket #notempty #table_section table tbody td.cost {
+  text-align: end;
+}
+
+.basket #notempty #table_section table tbody td.tdname {
+  font-size: calc(10px + 0.2vw);
+  font-weight: 800;
+}
+
+.basket #notempty #table_section table tbody td.tdname a {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #notempty #table_section table tbody td.tdname a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.basket #notempty #table_section form {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.basket #notempty #table_section form input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background: #04133D;
+  color: #FFCC00;
+  border: 2px solid #FFCC00;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  padding: 5% 0;
+}
+
+.basket #notempty #table_section form input:hover {
+  cursor: pointer;
+  background: #4067bb;
+  color: white;
+  border: 2px solid white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+@media screen and (max-width: 599px) {
+  .suggestions_text {
+    display: none;
+  }
 }
 /*# sourceMappingURL=panier.css.map */

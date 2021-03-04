@@ -1,11 +1,10 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
+    require $root . 'model/class/Watch.php';
+    require $root . 'model/class/ManWatch.php';
 
-    if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-        $basket=array_filter(explode('&id=', $_COOKIE['basket']));
-        $basket=organize_array($basket);
+    if(isset($_POST['addbasket']) && $_POST['addbasket']){
+        header('Refresh:0;');
     }
 ?>
 
@@ -25,39 +24,24 @@
 	</head>
 
     <body>
-    <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';
+    <?php include $root . 'pages/header.php';
+        ?><main class="basket"><?php
         //If a basket is set, show all items in it
-        if(isset($basket) && $basket){
-            $total_price=0;
-            foreach($basket as $key=>$value){?>
-            <div class="order_items">
-                <?php 
-                $array=new ManWatch();
-                $watch=new Watch();
-                $watch->hydrate($array->get_one_product($key));
-                $total_price=intval($total_price)+intval($watch->getPrix()*$value);
-                echo 'nom = ' . $watch->getMarque() . ' - ' . $watch->getNom() . '// quantite = ' . $value . '// prix = ' . $watch->getPrix()*$value;
-            }?>
-            </div>
-            <div class="order_total">
-                <?='total = ' . $total_price;?>
-            </div>
-            <div id="order_pay">
-                <form method="post" action="checkout.php">
-                    <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
-                    <input type="submit" value="Procéder au paiement">
-                </form>
-            </div>
-    <?php }
+        if(isset($_COOKIE['basket']) && $_COOKIE['basket']){?>
+            <section id="notempty"><?php
+                require $root . 'pages/panier/notempty.php';
+            ?></section><?php
+        }
         //Redirect on panier.php upon payment ( checkout only accessible while paying )
         else if(isset($_SESSION['purchase']) && $_SESSION['purchase']=='success'){
             echo "paiement succès.";
             unset($_SESSION['purchase']);
         }
         else{
-            require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/empty.php';
+            require $root . 'pages/panier/empty.php';
         }
-    include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+        ?></main><?php
+    include $root . 'pages/footer.php';?>
     </body>
 
 </html>
