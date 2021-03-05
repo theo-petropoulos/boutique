@@ -17,7 +17,7 @@
     }
 
     $id=$marque['id'];
-    $query2=$db->query("SELECT * FROM `produits` WHERE `id_marque`=$id");
+    $query2=$db->query("SELECT * FROM `produits` WHERE `id_marque`=$id AND `stock`>0");
     $items=$query2->fetchAll(PDO::FETCH_ASSOC);
 
     for($i=0;$i<4;$i++){

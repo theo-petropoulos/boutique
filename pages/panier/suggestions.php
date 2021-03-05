@@ -1,7 +1,7 @@
 <?php
     require_once realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
-    $query=$db->query('SELECT * FROM `produits`');
+    $query=$db->query('SELECT * FROM `produits` WHERE `stock`>0');
     $items=$query->fetchAll(PDO::FETCH_ASSOC);
 
     for ($i=0;$i<$sugg_qty;$i++){
