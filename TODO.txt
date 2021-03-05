@@ -1,9 +1,11 @@
-index ( produits / marque dynamiques )
+X index ( produits / marque dynamiques )
 X cookie refresh ( auth & basket )
 X pdf facture
+supprimer compte
+mailer
 invite orders
 search bar
-tracking
+tracking ( order status + contact ? ) 
 shop locator
 prevent user from adding 'more than stock' items to basket
 hide stock, add message low stock

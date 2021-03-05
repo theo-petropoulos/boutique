@@ -114,10 +114,10 @@
                                     $url="/boutique/model/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];
                                     ?>
                                 <tr>
-                                    <td><p><?=$orders[$i]['id'];?></p></td>
-                                    <td><p><?=$orders[$i]['date'];?></p></td>
-                                    <td><p><?=number_format(intval($orders[$i]['total']),2,'.',',');?> €</p></td>
-                                    <td><p><?=$orders[$i]['etat'];?></p></td>
+                                    <td class="tdnum"><p><?=$orders[$i]['id'];?></p></td>
+                                    <td class="tddate"><p><?=$orders[$i]['date'];?></p></td>
+                                    <td class="tdprix"><p><?=number_format(intval($orders[$i]['total']),2,'.',',');?> €</p></td>
+                                    <td class="tdetat"><p><?=$orders[$i]['etat'];?></p></td>
                                     <td class="tdimg">
                                         <a href="<?=$url;?>"><img src="/boutique/assets/images/icone-pdf.png"></a>
                                     </td>
@@ -134,7 +134,7 @@
             </li>
             <li class="profil_block">
                 <input type="radio" id="selector3" name="selector">
-                <label for="selector3">
+                <label id="selector3" for="selector3">
                     <p>Mes services</p>
                 </label>
                 <section class="active_block active_block_services">
