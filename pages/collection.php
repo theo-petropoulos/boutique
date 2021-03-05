@@ -76,7 +76,7 @@ endif;
                         isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>
                         <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
                         <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $marque ?>"
-                           class="buy"><i class="far fa-plus-square"></i>Voir la fiche</a>
+                           class="buy">En savoir plus</a>
                     </div>
                 <?php endforeach; ?>
             </section>
