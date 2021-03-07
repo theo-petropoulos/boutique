@@ -52,19 +52,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
-        <link rel="icon" href="/boutique/assets/images/icon.png" />
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
-		<title>Profil</title>
-	</head>
+	<?php $title='Profil'; require $root . 'pages/globals/head.php';?>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 
     <body>
-        <?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/header.php';?>
+        <?php include $root . 'pages/globals/header.php';?>
 		<main id="main_profil">
             <section id="banner_standard">
                 <h2>Mon compte</h2>
@@ -72,41 +66,41 @@
         <?php
             //If the user has a valid authentication token
             if(isset($authorized) && $authorized==1){
-                require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/connected.php';
+                require $root . 'pages/profil/connected.php';
             }
 
             //Else if an error occured while connecting
             else if(isset($connect) && $connect){
-                require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/connerr.php';
+                require $root . 'pages/profil/connerr.php';
             }
 
             else{ ?>
             <div class="profil_forms"><?php
                 //If the user ask for a password reset
                 if(isset($resetpwd) && $resetpwd==1){
-                    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/resetpwd.php';
+                    require $root . 'pages/profil/resetpwd.php';
                 }
                 //Access to the login/register page
                 else if( ((!isset($_POST['connect']) || !$_POST['connect']) && (!isset($_POST['register']) || !$_POST['register']))
                     && (!isset($return) || !$return) )
                 {
-                    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/form_ini.php';
+                    require $root . 'pages/profil/form_ini.php';
                 }
                 //If the user asks to register
                 else if(isset($_POST['register']) && $_POST['register']==1){
-                    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/form_register.php';
+                    require $root . 'pages/profil/form_register.php';
                 }
                 //If the user asks to connect
                 else if(isset($_POST['connect']) && $_POST['connect']==1){
-                    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/form_connect.php';
+                    require $root . 'pages/profil/form_connect.php';
                 }  
                 //If there is a registration error
                 else if(isset($return) && $return){
-                    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/profil/regerr.php';
+                    require $root . 'pages/profil/regerr.php';
                 }
             }?>
             </div>
 		</main>
-		<?php include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/footer.php';?>
+		<?php include $root . 'pages/globals/footer.php';?>
     </body>
 </html>

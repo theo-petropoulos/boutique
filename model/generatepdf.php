@@ -33,7 +33,7 @@ for($i=0;isset($items[$i]) && $items[$i];$i++){
 }
 
 $subtotal=number_format($subtotal,2,'.',',');
-$shipping=number_format((7.95*(50/100*$i*7.95)),2,'.',',');
+$shipping=number_format((7.95+(50/100*$i*7.95)),2,'.',',');
 
 $total=number_format(intval(str_replace(',','',$subtotal)) + intval(str_replace(',','',$shipping)),2,'.',',');
 

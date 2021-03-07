@@ -8,6 +8,7 @@
 @import url("profil.css");
 @import url("panier.css");
 @import url("suggestions.css");
+@import url("search.css");
 body {
   margin: 0;
   padding: 0;
@@ -165,10 +166,10 @@ body {
 
 #staring1 .watch_min a:hover:after, #staring2 .watch_min a:hover:after {
   opacity: 0;
-  -webkit-transform: scale(1, 4);
-          transform: scale(1, 4);
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: opacity 0.3s ease-in, scale 0.4s;
+  transition: opacity 0.3s ease-in, scale 0.4s;
 }
 
 #staring1 .watch_min figcaption, #staring2 .watch_min figcaption {

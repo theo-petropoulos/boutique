@@ -28,8 +28,8 @@
                 </li>
                 <li id="nav_panier"><a href="/boutique/pages/panier.php"><i class="fas fa-shopping-cart"></i></a></li>
                 <li id="search_bar">
-                    <form method="post" action="">
-                        <input type="text" id="search" name="search">
+                    <form method="get" action="/boutique/pages/search.php">
+                        <input type="text" minlength="3" maxlength="30" id="search" name="search">
                         <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
                 </li>

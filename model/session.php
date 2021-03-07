@@ -7,6 +7,21 @@
     require $root . 'model/class/User.php';
     require $root . 'model/class/Order.php';
 
+    //Check if cookies are allowed
+    if(!isset($_COOKIE['allow'])){
+        if(setcookie('allow', 'authorized', time()+36000, '/')){?>
+            <div class="allow_cookie"><p>Nous utilisons des cookies destinés uniquement au fonctionnement du site. Les données stockées sont uniquement 
+            celles que vous avez accepté de nous communiquer. Vos informations personnelles ne sont ni vendues, ni échangées avec un tiers.</p></div>
+        <?php } else{ ?>
+            <div class="allow_cookie"><p>Ce site utilise des cookies pour fonctionner normalement. Votre navigateur ne semble pas accepter leur
+            stockage. En conséquence vous ne pourrez ni acheter de produits, ni vous connecter. En outre, les données stockées sont uniquement 
+            celles que vous avez accepté de nous communiquer. Vos informations personnelles ne sont ni vendues, ni échangées avec un tiers.</p></div>        
+        <?php }
+    }
+    else{
+        setcookie('allow', 'authorized', time()+36000, '/');
+    }
+
     //If there is an authentication cookie
     if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
         $db=db_link();

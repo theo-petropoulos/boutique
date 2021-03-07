@@ -17,9 +17,16 @@
 
     // var_dump($_GET);
 
-    $test='';
-    for($i=0;$i<3;$i++){
-        ${"test$i"}='effect';
-    }
+    // $test='';
+    // for($i=0;$i<3;$i++){
+    //     ${"test$i"}='effect';
+    // }
     
-    echo $test2;
+    // echo $test2;
+
+    if(setcookie('test', 'ok', time()+3600, '/')){
+        echo "wow";
+    }
+    else{
+        echo "none";
+    }

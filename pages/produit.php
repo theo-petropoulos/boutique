@@ -25,21 +25,12 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php $title=$Product->getNom(); require $root . 'pages/globals/head.php';?>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a95f1c7873.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/produit.css">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="../assets/icon.png"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="/boutique/css/produit.css?v=<?php echo time(); ?>">
 </head>
 <body>
-<?php require_once 'header.php'; ?>
+<?php require_once $root . 'pages/globals/header.php'; ?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -99,6 +90,6 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
 
     </section>
 </main>
-<?php require_once 'footer.php'; ?>
+<?php require_once $root . 'pages/globals/footer.php'; ?>
 </body>
 </html>

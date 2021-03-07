@@ -2,7 +2,7 @@
     $basket=array_filter(explode('&id=', $_COOKIE['basket']));
     $basket=organize_array($basket);
     $subtotal=0;
-    $shipping=number_format((7.95*(50/100*count($basket)*7.95)),2,'.',',');
+    $shipping=number_format((7.95+(50/100*count($basket)*7.95)),2,'.',',');
     ?><section id="table_section">
         <table>
             <thead>
@@ -51,7 +51,7 @@
             <input type="submit" value="Procéder au paiement">
         </form>
     </section>
-
+    <div class="suggestions_text"><p>Suggestions</p><span class="line"></span></div>
     <section class="suggestions">
         <?php $sugg_qty=5; include realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/panier/suggestions.php';?>
     </section>

@@ -4,7 +4,7 @@ require_once '../model/class/Manager.php';
 require_once '../model/class/ManWatch.php';
 require_once '../model/class/Promo.php';
 require_once '../model/class/ManPromo.php';
-session_start();
+require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 //Parametre passé par onglet collection du header 1 pour audemars 2 pour blancpain 3 pour Omega
 //Nouvel object Manager produit
 $ManWatch = new ManWatch;
@@ -34,21 +34,13 @@ endif;
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php $title=$_SESSION['marque']; require $root . 'pages/globals/head.php';?>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a95f1c7873.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/collection.css">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="../assets/icon.png"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="/boutique/css/global.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="/boutique/css/collection.css?v=<?php echo time(); ?>">
 </head>
 <body>
-<?php require_once 'header.php'; ?>
+<?php require_once $root . 'pages/globals/header.php';?>
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
@@ -106,6 +98,6 @@ endif;
         </div>
     </div>
 </main>
-<?php require_once 'footer.php'; ?>
+<?php require_once $root . 'pages/globals/footer.php';?>
 </body>
 </html>

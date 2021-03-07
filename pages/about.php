@@ -6,19 +6,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../css/boutique.css?v=<?php echo time(); ?>">
-        <link rel="icon" href="/boutique/assets/images/icon.png" />
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
-		<title>A propos</title>
-	</head>
+	<?php $title='A Propos'; require $root . 'pages/globals/head.php';?>
 
     <body>
-        <?php include $root . 'pages/header.php';?>
+        <?php include $root . 'pages/globals/header.php';?>
         <section id="about_section">
             <div id="about_header">
                 <h3><span class="h1font">V</span><span>o</span><span>n</span> <span class="h1font">H</span><span>a</span><span>r</span><span>p</span><span>e</span><span>r</span></h3>
@@ -101,6 +92,6 @@
             </div>
         </section>
 
-		<?php include $root . 'pages/footer.php';?>
+		<?php include $root . 'pages/globals/footer.php';?>
     </body>
 </html>

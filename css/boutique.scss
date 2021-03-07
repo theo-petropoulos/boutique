@@ -8,6 +8,7 @@
 @import url('profil.css');
 @import url('panier.css');
 @import url('suggestions.css');
+@import url('search.css');
 
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 $blue:#04133D;
@@ -112,8 +113,8 @@ body{
                 }
                 &:after{
                     opacity:0;
-                    transform:scale(1,4);
-                    transition:all 0.4s;
+                    transform:scale(1.1);
+                    transition:opacity 0.3s ease-in, scale 0.4s;
                 }
             }
         }

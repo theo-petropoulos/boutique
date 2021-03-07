@@ -122,6 +122,7 @@
 }
 
 .suggestions_text p {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin: 1% 0;
   vertical-align: middle;
   background: #04133D;

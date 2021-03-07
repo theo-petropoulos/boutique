@@ -43,7 +43,25 @@ strong, em{
     animation:0.6s 0.6s ease-in fade-out forwards;
 }
 
+.allow_cookie{
+    position:absolute;
+    width:80%;
+    height:auto;
+    background:rgb(160, 186, 241);
+    color:black;
+    font-family: $font_base;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    border-radius:10px;
+    font-size:1em;
+    padding : 1% 4%;
+    animation:0.6s 5s ease-in fade-out forwards;
+    text-align: center;
+    z-index:4;
+}
+
 @keyframes fade-out{
     0%{opacity:1;}
-    100%{opacity:0;}
+    100%{opacity:0;z-index:-2;}
 }

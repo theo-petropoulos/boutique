@@ -176,3 +176,31 @@
         }
         return $ord;
     }
+
+    //Search bar
+    function search_items(string $str, $db){
+        $array=preg_split("/[\s,]*\\\"([^\\\"]+)\\\"[\s,]*|" . "[\s,]*'([^']+)'[\s,]*|" . "[\s,]+/", $str, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+        $searchp=$searchm='';
+
+        foreach($array as $key=>$value){
+            if($key==0){
+                $searchp.="'%" . $value . "%'";
+                $searchm.="'%" . $value . "%'";
+            }
+            else{
+                $searchp.=" AND p.nom LIKE '%" . $value . "%'";
+                $searchm.=" AND m.nom LIKE '%" . $value . "%'";
+            }
+        }
+
+        $stmt=$db->query(
+            "SELECT DISTINCT p.id, p.nom, p.image, p.prix, p.id_marque, p.stock, m.nom as `marque` FROM produits p
+            INNER JOIN marques m ON p.id_marque=m.id 
+            WHERE (p.nom LIKE $searchp ) 
+            OR (m.nom LIKE $searchm )
+            " );
+            
+        $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
