@@ -66,9 +66,11 @@ endif;
                         $ArrayPromo = $ManPromo->get_promo($Watch);
                         isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
                         isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>
-                        <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
-                        <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $marque ?>"
-                           class="buy">En savoir plus</a>
+                        <div class="container_price">
+                            <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
+                            <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $marque ?>"
+                               class="buy">En savoir plus</a>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </section>

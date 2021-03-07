@@ -1,12 +1,16 @@
 /*Style global des Elements*/
 body {
+    background: -webkit-gradient(linear, left top, right top, from(#04133d), color-stop(15%, black), color-stop(85%, black), to(#04133d));
+    background: linear-gradient(
+            90deg, #04133d 0%, black 15%, black 85%, #04133d 100%)
 }
 
 table {
-    border: 5px gray double;
+    opacity: .9;
     font-size: 1.1rem;
     border-collapse: collapse;
-    padding: 10px;
+    padding: 20px;
+    margin: 50px;
     text-align: center;
     background: rgba(0, 0, 0, .5);
     box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
@@ -21,7 +25,7 @@ tr td {
 }
 
 tr th {
-    background: rgba(0, 0, 0, .5);
+    background: rgb(1, 6, 20);
     border: 1px solid rgba(255, 255, 255, .4);
     font-style: italic;
     padding: 20px;
@@ -46,13 +50,13 @@ label {
 
 .form_manage > div > input {
     height: 3rem;
-    width: 20rem;
+    width: 15rem;
     text-align: center;
     font-size: 1.2rem;
     margin-top: 10px;
 }
 
-label {
+.form_manage > div > label {
     margin: 15px;
 }
 
@@ -64,11 +68,6 @@ label {
     border: 1px solid black;
 }
 
-.container_form {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
 
 .box_admin {
     display: flex;
@@ -89,6 +88,8 @@ label {
     background: no-repeat center url("../assets/images/bg-admin.jpg");
     background-size: cover;
     color: white;
+    border-image: linear-gradient(40deg, black 30%, white 40%, white 50%, white 60%, black 70%);
+    border-image-slice: 2;
 }
 
 .form_add_prod > div {
@@ -102,23 +103,25 @@ label {
 
 .form_add_prod input {
     text-align: center;
-    width: 250px;
-    height: 50px;
+    width: 10rem;
+    height: 3rem;
     margin: 10px;
     font-size: 1.1rem;
 }
 
 /*FORMULAIRE GENERAL (Excluant ajout produit)*/
 .form_manage {
+    width: 50%;
+    padding: 30px;
+    margin: 50px auto;
+    color: white;
+    font-size: 1.1rem;
+    border-image: linear-gradient(40deg, black 30%, white 40%, white 50%, white 60%, black 70%);
+    border-image-slice: 2;
     background: no-repeat center url("../assets/images/bg-admin.jpg");
     background-size: cover;
-    color: white;
-    padding: 30px;
-    font-size: 1.1rem;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
-    border: 5px gray double;
-
 }
+
 
 .form_manage > div {
     display: flex;
@@ -127,8 +130,9 @@ label {
 
 
 /*BOUTTON*/
+
 .btn {
-    background: black;
+    background: rgba(1, 6, 20, .6);
     color: white;
     font-size: 1.1rem;
     font-weight: bold;
@@ -140,7 +144,7 @@ label {
 /*TITRE FORMULAIRES*/
 .title_form {
     color: white;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(1, 6, 20, .6);
     border: 1px solid rgba(255, 255, 255, .4);
     padding: 20px;
     font-weight: bold;
