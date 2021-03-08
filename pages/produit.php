@@ -64,6 +64,7 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
             <div class="container_price">
                 <p class="price">Prix TTC</p><?= $Product->getPrixPromo() != NULL ? '<span class="textPromo">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPrice">' . $Product->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPrice">' . $Product->getPrix() . '€' . '</span>' : '<span class="normalPrice">' . $Product->getPrix() . '€' . '</span>' ?>
                 <form method="post" action="">
+                    <input type="number" name="addquantity" value=1 required>
                     <input type="hidden" name="addbasket" value="<?= $Product->getId(); ?>">
                     <input type="submit" value="Ajouter au panier">
                 </form>

@@ -11,8 +11,10 @@ $yellow:#FFCC00;
     justify-content: center;
     align-items:center;
     background:black;
-    background-image:url('/boutique/assets/images/firewatch_purple.png');
+    background-attachment: fixed;
+    background-image:url('/boutique/assets/images/night_bg.jpg');
     background-repeat: no-repeat;
+    background-position: center;
     #notempty{
         display:flex;
         flex-direction: column;
@@ -32,6 +34,7 @@ $yellow:#FFCC00;
                 border-collapse: collapse;
                 border-right:2px solid white;
                 border-left:2px solid white;
+                box-shadow:2px 2px 50px 18px rgba(0,0,0,0.7);
                 thead{
                     background:$blue;
                     border-bottom:2px solid;
@@ -46,49 +49,84 @@ $yellow:#FFCC00;
                 }
                 tbody{
                     tr{
-                        &:nth-of-type(1n){
-                            background:rgba(255,204,0,0.25);
-                        }
-                        &:nth-of-type(2n){
-                            background:rgba(4,19,61,0.25);
-                        }
+                        background:black;
                     }
                     td{
-                        border-bottom: 2px solid;
-                        border-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(255,255,255,1) 100%);
-                        border-image-slice: 2;
-                        &.tdimg{
-                            background:linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-                            img{
-                                padding:2%;
-                                width:5%;
-                                min-width:25px;
-                            }
-                        }
+                        border-bottom: 2px solid white;
                         &.totals{
                             border-left:2px solid white;
                             padding:5px 5px;
                         }
-                        &.cost{
-                            text-align:end;
-                        }
                         &.tdname{
                             font-size:calc(10px + 0.2vw);
                             font-weight:800;
+                            display:flex;
+                            align-items: center;
                             a{
                                 text-decoration:none;
                                 color:white;
+                                font-size:calc(12px + 0.5vw);
                                 transition:all 0.3s;
                                 &:hover{
                                     color:$yellow;
                                     transition:all 0.5s;
                                 }
                             }
+                            img{
+                                padding:2%;
+                                width:5%;
+                                min-width:25px;
+                            }
+                            .mod_item{
+                                display:flex;
+                            }
+                            form{
+                                input{
+                                    background:transparent;
+                                    outline:none;
+                                    border:none;
+                                    font-family: 'Lobster';
+                                    color:rgba(236, 139, 83, 0.5);
+                                    transition:all 0.3s;
+                                    &:hover{
+                                        cursor:pointer;
+                                        color:$yellow;
+                                        transition:all 0.4s;
+                                    }
+                                }
+                                &:first-of-type, &:last-of-type{
+                                    input{
+                                        font-size:1.5em;
+                                    }
+                                }
+                                &#delitem{
+                                    input{
+                                        color:rgba(236, 139, 83, 0.63);
+                                        transition:all 0.3s;
+                                        &:hover{
+                                            cursor:pointer;
+                                            color:$yellow;
+                                            transition:all 0.4s;
+                                        }
+                                    }
+                                }
+                            }
+                            .mod_item{
+                                display:flex;
+                                align-items: center;
+                            }
+                        }
+                        &:nth-of-type(1n+1){
+                            text-align:center;
+                        }
+                        &.cost{
+                            text-align:end;
                         }
                     } 
                 }
             }
-            form{
+            form#checkout{
+                margin-top:2%;
                 align-self:flex-end;
                 input{
                     font-family:$font_base;
@@ -96,7 +134,8 @@ $yellow:#FFCC00;
                     color:$yellow;
                     border:2px solid $yellow;
                     transition:all 0.2s;
-                    padding:5% 0;
+                    padding:7% 10%;
+                    margin-left:-20%;
                     &:hover{
                         cursor:pointer;
                         background:rgb(64, 103, 187);
@@ -113,5 +152,12 @@ $yellow:#FFCC00;
 @media screen and(max-width:599px){
     .suggestions_text{
         display:none;
+    }
+    .basket{
+        #notempty{
+            #table_section{
+                width:100%;
+            }
+        }
     }
 }

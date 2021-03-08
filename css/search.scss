@@ -23,8 +23,12 @@ $yellow:#FFCC00;
             flex-direction:row;
             flex-wrap:wrap;
             justify-content: center;
+            align-items:stretch;
             width:70%;
             min-width:400px;
+            border-bottom:3px solid;
+            border-image:linear-gradient(90deg, rgba(0,0,0,1) 15%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 60%, rgba(0,0,0,1) 85%);
+            border-image-slice: 2;
             .watch_result{
                 display:flex;
                 position:relative;
@@ -33,7 +37,6 @@ $yellow:#FFCC00;
                 justify-content: space-between;
                 width:15%;
                 min-width:160px;
-                align-items:stretch;
                 color:white;
                 margin: 5% 2%;
                 padding:1% 0;
@@ -42,7 +45,6 @@ $yellow:#FFCC00;
                     display:flex;
                     align-self:center;
                     width:70%;
-                    height: calc(100px + 20vh);
                     object-fit: cover;
                     border-bottom:2px solid;
                     border-image:linear-gradient(90deg, rgba(0,0,0,1) 15%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 60%, rgba(0,0,0,1) 85%);
@@ -79,7 +81,6 @@ $yellow:#FFCC00;
                     position:relative;
                     width:100%;
                     padding:2% 1%;
-                    height: calc(80px + 20vh);
                     display:flex;
                     flex-direction: column;
                     justify-content: space-between;
@@ -92,12 +93,17 @@ $yellow:#FFCC00;
                         align-items: center;
                         h3{
                             color:$yellow;
+                            margin-top:0;
                         }
                         .line{
                             height:2px;
                             width:80%;
                             background:linear-gradient(90deg, rgba(0,0,0,0) 30%, $yellow 50%, rgba(0,0,0,0) 70%);
                         }
+                    }
+                    .alert_text{
+                        position:absolute;
+                        bottom:-20%;
                     }
                     .name{
                         position:relative;
@@ -114,7 +120,7 @@ $yellow:#FFCC00;
                             margin:1% 0;
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
-                            -webkit-line-clamp: 2 ;
+                            -webkit-line-clamp: 1;
                             overflow: hidden;
                         }
                     }
@@ -140,5 +146,11 @@ $yellow:#FFCC00;
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width:599px){
+    .alert_text{
+        display:none;
     }
 }

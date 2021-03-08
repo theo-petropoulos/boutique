@@ -15,12 +15,12 @@
         public function createOrder(int $id,array $items){
             $this->id_client=$id;
             $total=0;
-            foreach($items as $id=>$qty){
+            foreach($items as $entry=>$object){
                 $orderitem=new ManWatch();
                 $watch = new Watch();
-                $watch->hydrate($orderitem->getProductByID($id));
-                $total=$total+($watch->getPrix()*$qty);
-                if($qty>$watch->getStock()){
+                $watch->hydrate($orderitem->getProductByID($object['id']));
+                $total=$total+($watch->getPrix()*$object['qty']);
+                if($object['qty']>$watch->getStock()){
                     return 0;
                 }
             }
@@ -52,11 +52,11 @@
             $stmt->execute([$this->id_client, $this->etat, $this->total]);
             $facture=self::$db->query('SELECT max(`id`) as `id` FROM `factures`');
             $facture=$facture->fetch(PDO::FETCH_ASSOC);
-            foreach($items as $key=>$value){
+            foreach($items as $entry=>$object){
                 $orderitem=new ManWatch();
                 $watch = new Watch();
-                $watch->hydrate($orderitem->getProductByID($key));
-                $instock=$watch->bought($value,$facture['id'],self::$db);
+                $watch->hydrate($orderitem->getProductByID($object['id']));
+                $instock=$watch->bought($object['qty'],$facture['id'],self::$db);
             }
         }
     }

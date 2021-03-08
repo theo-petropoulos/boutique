@@ -9,20 +9,20 @@ if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
         //If the data sent and the data in cookie match -light security check-
         if($_POST['checkout']==$_COOKIE['basket']){
             //Check if every data sent is linked to a product
-            $proceed=verify_checkout($_POST['checkout']);
+            $basket_v=get_basket($_POST['checkout']);
+            $proceed=verify_checkout($basket_v);
             if(!$proceed){
                 die('Vous ne pouvez pas accéder à cette page.');
             }
             //If so, reorganize array
             else{
-                $items=array_filter(explode('&id=', $_COOKIE['basket']));
-                $items=organize_array($items);
+                $items=get_basket($_COOKIE['basket']);
                 $total_price=0;
-                foreach($items as $itemID=>$quantity){
+                foreach($items as $entry=>$order){
                     $array=new ManWatch();
                     $watch=new Watch();
-                    $watch->hydrate($array->getProductByID($itemID));
-                    $total_price=intval($total_price)+intval($watch->getPrix())*intval($quantity);
+                    $watch->hydrate($array->getProductByID($order['id']));
+                    $total_price=intval($total_price)+intval($watch->getPrix())*intval($order['qty']);
                 }
             }
             //Payment process

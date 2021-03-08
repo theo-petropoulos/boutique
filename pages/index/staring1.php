@@ -47,11 +47,19 @@
                     <h4><?=ucfirst(strtolower($sugg['nom']));?></h4>
                     <p><?=number_format(intval($sugg['prix']),2,'.',',');?> €</p>
                 </div>
-                <form method="post" action="">
-                    <input type="hidden" name="addbasket" value="<?=$sugg['id'];?>">
-                    <input type="submit" value="Ajouter au panier">
-                </form>
+                <?php if($sugg['stock']>0){
+                    if($sugg['stock']<3){ ?>
+                    <div class="alert_text">Plus que quelques exemplaires disponibles.</div>
+                    <?php } ?>
+                    <form method="post" action="">
+                        <input type="hidden" name="addquantity" value=1 required>
+                        <input type="hidden" name="addbasket" value="<?=$sugg['id'];?>">
+                        <input type="submit" value="Ajouter au panier">
+                    </form>
+                <?php } 
+                else{ ?>
+                    <div class="outofstock_text">Rupture de stock.</div>
+                <?php } ?>
             </figcaption>
         </figure>
-
     <?php } ?>

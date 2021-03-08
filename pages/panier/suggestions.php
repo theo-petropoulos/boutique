@@ -32,6 +32,7 @@
             <p><?=ucfirst(strtolower($sugg['nom']));?></p>
             <p><?=$sugg['prix'];?> €</p>
             <form method="post" action="">
+                <input type="hidden" name="addquantity" value=1 required>
                 <input type="hidden" name="addbasket" value="<?=$sugg['id'];?>">
                 <input type="submit" value="Ajouter au panier">
             </form>

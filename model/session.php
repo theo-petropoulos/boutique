@@ -53,9 +53,17 @@
     if (isset($_POST['addbasket']) && is_int(intval($_POST['addbasket'])) && $_POST['addbasket']) {
         if (verify_product($_POST['addbasket']) == 'valid') {
             if (isset($_COOKIE['basket']) && $_COOKIE['basket']) {
-                $basket = $_COOKIE['basket'];
-                $basket .= '&id=' . $_POST['addbasket'];
-            } else $basket = '&id=' . $_POST['addbasket'];
+                $basket = get_basket($_COOKIE['basket']);
+                $count=0;
+                foreach($basket as $entry=>&$object){
+                    if($object['id']==$_POST['addbasket']){
+                        $object['qty']++;
+                        $count++;
+                    }
+                }
+                $basket=get_cookie($basket);
+                if($count==0) $basket .= '&id=' . $_POST['addbasket'] . '&qte=' . $_POST['addquantity'];
+            } else $basket = '&id=' . $_POST['addbasket'] . '&qte=' . $_POST['addquantity'];
             setcookie('basket', $basket, time() + 36000, '/');
             ?><div class="addbasket">Produit ajouté au panier.</div><?php
         } else die("Une erreur s'est produite.");

@@ -154,11 +154,9 @@
     }
 
     //Verify is a basket is valid
-    function verify_checkout(string $string){
-        $basket=array_filter(explode('&id=', $string));
-        $basket=organize_array($basket);
-        foreach($basket as $key=>$value){
-            if(!verify_product($key)){
+    function verify_checkout(array $basket){
+        foreach($basket as $entry=>$object){
+            if(!verify_product($object['id'])){
                 return 0;
             }
         }
@@ -166,15 +164,27 @@
     }
 
     //Organize an array
-    function organize_array(array $array){
+    // function organize_array(array $array){
+    //     $ord=[];
+    //     foreach($array as $key=>$value){
+    //         if(isset($ord[$value]) && $ord[$value]){
+    //             $ord[$value]++;
+    //         }
+    //         else $ord[$value]=1;
+    //     }
+    //     return $ord;
+    // }
+
+    function get_basket(string $cookie){
         $ord=[];
+        $array=array_filter(explode('&id=', $cookie));
         foreach($array as $key=>$value){
-            if(isset($ord[$value]) && $ord[$value]){
-                $ord[$value]++;
-            }
-            else $ord[$value]=1;
+            $array[$key]=array_filter(explode('&qte=', $array[$key]));
+            $array[$key]['id']=intval($array[$key][0]);
+            $array[$key]['qty']=intval($array[$key][1]);
+            unset($array[$key][0], $array[$key][1]);
         }
-        return $ord;
+        return $array;
     }
 
     //Search bar
@@ -188,8 +198,8 @@
                 $searchm.="'%" . $value . "%'";
             }
             else{
-                $searchp.=" AND p.nom LIKE '%" . $value . "%'";
-                $searchm.=" AND m.nom LIKE '%" . $value . "%'";
+                $searchp.=" OR p.nom LIKE '%" . $value . "%'";
+                $searchm.=" OR m.nom LIKE '%" . $value . "%'";
             }
         }
 
@@ -203,4 +213,13 @@
         $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
+    }
+
+    //Return a cookie string from array of objects
+    function get_cookie(array $basket){
+        $string='';
+        foreach($basket as $entry=>$object){
+            $string.='&id=' . $object['id'] . '&qte=' . $object['qty'];
+        }
+        return $string;
     }

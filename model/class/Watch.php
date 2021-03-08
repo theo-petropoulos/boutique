@@ -286,6 +286,7 @@ class Watch
             $stmt->execute([$this->_stock, $this->_id]);
             $commande=$db->prepare('INSERT INTO `commandes`(`id_produit`,`id_facture`,`quantite_produit`,`prix`) VALUES (?,?,?,?)');
             $commande->execute([$this->_id,$id_facture,$qty,$this->_prix]);
+            echo "INSERT<br>INSERT";
             return 1;
         }
         else return 0;

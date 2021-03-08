@@ -3,9 +3,9 @@ X cookie refresh ( auth & basket )
 X pdf facture
 supprimer compte
 mailer
-invite orders
-search bar
+force register/connect on purchase
+X search bar
 tracking ( order status + contact ? ) 
 shop locator
-prevent user from adding 'more than stock' items to basket
-hide stock, add message low stock
+X prevent user from adding 'more than stock' items to basket
+X hide stock, add message low stock

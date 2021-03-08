@@ -1,13 +1,34 @@
 <?php
-    $basket=array_filter(explode('&id=', $_COOKIE['basket']));
-    $basket=organize_array($basket);
+    $basket=get_basket($_COOKIE['basket']);
+    if(isset($_POST['mod_item']) && $_POST['mod_item']){
+        foreach($basket as $entry=>&$object){
+            if($object['id']==$_POST['mod_item']){
+                if(isset($_POST['sub']) && $_POST['sub']==1){
+                    $object['qty']--;
+                    if($object['qty']==0){
+                        unset($basket[$entry]);
+                    }
+                }
+                else if(isset($_POST['add']) && $_POST['add']==1){
+                    $object['qty']++;
+                }
+                else if(isset($_POST['del']) && $_POST['del']==1){
+                    unset($basket[$entry]);
+                }
+                else die("Une erreur inattendue est survenue.");
+            }
+        }
+        setcookie('basket', get_cookie($basket), time()+36000, '/');
+        $basket=get_basket($_COOKIE['basket']);
+        header("Location: panier.php");
+    }
+    
     $subtotal=0;
     $shipping=number_format((7.95+(50/100*count($basket)*7.95)),2,'.',',');
     ?><section id="table_section">
         <table>
             <thead>
                 <tr>
-                    <th> </th>
                     <th>Produit</th>
                     <th>Quantité</th>
                     <th>Prix unitaire</th>
@@ -21,18 +42,39 @@
                         <?php 
                         $array=new ManWatch();
                         $watch=new Watch();
-                        $watch->hydrate($array->getProductByID($key));
+                        $watch->hydrate($array->getProductByID($value['id']));
                         $url='/boutique/assets/images/produits/'.$watch->getNomImage();
-                        $subtotal=intval($subtotal)+intval($watch->getPrix()*$value);?>
-                        <td class="tdimg"><img src="<?=$url;?>"></td>
-                        <td class="tdname"><a href="/boutique/pages/produit.php?produit=<?=$watch->getId();?>&collection=<?=$watch->getMarque();?>"><?=ucfirst(strtolower($watch->getNom()));?></a></td>
-                        <td><?=$value;?></td>
-                        <td><?=number_format($watch->getPrix(),2,'.',',');?></td>
-                        <td><?=number_format(($watch->getPrix()*$value),2,'.',',');?></td>
+                        $subtotal=intval($subtotal)+intval($watch->getPrix()*$value['qty']);?>
+                        <td class="tdname">
+                            <img src="<?=$url;?>">
+                            <div class="product">
+                                <a href="/boutique/pages/produit.php?produit=<?=$watch->getId();?>&collection=<?=$watch->getMarque();?>"><?=ucfirst(strtolower($watch->getNom()));?></a>
+                                <div class="mod_item">
+                                    <form method="post" action="">
+                                        <input type="hidden" name="sub" value=1>
+                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                                        <input type="submit" value="-">
+                                    </form>
+                                    <form method="post" action="" id="delitem">
+                                        <input type="hidden" name="del" value=1>
+                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                                        <input type="submit" value="Supprimer">
+                                    </form>
+                                    <form method="post" action="">
+                                        <input type="hidden" name="add" value=1>
+                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                                        <input type="submit" value="+">
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                        <td><?=$value['qty'];?></td>
+                        <td><?=number_format($watch->getPrix(),2,'.',',');?>€</td>
+                        <td><?=number_format(($watch->getPrix()*$value['qty']),2,'.',',');?>€</td>
                     </tr>
                 <?php } $total=$subtotal+$shipping?>
                 <tr>
-                    <td class="blanktotal" colspan="3" rowspan="3"></td>
+                    <td class="blanktotal" colspan="2" rowspan="3"></td>
                     <td class="totals">Sous-total :</td>
                     <td class="totals cost"><?=number_format($subtotal,2,'.',',');?>€</td>
                 </tr>
@@ -46,7 +88,7 @@
                 </tr>
             </tbody>
         </table>
-        <form method="post" action="checkout.php">
+        <form id="checkout" method="post" action="checkout.php">
             <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
             <input type="submit" value="Procéder au paiement">
         </form>

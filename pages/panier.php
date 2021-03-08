@@ -4,8 +4,10 @@
     require $root . 'model/class/ManWatch.php';
 
     if(isset($_POST['addbasket']) && $_POST['addbasket']){
-        header('Refresh:0;');
+        echo "test";
+        header("Location: panier.php");
     }
+    
 ?>
 
 <!DOCTYPE html>

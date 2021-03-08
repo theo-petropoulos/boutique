@@ -63,6 +63,11 @@ strong, em {
   z-index: 4;
 }
 
+.alert_text {
+  color: #FFCC00;
+  font-size: 80%;
+}
+
 @-webkit-keyframes fade-out {
   0% {
     opacity: 1;
