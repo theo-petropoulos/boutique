@@ -223,3 +223,14 @@
         }
         return $string;
     }
+
+    //Delete an user
+    function delete_user(int $id, $db){
+        $stmt=$db->prepare("DELETE FROM `mails` WHERE `id`=(SELECT `id_mail` FROM `clients` WHERE `id`=?)");
+        $stmt->execute([$id]);
+        if($stmt->rowCount() > 0){
+            setcookie('authtoken', '', -1, '/');
+            return 'isdelete';
+        }
+        else return 'errdelete';
+    }

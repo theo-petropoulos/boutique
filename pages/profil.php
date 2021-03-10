@@ -28,6 +28,11 @@
         else $confirm_pwd='errpwd';
     }
 
+    //If the user wants to delete his account
+    else if(isset($_POST['delaccount']) && $_POST['delaccount']==1){
+        $delaccount='verify';
+    }
+
     //If the user wants to disconnect
     else if(isset($_POST['disconnect']) && $_POST['disconnect']==1){
         setcookie('authtoken', '', -1, '/');
@@ -43,7 +48,10 @@
     else if(isset($_POST['mail_connect']) && $_POST['mail_connect'] && isset($_POST['password_connect']) && $_POST['password_connect']){
         $connect=verify_connect($_POST);
         if($connect=='auth_success'){
-            header("Refresh: 0.2; url='profil.php'");
+            if(isset($_SESSION['checkout'])){
+                $_SESSION['authcheckout']='valid';
+                header("Location: /boutique/pages/checkout.php");
+            }else header("Refresh: 0.2; url='profil.php'");
         }
     }
 ?>
@@ -64,8 +72,26 @@
                 <h2>Mon compte</h2>
             </section>
         <?php
+            //Confirm user's will to delete his account
+            if(isset($delaccount) && $delaccount=='verify'){
+                require $root. 'pages/profil/delete.php';
+            }
+
+            //If the user confirm
+            else if(isset($_POST['confirmdelete']) && $_POST['confirmdelete']==1){
+                if(delete_user($user->id, $db)=='isdelete'){
+                    $isdelete=1;
+                    require $root . 'pages/profil/delete.php';
+                }
+            }
+
+            //If the user cancel
+            else if(isset($_POST['donotdelete']) && $_POST['donotdelete']==1){
+                header("Location:profil.php");
+            }
+
             //If the user has a valid authentication token
-            if(isset($authorized) && $authorized==1){
+            else if(isset($authorized) && $authorized==1){
                 require $root . 'pages/profil/connected.php';
             }
 

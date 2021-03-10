@@ -147,6 +147,42 @@ $yellow:#FFCC00;
             }
         }
     }
+    #empty{
+        min-height:30vh;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        color:white;
+        text-align:center;
+        a{
+            position:relative;
+            color:white;
+            text-decoration:none;
+            i{
+                visibility: hidden;
+                opacity:0;
+                position:absolute;
+                left:-10%;
+                top:25%;
+                transform:translateX(-300%);
+                transition:all 0.3s;
+            }
+            &:hover{
+                color:$yellow;
+                transition:all 0.4s;
+                i{
+                    visibility:visible;
+                    animation:slide_in_chevron 0.4s 0s ease-in forwards;
+                }
+            }
+        }
+    }
+}
+
+@keyframes slide_in_chevron{
+    0%{transform:translateX(-300%);opacity:0;}
+    100%{transform:translateX(0%);opacity:1;}
 }
 
 @media screen and(max-width:599px){

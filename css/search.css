@@ -72,10 +72,11 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 15%;
-  min-width: 160px;
+  min-width: 150px;
   color: white;
-  margin: 5% 2%;
-  padding: 1% 0;
+  padding: 3.5% 2%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
 }
 
 #main_search #search_results #search_results_box .watch_result a {
@@ -240,6 +241,9 @@
 @media screen and (max-width: 599px) {
   .alert_text {
     display: none;
+  }
+  .watch_result {
+    margin: 0;
   }
 }
 /*# sourceMappingURL=search.css.map */

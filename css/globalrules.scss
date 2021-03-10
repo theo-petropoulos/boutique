@@ -66,6 +66,18 @@ strong, em{
     font-size:80%;
 }
 
+.coloryellow{
+    color:$yellow;
+}
+
+.lined{
+    text-decoration:underline;
+}
+
+.smalltxt{
+    font-size:70%;
+}
+
 @keyframes fade-out{
     0%{opacity:1;}
     100%{opacity:0;z-index:-2;}

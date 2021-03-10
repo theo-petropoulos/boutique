@@ -39,7 +39,7 @@
 
         public function fetchOrders(int $id){
             $this->id_client=$id;
-            $stmt=self::$db->prepare("SELECT * FROM `factures` WHERE `id_client`=? ORDER BY `id`");
+            $stmt=self::$db->prepare("SELECT * FROM `factures` WHERE `id_client`=? ORDER BY `id` DESC");
             $stmt->execute([$this->id_client]);
             $factures=$stmt->fetchAll(PDO::FETCH_ASSOC);
             if(!empty($factures[0]['total'])){

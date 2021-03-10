@@ -28,7 +28,7 @@ for($i=0;isset($items[$i]) && $items[$i];$i++){
     ${"prix$i"}=number_format($items[$i]['prix'],2,'.',',');
     ${"total$i"}=number_format((intval(str_replace(',','',${"prix$i"}))*intval(str_replace(',','',${"quantite$i"}))),2,'.',',');
     ${"nom_produit$i"}=$watch->getNom();
-    ${"marque$i"}=$watch->getMarque();
+    ${"marque$i"}=$watch->brandName($watch->getMarque(), $db);
     $subtotal=intval($subtotal) + (intval(str_replace(',','',${"total$i"})));
 }
 
@@ -119,7 +119,7 @@ ${"html_product$i"}='
         <tr>
         <td align="center">' . ${"id_produit$i"} . '</td>
         <td align="center">' . ${"quantite$i"} . '</td>
-        <td>' . ${"nom_produit$i"} . ' - ' . ${"marque$i"} . '</td>
+        <td>' . ${"marque$i"} . ' - ' . ${"nom_produit$i"} . '</td>
         <td class="cost">' . ${"prix$i"} . '€</td>
         <td class="cost">' . ${"total$i"} . '€</td>
         </tr>';

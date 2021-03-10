@@ -1,5 +1,7 @@
-<section id="block_haut">
-    <div class="text">Votre panier est vide.</div>
+<section id="empty">
+    <div class="text"><p>Votre panier est vide.<br>
+    <a href="/boutique/pages/nouveautes.php"><i class="fas fa-chevron-right"></i>
+    Consulter les <span class="coloryellow">nouveautés</span>.</a></p></div>
 </section>
 <div class="suggestions_text"><p>Suggestions</p><span class="line"></span></div>
 <section class="suggestions">

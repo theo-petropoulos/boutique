@@ -46,11 +46,6 @@
                     $exist[$key]=intval($value);
                 }
             }
-            $query=self::$db->query("SELECT
-                (SELECT MAX(id) FROM `mails`) as `id_mail`,
-                (SELECT MAX(id) FROM `clients`) as `id_client`");
-            $res=$query->fetch(PDO::FETCH_ASSOC);
-
             //If there's a match in mail, the id_mail to insert in client is this match's id
             if($exist['id_mail']!==NULL){
                 $res['id_mail']=$exist['id_mail'];
@@ -58,24 +53,19 @@
             //If there's no match for mail in the db
             else{
                 //If there's at least one entry in mail, the id_mail to insert is this entry's id++, else it's 1
-                if($res['id_mail']!==NULL){
-                    $res['id_mail']++;
-                }else $res['id_mail']=1;
                 $query=self::$db->prepare('INSERT INTO `mails` (mail,newsletter) VALUES (?,0)');
                 $query->execute([$this->mail]);
+                $query2=self::$db->query('SELECT MAX(id) as `id_mail` FROM `mails`');
+                $res=$query2->fetch(PDO::FETCH_ASSOC);
             }
-            //If there's at least one entry in clients...
-            if($res['id_client']!==NULL){
-                $res['id_client']++;
-            }else $res['id_client']=1;
-
             //Authtoken will be used to keep the user connected through a cookie when he will tick 'remember me' while logging in
             //It will be updated upon every login
             $authtoken=create_token();
             $this->password=password_hash($this->password, PASSWORD_DEFAULT);
             $query=self::$db->prepare('INSERT INTO `clients` (nom,prenom,id_mail,telephone,password,authkey) VALUES(?,?,?,?,?,?)');
             $query->execute([$this->lastname, $this->firstname, $res['id_mail'], $this->phone, $this->password, $authtoken]);
-
+            $query2=self::$db->query('SELECT MAX(id) as `id_client` FROM `clients`');
+            $res=$query2->fetch(PDO::FETCH_ASSOC);
             //If there is a match for ip in the db, the id_client from ip is updated to the new user's id
             if($exist['id_ip']!==NULL){
                 $query=self::$db->prepare("UPDATE `ip` SET `id_client`=?");

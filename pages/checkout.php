@@ -2,9 +2,9 @@
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
-
+    
     //Access to checkout is only granted upon data sent by post
-    if(isset($_POST) && $_POST){
+    if((isset($_POST) && $_POST )|| (isset($_SESSION['checkout']) && $_SESSION['checkout'])){
         require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/checkout/conditions.php';
     } else die('Vous ne pouvez pas accéder à cette page.');
 ?>

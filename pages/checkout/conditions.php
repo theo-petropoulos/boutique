@@ -1,10 +1,15 @@
 <?php
-
-//If the user is logged in or ordering without an account
-if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
-    (isset($_COOKIE['invited']) && $_COOKIE['invited']) ){
-    //If the user access via cart page
-    if(isset($_POST['checkout']) && $_POST['checkout']){
+if(isset($_SESSION['checkout']) && $_SESSION['checkout'] && isset($_SESSION['authcheckout']) && $_SESSION['authcheckout']=='valid'){
+    $_POST['checkout']=$_SESSION['checkout'];
+    unset($_SESSION['checkout'],$_SESSION['authcheckout']);
+}
+//If the user access via cart page (only way possible)
+if(isset($_POST['checkout']) && $_POST['checkout']){
+    //If the user is logged in or ordering without an account
+    if((!isset($_COOKIE['authtoken']) || !$_COOKIE['authtoken']) && (!isset($_SESSION['checkout']) || $_SESSION['checkout'])){
+        $_SESSION['checkout']=$_POST['checkout'];
+        header("Location: /boutique/pages/profil.php");
+    }else if(isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']){
         $checkout_valid='';
         //If the data sent and the data in cookie match -light security check-
         if($_POST['checkout']==$_COOKIE['basket']){
@@ -14,7 +19,7 @@ if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
             if(!$proceed){
                 die('Vous ne pouvez pas accéder à cette page.');
             }
-            //If so, reorganize array
+            //If so, reorganize array 
             else{
                 $items=get_basket($_COOKIE['basket']);
                 $total_price=0;
@@ -49,6 +54,6 @@ if( (isset($_COOKIE['authtoken']) && $_COOKIE['authtoken']) ||
                     }
                 }
         }
-    } else die("Une erreur inattendue est survenue.");
+    }else die("Une erreur inattendue est survenue.");
 }
 else die("Une erreur inattendue est survenue.");

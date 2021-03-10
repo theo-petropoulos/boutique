@@ -103,21 +103,32 @@
                     $orders=new Order();
                     $orders=$orders->fetchOrders(intval($user->id));
                     if($orders!=='none'){?>
-                    <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){
-                        $url="/boutique/model/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];?>
-                        <div class="order_min">
-                            <p class="smalltxt"><?php
-                                $date = DateTime::createFromFormat('Y-m-j', $orders[$i]['date']);
-                                echo $date->format('d M Y');
-                            ?></p>
-                            <p>Commande n° <span class="coloryellow"><?=$orders[$i]['id'];?></span></p>
-                            <p class="strtxt"><?=number_format(intval($orders[$i]['total']),2,'.',',');?> €</p>
-                            <p class="coloryellow"><?=$orders[$i]['etat'];?></p>
-                            <div class="tdimg">
-                                <a href="<?=$url;?>"><img src="/boutique/assets/images/icone-pdf.png"></a>
-                            </div>
-                        </div>
-                        <?php } ?>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Numéro</th>
+                                    <th>Date</th>
+                                    <th>Prix</th>
+                                    <th>État</th>
+                                    <th>Facture</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){
+                                    $url="/boutique/model/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];
+                                    ?>
+                                <tr>
+                                    <td class="tdnum"><p><?=$orders[$i]['id'];?></p></td>
+                                    <td class="tddate"><p><?=$orders[$i]['date'];?></p></td>
+                                    <td class="tdprix"><p><?=number_format(intval($orders[$i]['total']),2,'.',',');?> €</p></td>
+                                    <td class="tdetat"><p><?=$orders[$i]['etat'];?></p></td>
+                                    <td class="tdimg">
+                                        <a href="<?=$url;?>"><img src="/boutique/assets/images/icone-pdf.png"></a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     <?php }
                     else{
                         echo "Vous n'avez pas encore effectué de commandes.";

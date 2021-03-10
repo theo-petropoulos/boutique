@@ -542,32 +542,56 @@ $yellow:#FFCC00;
                     #orders_wrap{
                         position:relative;
                         display:flex;
-                        flex-wrap:wrap;
-                        justify-content: space-around;
+                        justify-content: center;
                         color:white;
                         height:70%;
                         width:92%;
                         overflow:scroll;
                         overflow-x:hidden;
-                        scrollbar-color: $yellow $blue;
-                        scrollbar-width: thin;
-                        .order_min{
-                            display:flex;
-                            flex-direction:column;
-                            justify-content: center;
-                            align-items:center;
-                            width:25%;
-                            min-width:150px;
-                            background:rgba(255,255,255,0.1);
-                            border:2px solid rgba(255,255,255,0.3);
-                            border-radius:10px;
-                            margin-bottom:3%;
-                            padding:3% 0;
-                            box-shadow:4px 4px 8px rgba(0,0,0,7);
-                            .tdimg{
-                                width:40%;
-                                img{
+                        table{
+                            height:100%;
+                            width:90%;
+                            color:white;
+                            text-align:center;
+                            border-collapse: collapse;
+                            tr{
+                                border:2px solid white;
+                                td{
+                                    vertical-align: middle;
+                                    align-self:center;
+                                }
+                            }
+                            thead{
+                                background:rgba(4,19,61,0.5);
+                                tr{
+                                    th{
+                                        padding:2% 0;
+                                    }
+                                }
+                            }
+                            td{
+                                justify-content: center;
+                                align-items:center;
+                                text-align:center;
+                                border-right:2px solid white;
+                                table{
                                     width:100%;
+                                }
+                                &.tdimg{
+                                    position:relative;
+                                    width:15%;
+                                    img{
+                                        width:60%;
+                                    }
+                                }
+                                &.tdnum{
+                                    width:auto;
+                                }
+                                &:nth-last-of-type(){
+                                    border-right:none;
+                                }
+                                &.tddate{
+                                    width:auto;
                                 }
                             }
                         }

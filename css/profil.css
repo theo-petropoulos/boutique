@@ -5,7 +5,7 @@
 }
 
 #main_profil .err_occured {
-  min-height: 50vh;
+  min-height: 65vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -628,6 +628,30 @@
   transition: all 0.5s;
 }
 
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form#delaccount {
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form#delaccount input[type=submit] {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background: none;
+  border: none;
+  color: rgba(255, 50, 0, 0.6);
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_infos #form_container form#delaccount input[type=submit]:hover {
+  color: red;
+}
+
 #profil_connected #block_bas ul#profil li.profil_block section.active_block.active_block_orders {
   position: absolute;
   width: 300%;
@@ -751,77 +775,50 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   color: white;
   height: 70%;
   width: 92%;
   overflow: scroll;
   overflow-x: hidden;
+  scrollbar-color: #FFCC00 #04133D;
+  scrollbar-width: thin;
 }
 
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table {
-  height: 100%;
-  width: 90%;
-  color: white;
-  text-align: center;
-  border-collapse: collapse;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table tr {
-  border: 2px solid white;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table tr td {
-  vertical-align: middle;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table thead {
-  background: rgba(4, 19, 61, 0.5);
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table thead tr th {
-  padding: 2% 0;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td {
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap .order_min {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
-  border-right: 2px solid white;
+  width: 25%;
+  min-width: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin-bottom: 3%;
+  padding: 3% 0;
+  -webkit-box-shadow: 4px 4px 8px black;
+          box-shadow: 4px 4px 8px black;
 }
 
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td table {
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap .order_min .tdimg {
+  width: 40%;
+}
+
+#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap .order_min .tdimg img {
   width: 100%;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tdimg {
-  position: relative;
-  width: 15%;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tdimg img {
-  width: 60%;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tdnum {
-  width: auto;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td:nth-last-of-type() {
-  border-right: none;
-}
-
-#profil_connected #block_bas ul#profil li.profil_block section.active_block #orders_wrap table td.tddate {
-  width: auto;
 }
 
 #profil_connected #block_bas ul#profil li.profil_block input[type=radio] {
@@ -869,6 +866,71 @@
   transition: all 0.6s;
 }
 
+.delete, .isdelete {
+  min-height: 65vh;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delete p, .isdelete p {
+  width: 70%;
+}
+
+.delete h3 {
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.delete form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  min-width: 150px;
+}
+
+.delete form input[type=submit] {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 50%;
+  margin-bottom: 2%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2% 0 2% 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.delete form input[type=submit]:hover {
+  cursor: pointer;
+  color: yellow;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 @-webkit-keyframes fadein {
   0% {
     opacity: 0;
@@ -912,6 +974,11 @@
 }
 
 @media screen and (max-width: 599px) {
+  html body main#main_profil section#profil_connected div#block_bas ul#profil li.profil_block section.active_block.active_block_infos,
+  html body main#main_profil section#profil_connected div#block_bas ul#profil li.profil_block section.active_block.active_block_orders {
+    height: auto;
+    padding: 10% 0%;
+  }
   #main_profil .profil_forms {
     width: 100%;
     margin: 0;

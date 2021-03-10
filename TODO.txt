@@ -1,11 +1,19 @@
 X index ( produits / marque dynamiques )
 X cookie refresh ( auth & basket )
 X pdf facture
-supprimer compte
-mailer
-force register/connect on purchase
-X search bar
-tracking ( order status + contact ? ) 
-shop locator
 X prevent user from adding 'more than stock' items to basket
 X hide stock, add message low stock
+X force register/connect on purchase
+X search bar
+X del account
+X design order history
+design basket
+tracking ( order status + contact ? ) 
+shop locator
+
+--- polishing ---
+
+mailer
+account active/inactive
+re-activate account
+ip blacklist

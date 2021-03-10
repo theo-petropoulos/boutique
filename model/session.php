@@ -6,7 +6,7 @@
     require $root . 'model/sql.php';
     require $root . 'model/class/User.php';
     require $root . 'model/class/Order.php';
-
+    
     //Check if cookies are allowed
     if(!isset($_COOKIE['allow'])){
         if(setcookie('allow', 'authorized', time()+36000, '/')){?>

@@ -291,4 +291,11 @@ class Watch
         }
         else return 0;
     }
+
+    public function brandName(int $id, $db){
+        $stmt=$db->prepare('SELECT `nom` FROM `marques` WHERE `id`=?');
+        $stmt->execute([$id]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['nom'];
+    }
 }
