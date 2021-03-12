@@ -122,7 +122,9 @@
                     else{
                         echo "Vous n'avez pas encore effectué de commandes.";
                     }
-                ?></div>
+                    ?>
+                    </div>
+                    <div class="separator_white"></div>
                 </section>
             </li>
             <li class="profil_block">

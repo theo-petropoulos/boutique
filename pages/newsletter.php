@@ -50,7 +50,8 @@
                         concernant, veuillez vous adresser à privacy@vonharper.com.
                 </p>
             </div>
-            <?php } else if(isset($_POST) && $_POST){
+            <?php } else if(isset($_POST) && $_POST){?>
+                <section id="newsletter_return"><?php
                 switch($news){
                     //If user's input isn't correct
                     case 'suberr':?>
@@ -58,7 +59,8 @@
                     <?php break;
                     //If user is already registered, update its newsletter status to 1
                     case 'subchanged':?>
-                        <p>Vos préférences ont été mises à jour.</p>
+                        <p>Vos préférences ont été mises à jour. Vous allez recevoir un mail de confirmation.<br>
+                        Retourner à l'<a class="strtxt" href="/boutique/index.php">Accueil</a>.</p>
                         <?php break;
                     //If the mail doesn't exist in the db, add it and set its newsletter status to 1
                     case 'subsuccess':?>
@@ -70,6 +72,7 @@
                         <p>Un problème est survenu. Veuillez <a href="newsletter.php">réessayer</a>.</p>
                         <?php break;
                 }
+                ?></section><?php
             }?>
         </main>
         <?php include $root . 'pages/globals/footer.php';?>

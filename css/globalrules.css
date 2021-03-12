@@ -16,7 +16,7 @@ strong, em {
   width: 80%;
   background: -webkit-gradient(linear, left top, right top, from(rgba(47, 53, 66, 0)), color-stop(30%, black), color-stop(50%, black), color-stop(75%, black), to(rgba(47, 53, 66, 0)));
   background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, black 30%, black 50%, black 75%, rgba(47, 53, 66, 0) 100%);
-  margin: 2%;
+  margin: 2% auto;
 }
 
 .separator_white {
@@ -24,7 +24,7 @@ strong, em {
   width: 80%;
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(30%, white), color-stop(50%, white), color-stop(75%, white), to(rgba(255, 255, 255, 0)));
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%, white 50%, white 75%, rgba(255, 255, 255, 0) 100%);
-  margin: 2%;
+  margin: 2% auto;
 }
 
 .addbasket {
@@ -78,6 +78,66 @@ strong, em {
 
 .smalltxt {
   font-size: 70%;
+}
+
+#newsletter_return, #form_return {
+  min-height: 55vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-align: center;
+}
+
+#newsletter_return a, #form_return a {
+  color: #04133D;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  text-decoration: none;
+}
+
+#newsletter_return a::after, #form_return a::after {
+  content: ' ';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #04133D;
+  width: 100%;
+  height: 1.2px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+#newsletter_return a:hover, #form_return a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+#newsletter_return a:hover::after, #form_return a:hover::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  opacity: 1;
+  background: #FFCC00;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 @-webkit-keyframes fade-out {

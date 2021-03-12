@@ -6,11 +6,18 @@
     require $root . 'model/sql.php';
     require $root . 'model/class/User.php';
     require $root . 'model/class/Order.php';
-    
+    $cookie_options = array(
+        'expires' => time() + 36000,
+        'path' => '/',
+        'domain' => 'localhost',
+        'secure' => true,
+        'httponly' => false,
+        'samesite' => 'Strict'
+      );
     //Check if cookies are allowed
     if(!isset($_COOKIE['allow'])){
-        if(setcookie('allow', 'authorized', time()+36000, '/')){?>
-            <div class="allow_cookie"><p>Nous utilisons des cookies destinés uniquement au fonctionnement du site. Les données stockées sont uniquement 
+        if(setcookie('allow', 'authorized', $cookie_options)){?>
+            <div class="allow_cookie"><p>Nous utilisons des cookies destinés strictement au fonctionnement du site. Les données stockées sont uniquement 
             celles que vous avez accepté de nous communiquer. Vos informations personnelles ne sont ni vendues, ni échangées avec un tiers.</p></div>
         <?php } else{ ?>
             <div class="allow_cookie"><p>Ce site utilise des cookies pour fonctionner normalement. Votre navigateur ne semble pas accepter leur
@@ -19,7 +26,7 @@
         <?php }
     }
     else{
-        setcookie('allow', 'authorized', time()+36000, '/');
+        setcookie('allow', 'authorized', $cookie_options);
     }
 
     //If there is an authentication cookie
@@ -32,7 +39,7 @@
                 $user=$user->getAllData();
                 $authorized=1;
                 //Refresh the auth cookie upon every visit
-                setcookie('authtoken',$_COOKIE['authtoken'],time()+360000, '/');
+                setcookie('authtoken',$_COOKIE['authtoken'], $cookie_options);
                 break;
             //If something is wrong with the auth cookie, it is deleted
             case 'cookie_err':
@@ -46,7 +53,7 @@
 
     //Refresh basket cookie upon every visit
     if(isset($_COOKIE['basket']) && $_COOKIE['basket']){
-        setcookie('basket',$_COOKIE['basket'],time()+360000, '/');
+        setcookie('basket',$_COOKIE['basket'], $cookie_options);
     }
 
     //If the user add a product to the basket from anywhere
@@ -64,7 +71,7 @@
                 $basket=get_cookie($basket);
                 if($count==0) $basket .= '&id=' . $_POST['addbasket'] . '&qte=' . $_POST['addquantity'];
             } else $basket = '&id=' . $_POST['addbasket'] . '&qte=' . $_POST['addquantity'];
-            setcookie('basket', $basket, time() + 36000, '/');
+            setcookie('basket', $basket, $cookie_options);
             ?><div class="addbasket">Produit ajouté au panier.</div><?php
         } else die("Une erreur s'est produite.");
     }

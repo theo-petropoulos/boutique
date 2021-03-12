@@ -1,5 +1,6 @@
 <?php 
-    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';?>
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+?>
 
 <!DOCTYPE html>
 
@@ -12,6 +13,9 @@
         <section id="banner_standard">
             <h2>Formulaire de contact</h2>
         </section>
+        <?php if( 
+            (!isset($_POST['email']) || !$_POST['email']) && (!isset($_POST['nom']) || $_POST['nom']) && 
+            (!isset($_POST['comment']) || !$_POST['comment']) ) { ?>
         <section id="form_contact">
             <form method="post" action="contact.php">
                 <label for="email">Adresse mail* :</label>
@@ -74,6 +78,14 @@
                 </p>
             </div>
         </section>
+        <?php } else{ ?>
+            <section id="form_return">
+                <p> Votre message a bien été envoyé. Vous allez recevoir un mail de confirmation.<br>
+                    Notre équipe vous répondra dans un 
+                    délai de 48 à 72h hors week-end et périodes de fêtes.<br>
+                    Retour à l'<a class="strtxt" href="/boutique/index.php">Accueil</a>.</p>
+            </section>
+        <?php } ?>
 		<?php include $root . 'pages/globals/footer.php';?>
     </body>
 </html>

@@ -10,6 +10,7 @@ X design order history
 design basket
 tracking ( order status + contact ? ) 
 shop locator
+order history detail
 
 --- polishing ---
 
@@ -17,3 +18,4 @@ mailer
 account active/inactive
 re-activate account
 ip blacklist
+carnet d'adresses

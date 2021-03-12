@@ -25,73 +25,86 @@
     
     $subtotal=0;
     $shipping=number_format((7.95+(50/100*count($basket)*7.95)),2,'.',',');
-    ?><section id="table_section">
-        <table>
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Quantité</th>
-                    <th>Prix unitaire</th>
-                    <th>Prix total</th>
-                </tr>
-            </thead>
-                <tbody>
-                <?php
-                foreach($basket as $key=>$value){?>
-                    <tr>
-                        <?php 
-                        $array=new ManWatch();
-                        $watch=new Watch();
-                        $watch->hydrate($array->getProductByID($value['id']));
-                        $url='/boutique/assets/images/produits/'.$watch->getNomImage();
-                        $subtotal=intval($subtotal)+intval($watch->getPrix()*$value['qty']);?>
-                        <td class="tdname">
-                            <img src="<?=$url;?>">
-                            <div class="product">
-                                <a href="/boutique/pages/produit.php?produit=<?=$watch->getId();?>&collection=<?=$watch->getMarque();?>"><?=ucfirst(strtolower($watch->getNom()));?></a>
-                                <div class="mod_item">
-                                    <form method="post" action="">
-                                        <input type="hidden" name="sub" value=1>
-                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
-                                        <input type="submit" value="-">
-                                    </form>
-                                    <form method="post" action="" id="delitem">
-                                        <input type="hidden" name="del" value=1>
-                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
-                                        <input type="submit" value="Supprimer">
-                                    </form>
-                                    <form method="post" action="">
-                                        <input type="hidden" name="add" value=1>
-                                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
-                                        <input type="submit" value="+">
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                        <td><?=$value['qty'];?></td>
-                        <td><?=number_format($watch->getPrix(),2,'.',',');?>€</td>
-                        <td><?=number_format(($watch->getPrix()*$value['qty']),2,'.',',');?>€</td>
-                    </tr>
-                <?php } $total=$subtotal+$shipping?>
-                <tr>
-                    <td class="blanktotal" colspan="2" rowspan="3"></td>
-                    <td class="totals">Sous-total :</td>
-                    <td class="totals cost"><?=number_format($subtotal,2,'.',',');?>€</td>
-                </tr>
-                <tr>
-                    <td class="totals">Frais de port :</td>
-                    <td class="totals cost"><?=number_format($shipping,2,'.',',');?>€</td>
-                </tr>
-                <tr>
-                    <td class="totals"><b>Total :</b></td>
-                    <td class="totals cost"><b><?=number_format($total,2,'.',',');?>€</b></td>
-                </tr>
-            </tbody>
-        </table>
-        <form id="checkout" method="post" action="checkout.php">
-            <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
-            <input type="submit" value="Procéder au paiement">
-        </form>
+    ?><section id="order_section">
+        <div id="left_order">
+            <div id="orderdesc">
+                <div id="orderp">
+                    <p class="strtxt coloryellow">Produit</p>
+                </div>
+                <div id="ordern">
+                    <p class="strtxt coloryellow">Quantité</p>
+                    <p class="strtxt coloryellow">Prix U.</p>
+                    <p class="strtxt coloryellow">Prix Total</p>
+                </div>
+            </div>
+            <div id="order_block">
+        <?php foreach($basket as $key=>$value){
+            $array=new ManWatch();
+            $watch=new Watch();
+            $watch->hydrate($array->getProductByID($value['id']));
+            $url='/boutique/assets/images/produits/'.$watch->getNomImage();
+            $subtotal=intval($subtotal)+intval($watch->getPrix()*$value['qty']);?>
+
+            <div class="orderitem_min">
+                <div class="itemdesc">
+                    <form method="post" action="" id="delitem">
+                        <input type="hidden" name="del" value=1>
+                        <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                        <button type="submit"><i class="fas fa-times"></i></button>
+                    </form>
+                    <a id="aimg" href="/boutique/pages/produit.php?produit=<?=$watch->getId();?>&collection=<?=$watch->getMarque();?>"><img src="<?=$url;?>"></a>
+                    <a class="strtxt coloryellow" href="/boutique/pages/collection.php?collection=<?=$watch->getMarque();?>"><?=$watch->brandName($watch->getMarque(), $db);?></a>
+                    <span class="tiret"> - </span>
+                    <a href="/boutique/pages/produit.php?produit=<?=$watch->getId();?>&collection=<?=$watch->getMarque();?>"><?=ucfirst(strtolower($watch->getNom()));?></a>
+                </div>
+                <div class="itemnumbers">
+                    <div class="divqty">
+                        <form method="post" action="">
+                            <input type="hidden" name="sub" value=1>
+                            <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                            <input type="submit" value="-">
+                        </form>
+                        <?=$value['qty'];?>
+                        <form method="post" action="">
+                            <input type="hidden" name="add" value=1>
+                            <input type="hidden" name="mod_item" value="<?=$watch->getId();?>">
+                            <input type="submit" value="+">
+                        </form>
+                    </div>
+                    <p><?=number_format($watch->getPrix(),2,'.',',');?>€</p>
+                    <p class="strtxt coloryellow"><?=number_format(($watch->getPrix()*$value['qty']),2,'.',',');?>€</p>
+                </div>
+            </div>
+            <div class="separator_white"></div>
+        <?php } $total=$subtotal+$shipping?>
+            </div>
+        </div>
+        <div id="right_order">
+            <div id="right_span">
+                <div id="subtotal" class="costs">
+                    <p>Sous-total :</p>
+                    <p><?=number_format($subtotal,2,'.',',');?>€<p>
+                </div>
+                <div id="shipping" class="costs">
+                    <p>Frais de port :</p>
+                    <p><?=number_format($shipping,2,'.',',');?>€</p>
+                </div>
+                <div id="total" class="costs">
+                    <p>Total :</p>
+                    <p><?=number_format($total,2,'.',',');?>€</p>
+                </div>
+                <div id="checkouts">
+                    <form id="checkout" method="post" action="checkout.php">
+                        <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
+                        <input type="submit" value="Paiement">
+                    </form>
+                    <form id="paypal" method="post" action="checkout.php">
+                        <input type="hidden" name="checkout" value="<?=$_COOKIE['basket'];?>">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
     <div class="suggestions_text"><p>Suggestions</p><span class="line"></span></div>
     <section class="suggestions">

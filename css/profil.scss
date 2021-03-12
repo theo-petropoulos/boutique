@@ -455,8 +455,11 @@ $yellow:#FFCC00;
                     }
                     &.active_block_orders{
                         position:absolute;
+                        display:flex;
+                        flex-direction:column;
                         width:300%;
                         left:-25%;
+                        max-height:60vh;
                         transform:translateX(-25%);
                     }
                     &.active_block_services{
@@ -546,6 +549,7 @@ $yellow:#FFCC00;
                         justify-content: space-around;
                         color:white;
                         height:70%;
+                        max-height:60vh;
                         width:92%;
                         overflow:scroll;
                         overflow-x:hidden;

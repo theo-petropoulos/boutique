@@ -1,0 +1,314 @@
+.basket {
+  position: relative;
+  width: 100%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: black;
+  background-attachment: fixed;
+  background-image: url("/boutique/assets/images/night_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basket #notempty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.basket #notempty #table_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+.basket #notempty #table_section table {
+  width: 100%;
+  color: white;
+  border-collapse: collapse;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  -webkit-box-shadow: 2px 2px 50px 18px rgba(0, 0, 0, 0.7);
+          box-shadow: 2px 2px 50px 18px rgba(0, 0, 0, 0.7);
+}
+
+.basket #notempty #table_section table thead {
+  background: #04133D;
+  border-bottom: 2px solid;
+  -o-border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(black), color-stop(30%, black), to(white));
+     border-image: linear-gradient(90deg, black 0%, black 30%, white 100%);
+  border-image-slice: 2;
+}
+
+.basket #notempty #table_section table thead tr th {
+  padding: 2% 0;
+  font-size: calc(12px + 0.3vw);
+}
+
+.basket #notempty #table_section table tbody tr {
+  background: black;
+}
+
+.basket #notempty #table_section table tbody td {
+  border-bottom: 2px solid white;
+}
+
+.basket #notempty #table_section table tbody td#tdqty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.basket #notempty #table_section table tbody td#tdqty form input {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family: 'Lobster';
+  color: rgba(236, 139, 83, 0.5);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #notempty #table_section table tbody td#tdqty form input:hover {
+  cursor: pointer;
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.basket #notempty #table_section table tbody td#tdqty form:first-of-type input, .basket #notempty #table_section table tbody td#tdqty form:last-of-type input {
+  font-size: 1.5em;
+}
+
+.basket #notempty #table_section table tbody td.totals {
+  border-left: 2px solid white;
+  padding: 5px 5px;
+}
+
+.basket #notempty #table_section table tbody td#tdname {
+  font-size: calc(10px + 0.2vw);
+  font-weight: 800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket #notempty #table_section table tbody td#tdname a {
+  text-decoration: none;
+  color: white;
+  font-size: calc(12px + 0.5vw);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #notempty #table_section table tbody td#tdname a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.basket #notempty #table_section table tbody td#tdname img {
+  padding: 2%;
+  width: 5%;
+  min-width: 25px;
+}
+
+.basket #notempty #table_section table tbody td#tdname .mod_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.basket #notempty #table_section table tbody td#tdname form#delitem button {
+  color: red;
+  background: transparent;
+  outline: none;
+  border: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #notempty #table_section table tbody td#tdname form#delitem button:hover {
+  cursor: pointer;
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.basket #notempty #table_section table tbody td .mod_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basket #notempty #table_section table tbody td:nth-of-type(1n+1) {
+  text-align: center;
+}
+
+.basket #notempty #table_section table tbody td.cost {
+  text-align: end;
+}
+
+.basket #notempty #table_section form#checkout {
+  margin-top: 2%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.basket #notempty #table_section form#checkout input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background: #04133D;
+  color: #FFCC00;
+  border: 2px solid #FFCC00;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  padding: 7% 10%;
+  margin-left: -20%;
+}
+
+.basket #notempty #table_section form#checkout input:hover {
+  cursor: pointer;
+  background: #4067bb;
+  color: white;
+  border: 2px solid white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.basket #empty {
+  min-height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.basket #empty a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
+
+.basket #empty a i {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: -10%;
+  top: 25%;
+  -webkit-transform: translateX(-300%);
+          transform: translateX(-300%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #empty a .coloryellow {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.basket #empty a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.basket #empty a:hover i {
+  visibility: visible;
+  -webkit-animation: slide_in_chevron 0.4s 0s ease-in forwards;
+          animation: slide_in_chevron 0.4s 0s ease-in forwards;
+}
+
+.basket #empty a:hover .coloryellow {
+  color: white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+@-webkit-keyframes slide_in_chevron {
+  0% {
+    -webkit-transform: translateX(-300%);
+            transform: translateX(-300%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide_in_chevron {
+  0% {
+    -webkit-transform: translateX(-300%);
+            transform: translateX(-300%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .suggestions_text {
+    display: none;
+  }
+  .basket #notempty #table_section {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=panier - Copie.css.map */

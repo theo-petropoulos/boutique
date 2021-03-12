@@ -18,7 +18,10 @@
 
     <body>
     <?php include $root . 'pages/globals/header.php';
-        ?><main class="basket"><?php
+        ?><main class="basket">
+            <section id="banner_standard">
+                <h2>Mon Panier</h2>
+            </section><?php
         //If a basket is set, show all items in it
         if(isset($_COOKIE['basket']) && $_COOKIE['basket']){?>
             <section id="notempty"><?php
