@@ -31,8 +31,10 @@ tr th {
     padding: 20px;
 }
 
-h3 {
+h2 {
     text-align: center;
+    color: white;
+
 }
 
 label {
