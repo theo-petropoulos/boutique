@@ -36,6 +36,7 @@
       -ms-flex-align: center;
           align-items: center;
   min-height: 60vh;
+  background: blue;
 }
 
 #body_checkout #checkingout #formcontainer {
@@ -53,6 +54,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: green;
 }
 
 #body_checkout #checkingout #formcontainer form {
