@@ -12,6 +12,9 @@ $Product = new Watch();
 $ManWatch = new ManWatch();
 $arrayProduct = $ManWatch->getProduct(intval($_GET['collection']), intval($_GET['produit']));
 $Product->hydrate($arrayProduct);
+/**********************************************************/
+$marquename=$Product->brandName(intval($_GET['collection']), $db);
+/**********************************************************/
 $Price = $Product->getPrix();
 //Affiche promotion si existante
 $ArrayPromo = $ManPromo->get_promo($Product);
@@ -33,13 +36,12 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
 <main>
     <!-- TITRE (PRODUCT) -->
     <div class="container_main_title">
-        <h1 class="main_title"><?= strtoupper($_SESSION['marque']) ?></h1>
+        <h1 class="main_title"><?= strtoupper($marquename) ?></h1>
     </div>
 
     <section class="product_presentation">
-
         <div class="container_pic_prod">
-            <img class="pic_prod" width="300px" src="<?= $_SESSION['path_pic'] . '/' . $Product->getNomImage() ?>"
+            <img class="pic_prod" width="300px" src="/boutique/assets/images/produits/<?=$Product->getNomImage();?>"
                  alt="">
         </div>
         <article class="artticle_prod">
@@ -79,9 +81,9 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
             <?php foreach ($Similary as $item): ?>
                 <div>
                     <?php if (isset($_GET['collection']) && $_GET['collection'] > 0): ?>
-                        <a href="produit.php?produit=<?= $item['id'] ?>&collection=<?= $item['id_marque'] ?>"><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?> " alt=""></a>
+                        <a href="produit.php?produit=<?= $item['id'] ?>&collection=<?= $item['id_marque'] ?>"><img width="80px" src="/boutique/assets/images/produits/<?=$item['image'] ?> " alt=""></a>
                     <?php else: ?>
-                        <a href=""><img width="100px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?>" alt=""></a>
+                        <a href=""><img width="100px" src="/boutique/assets/images/produits/<?=$item['image'] ?>" alt=""></a>
                     <?php endif; ?>
                     <h5 class="product_simi"><?= $item['nom'] ?></h5>
                 </div>
