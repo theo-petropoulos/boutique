@@ -87,7 +87,7 @@ class ManWatch extends Manager
      */
     public function getProduct(int $idCollection, int $idProduct): array
     {
-        $sql = 'SELECT * FROM produits WHERE id_marque=' . $idCollection . ' AND id=' . $idProduct;
+        $sql = "SELECT * FROM produits WHERE id_marque='$idCollection' AND id='$idProduct'";
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         return $array = [
             'id' => $result[0]['id'],

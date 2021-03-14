@@ -13,6 +13,7 @@ $PromoInfos = null;
 $path_pics = null;
 $PromoProd = [];
 $marques = $ManWatch->getCollection();
+$test='';
 
 //Condition permettant de définir la collection
 if (isset($_GET['collection'])) :
@@ -22,15 +23,13 @@ if (isset($_GET['collection'])) :
     foreach ($marques as $marque):
         if ($marque->id == $_GET['collection']) {
             $collection = ucfirst($marque->nom);
-            $marque = $marque->id;
-        } else {
-            $collection = ucfirst($marques[0]->nom);
-            $marque = $marques[0]->id;
-            $_SESSION['marque'] = $marques[0]->nom;
-        }
+            $test = $marque->id;
+            $_SESSION['marque']=$collection;
+        } 
     endforeach;
 else: header('location:../index.php');
 endif;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +67,7 @@ endif;
                         isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>
                         <div class="container_price">
                             <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
-                            <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $marque ?>"
+                            <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $test ?>"
                                class="buy">En savoir plus</a>
                         </div>
                     </div>
