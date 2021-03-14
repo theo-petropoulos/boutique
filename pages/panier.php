@@ -4,7 +4,6 @@
     require $root . 'model/class/ManWatch.php';
 
     if(isset($_POST['addbasket']) && $_POST['addbasket']){
-        echo "test";
         header("Location: panier.php");
     }
     

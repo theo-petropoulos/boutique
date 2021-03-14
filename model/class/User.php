@@ -85,11 +85,13 @@
         //Connect a user
         public function connect(){
             $stmt=self::$db->prepare(
-                "SELECT clients.password,clients.id, ip.id_client, ip.ip FROM `clients` INNER JOIN `ip`
+                "SELECT clients.password,clients.id, ip.id_client, ip.ip FROM `clients` LEFT JOIN `ip` 
+                ON clients.id=ip.id_client 
                 WHERE `id_mail`=(SELECT `id` FROM `mails` WHERE `mail`=?)
                 ");
             $stmt->execute([$this->mail]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
             if(!is_bool($res['password'])){
                 if(password_verify($this->password, $res['password'])){
                     if($this->ip==$res['ip']){

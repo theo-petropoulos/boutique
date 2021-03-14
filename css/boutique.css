@@ -9,6 +9,7 @@
 @import url("panier.css");
 @import url("suggestions.css");
 @import url("search.css");
+@import url("checkout.css");
 body {
   margin: 0;
   padding: 0;

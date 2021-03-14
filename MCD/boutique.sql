@@ -233,7 +233,7 @@ INSERT INTO `commandes` (`id`, `id_produit`, `id_facture`, `quantite_produit`, `
 DROP TABLE IF EXISTS `factures`;
 CREATE TABLE IF NOT EXISTS `factures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_client` int(11) NOT NULL,
+  `id_client` int(11),
   `date` date NOT NULL,
   `etat` varchar(100) NOT NULL,
   `suivi` varchar(100) DEFAULT NULL,

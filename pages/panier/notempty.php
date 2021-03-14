@@ -18,7 +18,7 @@
                 else die("Une erreur inattendue est survenue.");
             }
         }
-        setcookie('basket', get_cookie($basket), time()+36000, '/');
+        setcookie('basket', get_cookie($basket), $cookie_options);
         $basket=get_basket($_COOKIE['basket']);
         header("Location: panier.php");
     }

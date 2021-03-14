@@ -372,9 +372,9 @@
 
 .basket #notempty #order_section #right_order #right_span #checkouts form input:hover {
   cursor: pointer;
-  background: #4067bb;
+  background: #FFCC00;
   color: white;
-  border: 2px solid white;
+  border: 2px solid #FFCC00;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }

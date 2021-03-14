@@ -47,7 +47,19 @@ if(isset($_POST['checkout']) && $_POST['checkout']){
                             $_SESSION['purchase']='success';
                             header("Location: ../pages/panier.php");
                         }
-                        else{unset($order);setcookie('basket', '', -1, '/');}
+                        else if( 
+                            isset($instock['return']) && $instock['return']==0 && 
+                            isset($instock['object']) && is_int($instock['object']) ){
+                            unset($order);
+                            $basket=get_basket($_COOKIE['basket']);
+                            foreach($basket as $entry=>$object){
+                                if($object['id']==$instock['object']){
+                                    unset($basket[$entry]);
+                                }
+                            }
+                            setcookie('basket', get_cookie($basket), $cookie_options);
+                            $basket=get_basket($_COOKIE['basket']);
+                        }
                     }
                     else if(isset($_COOKIE['invited']) && $_COOKIE['invited']){
 

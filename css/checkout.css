@@ -1,0 +1,133 @@
+#body_checkout {
+  position: relative;
+  background-attachment: fixed;
+  background-image: url("/boutique/assets/images/night_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#body_checkout #outofstock {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#body_checkout #checkingout {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 60vh;
+}
+
+#body_checkout #checkingout #formcontainer {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#body_checkout #checkingout #formcontainer form {
+  position: relative;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: red;
+  padding: 8% 10%;
+}
+
+#body_checkout #checkingout #formcontainer form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#body_checkout #checkingout #formcontainer form div .column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 38%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 120px;
+}
+
+#body_checkout #checkingout #formcontainer form div .column:first-of-type {
+  margin-right: 5%;
+}
+
+#body_checkout #checkingout #formcontainer form div .column:last-of-type {
+  margin-left: 5%;
+}
+
+#body_checkout #checkingout #formcontainer form input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#body_checkout #checkingout #formcontainer form input[type=text], #body_checkout #checkingout #formcontainer form input[type=date] {
+  margin-bottom: 4%;
+}
+
+#body_checkout #checkingout #formcontainer form input[type=submit] {
+  padding: 5% 0%;
+  margin-bottom: none;
+  background: #04133D;
+  color: #FFCC00;
+  border: 1px solid #FFCC00;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#body_checkout #checkingout #formcontainer form input[type=submit]:hover {
+  cursor: pointer;
+  color: white;
+  background: #FFCC00;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+/*# sourceMappingURL=checkout.css.map */

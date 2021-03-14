@@ -21,7 +21,9 @@
                 $watch->hydrate($orderitem->getProductByID($object['id']));
                 $total=$total+($watch->getPrix()*$object['qty']);
                 if($object['qty']>$watch->getStock()){
-                    return 0;
+                    $arr['return']=0;
+                    $arr['object']=intval($object['id']);
+                    return $arr;
                 }
             }
             $this->total=$total;

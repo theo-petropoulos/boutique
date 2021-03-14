@@ -228,9 +228,9 @@ $yellow:#FFCC00;
                                 padding:7% 10%;
                                 &:hover{
                                     cursor:pointer;
-                                    background:rgb(64, 103, 187);
+                                    background:$yellow;
                                     color:white;
-                                    border:2px solid white;
+                                    border:2px solid $yellow;
                                     transition:all 0.4s;
                                 }
                             }
