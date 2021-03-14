@@ -90,12 +90,12 @@ endif;
 </head>
 
 <body>
-<?php include_once '../../pages/header.php' ?>
+<?php include_once '../../pages/globals/header.php' ?>
 <main class="container_page">
     <section class="administration administration_magasin">
-        <h2>Gestion du Magasin </h2>
+        <h1>Gestion du Magasin </h1>
         <div class="display_box box_admin">
-            <h3>Liste des produits</h3>
+            <h2>Liste des produits</h2>
             <table class="tab_prod">
                 <tr>
                     <th>Identifiant produit</th>
@@ -231,7 +231,7 @@ endif;
         </div>
 
         <div class="display_box box_admin">
-            <h3>Liste des collections</h3>
+            <h2>Liste des collections</h2>
             <table>
                 <tr>
                     <th>Identifiant de la collection</th>
@@ -279,7 +279,7 @@ endif;
         </div>
 
         <div class="display_box box_admin">
-            <h3>Liste des promotions </h3>
+            <h2>Liste des promotions </h2>
             <table>
                 <tr>
                     <th>Identifiant de la promotion</th>
@@ -350,6 +350,6 @@ endif;
         </div>
     </section>
 </main>
-<?php include_once '../../pages/footer.php'; ?>
+<?php include_once '../../pages/globals/footer.php'; ?>
 </body>
 </html>

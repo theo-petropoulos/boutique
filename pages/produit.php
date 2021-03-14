@@ -5,7 +5,6 @@ include_once '../model/class/Watch.php';
 include_once '../model/class/Promo.php';
 include_once '../model/class/ManPromo.php';
 require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
-
 //Instance Objet et variables utilitaire
 $Promo = new Promo();
 $ManPromo = new ManPromo();
@@ -80,7 +79,7 @@ $Similary = $ManWatch->getProductByCollection($Product->getMarque());
             <?php foreach ($Similary as $item): ?>
                 <div>
                     <?php if (isset($_GET['collection']) && $_GET['collection'] > 0): ?>
-                        <a href=""><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?> " alt=""></a>
+                        <a href="produit.php?produit=<?= $item['id'] ?>&collection=<?= $item['id_marque'] ?>"><img width="80px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?> " alt=""></a>
                     <?php else: ?>
                         <a href=""><img width="100px" src="<?= $_SESSION['path_pic'] . '/' . $item['image'] ?>" alt=""></a>
                     <?php endif; ?>

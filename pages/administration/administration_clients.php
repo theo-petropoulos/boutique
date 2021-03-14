@@ -4,6 +4,9 @@ include_once '../../model/class/ManAdmin.php';
 include_once '../../model/class/ManWatch.php';
 include_once '../../model/class/Watch.php';
 session_start();
+
+$ManAdmin = new ManAdmin();
+$displayClients = $ManAdmin->display_clients();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -19,19 +22,32 @@ session_start();
     <title>Von Harper</title>
 </head>
 <body>
-<?php include_once '../../pages/header.php' ?>
+<?php include_once '../../pages/globals/header.php' ?>
 <main class="container_page">
     <section class="administration administration_magasin">
-        <h2>Liste des clients</h2>
         <div class="display_box box_admin">
-            <h3>Liste des clients</h3>
+            <h2>Liste des clients</h2>
             <table>
-
+                <tr>
+                    <th class="th">Identifiant</th>
+                    <th class="th">Nom</th>
+                    <th class="th">Prénom</th>
+                    <th class="th">Téléphone</th>
+                    <th class="th">E-mail</th>
+                </tr>
+                <?php foreach ($displayClients as $client): ?>
+                    <tr>
+                        <td><?= $client['id'] ?></td>
+                        <td><?= $client['nom'] ?></td>
+                        <td><?= $client['prenom'] ?></td>
+                        <td><?= $client['telephone'] ?></td>
+                        <td><?= 'EMAIL' ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </div>
-        <h2>Liste des commandes</h2>
         <div class="display_box box_admin">
-            <h3>Liste des clients</h3>
+            <h2>Liste des commandes</h2>
             <table>
 
             </table>
@@ -70,6 +86,6 @@ session_start();
         </div>
     </section>
 </main>
-<?php include_once '../../pages/footer.php'; ?>
+<?php include_once '../../pages/globals/footer.php'; ?>
 </body>
 </html>
