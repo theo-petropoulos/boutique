@@ -7,10 +7,11 @@ X force register/connect on purchase
 X search bar
 X del account
 X design order history
-design basket
+X design basket
 tracking ( order status + contact ? ) 
 shop locator
-order history detail
+404 page
+- order history detail => PDF / mail
 
 --- polishing ---
 

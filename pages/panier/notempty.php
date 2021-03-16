@@ -1,5 +1,6 @@
 <?php
     $basket=get_basket($_COOKIE['basket']);
+    $totqty=0;
     if(isset($_POST['mod_item']) && $_POST['mod_item']){
         foreach($basket as $entry=>&$object){
             if($object['id']==$_POST['mod_item']){
@@ -43,7 +44,8 @@
             $watch=new Watch();
             $watch->hydrate($array->getProductByID($value['id']));
             $url='/boutique/assets/images/produits/'.$watch->getNomImage();
-            $subtotal=intval($subtotal)+intval($watch->getPrix()*$value['qty']);?>
+            $subtotal=intval($subtotal)+intval($watch->getPrix()*$value['qty']);
+            $totqty=intval($totqty)+intval($value['qty']);?>
 
             <div class="orderitem_min">
                 <div class="itemdesc">
@@ -81,6 +83,10 @@
         </div>
         <div id="right_order">
             <div id="right_span">
+                <h3>Récapitulatif</h3>
+                <div id="totalqty">
+                    <p><?=$totqty;?> produits en commande</p>
+                </div>
                 <div id="subtotal" class="costs">
                     <p>Sous-total :</p>
                     <p><?=number_format($subtotal,2,'.',',');?>€<p>

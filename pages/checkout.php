@@ -27,8 +27,11 @@
             Revenir à <a href="/boutique/pages/panier.php">Mon Panier</a></p></div>
         <?php }
         else if(isset($total_price) && is_int($total_price) && $total_price){?>
+        <div id="banner_standard"><h2>Paiement</h2></div>
         <div id="checkingout">
             <div id="formcontainer">
+            <h3>Carte bancaire</h3>
+            <div class="separator_white"></div>
                 <form method="post" action="checkout.php">
                     <input type="hidden" name="checkout" value="<?=$_POST['checkout'];?>">
                     <label for="creditcard">Numéro de carte : </label>

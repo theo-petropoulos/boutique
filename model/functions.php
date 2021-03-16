@@ -10,6 +10,18 @@
         else return 'suberr';
     }
 
+    //Unsub to newsletter
+    function unsub_newsletter(string $arr){
+        $post=[];
+        $post['mail']=$arr;
+        if(filter_var($post['mail'], FILTER_VALIDATE_EMAIL)){
+            $db=db_link();
+            $newsletter= new User($post, $db);
+            return $newsletter->unsubscribe();
+        }
+        else return 'suberr';
+    }
+
     //Verify the user's registration
     function verify_sub(array $post){
         if( isset($post['firstname']) && $post['firstname'] && isset($post['lastname']) && $post['lastname'] &&

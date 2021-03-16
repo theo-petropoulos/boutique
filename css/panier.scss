@@ -177,7 +177,7 @@ $yellow:#FFCC00;
                 background: linear-gradient(90deg, rgba(4,19,61,0.8) 0%, rgba(0,0,0,0.5) 65%);
                 border:2px solid rgba(255,255,255,0.3);
                 border-radius:10px;
-                padding:1.5% 2%;
+                padding:1% 2%;
                 justify-content: center;
                 align-items:center;
                 color:white;
@@ -194,6 +194,15 @@ $yellow:#FFCC00;
                     position:relative;
                     padding:3%;
                     box-shadow:0px 0px 6px 10px rgba(0,0,0,0.3);
+                    h3{
+                        text-align:center;
+                        margin:0%;
+                        width:100%;
+                        color:$yellow;
+                        font-size:1.5em;
+                        font-weight:800;
+                        border-bottom:1px solid white;
+                    }
                     .costs{
                         text-align:end;
                         font-weight:800;
@@ -203,9 +212,15 @@ $yellow:#FFCC00;
                                 color:$yellow;
                             }
                             &:nth-of-type(2){
-                                font-size:1.5em;
+                                font-size:1.2em;
                             }
                         }
+                    }
+                    #totalqty{
+                        font-size:calc(8px + 0.4vw);
+                        color:rgba(255,255,255,0.5);
+                        width:100%;
+                        text-align:center;
                     }
                     #checkouts{
                         display:flex;
@@ -284,6 +299,29 @@ $yellow:#FFCC00;
                 }
                 .coloryellow{
                     color:white;
+                    transition:all 0.4s;
+                }
+            }
+        }
+    }
+    #payment_success{
+        min-height:60vh;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        p{
+            font-family:$font_base;
+            color:white;
+            text-align: center;
+            a{
+                display:inline-block;
+                text-decoration: none;
+                color:$yellow;
+                transition:all 0.3s;
+                &:hover{
+                    color:#66CC00;
                     transition:all 0.4s;
                 }
             }

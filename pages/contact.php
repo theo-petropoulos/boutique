@@ -1,5 +1,15 @@
 <?php 
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+    if(isset($_POST) && $_POST){
+        $mail_adress='contact.vonharper@gmail.com';
+        $mail_from=$_POST['email'];
+        $lastname=$_POST['nom'];
+        $firstname=$_POST['prenom'];
+        $subject=$_POST['subject'];
+        $inquiry=$_POST['comment'];
+        $message='contact';
+        require $root . 'model/mailer.php';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +23,7 @@
         <section id="banner_standard">
             <h2>Formulaire de contact</h2>
         </section>
-        <?php if( 
-            (!isset($_POST['email']) || !$_POST['email']) && (!isset($_POST['nom']) || $_POST['nom']) && 
-            (!isset($_POST['comment']) || !$_POST['comment']) ) { ?>
+        <?php if(!isset($_POST['comment'])) { ?>
         <section id="form_contact">
             <form method="post" action="contact.php">
                 <label for="email">Adresse mail* :</label>
@@ -38,10 +46,10 @@
                     </optgroup>
                     <optgroup label="Assistance">
                         <option value="bugsignal_req">Signaler un bug, un problème</option>
-                        <option value="bugsignal_req">Suivre ma commande</option>
-                        <option value="bugsignal_req">Je ne trouve pas ma commande</option>
-                        <option value="bugsignal_req">Je n'ai pas reçu de mail de confirmation</option>
-                        <option value="bugsignal_req">Je n'arrive pas à me connecter</option>
+                        <option value="trackorder_req">Suivre ma commande</option>
+                        <option value="findorder_req">Je ne trouve pas ma commande</option>
+                        <option value="bugmail_req">Je n'ai pas reçu de mail de confirmation</option>
+                        <option value="bugconnect_req">Je n'arrive pas à me connecter</option>
                     </optgroup>
                     <optgroup label="Carrières & Recrutement">
                         <option value="infojob_req">Renseignements sur le recrutement</option>
@@ -51,7 +59,7 @@
                         <option value="privacy_req">Droit d'accès aux données</option>
                     </optgroup>
                 </select>
-                <label for="message">Saissez votre message :</label>
+                <label for="comment">Saissez votre message :</label>
                 <textarea name="comment" placeholder="Bonjour, je vous contacte car..." minlenght="30" maxlenght="500" rows="5" cols="40" required></textarea><br>
                 <div id="checkbox_newsletter" class="checkbox_contact">
                     <input type="checkbox" name="consent" required>

@@ -1,8 +1,17 @@
 <?php
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
 
-    if(isset($_POST) && $_POST){
+    if(isset($_GET['u']) && $_GET['u']){
+        $news=unsub_newsletter($_GET['u']);
+    }
+    else if(isset($_POST) && $_POST){
         $news=sub_newsletter($_POST);
+        if($news!=='alreadysub'){
+            $message='newsletter';
+            $mail_adress=$_POST['mail'];
+            $link='localhost/boutique/pages/newsletter.php?u=' . $mail_adress;
+            require $root . 'model/mailer.php';
+        }
     }
 ?>
 
@@ -19,7 +28,7 @@
                 <h2>Inscription à la Newsletter</h2>
             </section>
 
-            <?php if(!isset($_POST) || !$_POST){?>
+            <?php if(!isset($_POST) || !$_POST && !isset($_GET['u'])){?>
             <section id="form_newsletter">
                 <form action="newsletter.php" method="post">
                     <label for="mail">Adresse mail* :</label>
@@ -50,16 +59,16 @@
                         concernant, veuillez vous adresser à privacy@vonharper.com.
                 </p>
             </div>
-            <?php } else if(isset($_POST) && $_POST){?>
+            <?php } else if(isset($_POST) && $_POST || isset($_GET['u'])){?>
                 <section id="newsletter_return"><?php
                 switch($news){
                     //If user's input isn't correct
                     case 'suberr':?>
-                    <p>L'adresse mail est invalide. Veuillez <a href="newsletter.php">réessayer</a>.</p>
-                    <?php break;
+                        <p>L'adresse mail est invalide. Veuillez <a href="newsletter.php">réessayer</a>.</p>
+                        <?php break;
                     //If user is already registered, update its newsletter status to 1
                     case 'subchanged':?>
-                        <p>Vos préférences ont été mises à jour. Vous allez recevoir un mail de confirmation.<br>
+                        <p>Vos préférences ont été mises à jour.<br>
                         Retourner à l'<a class="strtxt" href="/boutique/index.php">Accueil</a>.</p>
                         <?php break;
                     //If the mail doesn't exist in the db, add it and set its newsletter status to 1
@@ -67,13 +76,18 @@
                         <p>Votre inscription a bien été prise en compte.<br>Un e-mail de confirmation vous a été envoyé.</p>
                         <!-- TODO /PHPMAILER/ -->
                         <?php break;
+                    //If the user is already sub
+                    case 'alreadysub':?>
+                        <p>Vous êtes déjà inscrit à notre Newsletter. Nous vous remercions pour votre intérêt.<br>
+                        Retourner à l'<a class="strtxt" href="/boutique/index.php">Accueil</a>.</p>
+                        <?php break;
                     //If something went wrong
                     default:?>
                         <p>Un problème est survenu. Veuillez <a href="newsletter.php">réessayer</a>.</p>
                         <?php break;
                 }
                 ?></section><?php
-            }?>
+            }?>     
         </main>
         <?php include $root . 'pages/globals/footer.php';?>
     </body>

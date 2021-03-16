@@ -29,7 +29,11 @@
         }
         //Redirect on panier.php upon payment ( checkout only accessible while paying )
         else if(isset($_SESSION['purchase']) && $_SESSION['purchase']=='success'){
-            echo "paiement succès.";
+        ?><section id="payment_success">
+            <p>Votre commande a bien été enregistrée. Vous allez bientôt recevoir un mail de confimation.<br>
+            Vous pouvez retrouver le détail de votre commande sur votre <a href="/boutique/pages/profil.php">espace personnel</a>, 
+            dans la rubrique Historique des commandes.</p>
+        </section><?php
             unset($_SESSION['purchase']);
         }
         else{
