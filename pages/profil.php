@@ -79,8 +79,13 @@
 
             //If the user confirm
             else if(isset($_POST['confirmdelete']) && $_POST['confirmdelete']==1){
+                $firstname=$user->firstname;
+                $lastname=$user->lastname;
+                $mail_adress=$user->mail;
+                $message='delete';
                 if(delete_user($user->id, $db)=='isdelete'){
                     $isdelete=1;
+                    require $root . 'model/mailer.php';
                     require $root . 'pages/profil/delete.php';
                 }
             }

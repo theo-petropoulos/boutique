@@ -45,6 +45,14 @@ if(isset($_POST['checkout']) && $_POST['checkout']){
                             }
                             setcookie('basket', '', -1, '/');
                             $_SESSION['purchase']='success';
+                            $mail_adress=$user->mail;
+                            $lastname=$user->lastname;
+                            $firstname=$user->firstname;
+                            $stmt=$db->query('SELECT MAX(`id`) as `maxid` FROM `factures`');
+                            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+                            $ordernum=$res['maxid'];
+                            $message='purchase';
+                            require $root . 'model/mailer.php';
                             header("Location: ../pages/panier.php");
                         }
                         else if( 

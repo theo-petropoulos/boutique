@@ -250,6 +250,11 @@ $yellow:#FFCC00;
             }
         }
         #reg_return{
+            min-height:60vh;
+            display:flex;
+            flex-flow:column;
+            justify-content: center;
+            align-items:center;
             p{
                 text-shadow: 0 1px black, 1px 0 black, 0 -1px black, -1px 0 black;
                 a{

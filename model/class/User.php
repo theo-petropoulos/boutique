@@ -71,7 +71,6 @@
                 $query=self::$db->prepare("UPDATE `ip` SET `id_client`=?");
                 $query->execute([$res['id_client']]);
             }else{
-                echo $res['id_client'];
                 $query=self::$db->prepare("INSERT INTO `ip` (ip, id_client, blacklist) VALUES (?,?,0)");
                 $query->execute([$this->ip, $res['id_client']]);
             }
@@ -92,7 +91,7 @@
             $stmt->execute([$this->mail]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
 
-            if(!is_bool($res['password'])){
+            if(!empty($res['password'])){
                 if(password_verify($this->password, $res['password'])){
                     if($this->ip==$res['ip']){
                         if($res['id']==$res['id_client']){
@@ -108,7 +107,7 @@
                 }
                 else return 'auth_pwd_err';
             }
-            else return 'auth_gen_err';
+            else return 'auth_pwd_err';
         }
 
         //Subscribe a mail to the newsletter
@@ -153,7 +152,7 @@
             $stmt=self::$db->prepare('SELECT `id` FROM `clients` WHERE `authkey`=?');
             $stmt->execute([$this->authtoken]);
             $res=$stmt->fetch(PDO::FETCH_ASSOC);
-            if(!is_bool($res['id']) && $res['id']!==NULL){
+            if(!empty($res['id']) && !is_bool($res['id'])){
                 $stmt=self::$db->prepare('SELECT `ip` FROM `ip` WHERE `id_client`=?');
                 $stmt->execute([$res['id']]);
                 $res2=$stmt->fetch(PDO::FETCH_ASSOC);

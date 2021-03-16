@@ -8,15 +8,18 @@ X search bar
 X del account
 X design order history
 X design basket
++++ pwd recovery mail
 tracking ( order status + contact ? ) 
 shop locator
-404 page
-- order history detail => PDF / mail
+++ 404 page
 
 --- polishing ---
 
-mailer
+X mailer
 account active/inactive
 re-activate account
 ip blacklist
 carnet d'adresses
+
+
+- order history detail => PDF / mail

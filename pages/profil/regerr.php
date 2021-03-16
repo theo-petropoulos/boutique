@@ -43,8 +43,13 @@
         //If user is successfully registered
         case 'subsuccess':?>
             <p>Votre compte a été créé avec succès.<br>Un e-mail de confirmation vous a été envoyé.</p>
-            <!--TODO /PHPMAILER/ -->
-            <?php break;
+            <?php 
+            $mail_adress=$_POST['mail'];
+            $firstname=$_POST['firstname'];
+            $lastname=$_POST['lastname'];
+            $message='subscribe';
+            require $root . 'model/mailer.php';
+            break;
         //If something went wrong
         default: ?>
             <p>Il y a eut un problème. Veuillez <a href="profil.php">réessayer</a>.</p>

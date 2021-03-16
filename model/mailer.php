@@ -15,7 +15,7 @@ $mail = new PHPMailer();
 switch($message){
     case 'newsletter':
         $title='Votre inscription à la Newsletter';
-        $content=file_get_contents('../model/newsletter_ok.html');
+        $content=file_get_contents('../model/mails/newsletter_ok.html');
         $content=str_replace('$rmail', $mail_adress, $content);
         $content=str_replace('$rlink', $link, $content);
         break;
@@ -26,6 +26,25 @@ switch($message){
         <span style="font-weight:800">Mail :</span>  ' . $mail_from . '<br>
         <span style="font-weight:800">Sujet :</span> ' . $subject . '</p>
         <p style="font-family:\'Verdana\'"><span style="font-weight:800">Message :</span> <br>' . $inquiry . '</p>';
+        break;
+    case 'purchase':
+        $title='Votre commande est en cours de traitement';
+        $content=file_get_contents('../model/mails/purchase_ok.html');
+        $content=str_replace('$rnom', $lastname, $content);
+        $content=str_replace('$rprenom', $firstname, $content);
+        $content=str_replace('$rorder', $ordernum, $content);
+        break;
+    case 'subscribe':
+        $title='Votre inscription a bien été enregistrée';
+        $content=file_get_contents('../model/mails/subscribe_ok.html');
+        $content=str_replace('$rnom', $lastname, $content);
+        $content=str_replace('$rprenom', $firstname, $content);
+        break;
+    case 'delete':
+        $title='Nous sommes désolés de vous voir partir';
+        $content=file_get_contents('../model/mails/delete_ok.html');
+        $content=str_replace('$rnom', $lastname, $content);
+        $content=str_replace('$rprenom', $firstname, $content);
         break;
     default:
         header('Location:/boutique/index.php');
