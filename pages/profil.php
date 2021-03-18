@@ -5,6 +5,18 @@
     if(isset($_POST['resetpwd']) && $_POST['resetpwd']==1){
         $resetpwd=1;
     }
+
+    //If the user authorize a new ip from mail
+    if(isset($_GET['m']) && $_GET['m'] && isset($_GET['i']) && $_GET['i']){
+        $cipher = "AES-128-CTR";
+        $iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
+        $keyi='Pas vraiment sûr que ce soit secûr.';
+        $keym='Là c\'est l\'adresse mail qu\'on crypte.';
+        $mail=openssl_decrypt($_GET['m'], $cipher, $keym, OPENSSL_ZERO_PADDING, $_GET['v']);
+        $ip=openssl_decrypt($_GET['i'], $cipher, $keyi, OPENSSL_ZERO_PADDING, $_GET['v']);
+        echo $mail . PHP_EOL . $ip;
+    }
+
     //If the user wants to update his infos
     else if(isset($_POST['modify_infos']) && $_POST['modify_infos']==1){
         $_POST=update_keys($_POST);
@@ -52,6 +64,10 @@
                 $_SESSION['authcheckout']='valid';
                 header("Location: /boutique/pages/checkout.php");
             }else header("Refresh: 0.2; url='profil.php'");
+        }else if($connect=='auth_new_ip'){
+            $mail_adress=$_POST['mail_connect'];
+            $message='newip';
+            require $root . 'model/mailer.php';
         }
     }
 ?>

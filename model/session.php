@@ -6,6 +6,7 @@
     require $root . 'model/sql.php';
     require $root . 'model/class/User.php';
     require $root . 'model/class/Order.php';
+
     $cookie_options = array(
         'expires' => time() + 36000,
         'path' => '/',

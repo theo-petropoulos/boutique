@@ -13,7 +13,7 @@
 		<main id="main_index">
 			<section id="video_container">
 				<video playsinline autoplay muted loop id="bg_vid">
-					<source src="assets/videos/planetarium.mp4" type="video/mp4">
+					<source src="assets/videos/blancpain.mp4" type="video/mp4">
 					Votre navigateur ne prend pas en charge les vidéos intégrées.
 				</video>
 			</section>

@@ -46,6 +46,26 @@ switch($message){
         $content=str_replace('$rnom', $lastname, $content);
         $content=str_replace('$rprenom', $firstname, $content);
         break;
+    case 'newip':
+        $title='Connexion depuis un nouvel appareil';
+        $ip=$_SERVER['REMOTE_ADDR'];
+        date_default_timezone_set('Europe/Paris');
+        $dated=date('d/m/Y');
+        $datet=date('H:i:s');
+        $cipher = "AES-128-CTR";
+        // $iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
+        $iv=1012461197022165;
+        $key='Pas vraiment sûr que ce soit secûr.';
+        $key2='Là c\'est l\'adresse mail qu\'on crypte.';
+        $cryptip=openssl_encrypt($ip, $cipher, $key, OPENSSL_ZERO_PADDING, $iv);
+        $cryptmail=openssl_encrypt($mail_adress, $cipher, $key2, OPENSSL_ZERO_PADDING, $iv);
+        $link='localhost/boutique/pages/profil.php?m=' . $cryptmail . '&v=' . $iv . '&i=' . $cryptip;
+        $content=file_get_contents('../model/mails/newip_ok.html');
+        $content=str_replace('$rip', $ip, $content);
+        $content=str_replace('$rdated', $dated, $content);
+        $content=str_replace('$rdatet', $datet, $content);
+        $content=str_replace('$rlink', $link, $content);
+        break;
     default:
         header('Location:/boutique/index.php');
         break;

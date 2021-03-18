@@ -8,7 +8,7 @@
                 <li><a href="/boutique/pages/newsletter.php">Newsletter</a></li>
                 <li><a href="/boutique/pages/contact.php">Nous contacter</a></li>
                 <li><a href="/boutique/pages/mentions.php">Mentions légales</a></li>
-                <li><a href="">Suivi de commande</a></li>
+                <li><a href="/boutique/pages/suivi.php">Suivi de commande</a></li>
             </ul>
         </div>
         <div id="footer_social">
