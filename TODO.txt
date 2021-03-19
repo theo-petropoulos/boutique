@@ -8,10 +8,11 @@ X search bar
 X del account
 X design order history
 X design basket
-+++ pwd recovery mail
-tracking ( order status + contact ? ) 
+pwd recovery mail
+ip update
+X tracking
 shop locator
-++ 404 page
+404 page
 
 --- polishing ---
 

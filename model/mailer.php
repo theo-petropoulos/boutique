@@ -56,10 +56,8 @@ switch($message){
         // $iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
         $iv=1012461197022165;
         $key='Pas vraiment sûr que ce soit secûr.';
-        $key2='Là c\'est l\'adresse mail qu\'on crypte.';
-        $cryptip=openssl_encrypt($ip, $cipher, $key, OPENSSL_ZERO_PADDING, $iv);
-        $cryptmail=openssl_encrypt($mail_adress, $cipher, $key2, OPENSSL_ZERO_PADDING, $iv);
-        $link='localhost/boutique/pages/profil.php?m=' . $cryptmail . '&v=' . $iv . '&i=' . $cryptip;
+        $cryptmail=openssl_encrypt($mail_adress, $cipher, $key, OPENSSL_ZERO_PADDING, $iv);
+        $link='localhost/boutique/pages/profil.php?m=' . $cryptmail . '&v=' . $iv . '&i=' . $ip;
         $content=file_get_contents('../model/mails/newip_ok.html');
         $content=str_replace('$rip', $ip, $content);
         $content=str_replace('$rdated', $dated, $content);

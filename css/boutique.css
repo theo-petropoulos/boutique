@@ -10,6 +10,7 @@
 @import url("suggestions.css");
 @import url("search.css");
 @import url("checkout.css");
+@import url("tracking.css");
 body {
   margin: 0;
   padding: 0;
@@ -83,12 +84,6 @@ body {
   margin-right: auto;
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(4, 19, 61, 0.3)), color-stop(15%, rgba(0, 0, 0, 0.8)), color-stop(85%, rgba(0, 0, 0, 0.8)), to(rgba(4, 19, 61, 0.3))), url("/boutique/assets/images/night_bg3.jpg");
   background-image: linear-gradient(90deg, rgba(4, 19, 61, 0.3) 0%, rgba(0, 0, 0, 0.8) 15%, rgba(0, 0, 0, 0.8) 85%, rgba(4, 19, 61, 0.3) 100%), url("/boutique/assets/images/night_bg3.jpg");
-  border-bottom: 4px solid;
-  border-top: 4px solid;
-  -o-border-image: linear-gradient(90deg, black 30%, white 40%, white 50%, white 60%, black 70%);
-     border-image: -webkit-gradient(linear, left top, right top, color-stop(30%, black), color-stop(40%, white), color-stop(50%, white), color-stop(60%, white), color-stop(70%, black));
-     border-image: linear-gradient(90deg, black 30%, white 40%, white 50%, white 60%, black 70%);
-  border-image-slice: 2;
 }
 
 #staring1 .watch_min, #staring2 .watch_min {
@@ -266,6 +261,8 @@ body {
 }
 
 #banner {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -393,6 +390,12 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background: black;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  -o-border-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0) 100%);
+     border-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(40%, rgba(255, 255, 255, 0.3)), color-stop(50%, rgba(255, 255, 255, 0.5)), color-stop(60%, rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0)));
+     border-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0) 100%);
+  border-image-slice: 2;
 }
 
 #quote p {

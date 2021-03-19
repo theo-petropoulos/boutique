@@ -246,3 +246,51 @@
         }
         else return 'errdelete';
     }
+
+    //Verify if an order is valid
+    function verify_order(array $post, $db){
+        if( is_int($post['ordernum']) && is_int($post['postal']) && filter_var($post['mail'], FILTER_VALIDATE_EMAIL) ){
+            $post['ordernum']=strval($post['ordernum']); $post['postal']=strval($post['postal']);
+            $stmt=$db->prepare(
+                "SELECT c.id, a.code_postal, f.etat, f.date FROM clients c 
+                INNER JOIN mails m on m.id=c.id_mail 
+                INNER JOIN factures f on f.id_client=c.id 
+                INNER JOIN adresses a on a.id_client=c.id WHERE m.mail=? AND f.id=?");
+            $stmt->execute([$post['mail'], $post['ordernum']]);
+            $result=$stmt->fetch(PDO::FETCH_ASSOC);
+            if(!empty($result) && !is_bool($result)){
+                if($post['postal']==$result['code_postal']){
+                    return $result;
+                }
+                else return 'nofind';
+            } else return 'nofind';
+        }
+        else return 'errinput';
+    }
+
+    //Bind an IP to an existing user
+    function update_ip(string $mail, string $ip, $db){
+        $stmt=$db->prepare("SELECT * FROM `ip` WHERE `ip`=?");
+        $stmt->execute([$ip]);
+        if($stmt->rowCount()>0){
+            $stmt=$db->prepare(
+                "UPDATE ip set 
+                    ip=?,
+                    id_client=(
+                        select c.id from clients c 
+                        inner join mails m on m.id=c.id_mail 
+                        where m.mail=?), 
+                        blacklist=0 ");
+            $stmt->execute([$ip, $mail]);
+            return($stmt->rowCount());
+        }else{
+            $stmt=$db->prepare(
+                "INSERT INTO ip (ip, id_client, blacklist) 
+                    select ?, c.id , 0 
+                    from clients c join mails m 
+                    on m.id=c.id_mail 
+                    where m.mail=?");
+            $stmt->execute([$ip, $mail]);
+            return($stmt->rowCount());
+        }
+    }

@@ -1,0 +1,108 @@
+#body_tracking {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#body_tracking #tracking_search, #body_tracking #tracking_result {
+  min-height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+#body_tracking #tracking_search form, #body_tracking #tracking_result form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 40%;
+  margin: 0 auto;
+  background: #04133D;
+  color: #FFCC00;
+  padding: 2% 5%;
+  border: 2px solid #FFCC00;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2%;
+}
+
+#body_tracking #tracking_search form input, #body_tracking #tracking_result form input {
+  background: rgba(0, 0, 0, 0.3);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #FFCC00;
+  margin: 2%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+#body_tracking #tracking_search form input[type=number], #body_tracking #tracking_search form input[type=email], #body_tracking #tracking_result form input[type=number], #body_tracking #tracking_result form input[type=email] {
+  color: white;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#body_tracking #tracking_search form input[type=number]:focus, #body_tracking #tracking_search form input[type=email]:focus, #body_tracking #tracking_result form input[type=number]:focus, #body_tracking #tracking_result form input[type=email]:focus {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#body_tracking #tracking_search form input[type=submit], #body_tracking #tracking_result form input[type=submit] {
+  background: #FFCC00;
+  border: none;
+  color: #04133D;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding: 2% 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#body_tracking #tracking_search form input[type=submit]:hover, #body_tracking #tracking_result form input[type=submit]:hover {
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  background: white;
+  color: #04133D;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 599px) {
+  #body_tracking #tracking_search {
+    width: 80%;
+    min-height: 40vh;
+  }
+  #body_tracking #tracking_search form {
+    width: 100%;
+    margin: 0;
+  }
+}
+/*# sourceMappingURL=tracking.css.map */

@@ -30,8 +30,8 @@
 				<?php include $root . 'pages/index/staring1.php'; $memrand=$rand?>
 			</section>
 			
-			<div class="separator">
-			</div>
+			<!-- <div class="separator">
+			</div> -->
 			<section id="quote">
 				<p>“Citation qui n'a strictement aucun sens pour gens fortunés.”</p><p>_Edwin Von <span class="color">H</span>arper</p>
 			</section>

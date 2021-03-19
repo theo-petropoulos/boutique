@@ -7,6 +7,10 @@ strong, em{
     font-style:inherit;
 }
 
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
 .ita{
     font-style:italic;
 }

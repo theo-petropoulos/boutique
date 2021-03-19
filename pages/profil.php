@@ -10,11 +10,14 @@
     if(isset($_GET['m']) && $_GET['m'] && isset($_GET['i']) && $_GET['i']){
         $cipher = "AES-128-CTR";
         $iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
-        $keyi='Pas vraiment sûr que ce soit secûr.';
-        $keym='Là c\'est l\'adresse mail qu\'on crypte.';
-        $mail=openssl_decrypt($_GET['m'], $cipher, $keym, OPENSSL_ZERO_PADDING, $_GET['v']);
-        $ip=openssl_decrypt($_GET['i'], $cipher, $keyi, OPENSSL_ZERO_PADDING, $_GET['v']);
-        echo $mail . PHP_EOL . $ip;
+        $key='Pas vraiment sûr que ce soit secûr.';
+        $mail=openssl_decrypt($_GET['m'], $cipher, $key, OPENSSL_ZERO_PADDING, $_GET['v']);
+        $ip=$_GET['i'];
+        if(update_ip($mail, $ip, $db)){
+            $updateip='done';
+        }else{
+            die("Une erreur inattendue est survenue. Si elle persiste, veuillez contacter le support à support.vonharper@gmail.com.");
+        }
     }
 
     //If the user wants to update his infos
