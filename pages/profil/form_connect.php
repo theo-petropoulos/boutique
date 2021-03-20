@@ -6,5 +6,6 @@
     <label for="password_connect">Mot de passe :</label>
     <input type="password" name="password_connect" required>
     <input type="submit" value="Connexion">
+    <a href="resetpwd.php"><i class="fas fa-chevron-right"></i>Mot de passe oublié</a>
     <a href="profil.php"><i class="fas fa-chevron-right"></i>Retour</a>
 </form>

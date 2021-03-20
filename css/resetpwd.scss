@@ -1,0 +1,169 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
+$yellow:#FFCC00;
+
+#body_resetpwd{
+    width:100%;
+    position:relative;
+    #return_resetpwd, #form_changepwd{
+        position: relative;
+        min-height:55vh;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        font-family: $font_base;
+        color:white;
+        text-align:center;
+        background:url('../assets/images/night_bg.jpg') top 50% center fixed no-repeat;
+        a{
+            position:relative;
+            color:rgba(255,255,255,0.9);
+            text-decoration:none;
+            transition:all 0.3s;
+            position:relative;
+            margin-bottom:3%;
+            &::after{
+                position:absolute;
+                content:'';
+                height:1px;
+                width:100%;
+                background:rgba(255,255,255,0.7);
+                bottom:0;
+                right:0;
+                transform:scaleX(100%);
+                transform-origin: bottom right;
+                transition:all 0.3s;
+            }
+            &:hover{
+                color:#FFCC00;
+                transition:all 0.4s;
+                &::after{
+                    transform:scaleX(-100%);
+                    transform-origin:bottom;
+                    transition:all 0.4s;
+                    background:greenyellow;
+                }
+            }
+        }
+    }
+    #form_changepwd{
+        form{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+            width:20%;
+            font-family: $font_base;
+            color:white;
+            input{
+                font-family: $font_base;
+                &[type=password]{
+                    text-align: center;
+                    width:100%;
+                    background:transparent;
+                    border:none;
+                    border-bottom:1px solid white;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    transition: all 0.3s;
+                    margin-bottom:1%;
+                    height:calc(22px + 0.5vw);
+                    color:rgba(255,255,255,0.7);
+                    margin-bottom:0;
+                    &:focus{
+                        background:rgba(255,255,255,0.7);
+                        border:1px solid white;
+                        transition:all 0.4s;
+                        color:black;
+                        outline:0;
+                    }
+                }
+                &[type=submit]{
+                    font-family:$font_base;
+                    width:100%;
+                    min-width:150px;
+                    background:rgba(0,0,0,0.5);
+                    color:white;
+                    padding:8% 2%;
+                    transition: all 0.3s;
+                    border:0;
+                    margin-bottom:1%;
+                    &:hover{
+                        cursor:pointer;
+                        background:rgba(0,0,0,0.9);
+                        color:$yellow;
+                        transition: all 0.5s;
+                    }
+                    &:nth-of-type(2){
+                        margin-bottom:2%;
+                    }
+                }
+            } 
+        }
+    }
+    #form_resetpwd{
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        width:100%;
+        position:relative;
+        background:url('../assets/images/night_bg.jpg') top 50% center fixed no-repeat;
+        min-height:55vh;
+        form{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+            width:70%;
+            height:100%;
+            font-family: $font_base;
+            color:white;
+            input{
+                font-family: $font_base;
+                &[type=email]{
+                    text-align: center;
+                    width:30%;
+                    background:transparent;
+                    border:none;
+                    border-bottom:1px solid white;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    transition: all 0.3s;
+                    margin-bottom:1%;
+                    height:calc(22px + 0.5vw);
+                    color:rgba(255,255,255,0.7);
+                    margin-bottom:0;
+                    &:focus{
+                        background:rgba(255,255,255,0.7);
+                        border:1px solid white;
+                        transition:all 0.4s;
+                        color:black;
+                        outline:0;
+                    }
+                }
+                &[type=submit]{
+                    font-family:$font_base;
+                    width:30%;
+                    min-width:150px;
+                    background:rgba(0,0,0,0.5);
+                    color:white;
+                    padding:2%;
+                    transition: all 0.3s;
+                    border:0;
+                    margin-bottom:1%;
+                    &:hover{
+                        cursor:pointer;
+                        background:rgba(0,0,0,0.9);
+                        color:$yellow;
+                        transition: all 0.5s;
+                    }
+                    &:nth-of-type(2){
+                        margin-bottom:2%;
+                    }
+                }
+            } 
+        }
+    }
+}

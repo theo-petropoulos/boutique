@@ -1,3 +1,7 @@
+#body_contact {
+  background: url("/boutique/assets/images/white_bg.webp");
+}
+
 #form_contact {
   display: -webkit-box;
   display: -ms-flexbox;

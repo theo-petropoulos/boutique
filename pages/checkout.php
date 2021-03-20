@@ -2,7 +2,6 @@
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/Watch.php';
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/class/ManWatch.php';
-    var_dump($user);
     //Access to checkout is only granted upon data sent by post
     if((isset($_POST) && $_POST )|| (isset($_SESSION['checkout']) && $_SESSION['checkout'])){
         require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/pages/checkout/conditions.php';
@@ -22,7 +21,8 @@
             $watch->setId($instock['object']);
             $res=$watch->getSpecs($db);
             ?><div id="outofstock"><p>Le produit : <?=$res['nom'];?> que vous avez commandé n'est plus disponible 
-            dans la quantité demandée ( <?=$res['stock'];?> unité<?php if($res['stock']>1){echo 's';}?> restantes ).<br>
+            dans la quantité demandée ( <?=$res['stock'];?> unité<?php if($res['stock']>1){echo 's';}?> 
+            restante<?php if($res['stock']>1){echo 's';}?> ).<br>
             Il a automatiquement été retiré de votre panier.<br>
             Revenir à <a href="/boutique/pages/panier.php">Mon Panier</a></p></div>
         <?php }

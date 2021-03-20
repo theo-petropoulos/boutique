@@ -7,17 +7,24 @@
     }
 
     //If the user authorize a new ip from mail
-    if(isset($_GET['m']) && $_GET['m'] && isset($_GET['i']) && $_GET['i']){
+    if(isset($_GET['m']) && $_GET['m'] && isset($_GET['i']) && $_GET['i'] && isset($_GET['t']) && $_GET['t']){
         $cipher = "AES-128-CTR";
-        $iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
+        //$iv=openssl_random_pseudo_bytes(openssl_cipher_iv_length($cipher));
         $key='Pas vraiment sûr que ce soit secûr.';
-        $mail=openssl_decrypt($_GET['m'], $cipher, $key, OPENSSL_ZERO_PADDING, $_GET['v']);
-        $ip=$_GET['i'];
-        if(update_ip($mail, $ip, $db)){
-            $updateip='done';
-        }else{
-            die("Une erreur inattendue est survenue. Si elle persiste, veuillez contacter le support à support.vonharper@gmail.com.");
+        $key2='Après leurs, sait plus leurre.';
+        $key3="L'ipée et le bouclier, l'adresse et la dextérité.";
+        $mail=urldecode(openssl_decrypt($_GET['m'], $cipher, $key, OPENSSL_ZERO_PADDING, $_GET['v']));
+        $time=urldecode(openssl_decrypt($_GET['t'], $cipher, $key2, OPENSSL_ZERO_PADDING, $_GET['v']));
+        $ip=urldecode(openssl_decrypt($_GET['i'], $cipher, $key3, OPENSSL_ZERO_PADDING, $_GET['v']));
+        $exptime=time()-$time;
+        if($exptime<300){
+            if(update_ip($mail, $ip, $db)){
+                $updateip='done';
+            }else{
+                die("Une erreur inattendue est survenue. Si elle persiste, veuillez contacter le support à support.vonharper@gmail.com.");
+            }
         }
+        else die("Le lien que vous avez utilisé a expiré.");
     }
 
     //If the user wants to update his infos
@@ -95,6 +102,13 @@
             if(isset($delaccount) && $delaccount=='verify'){
                 require $root. 'pages/profil/delete.php';
             }
+
+            //If the ip has been updated
+            else if(isset($updateip) && $updateip=='done'){ ?>
+                <section id="updateip">
+                    <p>Votre nouvel appareil a bien été enregistré. Vous pouvez dès à présent vous <a href="profil.php">connecter</a>.</p>
+                </section>
+            <?php }
 
             //If the user confirm
             else if(isset($_POST['confirmdelete']) && $_POST['confirmdelete']==1){

@@ -1,0 +1,236 @@
+#body_resetpwd {
+  width: 100%;
+  position: relative;
+}
+
+#body_resetpwd #return_resetpwd, #body_resetpwd #form_changepwd {
+  position: relative;
+  min-height: 55vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  text-align: center;
+  background: url("../assets/images/night_bg.jpg") top 50% center fixed no-repeat;
+}
+
+#body_resetpwd #return_resetpwd a, #body_resetpwd #form_changepwd a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  margin-bottom: 3%;
+}
+
+#body_resetpwd #return_resetpwd a::after, #body_resetpwd #form_changepwd a::after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  right: 0;
+  -webkit-transform: scaleX(100%);
+          transform: scaleX(100%);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#body_resetpwd #return_resetpwd a:hover, #body_resetpwd #form_changepwd a:hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#body_resetpwd #return_resetpwd a:hover::after, #body_resetpwd #form_changepwd a:hover::after {
+  -webkit-transform: scaleX(-100%);
+          transform: scaleX(-100%);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  background: greenyellow;
+}
+
+#body_resetpwd #form_changepwd form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+}
+
+#body_resetpwd #form_changepwd form input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#body_resetpwd #form_changepwd form input[type=password] {
+  text-align: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-bottom: 1%;
+  height: calc(22px + 0.5vw);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0;
+}
+
+#body_resetpwd #form_changepwd form input[type=password]:focus {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  color: black;
+  outline: 0;
+}
+
+#body_resetpwd #form_changepwd form input[type=submit] {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 100%;
+  min-width: 150px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8% 2%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 0;
+  margin-bottom: 1%;
+}
+
+#body_resetpwd #form_changepwd form input[type=submit]:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#body_resetpwd #form_changepwd form input[type=submit]:nth-of-type(2) {
+  margin-bottom: 2%;
+}
+
+#body_resetpwd #form_resetpwd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  position: relative;
+  background: url("../assets/images/night_bg.jpg") top 50% center fixed no-repeat;
+  min-height: 55vh;
+}
+
+#body_resetpwd #form_resetpwd form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+  height: 100%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+}
+
+#body_resetpwd #form_resetpwd form input {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#body_resetpwd #form_resetpwd form input[type=email] {
+  text-align: center;
+  width: 30%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-bottom: 1%;
+  height: calc(22px + 0.5vw);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0;
+}
+
+#body_resetpwd #form_resetpwd form input[type=email]:focus {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  color: black;
+  outline: 0;
+}
+
+#body_resetpwd #form_resetpwd form input[type=submit] {
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 30%;
+  min-width: 150px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 0;
+  margin-bottom: 1%;
+}
+
+#body_resetpwd #form_resetpwd form input[type=submit]:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFCC00;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#body_resetpwd #form_resetpwd form input[type=submit]:nth-of-type(2) {
+  margin-bottom: 2%;
+}
+/*# sourceMappingURL=resetpwd.css.map */

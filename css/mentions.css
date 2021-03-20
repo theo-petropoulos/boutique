@@ -1,5 +1,8 @@
+#body_mentions {
+  background: url("/boutique/assets/images/white_bg.webp");
+}
+
 #main_mentions {
-  background: #DEDEDE;
   padding-bottom: 2%;
 }
 

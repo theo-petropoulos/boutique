@@ -18,7 +18,7 @@
 
 	<?php $title='Contact'; require $root . 'pages/globals/head.php';?>
 
-    <body>
+    <body id="body_contact">
         <?php include $root . 'pages/globals/header.php';?>
         <section id="banner_standard">
             <h2>Formulaire de contact</h2>

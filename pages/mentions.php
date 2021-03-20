@@ -8,7 +8,7 @@
 
 	<?php $title='Mentions légales'; require $root . 'pages/globals/head.php';?>
 
-    <body>
+    <body id="body_mentions">
         <?php include $root . 'pages/globals/header.php';?>
         <main id="main_mentions">
             <section id="banner_standard">

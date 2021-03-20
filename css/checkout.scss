@@ -8,12 +8,24 @@ $yellow:#FFCC00;
     background-image:url('/boutique/assets/images/night_bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
+    min-height:55vh;
     #outofstock{
         font-family: $font_base;
+        color:white;
+        text-align:center;
         width:100%;
         display:flex;
         justify-content: center;
         align-items:center;
+        a{
+            color:$yellow;
+            text-decoration:none;
+            transition:all 0.3s;
+            &:hover{
+                color:greenyellow;
+                transition:all 0.3s;
+            }
+        }
     }
     #checkingout{
         width:100%;

@@ -1,3 +1,35 @@
+html body main#main_profil section#updateip {
+  min-height: 55vh;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+html body main#main_profil section#updateip a {
+  color: #FFCC00;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+html body main#main_profil section#updateip a:hover {
+  color: greenyellow;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 #main_profil {
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background: url("../assets/images/night_bg.jpg") top 50% center fixed no-repeat;
@@ -79,7 +111,6 @@
   margin: auto;
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 1px 0 black, 0 1px black, -1px 0 black, 0 -1px black;
 }
 
 #main_profil .profil_forms h3 {
@@ -318,12 +349,29 @@
 }
 
 #main_profil .profil_forms form a {
-  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   position: relative;
   margin-bottom: 3%;
+}
+
+#main_profil .profil_forms form a::after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  right: 0;
+  -webkit-transform: scaleX(100%);
+          transform: scaleX(100%);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #main_profil .profil_forms form a i {
@@ -351,6 +399,16 @@
           transform: translate(-200%, 50%);
   -webkit-transition: all 0.8s;
   transition: all 0.8s;
+}
+
+#main_profil .profil_forms form a:hover::after {
+  -webkit-transform: scaleX(-100%);
+          transform: scaleX(-100%);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  background: greenyellow;
 }
 
 #main_profil .profil_forms #reg_return {

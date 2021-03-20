@@ -1,6 +1,9 @@
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 $blue:#04133D;
 
+#body_contact{
+    background:url('/boutique/assets/images/white_bg.webp');
+}
 #form_contact{
     display:flex;
     flex-direction:column;

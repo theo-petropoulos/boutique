@@ -21,7 +21,7 @@
 
 	<?php $title='Newsletter'; require $root . 'pages/globals/head.php';?>
 
-    <body>
+    <body id="body_newsletter">
         <?php include $root . 'pages/globals/header.php';?>
         <main id="main_newsletter">
             <section id="banner_standard">

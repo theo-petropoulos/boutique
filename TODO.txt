@@ -9,7 +9,7 @@ X del account
 X design order history
 X design basket
 pwd recovery mail
-ip update
+X ip update
 X tracking
 shop locator
 404 page
@@ -17,6 +17,7 @@ shop locator
 --- polishing ---
 
 X mailer
+crypting storage
 account active/inactive
 re-activate account
 ip blacklist

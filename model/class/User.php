@@ -214,6 +214,12 @@
 
         //Update user's password via ID
         public function setNewPassword(){
+            if(!isset($this->id) || !$this->id){
+                $stmt=self::$db->prepare('SELECT c.id as `id` FROM clients c INNER JOIN mails m ON m.id=c.id_mail WHERE m.mail=?');
+                $stmt->execute([$this->mail]);
+                $result=$stmt->fetch(PDO::FETCH_ASSOC);
+                $this->id=$result['id'];
+            }
             $this->password=password_hash($this->password, PASSWORD_DEFAULT);
             $stmt=self::$db->prepare('UPDATE `clients` SET `password`=? WHERE `id`=?');
             $stmt->execute([$this->password,$this->id]);

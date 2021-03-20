@@ -12,6 +12,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: url("/boutique/assets/images/white_bg.webp");
 }
 
 #body_tracking #tracking_search, #body_tracking #tracking_result {
@@ -45,10 +46,8 @@
           flex-flow: column;
   width: 40%;
   margin: 0 auto;
-  background: #04133D;
-  color: #FFCC00;
+  color: #04133D;
   padding: 2% 5%;
-  border: 2px solid #FFCC00;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3);
@@ -56,10 +55,13 @@
 }
 
 #body_tracking #tracking_search form input, #body_tracking #tracking_result form input {
-  background: rgba(0, 0, 0, 0.3);
+  background: white;
   outline: none;
   border: none;
-  border-bottom: 1px solid #FFCC00;
+  border-bottom: 1px solid #04133D;
+  border-left: 1px solid #04133D;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
   margin: 2%;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -67,7 +69,7 @@
 }
 
 #body_tracking #tracking_search form input[type=number], #body_tracking #tracking_search form input[type=email], #body_tracking #tracking_result form input[type=number], #body_tracking #tracking_result form input[type=email] {
-  color: white;
+  color: #04133D;
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
@@ -75,6 +77,8 @@
   background: rgba(255, 255, 255, 0.3);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  border-right: 1px solid #04133D;
+  border-top: 1px solid #04133D;
 }
 
 #body_tracking #tracking_search form input[type=submit], #body_tracking #tracking_result form input[type=submit] {
@@ -88,10 +92,10 @@
 }
 
 #body_tracking #tracking_search form input[type=submit]:hover, #body_tracking #tracking_result form input[type=submit]:hover {
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  background: white;
-  color: #04133D;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background: #04133D;
+  color: #FFCC00;
   cursor: pointer;
 }
 

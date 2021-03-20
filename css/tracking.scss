@@ -9,6 +9,7 @@ $yellow:#FFCC00;
     display:flex;
     flex-direction:column;
     justify-content: center;
+    background:url('/boutique/assets/images/white_bg.webp');
     #tracking_search, #tracking_result{
         min-height:60vh;
         display:flex;
@@ -24,27 +25,30 @@ $yellow:#FFCC00;
             flex-flow:column;
             width:40%;
             margin:0 auto;
-            background:$blue;
-            color:$yellow;
+            color:$blue;
             padding:2% 5%;
-            border:2px solid $yellow;
             border-radius:10px;
             box-shadow:0 0 4px 2px rgba(0,0,0,0.3);
             margin-bottom:2%;
             input{
-                background:rgba(0,0,0,0.3);
+                background:white;
                 outline:none;
                 border:none;
-                border-bottom:1px solid $yellow;
+                border-bottom:1px solid $blue;
+                border-left:1px solid $blue;
+                border-right:1px solid transparent;
+                border-top:1px solid transparent;
                 margin:2%;
                 transition:all 0.3s;
                 text-align: center;
                 &[type=number], &[type=email]{
-                    color:white;
+                    color:$blue;
                     font-family: $font_base;
                     &:focus{
                         background:rgba(255,255,255,0.3);
                         transition:all 0.5s;
+                        border-right:1px solid $blue;
+                        border-top:1px solid $blue;
                     }
                 }
                 &[type=submit]{
@@ -55,9 +59,9 @@ $yellow:#FFCC00;
                     padding:2% 0;
                     transition:all 0.3s;
                     &:hover{
-                        transition:all 0.4s;
-                        background:white;
-                        color:$blue;
+                        transition:all 0.5s;
+                        background:$blue;
+                        color:$yellow;
                         cursor: pointer;
                     }
                 }
