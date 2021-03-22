@@ -12,6 +12,7 @@
 @import url('checkout.css');
 @import url('tracking.css');
 @import url('resetpwd.css');
+@import url('404.css');
 
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 $blue:#04133D;
@@ -24,22 +25,6 @@ body{
 
 #nav_bar_mobile{
     display:none;
-}
-
-#banner_standard{
-    background:$blue;
-    display:flex;
-    justify-content: center;
-    text-align:center;
-    width:100%;
-    box-shadow: 1px 5px 15px 0px rgba(0,0,0,0.65);
-    z-index:4;
-    h2{
-        font-family:$font_base;
-        color:white;
-        font-size:calc(0.7vw + 16px);
-        font-style:italic;
-    }
 }
 
 #video_container{

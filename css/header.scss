@@ -65,7 +65,10 @@ header{
                         }
                     }
                 }
-                a{
+                .a{
+                    cursor:pointer;
+                }
+                a, .a{
                     position:relative;
                     text-decoration:none;
                     color:rgb(168, 183, 202);

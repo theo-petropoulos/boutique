@@ -24,7 +24,6 @@
                 $key="Un de perdu, un de retrouvé, pas de quoi s'affoler.";
                 $mail=urldecode(openssl_decrypt($_GET['m'], $cipher, $key, OPENSSL_ZERO_PADDING, $_GET['v']));
                 $arr['mail']=$mail;
-                var_dump($arr);
                 $db=db_link();
                 $user_pwd=new User($arr,$db);
                 $user_pwd->setNewPassword();

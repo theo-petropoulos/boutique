@@ -12,6 +12,7 @@
 @import url("checkout.css");
 @import url("tracking.css");
 @import url("resetpwd.css");
+@import url("404.css");
 body {
   margin: 0;
   padding: 0;
@@ -19,28 +20,6 @@ body {
 
 #nav_bar_mobile {
   display: none;
-}
-
-#banner_standard {
-  background: #04133D;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  width: 100%;
-  -webkit-box-shadow: 1px 5px 15px 0px rgba(0, 0, 0, 0.65);
-          box-shadow: 1px 5px 15px 0px rgba(0, 0, 0, 0.65);
-  z-index: 4;
-}
-
-#banner_standard h2 {
-  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: white;
-  font-size: calc(0.7vw + 16px);
-  font-style: italic;
 }
 
 #video_container {

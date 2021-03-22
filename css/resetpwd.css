@@ -5,7 +5,7 @@
 
 #body_resetpwd #return_resetpwd, #body_resetpwd #form_changepwd {
   position: relative;
-  min-height: 55vh;
+  min-height: 60vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,6 +84,12 @@
   width: 20%;
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5% 2%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #body_resetpwd #form_changepwd form input {
@@ -157,7 +163,7 @@
   width: 100%;
   position: relative;
   background: url("../assets/images/night_bg.jpg") top 50% center fixed no-repeat;
-  min-height: 55vh;
+  min-height: 60vh;
 }
 
 #body_resetpwd #form_resetpwd form {
@@ -232,5 +238,11 @@
 
 #body_resetpwd #form_resetpwd form input[type=submit]:nth-of-type(2) {
   margin-bottom: 2%;
+}
+
+@media screen and (max-width: 599px) {
+  #body_resetpwd #form_changepwd form {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=resetpwd.css.map */

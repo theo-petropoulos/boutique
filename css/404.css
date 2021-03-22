@@ -1,0 +1,109 @@
+#body_404 {
+  width: 100%;
+  position: relative;
+}
+
+#body_404 #main_404 {
+  position: relative;
+  width: 100%;
+  min-height: 55vh;
+  background: url("/boutique/assets/images/firewatch_purple.png");
+  background-size: 100%;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#body_404 #main_404 .p {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  -webkit-transform: translate(-25%, -50%);
+          transform: translate(-25%, -50%);
+  color: white;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#body_404 #main_404 .p .giant_text {
+  font-size: calc(30px + 5vw);
+  margin-bottom: 0;
+  display: inline-block;
+  bottom: 0;
+  vertical-align: bottom;
+}
+
+#body_404 #main_404 .p .big_text_404 {
+  font-size: calc(14px + 0.8vw);
+}
+
+#body_404 #main_404 .p .text_404 {
+  font-size: calc(10px + 0.4vw);
+}
+
+#body_404 #main_404 .p .text_404 a {
+  color: #FFCC00;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#body_404 #main_404 .p .text_404 a:hover {
+  color: greenyellow;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#body_404 #main_404 .block {
+  min-width: 10%;
+  background: url("/boutique/assets/images/firewatch_blue.jpg") fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  -webkit-animation: 0.3s ease-in fade_out forwards;
+          animation: 0.3s ease-in fade_out forwards;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+#body_404 #main_404 .block:hover {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+@-webkit-keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  #body_404 #main_404 {
+    background: url("/boutique/assets/images/night_bg3.jpg");
+    min-height: 30vh;
+  }
+  #body_404 #main_404 .block {
+    display: none;
+  }
+}
+/*# sourceMappingURL=404.css.map */

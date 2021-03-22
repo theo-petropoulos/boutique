@@ -83,7 +83,11 @@ header #nav_bar #nav_ul1 li form button:hover, header #nav_bar #nav_ul2 li form 
   transition: all 0.4s;
 }
 
-header #nav_bar #nav_ul1 li a, header #nav_bar #nav_ul2 li a {
+header #nav_bar #nav_ul1 li .a, header #nav_bar #nav_ul2 li .a {
+  cursor: pointer;
+}
+
+header #nav_bar #nav_ul1 li a, header #nav_bar #nav_ul1 li .a, header #nav_bar #nav_ul2 li a, header #nav_bar #nav_ul2 li .a {
   position: relative;
   text-decoration: none;
   color: #a8b7ca;
@@ -92,19 +96,19 @@ header #nav_bar #nav_ul1 li a, header #nav_bar #nav_ul2 li a {
   transition: all 0.3s;
 }
 
-header #nav_bar #nav_ul1 li a:hover, header #nav_bar #nav_ul2 li a:hover {
+header #nav_bar #nav_ul1 li a:hover, header #nav_bar #nav_ul1 li .a:hover, header #nav_bar #nav_ul2 li a:hover, header #nav_bar #nav_ul2 li .a:hover {
   color: white;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-header #nav_bar #nav_ul1 li a:hover i, header #nav_bar #nav_ul2 li a:hover i {
+header #nav_bar #nav_ul1 li a:hover i, header #nav_bar #nav_ul1 li .a:hover i, header #nav_bar #nav_ul2 li a:hover i, header #nav_bar #nav_ul2 li .a:hover i {
   color: #FFCC00;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
 
-header #nav_bar #nav_ul1 li a.link::before, header #nav_bar #nav_ul2 li a.link::before {
+header #nav_bar #nav_ul1 li a.link::before, header #nav_bar #nav_ul1 li .a.link::before, header #nav_bar #nav_ul2 li a.link::before, header #nav_bar #nav_ul2 li .a.link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -119,7 +123,7 @@ header #nav_bar #nav_ul1 li a.link::before, header #nav_bar #nav_ul2 li a.link::
   transition: all 0.4s ease-in-out;
 }
 
-header #nav_bar #nav_ul1 li a.link:hover::before, header #nav_bar #nav_ul2 li a.link:hover::before {
+header #nav_bar #nav_ul1 li a.link:hover::before, header #nav_bar #nav_ul1 li .a.link:hover::before, header #nav_bar #nav_ul2 li a.link:hover::before, header #nav_bar #nav_ul2 li .a.link:hover::before {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);

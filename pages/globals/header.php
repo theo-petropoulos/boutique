@@ -4,7 +4,7 @@
         <div id="nav_bar1">
             <ul id="nav_ul1">
                 <li id="nav_nouveautes"><a class="link" href="/boutique/pages/nouveautes.php">Nouveautés</a></li>
-                <li id="nav_montres"><a class="link" href="">Les collections</a>
+                <li id="nav_montres"><span class="a">Les collections</span>
                     <ul class="sous-menu">
                         <li><a class="link" href="/boutique/pages/collection.php?collection=1">Audemars Piguet</a></li>
                         <li><a class="link" href="/boutique/pages/collection.php?collection=2">Blancpain</a></li>

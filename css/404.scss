@@ -1,0 +1,78 @@
+$font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$blue:#04133D;
+$yellow:#FFCC00;
+
+#body_404{
+    width:100%;
+    position:relative;
+    #main_404{
+        position:relative;
+        width:100%;
+        min-height:55vh;
+        background:url('/boutique/assets/images/firewatch_purple.png');
+        background-size:100%;
+        background-position: center;
+        display:flex;
+        flex-wrap:wrap;
+        .p{
+            position:absolute;
+            left:25%;
+            top:50%;
+            transform:translate(-25%, -50%);
+            color:white;
+            font-family: $font_base;
+            .giant_text{
+                font-size:calc(30px + 5vw);
+                margin-bottom:0;
+                display:inline-block;
+                bottom:0;
+                vertical-align: bottom;
+            }
+            .big_text_404{
+                font-size:calc(14px + 0.8vw);
+            }
+            .text_404{
+                font-size:calc(10px + 0.4vw);
+                a{
+                    color:$yellow;
+                    text-decoration:none;
+                    transition: all 0.3s;
+                    &:hover{
+                        color:greenyellow;
+                        transition:all 0.4s;
+                    }
+                }
+            }
+        }
+        .block{
+            min-width:10%;
+            background:url('/boutique/assets/images/firewatch_blue.jpg') fixed;
+            background-repeat: no-repeat;
+            background-size:100%;
+            background-position:center;
+            animation: 0.3s ease-in fade_out forwards;
+            animation-play-state: paused;
+            &:hover{
+                animation-play-state: running;
+            }
+        }
+    }
+}
+
+@keyframes fade_out{
+    0%{opacity:1;}
+    99%{opacity:0;}
+    100%{visibility: hidden;}
+}
+
+@media screen and (max-width:699px){
+    #body_404{
+        #main_404{
+            background:url('/boutique/assets/images/night_bg3.jpg');
+            min-height:30vh;
+            .block{
+                display:none;
+            }
+        }
+    }
+}

@@ -77,6 +77,7 @@
                     die("Une erreur inattendue est survenue. Si le problème persiste, veuillez contacter le support à support.vonharper@gmail.com");
                     break;
             }
+            ?></section><?php
         }
         include $root . 'pages/globals/footer.php';?>
     </body>

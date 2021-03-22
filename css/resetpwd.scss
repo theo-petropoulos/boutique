@@ -7,7 +7,7 @@ $yellow:#FFCC00;
     position:relative;
     #return_resetpwd, #form_changepwd{
         position: relative;
-        min-height:55vh;
+        min-height:60vh;
         display:flex;
         flex-direction:column;
         justify-content: center;
@@ -56,6 +56,11 @@ $yellow:#FFCC00;
             width:20%;
             font-family: $font_base;
             color:white;
+            border:1px solid rgba(255,255,255,0.5);
+            padding:5% 2%;
+            border-radius:10px;
+            box-shadow:0px 0px 7px 5px rgba(0,0,0,0.3);
+            background:rgba(255,255,255,0.1);
             input{
                 font-family: $font_base;
                 &[type=password]{
@@ -110,7 +115,7 @@ $yellow:#FFCC00;
         width:100%;
         position:relative;
         background:url('../assets/images/night_bg.jpg') top 50% center fixed no-repeat;
-        min-height:55vh;
+        min-height:60vh;
         form{
             display:flex;
             flex-direction: column;
@@ -164,6 +169,16 @@ $yellow:#FFCC00;
                     }
                 }
             } 
+        }
+    }
+}
+
+@media screen and (max-width:599px){
+    #body_resetpwd{
+        #form_changepwd{
+            form{
+                width:100%;
+            }
         }
     }
 }
