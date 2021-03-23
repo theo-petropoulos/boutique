@@ -70,6 +70,10 @@ label {
     border: 1px solid black;
 }
 
+.container_admin_client {
+    display: flex;
+    flex-direction: row;
+}
 
 .box_admin {
     display: flex;
@@ -124,14 +128,42 @@ label {
     background-size: cover;
 }
 
-
 .form_manage > div {
     display: flex;
     flex-direction: column;
 }
+/*Form admin flients*/
+.container_admin_client label, .container_admin_client input{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 10px;
+}
 
+.container_admin_client form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container_admin_client  fieldset{
+    width: 60%;
+}
+.container_admin_client form{
+    width: 80%;
+}
+.container_admin_client input{
+    width: 70%;
+    height: 50px;
+    font-size: 1.5rem;
+}
 
-/*BOUTTON*/
+.form_radio{
+    display: flex;
+}
+.form_radio input{
+    width: 20px;
+}
+    /*BOUTTON*/
 
 .btn {
     background: rgba(1, 6, 20, .6);
@@ -160,4 +192,19 @@ label {
 
 .stock_high {
     color: #4DAF19;
+}
+
+/*Box d'erreur*/
+.error_box {
+    color: red;
+}
+.success_box{
+    color: #4DAF19;
+
+}
+/*Disposition colonne*/
+.col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

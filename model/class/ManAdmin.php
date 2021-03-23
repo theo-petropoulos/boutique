@@ -179,10 +179,36 @@ class ManAdmin extends Manager
      * @param int Entier representant la remise en pourcentage
      * @return float
      */
-    public
-    function apply_promo(Watch $product, int $remise): float
+    public function apply_promo(Watch $product, int $remise): float
     {
         return ($remise * $product->getPrix()) / 100;
     }
 
+    /** Affiche les commande lié à un même client prends en paramètre l'identifiant client
+     * @param $id_client //Identifiant du client dont vous souhaiter consulter les factures/commandes
+     * @return array
+     */
+    public function displayOrderById($id_client): array
+    {
+        $id_client = htmlspecialchars($id_client);
+        $id_client = strip_tags($id_client);
+        $sql = "SELECT * FROM factures where id_client = $id_client";
+        $query = $this->getPdo()->query($sql);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /** Supprime la facture correspondante à l'id passé en parametre
+     * @param $id_order /Id de la facture à supprimer
+     * @param $status
+     * @return false|int
+     */
+    public function editOrderStatus($id_order, $status)
+    {
+        $id_order = htmlspecialchars($id_order);
+        $id_order = strip_tags($id_order);
+        $sql = "UPDATE factures SET suivi = ? WHERE id=$id_order";
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $status);
+        var_dump($stmt->execute());
+    }
 }
