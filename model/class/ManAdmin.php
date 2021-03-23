@@ -145,11 +145,12 @@ class ManAdmin extends Manager
     /**
      * Supprime un produit de la BDD
      * @param int $id id du produit a supprimer
+     * @return false|PDOStatement
      */
     public function delete_product(int $id)
     {
         $sql = 'DELETE FROM produits WHERE id=' . $id;
-        $this->getPdo()->query($sql);
+        return $this->getPdo()->query($sql);
     }
 
     /** Insertion d'une nouvelle collection
@@ -167,11 +168,12 @@ class ManAdmin extends Manager
     /**
      * Supprime une ollection
      * @param int $id id de la collection à retirer
+     * @return false|PDOStatement
      */
     public function delete_collection(int $id)
     {
         $sql = 'DELETE FROM produits WHERE id=' . $id;
-        $this->getPdo()->query($sql);
+        return $this->getPdo()->query($sql);
     }
 
     /** Retourne le prix promotionnel d'un produit a affiché si la promo éxiste
@@ -179,10 +181,46 @@ class ManAdmin extends Manager
      * @param int Entier representant la remise en pourcentage
      * @return float
      */
-    public
-    function apply_promo(Watch $product, int $remise): float
+    public function apply_promo(Watch $product, int $remise): float
     {
         return ($remise * $product->getPrix()) / 100;
     }
 
+    /** Supprime la promotion dont l'id est passé en paramètre
+     * @param $id
+     * @return false|PDOStatement
+     */
+    public function delete_promotion($id)
+    {
+        $sql = 'DELETE FROM promotion WHERE id=' . $id;
+        return $this->getPdo()->query($sql);
+    }
+
+    /** Affiche les commande lié à un même client prends en paramètre l'identifiant client
+     * @param $id_client //Identifiant du client dont vous souhaiter consulter les factures/commandes
+     * @return array
+     */
+    public function displayOrderById($id_client): array
+    {
+        $id_client = htmlspecialchars($id_client);
+        $id_client = strip_tags($id_client);
+        $sql = "SELECT * FROM factures where id_client = $id_client";
+        $query = $this->getPdo()->query($sql);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /** Edite le suivi d'une facture pour y ajouter le status passé en parametre
+     * @param $id_order /Id de la facture à supprimer
+     * @param $status /Status de la commande Done Pour "livré", instance pour "en cours" et "canceled" pour annulé
+     * @return false|int
+     */
+    public function editOrderStatus($id_order, $status)
+    {
+        $id_order = htmlspecialchars($id_order);
+        $id_order = strip_tags($id_order);
+        $sql = "UPDATE factures SET suivi = ? WHERE id=$id_order";
+        $stmt = $this->getPdo()->prepare($sql);
+        $stmt->bindValue(1, $status);
+        return ($stmt->execute());
+    }
 }

@@ -2,11 +2,11 @@
 
 class Promo
 {
-    private string $_nom;
-    private int $_idProduit;
-    private int $_pourcentage;
-    private string $_dateDebut;
-    private string $_dateFin;
+    private  $_nom;
+    private  $_idProduit;
+    private  $_pourcentage;
+    private  $_dateDebut;
+    private  $_dateFin;
 
     public function hydrate(array $array)
     {

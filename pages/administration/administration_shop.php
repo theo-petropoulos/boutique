@@ -73,8 +73,7 @@ if (isset($_POST['promotion']) && $_POST['promotion'] === 'submit'):
         $Promo->hydrate($_POST);
         $ManPromo->insert_promo($Promo);
     }
-endif;
-?>
+endif; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
@@ -95,6 +94,7 @@ endif;
     <section class="administration administration_magasin">
         <h1>Gestion du Magasin </h1>
         <div class="display_box box_admin">
+            <!--            LISTE PRODUIT TABLEAU-->
             <h2>Liste des produits</h2>
             <table class="tab_prod">
                 <tr>
@@ -119,6 +119,7 @@ endif;
         </div>
         <div class="manage_box box_admin">
             <div class="container_form">
+                <!--                FORMULAIRE EDIT PRODUCT-->
                 <form method="post">
                     <fieldset class="form_edit_prod form_manage">
                         <legend class="title_form">Modifier un produit</legend>
@@ -134,14 +135,13 @@ endif;
                             <label for="price"><b>Nouveau prix</b> pour le produit</label>
                             <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
                         </div>
-                        <div class="error_box">
-                            <?= $AllreadySet === false ? "<span class='errors'>Les informations renseignés sont incorrect, Merci de renseigner l'identifiant du produit, son nombre en stock, son nouveau prix ou bien les 2..</span>" : '' ?>
-                        </div>
+                        <?= $AllreadySet === false ? "<div class='errors_box'>Les informations renseignés sont incorrect, Merci de renseigner toutes les informations!</div>" : "<div class='success_box'>Produit modifié avec succès!</div>" ?>
                         <div>
                             <button class="btn" type="submit" name="edit_product" value="submit">Valider</button>
                         </div>
                     </fieldset>
                 </form>
+                <!--                FORM DELETE PRODUCT-->
                 <form action="" method="post">
                     <fieldset class="form_del_prod form_manage">
                         <legend class="title_form">Supprimer un produit</legend>
@@ -149,6 +149,15 @@ endif;
                             <label for="id_prod">Entrez l'identifiant produit que vous souhaitez supprimer</label>
                             <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
                         </div>
+                        <?php
+                        //DEL PRODUCT
+                        if (isset($_POST['del_product']) && $_POST['del_product'] === 'submit' && isset($_POST['id_prod'])) {
+                            $delProd = $manAdmin->delete_product($_POST['id_prod']);
+                            if ($delProd === false) {
+                                echo "<div class='error_box'>Aucune produit ne correspond à cet identifiant</div>";
+                            } else echo "<div class='success_box'>Le produit à bien été supprimé avec succès!</div>";
+                        }
+                        ?>
                         <div>
                             <button class="btn" type="submit" name="del_product" value="submit">Valider</button>
                         </div>
@@ -159,6 +168,7 @@ endif;
 
         <div class="manage_box box_admin">
             <div>
+                <!--                FORM AJOUT PRODUIT-->
                 <form method="post">
                     <fieldset class="form_add_prod">
                         <legend class="title_form">Ajouter un produit</legend>
@@ -231,6 +241,7 @@ endif;
         </div>
 
         <div class="display_box box_admin">
+            <!--            TABLEAU LISTE DES COLLECTIONS-->
             <h2>Liste des collections</h2>
             <table>
                 <tr>
@@ -247,8 +258,8 @@ endif;
         </div>
 
         <div class="manage_box box_admin">
-
             <div class="container_form">
+                <!--                FORM AJOUT DE COLLECTION-->
                 <form method="post">
                     <fieldset class="form_add_coll form_manage">
                         <legend class="title_form">Ajouter une collection</legend>
@@ -261,17 +272,25 @@ endif;
                         </div>
                     </fieldset>
                 </form>
-
+                <!--        FORM DELETE COLLECTION-->
                 <form action="" method="post">
                     <fieldset class="form_del_collection form_manage">
                         <legend class="title_form">Supprimer une collection</legend>
                         <div>
-                            <label for="id_prod">Entrez l'identifiant de la collection que vous souhaitez
+                            <label for="id_prod">Entrer l'identifiant de la collection que vous souhaitez
                                 supprimer</label>
-                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                            <input type="text" id="id_coll" name="id_coll" placeholder="Identifiant collection">
                         </div>
+                        <?php
+                        //DEL COLLECTION
+                        if (isset($_POST['del_coll']) && $_POST['del_coll'] === 'submit' && isset($_POST['id_coll'])) {
+                            $delColl = $manAdmin->delete_collection($_POST['id_coll']);
+                            if ($delColl === false) {
+                                echo "<div class='error_box'>Aucune collection ne correspond à cet identifiant</div>";
+                            } else echo "<div class='success_box'>La collection à été supprimé avec succès!</div>";
+                        } ?>
                         <div>
-                            <button class="btn" type="submit" name="del_collection" value="submit">Valider</button>
+                            <button class="btn" type="submit" name="del_coll" value="submit">Valider</button>
                         </div>
                     </fieldset>
                 </form>
@@ -279,6 +298,7 @@ endif;
         </div>
 
         <div class="display_box box_admin">
+            <!--            TABLEAU LISTE DES PROMOTIONS ACTIVES-->
             <h2>Liste des promotions </h2>
             <table>
                 <tr>
@@ -300,9 +320,9 @@ endif;
                 <?php endforeach; ?>
             </table>
         </div>
-
         <div class="manage_box box_admin">
             <div class="container_form">
+                <!--                FORM CREATION PROMOTION-->
                 <form method="post">
                     <fieldset class="form_add_promo form_manage">
                         <legend class="title_form">Créer une promotion</legend>
@@ -333,16 +353,26 @@ endif;
                         </div>
                     </fieldset>
                 </form>
+                <!--                FORM DELETE PROMOTION-->
                 <form action="" method="post">
                     <fieldset class="form_del_promo form_manage">
                         <legend class="title_form">Supprimer une promotion</legend>
                         <div>
-                            <label for="id_prod">Entrez l'identifiant de la promotion que vous souhaitez
+                            <label for="id_promo">Entrez l'identifiant de la promotion que vous souhaitez
                                 supprimer</label>
-                            <input type="text" id="id_prod" name="id_prod" placeholder="Identifiant produit">
+                            <input type="text" id="id_promo" name="id_promo" placeholder="Identifiant promotion">
                         </div>
+                        <?php
+                        //DEL PROMO
+                        if (isset($_POST['del_promo']) && $_POST['del_promo'] === 'submit' && isset($_POST['id_promo'])) {
+                            $delPromo = $manAdmin->delete_promotion($_POST['id_promo']);
+                            if ($delPromo === false) {
+                                echo "<div class='error_box'>Aucune promotion ne correspond à cet identifiant</div>";
+                            } else echo "<div class='success_box'>La promotion à été supprimé avec succès!</div>";
+                        }
+                        ?>
                         <div>
-                            <button class="btn" type="submit" name="del_promotion" value="submit">Valider</button>
+                            <button class="btn" type="submit" name="del_promo" value="submit">Valider</button>
                         </div>
                     </fieldset>
                 </form>
