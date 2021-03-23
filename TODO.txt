@@ -12,7 +12,7 @@ X pwd recovery mail
 X ip update
 X tracking
 // shop locator -> Api google 
-404 page
+X 404 page
 
 --- polishing ---
 

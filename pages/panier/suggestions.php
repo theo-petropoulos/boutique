@@ -4,7 +4,7 @@
     $query=$db->query('SELECT * FROM `produits` WHERE `stock`>0');
     $items=$query->fetchAll(PDO::FETCH_ASSOC);
 
-    for ($i=0;$i<$sugg_qty;$i++){
+    for($i=0;$i<$sugg_qty;$i++){
         $amount=count($items)-1;
         $rand=rand(0,$amount);
         $j=0;
@@ -26,7 +26,7 @@
 
         <div class="sugg_product">
             <a href="/boutique/pages/produit.php?produit=<?=$sugg['id'];?>&collection=<?=$sugg['id_marque'];?>">
-                <img src='<?=$url;?>'>
+                <img src='<?=$url;?>' alt="Image Montre">
             </a>
             <p class="strtxt"><?=strtoupper($marque['nom']);?></p>
             <p><?=ucfirst(strtolower($sugg['nom']));?></p>

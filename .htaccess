@@ -1,0 +1,3 @@
+ErrorDocument 404 http://localhost/boutique/pages/404.php
+
+RewriteEngine On

@@ -36,7 +36,7 @@
 
         <figure class="watch_min">
             <a href="/boutique/pages/produit.php?produit=<?=$sugg['id'];?>&collection=<?=$id;?>">
-                <img src='<?=$url;?>'>
+                <img src='<?=$url;?>' alt="Image Montre">
             </a>
             <figcaption>
                 <div class="title">

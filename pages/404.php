@@ -10,9 +10,6 @@
 
     <body id="body_404">
         <?php include $root . 'pages/globals/header.php';?>
-        <section id="banner_standard">
-            <h2>Le contenu n'existe pas</h2>
-        </section>
         <main id="main_404">
             <div class="p">
                 <p><span class="giant_text">404.</span></p>

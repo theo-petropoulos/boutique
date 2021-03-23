@@ -1,0 +1,75 @@
+/* PAGE Background */
+#bg_new {
+  background: #e8e8e8;
+  margin-top: 4px;
+}
+
+/* Section's container */
+
+.container_sections {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* Newest 's container */
+.section_new {
+  /* background: lightpink; */
+  border: 1px solid black;
+  display: flex;
+  height: 300px;
+  margin: 15px 0 15px 0;
+  box-shadow: 2px 2px 5px black;
+}
+/* Describes 's container */
+.container_text_new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: black;
+  width: 50%;
+  border: white 1px solid;
+  color: white;
+}
+.container_text_new > p {
+  font-size: larger;
+  line-height: 1.5;
+  width: 80%;
+  font-style: italic;
+}
+
+/* Pics 's container */
+.container_img_new {
+  width: 50%;
+  border: white 1px solid;
+}
+/* Pictures */
+.img_new {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Underline title */
+.sep_new {
+  width: 100%;
+  border: 0.1px solid white;
+  opacity: 0.2;
+  margin-bottom: 20px;
+}
+
+/* Newests 's link */
+.link_new {
+  margin: 20px;
+  text-decoration: none;
+  color: #d5d5d5;
+  font-size: larger;
+  border: 0.5px solid grey;
+  padding: 15px;
+  transition: 1s;
+}
+.link_new:hover {
+  transform: scale(1.05);
+  border: 2px  double white;
+  color: white;
+  transition: 1s;
+}

@@ -1,0 +1,131 @@
+/*STRUCT PAGE PRODUCT */
+.bg_products {
+    margin-top: 5px;
+    background: #e5e5e5;
+}
+
+.container_page_product {
+    display: flex;
+    padding: 20px;
+    justify-content: space-evenly;
+}
+
+.container_products {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background: black;
+    margin: 20px 0;
+    box-shadow: 2px 2px 10px black;
+    border: 0.5px solid rgba(255, 255, 255, .5);
+}
+
+.container_product {
+    margin: 20px 0;
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    text-align: center;
+    background: black;
+    color: white;
+    padding: 20px;
+
+}
+
+.container_product > p, button {
+    margin: 15px 0;
+}
+
+.container_describe_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 0;
+    background: black;
+    width: 50%;
+    text-align: center;
+    color: white;
+    box-shadow: 2px 2px 10px black;
+    border: 0.5px solid rgba(255, 255, 255, .5);
+}
+
+.container_text_describe {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 50px;
+    justify-content: space-evenly;
+}
+
+.container_text_describe > p {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.container_image_describe_product {
+    padding: 50px;
+    display: flex;
+    height: 60%;
+    background: center url("../assets/images/Selection.jpg");
+    background-size: cover;
+    border: 1px solid black;
+}
+
+/*Watch Pics*/
+.product_pic {
+    object-fit: cover;
+    object-position: top;
+    height: 200px;
+}
+
+.sep_prod {
+    border: .5px solid white;
+    background: white;
+    opacity: .2;
+}
+
+.image_describe_title {
+    font-size: 3em;
+    font-style: italic;
+    text-shadow: 1px 1px 2px black;
+    opacity: .5;
+}
+
+.container_price {
+    margin: 10px;
+    font-size: 1.1rem;
+}
+
+.textPromoColl {
+    display: inline-block;
+    font-style: italic;
+    color: #11af11;
+}
+
+.promoPriceColl {
+    color: whitesmoke;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.oldPriceColl {
+    display: inline-block;
+    color: #8e8e8e;
+    text-decoration: line-through;
+}
+
+.normalPriceColl {
+    display: inline-block;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.buy {
+    margin: 10px;
+    display:inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}

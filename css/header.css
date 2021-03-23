@@ -159,7 +159,7 @@ header #nav_bar #nav_ul1 #nav_montres ul li:nth-of-type(1), header #nav_bar #nav
 
 header #nav_bar #nav_ul1 #nav_montres:hover ul, header #nav_bar #nav_ul2 #nav_montres:hover ul {
   display: block;
-  z-index: 3;
+  z-index: 5;
 }
 
 header #nav_bar #nav_bar1 {
