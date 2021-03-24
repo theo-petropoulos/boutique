@@ -32,12 +32,12 @@
                     </a>
                 </div>
                 <div class="text_nouveautes">
-                    <h2><span><?=ucfirst(strtolower($results[$i]['marque']));?></span><?=' - ' . ucfirst(strtolower($results[$i]['nom']));?></h2>
+                    <a class="link_new" href="/boutique/pages/produit.php?produit=<?=$results[$i]['id'];?>&collection=<?=$results[$i]['id_marque'];?>">Voir le produit</a>
                     <details>
                         <summary><i class="fas fa-plus"></i> Description produit</summary>
                         <span class="content"><?=$results[$i]['description'];?></span>
                     </details>
-                    <a class="link_new" href="/boutique/pages/produit.php?produit=<?=$results[$i]['id'];?>&collection=<?=$results[$i]['id_marque'];?>">Voir le produit</a>
+                    <h2><span><?=ucfirst(strtolower($results[$i]['marque']));?></span><?=' - ' . ucfirst(strtolower($results[$i]['nom']));?></h2>
                 </div>
             </article>
             <div class="separator_white"></div>
