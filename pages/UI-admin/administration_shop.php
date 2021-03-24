@@ -1,11 +1,4 @@
 <?php
-include_once '../../model/class/Manager.php';
-include_once '../../model/class/ManAdmin.php';
-include_once '../../model/class/ManWatch.php';
-include_once '../../model/class/ManPromo.php';
-include_once '../../model/class/Watch.php';
-include_once '../../model/class/Promo.php';
-session_start();
 //Initialisation des variables et des objet utilitaires
 $manAdmin = new ManAdmin();
 $manProduct = new ManWatch();
@@ -74,23 +67,6 @@ if (isset($_POST['promotion']) && $_POST['promotion'] === 'submit'):
         $ManPromo->insert_promo($Promo);
     }
 endif; ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../css/boutique.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../css/administration.css">
-    <link rel="icon" href="../../assets/images/icon.png"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Bodoni+Moda&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
-    <title>Von Harper</title>
-</head>
-
-<body>
-<?php include_once '../../pages/globals/header.php' ?>
-<main class="container_page">
     <section class="administration administration_magasin">
         <h1>Gestion du Magasin </h1>
         <div class="display_box box_admin">
@@ -379,7 +355,3 @@ endif; ?>
             </div>
         </div>
     </section>
-</main>
-<?php include_once '../../pages/globals/footer.php'; ?>
-</body>
-</html>

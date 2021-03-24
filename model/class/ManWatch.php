@@ -29,7 +29,7 @@ class ManWatch extends Manager
         ];
     }
 
-    /** Retourne tout les produits sous forme de tableau d'objet à mettre en forme sur la page d'administration
+    /** Retourne tout les produits sous forme de tableau d'objet à mettre en forme sur la page d'UI-admin
      * @return array
      */
     public function get_products(): array
