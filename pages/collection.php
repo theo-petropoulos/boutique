@@ -34,7 +34,7 @@ endif;
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
     <?php $title=$_SESSION['marque']; require $root . 'pages/globals/head.php';?>
     <body id="body_collection">
         <?php require_once $root . 'pages/globals/header.php';?>
