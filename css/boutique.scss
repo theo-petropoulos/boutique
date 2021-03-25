@@ -279,6 +279,12 @@ body{
 }
 
 @media screen and (max-width:599px){
+    html body main#main_index section#staring1 figure.watch_min figcaption div.name h4{
+        max-height:100px;
+        overflow-wrap: break-word;
+        overflow:scroll;
+    }
+    
     #nav_bar{
         display:flex;
         flex-direction:column;
