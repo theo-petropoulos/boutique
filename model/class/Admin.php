@@ -1,20 +1,25 @@
 <?php
 
-class Admin extends User
+class Admin
 {
-    private string $_mail;
-    private string $_password;
-    private string $_role = "administrateur";
+    private  $_mail;
+    private  $_password;
+    private  $_role = "administrateur";
 
 
-    protected function hydrate(array $array)
+    public function isAdmin(array $POST)
     {
-        foreach ($array as $index => $item) {
-            $method = 'set' . ucfirst($index);
-            if (method_exists($this, $method)) {
-                $this->$method($index);
-            }
-        }
+        $mail = htmlspecialchars($POST['mail']);
+        $password = htmlspecialchars($POST['password']);
+        $conf_pass = htmlspecialchars($POST['conf_password']);
+        $mail = strip_tags($mail);
+        $password = strip_tags($password);
+        $conf_pass = strip_tags($conf_pass);
+
+        $sql = "SELECT * FROM admin WHERE login=$mail";
+        $pdo = new PDO("mysql:dbname=boutique;host=localhost", 'root', '');
+        $res = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+        var_dump($res);
     }
 
     /**
@@ -55,6 +60,14 @@ class Admin extends User
     public function setMail(mixed $mail): void
     {
         $this->mail = $mail;
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->_role = $role;
     }
 
 }

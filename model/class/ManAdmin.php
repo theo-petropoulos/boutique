@@ -2,7 +2,7 @@
 include_once 'Manager.php';
 
 /**
- * Class ManAdmin Regroupe toute les fonctionnalité de gestion de L'UI d'administration du site.
+ * Class ManAdmin Regroupe toute les fonctionnalité de gestion de L'UI d'UI-admin du site.
  */
 class ManAdmin extends Manager
 {
@@ -62,7 +62,7 @@ class ManAdmin extends Manager
         return ($admin->getRole() == "administrateur") ? true : false;
     }
 
-    /**Affiche les comtpes admin sur la page d'administration
+    /**Affiche les comtpes admin sur la page d'UI-admin
      * @return array
      */
     public function display_Admin(): array
@@ -71,7 +71,7 @@ class ManAdmin extends Manager
         return $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**Affiche les Infos clients sur la page d'administration
+    /**Affiche les Infos clients sur la page d'UI-admin
      * @return array
      */
     public function display_clients(): array
