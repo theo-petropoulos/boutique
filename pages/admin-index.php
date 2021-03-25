@@ -22,28 +22,34 @@ session_start();
 </head>
 <?php require_once __DIR__ . '/globals/header.php'; ?>
 <main class=="container_page">
+    <!--    Si pas de chemin en get affiche la home page d'administration-->
     <?php
-    //TEST
-    if (isset($_SESSION['Admin-KEY']) && password_verify($_SESSION['Admin-KEY'], 'vonharper6559571991')): ?>
-        <a href="<?= __DIR__ . 'UI-admin?path=admin-clients' ?>">Adminsitration Clients</a>
-        <a href="<?= __DIR__ . 'UI-admin?path=admin-shop' ?>">Administration Shop</a>
-        <a href="<?= __DIR__ . 'UI-admin?path=admin-shop' ?>">Crée un nouvel Administrateur</a>
-    <?php endif;
-    ?>
-    -->
+    if (!isset($_GET['path'])) {
+        require_once 'UI-admin/home-admin.php';
+    } ?>
     <?php
-    #MAPPING ROUTE Admin form and manage pages
-    if (isset($_GET['path']) && $_GET['path'] === 'create-admin') {
-        require 'UI-admin/create_admin.php';
-    } elseif (isset($_GET['path']) && $_GET['path'] === 'admin-clients') {
-        require 'UI-admin/administration_clients.php';
+    //    Si admin connecté display link différentes page de l'UI admin
+    if (isset($_SESSION['Admin-KEY']) && password_verify('vonharper6559571991', $_SESSION['Admin-KEY'])): ?>
+        <div>
+            <a href="?path=admin-clients" class="link_admin">Administration des clients</a>
+            <a href="?path=admin-shop" class="link_admin">Administration du Magasin</a>
+            <a href="?path=create-admin" class="link_admin">Crée un nouvel Admin</a>
+        </div>
+    <?php endif; ?>
+    <?php
+    //    Routeur manuel des differentes page de l'UI Admin'
+    if (isset($_GET['path']) && $_GET['path'] === 'admin-clients') {
+        require_once 'UI-admin/administration_clients.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'admin-shop') {
-        require 'UI-admin/administration_shop.php';
+        require_once 'UI-admin/administration_shop.php';
+    } elseif (isset($_GET['path']) && $_GET['path'] === 'create-admin') {
+        require_once 'UI-admin/create_admin.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'connect-admin') {
-        require 'UI-admin/connect_admin.php';
+        require_once 'UI-admin/connect_admin.php';
     } else {
-        echo "Page inexistante";
+        echo 'REDIRIGER VERS 404';
     }
+
     ?>
 </main>
 <?php require_once __DIR__ . '/globals/footer.php'; ?>

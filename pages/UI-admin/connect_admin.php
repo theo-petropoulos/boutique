@@ -8,17 +8,18 @@ if (isset($_POST['connect_admin'])):
     $pdo = new PDO('mysql:dbname=boutique;host=localhost', 'root', '');
     $res = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     $checkPass = password_verify($passAdmin, $res['password']);
+
     if ($checkPass && $res['login'] === $logAdmin) {
         $Admin = new Admin();
         $authAdmin = password_hash('vonharper6559571991', CRYPT_BLOWFISH);
         $Admin->setRole($authAdmin);
         $_SESSION['Admin-KEY'] = $Admin->getRole();
-        $path='home-admin';
+        header('location:admin-index.php');
     }
 endif;
 ?>
 <form action="#" method="POST">
-    <fieldset class="form_manage">
+    <fieldset class="form_manage" style="height: 550px; margin: 50px auto">
         <legend class="title_form"> Connexion Administrateur</legend>
         <div>
             <label for="log_admin"> Login</label>
@@ -29,7 +30,7 @@ endif;
             <input type="password" name="pass_admin" id="pass_admin">
         </div>
         <div>
-            <button type="submit" name="connect_admin" value="submit"> Connexion</button>
+            <button class="btn" type="submit" name="connect_admin" value="submit"> Connexion</button>
         </div>
     </fieldset>
 
