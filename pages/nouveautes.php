@@ -1,13 +1,23 @@
 <?php 
     require realpath($_SERVER["DOCUMENT_ROOT"]) . '/boutique/model/session.php';
+    if(isset($_GET['page']) && in_array(intval($_GET['page']), [1,2,3]) ){
+        $counter=intval($_GET['page']);
+    } else $counter=1;
     //Get last 3 watches inserted into the db
-    $query=$db->query('SELECT * FROM `produits` ORDER BY `id` DESC LIMIT 3');
+    $queryid=$db->query('SELECT max(id) as id FROM `produits`');
+    $resid=$queryid->fetch(PDO::FETCH_ASSOC);
+    $id=$resid['id'];
+    $rangea=$id-$counter*3;
+    $rangeb=$rangea+3;
+
+    $query=$db->query("SELECT * FROM `produits` WHERE `id` BETWEEN $rangea and $rangeb ORDER BY `id` DESC");
     $results=$query->fetchAll(PDO::FETCH_ASSOC);
     foreach($results as $key=>$value){
         $query=$db->query("SELECT `nom` FROM `marques` WHERE `id`=$value[id_marque]");
         $marque=$query->fetch(PDO::FETCH_ASSOC);
         $results[$key]['marque']=$marque['nom'];
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +32,18 @@
             <h2>Nos nouveautés</h2>
         </div>
         <main id="main_nouveautes">
-        <?php for($i=0;$i<3;$i++){
-            
-            ?>
+        <div id="nav_nouveautes">
+            <form method="get" action="nouveautes.php">
+                <input type="hidden" name="page" value="<?=$counter-1;?>">
+                <button type="submit" <?php if($counter==1){ ?> disabled <?php } ?>><i class="fas fa-angle-double-left"></i></button>
+            </form>
+            <p>Page <?=$counter;?></p>
+            <form method="get" action="nouveautes.php">
+                <input type="hidden" name="page" value="<?=$counter+1;?>">
+                <button type="submit" <?php if($counter==3){ ?> disabled <?php } ?>><i class="fas fa-angle-double-right"></i></button>
+            </form>
+        </div>
+        <?php for($i=0;$i<3;$i++){?>
             <article class="article_nouveautes">
                 <div class="image_nouveautes">
                     <a class="link_new" href="/boutique/pages/produit.php?produit=<?=$results[$i]['id'];?>&collection=<?=$results[$i]['id_marque'];?>">
@@ -42,6 +61,7 @@
             </article>
             <div class="separator_white"></div>
         <?php } ?>
+        <a href="#banner_standard" id="upbutton"><i class="fas fa-caret-square-up"></i></a>
         </main>
     <?php include $root . 'pages/globals/footer.php'; ?>
     </body>

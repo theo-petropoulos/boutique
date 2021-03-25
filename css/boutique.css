@@ -14,6 +14,7 @@
 @import url("resetpwd.css");
 @import url("404.css");
 @import url("nouveautes.css");
+@import url("collection.css");
 body {
   margin: 0;
   padding: 0;
@@ -483,6 +484,22 @@ body {
   }
   footer #footer_nav #footer_social ul {
     padding: 0;
+  }
+  html body main#main_index section#staring1 figure.watch_min, html body main#main_index section#staring2 figure.watch_min {
+    position: relative;
+  }
+  html body main#main_index section#staring1 figure.watch_min a, html body main#main_index section#staring2 figure.watch_min a {
+    width: 90%;
+  }
+  html body main#main_index section#staring1 figure.watch_min a img, html body main#main_index section#staring2 figure.watch_min a img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  html body main#main_index section#staring1 figure.watch_min figcaption, html body main#main_index section#staring2 figure.watch_min figcaption {
+    height: calc(80px + 20vh);
+  }
+  html body main#main_index section#quote p {
+    padding: 0 5%;
   }
 }
 /*# sourceMappingURL=boutique.css.map */

@@ -1,3 +1,7 @@
+#body_nouveautes {
+  scroll-behavior: smooth;
+}
+
 #body_nouveautes #main_nouveautes {
   background: url("/boutique/assets/images/night_bg3.jpg");
   width: 100%;
@@ -10,6 +14,50 @@
       -ms-flex-flow: column;
           flex-flow: column;
   padding: 2% 0;
+}
+
+#body_nouveautes #main_nouveautes #nav_nouveautes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  color: #99CCFF;
+  font-family: 'Lobster', Verdana;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#body_nouveautes #main_nouveautes #nav_nouveautes form button {
+  background: transparent;
+  outline: none;
+  color: white;
+  border: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: calc(10px + 0.8vw);
+}
+
+#body_nouveautes #main_nouveautes #nav_nouveautes form button:not([disabled]):hover {
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+#body_nouveautes #main_nouveautes #nav_nouveautes form button[disabled] {
+  visibility: hidden;
+}
+
+#body_nouveautes #main_nouveautes #nav_nouveautes p {
+  margin: 0;
+  font-size: calc(12px + 1vw);
 }
 
 #body_nouveautes #main_nouveautes .separator_white {
@@ -253,9 +301,8 @@
 }
 
 #body_nouveautes #main_nouveautes .article_nouveautes:nth-of-type(2n) .text_nouveautes {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  justify-self: flex-end;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   text-align: right;
   margin-right: 3%;
   padding-left: 3%;
@@ -299,6 +346,27 @@
 
 #body_nouveautes #main_nouveautes .article_nouveautes:nth-of-type(2n-1) .text_nouveautes {
   margin-left: 3%;
+}
+
+#body_nouveautes #upbutton {
+  text-decoration: none;
+  color: red;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  overflow: hidden;
+  margin: 2% auto 0.5% auto;
+  font-size: 1.8em;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#body_nouveautes #upbutton:hover {
+  color: #FFCC00;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 @-webkit-keyframes rotate_in {
@@ -392,6 +460,9 @@
 @media screen and (max-width: 599px) {
   #body_nouveautes #main_nouveautes {
     padding: 0;
+  }
+  #body_nouveautes #main_nouveautes #nav_nouveautes {
+    margin: 2% 0;
   }
   #body_nouveautes #main_nouveautes .article_nouveautes {
     width: 100%;

@@ -3,6 +3,7 @@ $blue:#04133D;
 $yellow:#FFCC00;
 
 #body_nouveautes{
+    scroll-behavior: smooth;
     #main_nouveautes{
         background:url('/boutique/assets/images/night_bg3.jpg');
         width:100%;
@@ -10,6 +11,38 @@ $yellow:#FFCC00;
         display:flex;
         flex-flow: column;
         padding:2% 0;
+        #nav_nouveautes{
+            display:flex;
+            flex-flow: row;
+            color:#99CCFF;
+            font-family: 'Lobster', Verdana;
+            justify-content: center;
+            align-items: center;
+            form{
+                button{
+                    background:transparent;
+                    outline:none;
+                    color:white;
+                    border:0;
+                    transition:all 0.3s;
+                    font-size:calc(10px + 0.8vw);
+                    &:not([disabled]){
+                        &:hover{
+                            color:$yellow;
+                            transition:all 0.4s;
+                            cursor:pointer;
+                        }
+                    }
+                    &[disabled]{
+                        visibility: hidden;
+                    }
+                }
+            }
+            p{
+                margin:0;
+                font-size:calc(12px + 1vw);
+            }
+        }
         .separator_white{
             display:none;
         }
@@ -175,8 +208,7 @@ $yellow:#FFCC00;
                     transition:all 0.4s;
                 }
                 .text_nouveautes{
-                    align-self:flex-end;
-                    justify-self: flex-end;
+                    align-self: flex-start;
                     text-align:right;
                     margin-right:3%;
                     padding-left:3%;
@@ -209,6 +241,20 @@ $yellow:#FFCC00;
             }
         }
     }
+    #upbutton{
+        text-decoration:none;
+        color:red;
+        width:max-content;
+        overflow:hidden;
+        margin:2% auto 0.5% auto;
+        font-size:1.8em;
+        transition:all 0.3s;
+        &:hover{
+            color:$yellow;
+            transform:scale(1.5);
+            transition:all 0.5s;
+        }
+    }
 }
 
 @keyframes rotate_in{
@@ -235,6 +281,9 @@ $yellow:#FFCC00;
     #body_nouveautes{
         #main_nouveautes{
             padding:0;
+            #nav_nouveautes{
+                margin:2% 0;
+            }
             .article_nouveautes{
                 width:100%;
                 padding:0% 0% 1% 0%;
