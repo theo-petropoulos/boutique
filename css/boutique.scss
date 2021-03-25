@@ -14,6 +14,7 @@
 @import url('resetpwd.css');
 @import url('404.css');
 @import url('nouveautes.css');
+@import url('collection.css');
 
 $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 $blue:#04133D;
@@ -333,5 +334,21 @@ body{
                 }
             }
         }
+    }
+    html body main#main_index section#staring1 figure.watch_min, html body main#main_index section#staring2 figure.watch_min{
+        position:relative;
+        a{
+            width:90%;
+            img{
+                object-fit: contain;
+            }
+        }
+        figcaption{
+            height:calc(80px + 20vh);
+        }
+    }
+
+    html body main#main_index section#quote p{
+        padding:0 5%;
     }
 }

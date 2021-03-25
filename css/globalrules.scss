@@ -2,6 +2,11 @@ $font_base:'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', se
 $blue:#04133D;
 $yellow:#FFCC00;
 
+html,body{
+    margin:0;
+    padding:0;
+}
+
 strong, em{
     font-weight:inherit;
     font-style:inherit;

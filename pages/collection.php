@@ -13,7 +13,7 @@ $PromoInfos = null;
 $path_pics = null;
 $PromoProd = [];
 $marques = $ManWatch->getCollection();
-$test='';
+$collection_id='';
 
 //Condition permettant de définir la collection
 if (isset($_GET['collection']) && in_array($_GET['collection'], range(1,count($marques)))) :
@@ -23,7 +23,8 @@ if (isset($_GET['collection']) && in_array($_GET['collection'], range(1,count($m
     foreach ($marques as $marque):
         if ($marque->id == $_GET['collection']) {
             $collection = ucfirst($marque->nom);
-            $test = $marque->id;
+            $collectiondesc=$marque->description;
+            $collection_id = $marque->id;
             $_SESSION['marque']=$collection;
         } 
     endforeach;
@@ -32,73 +33,49 @@ endif;
 
 ?>
 <!DOCTYPE html>
+
 <html lang="en">
-<?php $title=$_SESSION['marque']; require $root . 'pages/globals/head.php';?>
-<head>
-    <link rel="stylesheet" href="/boutique/css/global.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="/boutique/css/collection.css?v=<?php echo time(); ?>">
-</head>
-<body>
-<?php require_once $root . 'pages/globals/header.php';?>
-<main>
-    <!-- TITRE (PRODUCT) -->
-    <div class="container_main_title">
-        <h1 class="main_title">NOS MONTRES</h1>
-    </div>
-    <div class="bg_products">
-        <div class="container_page_product">
-            <!--Section produits-->
-            <section class="container_products">
-                <?php foreach ($produits as $prod): ?>
-                    <?php
+    <?php $title=$_SESSION['marque']; require $root . 'pages/globals/head.php';?>
+    <body id="body_collection">
+        <?php require_once $root . 'pages/globals/header.php';?>
+        <main id="main_collection">
+            <div id="banner_standard">
+                <h2>Nos montres</h2>
+            </div>
+            <div id="collection_name">
+                <h2><?=$collection;?></h2>
+            </div>
+            <div id="collection_desc">
+                <p><?=$collectiondesc;?></p>
+            </div>
+            <div class="separator_white"></div>
+            <h4>La collection</h4>
+            <section id="collection_container">
+                <?php foreach ($produits as $prod):
                     $Watch = new Watch();
                     $Watch->hydrate($prod);
                     $Watch->setNomImage($prod['image']);
                     $Price = $Watch->getPrix();
                     ?>
-                    <div class="container_product">
-                        <img class="product_pic" src="<?= $path_pics ?>/<?= $Watch->getNomImage() ?>"
-                             alt="Montre">
-                        <h4 class="product_title"><?= $Watch->getNom() ?></h4>
-                        <!--- Check promo-->
+                    <div class="collection_product">
+                        <a class="aimg" href="/boutique/pages/produit.php?produit=<?=$Watch->getId();?>&collection=<?=$collection_id;?>">
+                            <img src="<?=$path_pics;?>/<?=$Watch->getNomImage();?>" alt="Montre">
+                        </a>
                         <?php //Affiche promotion si existante Sinon affiche le prix normal
-                        $ArrayPromo = $ManPromo->get_promo($Watch);
-                        isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
-                        isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL); ?>
-                        <div class="container_price">
-                            <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . $Watch->getPrix() . '€' . '</span>' ?>
-                            <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?= $test ?>"
-                               class="buy">En savoir plus</a>
+                            $ArrayPromo = $ManPromo->get_promo($Watch);
+                            isset($ArrayPromo) ? $newprice = ($Price * $ArrayPromo['pourcentage']) / 100 : $newprice = NULL;
+                            isset($newprice) ? $Watch->setPrixPromo($newprice) : $Watch->setPrixPromo(NULL);
+                        ?>
+                        <div class="collection_infos">
+                            <h3><?=ucfirst(strtolower($Watch->getNom()));?></h3>
+                            <?= $Watch->getPrixPromo() != NULL ? '<span class="textPromoColl">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPriceColl">' . $Watch->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPriceColl">' . $Watch->getPrix() . '€' . '</span>' : '<span class="normalPriceColl">' . number_format(intval($Watch->getPrix()),2,'.',',') . '€' . '</span>' ?>
+                            <a href="produit.php?produit=<?= $Watch->getId() ?>&collection=<?=$collection_id;?>"
+                            class="buy">Voir le produit</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </section>
-            <!--Section description de la gamme -->
-            <section class="container_describe_product">
-                <h2 class="main_title"><?= "Collection" . ' ' . $collection ?></h2>
-                <hr class="sep_prod">
-                <div class="container_text_describe">
-                    <p class="p_describe_product">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolorum
-                        eaque
-                        earum
-                        maiores minima molestias, nihil? Assumenda aut eligendi hic laborum magnam porro quisquam quod!
-                        Eum
-                        inventore molestiae quidem quos!</p>
-
-                    <p class="p_describe_product">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolorum
-                        eaque
-                        earum
-                        maiores minima molestias, nihil? Assumenda aut eligendi hic laborum magnam porro quisquam quod!
-                        Eum
-                        inventore molestiae quidem quos!</p>
-                </div>
-                <div class="container_image_describe_product">
-                    <h3 class="image_describe_title">Un travail d'orfèvre</h3>
-                </div>
-            </section>
-        </div>
-    </div>
-</main>
-<?php require_once $root . 'pages/globals/footer.php';?>
-</body>
+        </main>
+        <?php require_once $root . 'pages/globals/footer.php';?>
+    </body>
 </html>
