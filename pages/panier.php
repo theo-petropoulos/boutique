@@ -5,6 +5,7 @@
 
     if(isset($_POST['addbasket']) && $_POST['addbasket']){
         header("Location: panier.php");
+        exit();
     }
     
 ?>

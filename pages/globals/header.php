@@ -1,3 +1,6 @@
+<?php   
+    ob_start();
+?> 
 <header>
     <a href="/boutique/index.php"><h1><span class="h1font">V</span>on <span class="h1font">H</span>arper</h1></a>
     <nav id="nav_bar">

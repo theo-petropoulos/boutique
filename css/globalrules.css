@@ -120,8 +120,8 @@ input[type=number] {
   -o-border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
      border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
   border-image-slice: 1;
-  padding: 0.5% 1%;
-  margin: 0.5% 0%;
+  padding: calc(8px + 0.5%) calc(8px + 1%);
+  margin: calc(5px + 0.5%) 0;
 }
 
 #newsletter_return, #form_return {
