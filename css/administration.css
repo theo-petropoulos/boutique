@@ -84,6 +84,22 @@ label {
     margin: 20px;
 }
 
+.home_admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 10px solid white;
+}
+
+.box_link_admin {
+!important display: flex;
+!important flex-direction: row;
+    width: 80%;
+    margin: 20px auto;
+    justify-content: space-evenly;
+}
+
 /*FORMULAIRE AJOUT PRODUIT*/
 .form_add_prod {
     width: 50%;
@@ -133,8 +149,9 @@ label {
     display: flex;
     flex-direction: column;
 }
+
 /*Form admin flients*/
-.container_admin_client label, .container_admin_client input{
+.container_admin_client label, .container_admin_client input {
     text-align: center;
     font-size: 1.5rem;
     margin: 10px;
@@ -146,25 +163,30 @@ label {
     flex-direction: column;
     align-items: center;
 }
-.container_admin_client  fieldset{
+
+.container_admin_client fieldset {
     width: 60%;
 }
-.container_admin_client form{
+
+.container_admin_client form {
     width: 80%;
 }
-.container_admin_client input{
+
+.container_admin_client input {
     width: 70%;
     height: 50px;
     font-size: 1.5rem;
 }
 
-.form_radio{
+.form_radio {
     display: flex;
 }
-.form_radio input{
+
+.form_radio input {
     width: 20px;
 }
-    /*BOUTTON*/
+
+/*BOUTTON*/
 
 .btn {
     background: rgba(1, 6, 20, .6);
@@ -187,6 +209,7 @@ label {
     text-align: left;
 }
 
+/*STOCK*/
 .stock_low {
     color: red;
 }
@@ -199,13 +222,51 @@ label {
 .error_box {
     color: red;
 }
-.success_box{
+
+.success_box {
     color: #4DAF19;
 
 }
+
 /*Disposition colonne*/
-.col{
+.col {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/*HOME ADMIN*/
+.link_admin {
+    display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background: url(http://css.mammouthland.net/images/boutonnoir.png) no-repeat;
+    color: white;
+    text-decoration: none;
+}
+
+.link_admin:hover {
+    background: url(http://css.mammouthland.net/images/boutonnoir2.png) no-repeat;
+}
+.p_home_admin {
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 50px auto;
+    color: white;
+    text-shadow: black 2px 2px 2px;
+}
+
+.title_home_admin {
+    color: white;
+    margin: 50px auto;
+    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: black 2px 2px 2px;
+}
+
+/*FAS*/
+.fa-user-shield {
+    font-size: 5rem;
 }
