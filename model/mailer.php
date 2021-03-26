@@ -84,7 +84,7 @@ if(isset($message) && $message){
             $key="Un de perdu, un de retrouvé, pas de quoi s'affoler.";
             $key2="L'horloge signe d'un Z du bout de son heure de pointe.";
             $time=time();
-            $cryptmail=urlencode(openssl_encrypt($mail_adress, $cipher, $key, OPENSSL_ZERO_PADDING, $iv));
+            $cryptmail=urlencode(openssl_encrypt($mail_adress, $cipher, $key, ODPENSSL_ZERO_PADING, $iv));
             $crypttime=urlencode(openssl_encrypt($time, $cipher, $key2, OPENSSL_ZERO_PADDING, $iv));
             $link='localhost/boutique/pages/resetpwd.php?m=' . $cryptmail . '&v=' . $iv . '&t=' . $crypttime;
             $content=file_get_contents('../model/mails/resetpwd_ok.html');
@@ -108,7 +108,7 @@ $mail->Host = "smtp.gmail.com";
 $mail->SMTPAuth = true;                          
 //Provide username and password     
 $mail->Username = "contact.vonharper@gmail.com";                 
-$mail->Password = "Plateforme123!";                           
+$mail->Password = "Plateforme123!";                  
 //If SMTP requires TLS encryption then set it
 //$mail->SMTPSecure = "tls";                           
 //Set TCP port to connect to 

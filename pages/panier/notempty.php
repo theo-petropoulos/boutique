@@ -22,6 +22,7 @@
         setcookie('basket', get_cookie($basket), $cookie_options);
         $basket=get_basket($_COOKIE['basket']);
         header("Location: panier.php");
+        exit();
     }
     
     $subtotal=0;
