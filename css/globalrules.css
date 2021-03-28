@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 strong, em {
@@ -91,7 +92,6 @@ input[type=number] {
 }
 
 #banner_standard {
-  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background: -webkit-gradient(linear, left top, right top, from(#01091d), color-stop(35%, #04133d), color-stop(50%, #24429a), color-stop(65%, #04133d), to(#01091d));
   background: linear-gradient(90deg, #01091d 0%, #04133d 35%, #24429a 50%, #04133d 65%, #01091d 100%);
   display: -webkit-box;
@@ -113,15 +113,15 @@ input[type=number] {
 }
 
 #banner_standard h2 {
-  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: 'Poiret One';
   color: white;
   font-size: calc(0.6vw + 14px);
   border: 1px solid;
   -o-border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
      border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
   border-image-slice: 1;
-  padding: calc(8px + 0.5%) calc(8px + 1%);
-  margin: calc(5px + 0.5%) 0;
+  padding: calc(5px + 0.3%) calc(5px + 0.7%);
+  margin: calc(3px + 0.3%) 0;
 }
 
 #newsletter_return, #form_return {

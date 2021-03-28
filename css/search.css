@@ -119,7 +119,7 @@
 }
 
 #main_search #search_results #search_results_box .watch_result a:hover {
-  border-bottom: 0;
+  border-bottom: 2px solid transparent;
 }
 
 #main_search #search_results #search_results_box .watch_result a:hover img {

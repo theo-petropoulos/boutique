@@ -72,7 +72,9 @@ header{
                     position:relative;
                     text-decoration:none;
                     color:rgb(168, 183, 202);
-                    font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    font-family: 'Rosario', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    font-weight:800;
+                    font-size:0.9em;
                     transition: all 0.3s;
                     &:hover{
                         color:white;
@@ -160,8 +162,75 @@ header{
             }
         }
     }
+
     #nav_bar_mobile{
         display:none;
+        #menu_mb_l{
+            z-index:9;
+            color:white;
+            background:transparent;
+            position:fixed;
+            top:0;
+            left:0;
+            padding:2%;
+            font-size: 2em;
+            transition:all 0.3s;
+            text-shadow:1px 0 $blue, 0 1px $blue, -1px 0 $blue, 0 -1px $blue;
+            &:hover{
+                cursor:pointer;
+                color:$yellow;
+                transition:all 0.4s;
+            }
+        }
+        ul{
+            position:fixed;
+            margin:0;
+            padding:15% 0 0 10%;
+            top:0;
+            left:0;
+            height:100vh;
+            width:100vw;
+            background:rgba(0,0,0,0.8);
+            color:white;
+            z-index:6;
+            font-family: $font_base;
+            li{
+                list-style-type: none;
+                margin-bottom:1%;
+                a{
+                    text-decoration:none;
+                    color:white;
+                }
+                form{
+                    input[type=text]{
+                        border:none;
+                        outline:none;
+                        border-radius:6px;
+                        background:rgba(169, 179, 211, 0.815);
+                    }
+                    button{
+                        background:transparent;
+                        border:none;
+                        color:rgba(169, 179, 211, 0.815);
+                    }
+                }
+            }
+        }
+        #menu_mb{
+            display:none;
+            &:not(checked){
+                &~ul{
+                    transform:translateY(-100%);
+                    transition:all 0.3s;
+                }
+            }
+            &:checked{
+                &~ul{
+                    transform:translateY(0);
+                    transition:all 0.6s;
+                }
+            }
+        }
     }
 }
 
@@ -172,72 +241,6 @@ header{
         }
         #nav_bar_mobile{
             display:block;
-            #menu_mb_l{
-                z-index:9;
-                color:white;
-                background:transparent;
-                position:fixed;
-                top:0;
-                left:0;
-                padding:2%;
-                font-size: 2em;
-                transition:all 0.3s;
-                text-shadow:1px 0 $blue, 0 1px $blue, -1px 0 $blue, 0 -1px $blue;
-                &:hover{
-                    cursor:pointer;
-                    color:$yellow;
-                    transition:all 0.4s;
-                }
-            }
-            ul{
-                position:fixed;
-                margin:0;
-                padding:15% 0 0 10%;
-                top:0;
-                left:0;
-                height:100vh;
-                width:100vw;
-                background:rgba(0,0,0,0.8);
-                color:white;
-                z-index:6;
-                font-family: $font_base;
-                li{
-                    list-style-type: none;
-                    margin-bottom:1%;
-                    a{
-                        text-decoration:none;
-                        color:white;
-                    }
-                    form{
-                        input[type=text]{
-                            border:none;
-                            outline:none;
-                            border-radius:6px;
-                            background:rgba(169, 179, 211, 0.815);
-                        }
-                        button{
-                            background:transparent;
-                            border:none;
-                            color:rgba(169, 179, 211, 0.815);
-                        }
-                    }
-                }
-            }
-            #menu_mb{
-                display:none;
-                &:not(checked){
-                    &~ul{
-                        transform:translateY(-100%);
-                        transition:all 0.3s;
-                    }
-                }
-                &:checked{
-                    &~ul{
-                        transform:translateY(0);
-                        transition:all 0.6s;
-                    }
-                }
-            }
         }
     }
 }

@@ -91,7 +91,9 @@ header #nav_bar #nav_ul1 li a, header #nav_bar #nav_ul1 li .a, header #nav_bar #
   position: relative;
   text-decoration: none;
   color: #a8b7ca;
-  font-family: 'Bodoni Moda', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Rosario', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 800;
+  font-size: 0.9em;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -213,78 +215,88 @@ header #nav_bar_mobile {
   display: none;
 }
 
+header #nav_bar_mobile #menu_mb_l {
+  z-index: 9;
+  color: white;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2%;
+  font-size: 2em;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-shadow: 1px 0 #04133D, 0 1px #04133D, -1px 0 #04133D, 0 -1px #04133D;
+}
+
+header #nav_bar_mobile #menu_mb_l:hover {
+  cursor: pointer;
+  color: #FFCC00;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+header #nav_bar_mobile ul {
+  position: fixed;
+  margin: 0;
+  padding: 15% 0 0 10%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  z-index: 6;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+header #nav_bar_mobile ul li {
+  list-style-type: none;
+  margin-bottom: 1%;
+}
+
+header #nav_bar_mobile ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+header #nav_bar_mobile ul li form input[type=text] {
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background: rgba(169, 179, 211, 0.815);
+}
+
+header #nav_bar_mobile ul li form button {
+  background: transparent;
+  border: none;
+  color: rgba(169, 179, 211, 0.815);
+}
+
+header #nav_bar_mobile #menu_mb {
+  display: none;
+}
+
+header #nav_bar_mobile #menu_mb:not(checked) ~ ul {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header #nav_bar_mobile #menu_mb:checked ~ ul {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
 @media screen and (max-width: 599px) {
   header #nav_bar {
     display: none;
   }
   header #nav_bar_mobile {
     display: block;
-  }
-  header #nav_bar_mobile #menu_mb_l {
-    z-index: 9;
-    color: white;
-    background: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 2%;
-    font-size: 2em;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    text-shadow: 1px 0 #04133D, 0 1px #04133D, -1px 0 #04133D, 0 -1px #04133D;
-  }
-  header #nav_bar_mobile #menu_mb_l:hover {
-    cursor: pointer;
-    color: #FFCC00;
-    -webkit-transition: all 0.4s;
-    transition: all 0.4s;
-  }
-  header #nav_bar_mobile ul {
-    position: fixed;
-    margin: 0;
-    padding: 15% 0 0 10%;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    z-index: 6;
-    font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-  header #nav_bar_mobile ul li {
-    list-style-type: none;
-    margin-bottom: 1%;
-  }
-  header #nav_bar_mobile ul li a {
-    text-decoration: none;
-    color: white;
-  }
-  header #nav_bar_mobile ul li form input[type=text] {
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    background: rgba(169, 179, 211, 0.815);
-  }
-  header #nav_bar_mobile ul li form button {
-    background: transparent;
-    border: none;
-    color: rgba(169, 179, 211, 0.815);
-  }
-  header #nav_bar_mobile #menu_mb {
-    display: none;
-  }
-  header #nav_bar_mobile #menu_mb:not(checked) ~ ul {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-  header #nav_bar_mobile #menu_mb:checked ~ ul {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    -webkit-transition: all 0.6s;
-    transition: all 0.6s;
   }
 }
 /*# sourceMappingURL=header.css.map */

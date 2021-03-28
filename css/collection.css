@@ -24,9 +24,8 @@
 
 #body_collection #main_collection h4 {
   font-size: calc(13px + 1.5vw);
-  font-family: 'Lobster', Verdana;
-  color: #99CCFF;
-  text-shadow: 1px 0 #04133D, 0 1px #04133D, -1px 0 #04133D, 0 -1px #04133D;
+  font-family: 'Poiret One', Verdana;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0.7% 0%;
   position: relative;
   z-index: 2;

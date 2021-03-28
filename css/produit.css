@@ -42,6 +42,7 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
 }
 
 #body_produit #main_produit #container_produit #container_image img {
@@ -55,13 +56,24 @@
   position: relative;
 }
 
+#body_produit #main_produit #container_produit #container_image .fadeimg {
+  position: absolute;
+  height: 100%;
+  width: 70%;
+  min-width: 250px;
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(20%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 100%);
+  z-index: 4;
+}
+
 #body_produit #main_produit #container_produit #container_titre {
   position: absolute;
-  left: 25%;
+  left: 0;
   top: 25%;
-  -webkit-transform: translate(-25%, -25%);
-          transform: translate(-25%, -25%);
-  background: #04133da9;
+  -webkit-transform: translate(100px, -25%);
+          transform: translate(100px, -25%);
+  max-width: 500px;
+  background: black;
   padding: 1.5% 3.5%;
   font-family: 'Poiret One', Verdana;
   color: white;
@@ -100,13 +112,13 @@
 
 #body_produit #main_produit #container_produit #container_titre h2 {
   font-weight: 800;
-  font-size: calc(30px + 3vw);
+  font-size: calc(20px + 3.5vw);
   margin: 0;
 }
 
 #body_produit #main_produit #container_produit #container_titre h3 #brand {
   font-style: italic;
-  font-size: calc(14px + 1.5vw);
+  font-size: calc(10px + 1.5vw);
 }
 
 #body_produit #main_produit #container_specs {
@@ -119,26 +131,20 @@
       align-self: flex-end;
   -webkit-transform: translateX(-25%);
           transform: translateX(-25%);
+  background: black;
+  padding: 1% 3%;
+  font-size: calc(10px + 0.4vw);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-#body_produit #main_produit #container_specs ul {
-  background: white;
-  padding: 2% 4%;
-  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  position: relative;
-  margin-top: 0;
+#body_produit #main_produit #container_specs .ghost_block {
+  width: 50%;
+  opacity: 0;
 }
 
-#body_produit #main_produit #container_specs ul li {
-  list-style-type: none;
-}
-
-#body_produit #main_produit #container_specs ul li b {
-  font-family: 'Rosario', Verdana;
-  color: #04133D;
-}
-
-#body_produit #main_produit #container_specs ul::before {
+#body_produit #main_produit #container_specs::before {
   content: '';
   height: 2px;
   width: 100%;
@@ -152,7 +158,7 @@
   background: #ffcc00ad;
 }
 
-#body_produit #main_produit #container_specs ul::after {
+#body_produit #main_produit #container_specs::after {
   content: '';
   height: 100%;
   width: 2px;
@@ -166,7 +172,50 @@
   background: #ffcc00ad;
 }
 
+#body_produit #main_produit #container_specs ul {
+  padding: 2% 4%;
+  font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  position: relative;
+  margin-top: 0;
+  color: white;
+  width: 50%;
+}
+
+#body_produit #main_produit #container_specs ul li {
+  list-style-type: none;
+}
+
+#body_produit #main_produit #container_specs ul li b {
+  font-family: 'Rosario', Verdana;
+}
+
 #body_produit #main_produit #container_price {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 400px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+  padding: 1% 3%;
+  font-size: calc(10px + 0.4vw);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+}
+
+#body_produit #main_produit #container_price .ghost_block {
+  width: 50%;
+  opacity: 0;
+}
+
+#body_produit #main_produit #container_price #actual_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,12 +227,80 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 50%;
+  font-family: 'Poiret One', Verdana;
+  background: black;
+}
+
+#body_produit #main_produit #container_price #actual_container span {
+  color: #FFCC00;
+  font-size: calc(10px + 1vw);
+  font-weight: 800;
+}
+
+#body_produit #main_produit #container_price #actual_container p {
+  margin-top: 1.5%;
+}
+
+#body_produit #main_produit #container_price #actual_container p:first-of-type {
+  margin-bottom: 0;
+}
+
+#body_produit #main_produit #container_price #actual_container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#body_produit #main_produit #container_price #actual_container form input {
+  font-family: 'Rosario', Verdana;
+}
+
+#body_produit #main_produit #container_price #actual_container form input[type=number] {
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid #FFCC00;
+  text-align: center;
+  width: 30%;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: calc(12px + 0.4vw);
+}
+
+#body_produit #main_produit #container_price #actual_container form input[type=number]:focus {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#body_produit #main_produit #container_price #actual_container form input[type=submit] {
+  width: 70%;
+  background: #FFCC00;
+  border: none;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 2% 3%;
+}
+
+#body_produit #main_produit #container_price #actual_container form input[type=submit]:hover {
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  color: #04133D;
+  background: white;
 }
 
 #body_produit #main_produit #container_desc {
+  position: absolute;
+  bottom: 20%;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
   font-family: "Bodoni Moda", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -191,7 +308,60 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: white;
+  color: black;
+  width: 50%;
+  -webkit-clip-path: polygon(0 0, 50% 0, 25% 50%, 0% 100%);
+          clip-path: polygon(0 0, 50% 0, 25% 50%, 0% 100%);
+  -webkit-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+}
+
+#body_produit #main_produit #container_desc p {
+  padding: 2% 5%;
+  width: 100%;
+  opacity: 0.5;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+#body_produit #main_produit #container_desc:hover {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#body_produit #main_produit #container_desc:hover p {
+  opacity: 1;
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#body_produit #main_produit #toup {
+  position: relative;
+  font-size: calc(20px + 1vw);
+  color: #FFCC00;
+  text-decoration: none;
+  margin: 3% 0%;
+  left: 25%;
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+  -webkit-transition: all 0.3;
+  transition: all 0.3;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+#body_produit #main_produit #toup:hover {
   color: white;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 @media screen and (max-width: 599px) {
@@ -204,6 +374,10 @@
     width: 100%;
     -o-object-position: center;
        object-position: center;
+  }
+  #body_produit #main_produit #container_produit #container_image .fadeimg {
+    width: 100vw;
+    z-index: 8;
   }
   #body_produit #main_produit #container_produit #container_titre {
     width: 100%;
@@ -219,6 +393,9 @@
   #body_produit #main_produit #container_produit #container_titre::before, #body_produit #main_produit #container_produit #container_titre::after {
     content: none;
   }
+  #body_produit #main_produit #container_specs .ghost_block, #body_produit #main_produit #container_price .ghost_block {
+    display: none;
+  }
   #body_produit #main_produit #container_specs {
     width: 100%;
     -webkit-transform: none;
@@ -228,8 +405,38 @@
         align-self: center;
     min-width: 250px;
   }
-  #body_produit #main_produit #container_specs ul::before, #body_produit #main_produit #container_specs ul::after {
+  #body_produit #main_produit #container_specs ul {
+    width: 100%;
+  }
+  #body_produit #main_produit #container_specs::before, #body_produit #main_produit #container_specs::after {
     content: none;
+  }
+  #body_produit #main_produit #container_price {
+    -webkit-transform: none;
+            transform: none;
+  }
+  #body_produit #main_produit #container_price #actual_container {
+    width: 100%;
+  }
+  #body_produit #main_produit #container_desc {
+    position: relative;
+    -webkit-transform: none;
+            transform: none;
+    width: 100%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    margin-top: 2%;
+  }
+  #body_produit #main_produit #container_desc p {
+    -webkit-filter: none;
+            filter: none;
+    opacity: 0.9;
+    font-size: 70%;
+  }
+  #body_produit #main_produit #toup {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
 }
 /*# sourceMappingURL=produit.css.map */

@@ -29,13 +29,14 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-    <?php $title=$Product->getNom(); require $root . 'pages/globals/head.php';?>
+    <?php $title=ucfirst(strtolower($Product->getNom())); require $root . 'pages/globals/head.php';?>
     <body id="body_produit">
     <?php require_once $root . 'pages/globals/header.php'; ?> 
         <main id="main_produit">
             <section id="container_produit">
                 <div id="container_image">
-                    <img class="pic_prod" width="300px" src="/boutique/assets/images/produits/star/<?=$Product->getNomImage();?>" alt="">
+                    <img src="/boutique/assets/images/produits/star/<?=$Product->getNomImage();?>" alt="">
+                    <div class="fadeimg"></div>
                 </div>
                 <div id="container_titre">
                     <h2><?= $Product->getNom() ?></h2>
@@ -44,6 +45,7 @@
             </section>
 
             <section id="container_specs">
+                <div class="ghost_block"></div>
                 <ul class="carac_cont">
                     <li class="carac_prod"><b>Diamètre:</b> <i><?= $Product->getDiametre() . 'mm' ?></i></li>
                     <li class="carac_prod"><b>Épaisseur:</b> <i><?= $Product->getEpaisseur() . 'mm' ?></i></li>
@@ -55,18 +57,24 @@
             </section>
 
             <div id="container_price">
-                <p class="price">Prix TTC</p><?= $Product->getPrixPromo() != NULL ? '<span class="textPromo">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPrice">' . $Product->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPrice">' . $Product->getPrix() . '€' . '</span>' : '<span class="normalPrice">' . $Product->getPrix() . '€' . '</span>' ?>
-                <form method="post" action="">
-                    <input type="number" name="addquantity" value=1 required>
-                    <input type="hidden" name="addbasket" value="<?= $Product->getId(); ?>">
-                    <input type="submit" value="Ajouter au panier">
-                </form>
-                <?php if($Product->getStock()<5){?> <p>Plus que quelques exemplaires disponibles.</p> <?php } ?>
+                <div class="ghost_block"></div>
+                <div id="actual_container">
+                    <p class="price">Prix TTC</p>
+                    <p><?=$Product->getPrixPromo() != NULL ? '<span class="textPromo">' . 'Economisez' . ' ' . $ArrayPromo['pourcentage'] . '%' . '</span>' . ' ' . '<span class="promoPrice">' . $Product->getPrixPromo() . '€' . '</span>' . ' ' . '<span class="oldPrice">' . number_format(intval($Product->getPrix()),2,'.',',') . '€' . '</span>' : '<span class="normalPrice">' . number_format(intval($Product->getPrix()),2,'.',',') . '€' . '</span>' ?></p>
+                    <form method="post" action="">
+                        <input type="number" name="addquantity" value=1 required>
+                        <input type="hidden" name="addbasket" value="<?= $Product->getId(); ?>">
+                        <input type="submit" value="Ajouter au panier">
+                    </form>
+                    <?php if($Product->getStock()<5){?> <p>Plus que quelques exemplaires disponibles.</p> <?php } ?>
+                </div>
             </div>
 
             <section id="container_desc">
                 <p><?=$Product->getDescription();?></p>
             </section>
+
+            <a id="toup" href="#home_link"><i class="fas fa-caret-square-up"></i></a>
         </main>
     <?php require_once $root . 'pages/globals/footer.php'; ?>
     </body>

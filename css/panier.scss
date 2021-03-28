@@ -72,6 +72,9 @@ $yellow:#FFCC00;
                     overflow-y:scroll;
                     scrollbar-color: $yellow $blue;
                     scrollbar-width: thin;
+                    .separator_white{
+                        flex-shrink:0;
+                    }
                     .orderitem_min{
                         display:flex;
                         flex-direction: row;
@@ -351,6 +354,10 @@ $yellow:#FFCC00;
                     #order_block{
                         display:flex;
                         flex-direction:column;
+                        .separator_white{
+                            height:1px;
+                            width:100%;
+                        }
                         .orderitem_min{
                             flex-direction:column;
                             justify-content: center;

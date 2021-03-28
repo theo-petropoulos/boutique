@@ -132,6 +132,11 @@
   scrollbar-width: thin;
 }
 
+.basket #notempty #order_section #left_order #order_block .separator_white {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 .basket #notempty #order_section #left_order #order_block .orderitem_min {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -554,6 +559,10 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .basket #notempty #order_section #left_order #order_block .separator_white {
+    height: 1px;
+    width: 100%;
   }
   .basket #notempty #order_section #left_order #order_block .orderitem_min {
     -webkit-box-orient: vertical;
