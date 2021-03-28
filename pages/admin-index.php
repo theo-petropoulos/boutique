@@ -22,30 +22,31 @@ session_start();
 </head>
 <?php require_once __DIR__ . '/globals/header.php'; ?>
 <main class=="container_page">
-    <!--    Si pas de chemin en get affiche la home page d'administration-->
-    <?php
-    if (!isset($_GET['path'])) {
-        require_once 'UI-admin/home-admin.php';
-    } ?>
     <?php
     //    Si admin connecté display link différentes page de l'UI admin
     if (isset($_SESSION['Admin-KEY']) && password_verify('vonharper6559571991', $_SESSION['Admin-KEY'])): ?>
-        <div>
-            <a href="?path=admin-clients" class="link_admin">Administration des clients</a>
-            <a href="?path=admin-shop" class="link_admin">Administration du Magasin</a>
+        <div class="box_link_admin">
+            <style>#btn_conn_admin{display: none}</style>
+            <a href="?path=admin-clients" class="link_admin">Gestion clients</a>
+            <a href="?path=admin-shop" class="link_admin">Gestion du magasin</a>
             <a href="?path=create-admin" class="link_admin">Crée un nouvel Admin</a>
         </div>
     <?php endif; ?>
+    <!--    Si pas de chemin en get affiche la home page d'administration-->
+    <?php
+    if (!isset($_GET['path'])) {
+        require_once '../UI-admin/home-admin.php';
+    } ?>
     <?php
     //    Routeur manuel des differentes page de l'UI Admin'
     if (isset($_GET['path']) && $_GET['path'] === 'admin-clients') {
-        require_once 'UI-admin/administration_clients.php';
+        require_once '../UI-admin/administration_clients.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'admin-shop') {
-        require_once 'UI-admin/administration_shop.php';
+        require_once '../UI-admin/administration_shop.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'create-admin') {
-        require_once 'UI-admin/create_admin.php';
+        require_once '../UI-admin/create_admin.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'connect-admin') {
-        require_once 'UI-admin/connect_admin.php';
+        require_once '../UI-admin/connect_admin.php';
     } else {
         echo 'REDIRIGER VERS 404';
     }

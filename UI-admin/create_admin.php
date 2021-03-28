@@ -1,5 +1,5 @@
 <?php
-//VERIF données entrées + secure
+//SECURE USER ENTRY
 $conn = null;
 if (isset($_POST['create_admin'])):
     if (isset($_POST['mail']) && isset($_POST['password']) && isset($_POST['conf_password'])) {
@@ -41,12 +41,12 @@ endif;
                 <input type="text" name="conf_password" id="conf_password" required placeholder="Confirmer mot de passe ">
             </div>
             <?php if ($conn === false) {
-                echo "<div class='error_box'>Votre identifiant dois être une adresse email conforme, votre mot de passe doit comprendre au minimum 8 caracteres et:<br> Une lettre majuscule, une lettre minuscule, un chiffre, un caractere spécial</div>";
+                echo "<div class='error_box'>Votre identifiant dois être une adresse email conforme, votre mot de passe doit comprendre au minimum 8 caracteres, Une lettre majuscule, une lettre minuscule, un chiffre, un caractere spécial</div><br>";
             } elseif ($conn === true) {
                 echo "<div class='success_box'>Nous avons bien enregistré votre compte vous pouvez vous connecter en rejoignant la page de connexion</div>";
             } ?>
             <div>
-                <button class="btn" type="submit" name="create_admin" value="submit">Envoyer</button>
+                <button class="link_admin" type="submit" name="create_admin" value="submit">Envoyer</button>
             </div>
         </fieldset>
     </form>
