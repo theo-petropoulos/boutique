@@ -48,9 +48,8 @@ session_start();
     } elseif (isset($_GET['path']) && $_GET['path'] === 'connect-admin') {
         require_once '../UI-admin/connect_admin.php';
     } else {
-        echo 'REDIRIGER VERS 404';
+        require_once '404.php';
     }
-
     ?>
 </main>
 <?php require_once __DIR__ . '/globals/footer.php'; ?>

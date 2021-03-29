@@ -6,27 +6,34 @@ class ManWatch extends Manager
 {
     /**Récupere le produit dont on a passé l'id en parametre et retourne un tableau destiné à hydraté partiellement l'objet Watch
      * @param int $id ID du produit
-     * @return array retourne un tableau destiné à hydraté l'objet Watch
+     * @return array|false
      */
-    public function get_one_product(int $id): array
+    public function get_one_product(int $id)
     {
         $sql = 'SELECT * FROM produits INNER JOIN caracteristiques on produits.id = caracteristiques.produit';
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        return [
-            'id' => $result[0]['id'],
-            'nom' => $result[0]['nom'],
-            'marque' => $result[0]['id_marque'],
-            'stock' => $result[0]['stock'],
-            'prix' => $result[0]['prix'],
-            'nomImage' => $result[0]['image'],
-            'description' => $result[0]['description'],
-            'diametre' => $result[0]['Diamètre'],
-            'epaisseur' => $result[0]['Épaisseur'],
-            'boitier' => $result[0]['Boitier'],
-            'mouvement' => $result[0]['Mouvement'],
-            'reserve' => $result[0]['Reserve'],
-            'etancheite' => $result[0]['Étanchéité']
-        ];
+        foreach ($result as $value) {
+            if ($value['id'] == $id) {
+                return [
+                    'id' => $value['id'],
+                    'nom' => $value['nom'],
+                    'marque' => $value['id_marque'],
+                    'stock' => $value['stock'],
+                    'prix' => $value['prix'],
+                    'nomImage' => $value['image'],
+                    'description' => $value['description'],
+                    'diametre' => $value['Diamètre'],
+                    'epaisseur' => $value['Épaisseur'],
+                    'boitier' => $value['Boitier'],
+                    'mouvement' => $value['Mouvement'],
+                    'reserve' => $value['Reserve'],
+                    'etancheite' => $value['Étanchéité']
+                ];
+            } else {
+                return false;
+            }
+        }
+
     }
 
     /** Retourne tout les produits sous forme de tableau d'objet à mettre en forme sur la page d'UI-admin
