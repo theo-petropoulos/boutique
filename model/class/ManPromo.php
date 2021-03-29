@@ -24,12 +24,13 @@ class ManPromo extends Manager
      * @param Watch $watch
      * @return array|NULL
      */
-    public function get_promo(Watch $watch)
+    public function get_promo(Watch $watch): array
     {
+        var_dump($watch);
         $array = null;
         $dateTime = new DateTime('now');
         $date = $dateTime->format('Y-m-d');
-        $sql = 'SELECT * FROM promotion WHERE id =' . $watch->getId();
+        $sql = 'SELECT * FROM promotion WHERE id_produit =' . $watch->getId();
         $result = $this->getPdo()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $index => $item) {
             $date >= $item['debut'] && $date <= $item['fin'] ? $array = $item : $array = NULL;

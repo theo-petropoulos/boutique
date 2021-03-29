@@ -173,7 +173,7 @@ endif; ?>
 
                         <div>
                             <label for="id_marque">Marque</label>
-                            <input type="text" id="id_marque" name="marque" placeholder="Marque">
+                            <input type="text" id="id_marque" name="id_marque" placeholder="Marque">
                         </div>
                         <div>
                             <label for="nb_stock">Stock</label>
@@ -186,7 +186,7 @@ endif; ?>
                         <div>
                             <label for="pic">Nom de l'image</label>
                             <input type="text" id="pic" name="nomImage"
-                                   placeholder="Nom execte de l'image">
+                                   placeholder="Nom exacte de l'image">
                         </div>
                         <div>
                             <label for="describe">Description</label>
