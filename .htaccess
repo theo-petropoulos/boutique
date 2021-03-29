@@ -1,8 +1,15 @@
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
 ErrorDocument 404 http://localhost/boutique/pages/404.php
 
 RewriteEngine On
 
 RewriteRule ^vendor/(.*)$ /$1 [R=301,NC,L]
-RewriteRule ^assets/(.*)$ /$1 [R=301,NC,L]
 RewriteRule ^MCD/(.*)$ /$1 [R=301,NC,L]
 RewriteRule ^model/(.*)$ /$1 [R=301,NC,L]
+
+Options -Indexes
+IndexIgnore *
