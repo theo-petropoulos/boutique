@@ -5,6 +5,7 @@ $manProduct = new ManWatch();
 $manPromotion = new  ManPromo();
 $watch = new Watch();
 $AllreadySet = null;
+$AddPromo = null;
 $SetProd = null;
 //Display object
 $display_watches = $manProduct->get_products();
@@ -71,6 +72,10 @@ if (isset($_POST['promotion']) && $_POST['promotion'] === 'submit'):
         $ManPromo = new  ManPromo();
         $Promo->hydrate($_POST);
         $ManPromo->insert_promo($Promo);
+        $AddPromo = true;
+    }
+    else{
+        $AddPromo = false;
     }
 endif; ?>
 <section class="administration administration_magasin">
@@ -117,12 +122,12 @@ endif; ?>
                         <label for="price"><b>Nouveau prix</b> pour le produit</label>
                         <input type="text" id="price" name="newprice" placeholder="Nouveau Prix">
                     </div>
+<!--                    Display box success msg or error-->
                     <?php if ($AllreadySet === false) {
                         echo "<div class='errors_box'>Les informations renseignés sont incorrect, Merci de renseigner toutes les informations!</div>";
                     }
                     elseif ($AllreadySet === true){
                         echo "<div class='success_box'>Les modifications ont bien été prise en compte</div>";
-
                     }?>
                     <div>
                         <button class="btn" type="submit" name="edit_product" value="submit">Valider</button>
@@ -336,6 +341,12 @@ endif; ?>
                         <label for="date_fin">Date de Fin</label>
                         <input type="date" id="date_fin" name="dateFin" placeholder="Fin de la promotion"
                     </div>
+                    <?php if ($AddPromo === false) {
+                        echo "<div class='errors_box'>Les informations renseignés sont incorrect, Merci de renseigner toutes les informations!</div>";
+                    }
+                    elseif ($AddPromo === true){
+                        echo "<div class='success_box'>Les modifications ont bien été prise en compte</div>";
+                    }?>
                     <div>
                         <button class="btn" type="submit" name="promotion" value="submit">Valider</button>
                     </div>

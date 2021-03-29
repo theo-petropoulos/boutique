@@ -3,6 +3,7 @@ include_once '../model/class/Admin.php';
 include_once '../model/class/Manager.php';
 include_once '../model/class/ManAdmin.php';
 include_once '../model/class/ManWatch.php';
+include_once '../model/class/Promo.php';
 include_once '../model/class/ManPromo.php';
 include_once '../model/class/Watch.php';
 session_start();
@@ -47,8 +48,6 @@ session_start();
         require_once '../UI-admin/create_admin.php';
     } elseif (isset($_GET['path']) && $_GET['path'] === 'connect-admin') {
         require_once '../UI-admin/connect_admin.php';
-    } else {
-        require_once '404.php';
     }
     ?>
 </main>
