@@ -90,7 +90,6 @@ class ManAdmin extends Manager
     {
         $sql = 'INSERT INTO produits (nom, prix, stock, id_marque, image, description) VALUES (?,?,?,?,?,?)';
         $sql2 = "INSERT INTO caracteristiques (Diamètre, Épaisseur, Boitier, Mouvement, Reserve, Étanchéité, produit) VALUES (?,?,?,?,?,?,?)";
-
         $stmt = $this->getPdo()->prepare($sql);
         $stmt2 = $this->getPdo()->prepare($sql2);
 
@@ -101,14 +100,16 @@ class ManAdmin extends Manager
         $stmt->bindValue(5, $watch->getNomImage());
         $stmt->bindValue(6, $watch->getDescription());
         $stmt->execute();
-
+        $sql = "SELECT MAX(id) as id from produits";
+        $res = $this->getPdo()->query($sql)->fetch(PDO::FETCH_ASSOC);
+        var_dump($res);
         $stmt2->bindValue(1, $watch->getDiametre());
         $stmt2->bindValue(2, $watch->getEpaisseur());
         $stmt2->bindValue(3, $watch->getBoitier());
         $stmt2->bindValue(4, $watch->getMouvement());
         $stmt2->bindValue(5, $watch->getReserve());
         $stmt2->bindValue(6, $watch->getEtancheite());
-        $stmt2->bindValue(7, $watch->getId());
+        $stmt2->bindValue(7, $res['id']);
         $stmt2->execute();
     }
 

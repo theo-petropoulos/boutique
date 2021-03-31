@@ -20,6 +20,7 @@ class Watch
 
     public function hydrate(array $array)
     {
+        var_dump('Hydrate',$array);
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
