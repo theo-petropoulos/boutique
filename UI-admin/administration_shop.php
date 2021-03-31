@@ -48,11 +48,14 @@ if (isset($_POST['edit_product']) == "submit" && isset($_POST['id_prod']) && !em
 endif;
 //Add product
 if (isset($_POST['add_product']) && $_POST['add_product'] === "submit"):
+    var_dump($_POST);
     $_POST['stock'] = intval($_POST['stock']);
     $_POST['prix'] = floatval($_POST['prix']);
     $_POST['id_marque'] = intval($_POST['id_marque']);
     $Watch3 = new Watch();
     $Watch3->hydrate($_POST);
+    $Watch3->setMarque($_POST['id_marque']);
+    var_dump($Watch3);
     if (!empty($Watch3->getNom()) && !empty($Watch3->getMarque()) && !empty($Watch3->getStock()) && !empty($Watch3->getPrix()) && !empty($Watch3->getNomImage()) && !empty($Watch3->getDescription()) && !empty($Watch3->getDiametre()) && !empty($Watch3->getEpaisseur()) && !empty($Watch3->getBoitier()) && !empty($Watch3->getMouvement()) && !empty($Watch3->getEtancheite())) {
         $manAdmin->insert_product($Watch3);
     }

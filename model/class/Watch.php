@@ -20,6 +20,7 @@ class Watch
 
     public function hydrate(array $array)
     {
+        var_dump('Hydrate',$array);
         foreach ($array as $index => $item) {
             $method = 'set' . ucfirst($index);
             if (method_exists($this, $method)) {
@@ -48,7 +49,7 @@ class Watch
     /**
      * @return string
      */
-    public function getMarque():string
+    public function getMarque()
     {
         return $this->_marque;
     }
