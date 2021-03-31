@@ -57,7 +57,7 @@ class ManWatch extends Manager
     }
 
     /**
-     * @return array Retourne un tableaucontenant le nom de chaque marque/
+     * @return array Retourne un tableau contenant le nom de chaque marque/
      */
     public function getCollection(): array
     {

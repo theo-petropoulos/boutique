@@ -48,7 +48,7 @@ class Watch
     /**
      * @return string
      */
-    public function getMarque(): string
+    public function getMarque():string
     {
         return $this->_marque;
     }
