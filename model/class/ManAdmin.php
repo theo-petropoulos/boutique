@@ -102,7 +102,6 @@ class ManAdmin extends Manager
         $stmt->execute();
         $sql = "SELECT MAX(id) as id from produits";
         $res = $this->getPdo()->query($sql)->fetch(PDO::FETCH_ASSOC);
-        var_dump($res);
         $stmt2->bindValue(1, $watch->getDiametre());
         $stmt2->bindValue(2, $watch->getEpaisseur());
         $stmt2->bindValue(3, $watch->getBoitier());
