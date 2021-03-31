@@ -172,6 +172,10 @@ $yellow:#FFCC00;
                     &:first-of-type{
                         margin-bottom:0;
                     }
+                    &:nth-of-type(2){
+                        display:flex;
+                        flex-flow:column;
+                    }
                 }
                 form{
                     display:flex;
@@ -212,6 +216,7 @@ $yellow:#FFCC00;
         }
         #container_desc{
             position:absolute;
+            z-index:5;
             bottom: 20%;
             transform:translateY(20%);
             font-family: $font_base;
@@ -269,7 +274,7 @@ $yellow:#FFCC00;
                     }
                     .fadeimg{
                         width:100vw;
-                        z-index:8;
+                        z-index:4;
                     }
                 }
                 #container_titre{

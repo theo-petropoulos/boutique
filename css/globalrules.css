@@ -113,9 +113,9 @@ input[type=number] {
 }
 
 #banner_standard h2 {
-  font-family: 'Poiret One';
+  font-family: 'Lexend';
   color: white;
-  font-size: calc(0.6vw + 14px);
+  font-size: calc(0.5vw + 12px);
   border: 1px solid;
   -o-border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
      border-image: linear-gradient(45deg, white 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 85%, white 100%);
