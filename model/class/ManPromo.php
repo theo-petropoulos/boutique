@@ -24,9 +24,8 @@ class ManPromo extends Manager
      * @param Watch $watch
      * @return array|NULL
      */
-    public function get_promo(Watch $watch): array
+    public function get_promo(Watch $watch)
     {
-        var_dump($watch);
         $array = null;
         $dateTime = new DateTime('now');
         $date = $dateTime->format('Y-m-d');

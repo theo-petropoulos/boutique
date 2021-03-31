@@ -19,7 +19,6 @@ class Admin
         $sql = "SELECT * FROM admin WHERE login=$mail";
         $pdo = new PDO("mysql:dbname=boutique;host=localhost", 'root', '');
         $res = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-        var_dump($res);
     }
 
     /**

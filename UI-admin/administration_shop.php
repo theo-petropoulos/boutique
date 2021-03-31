@@ -13,12 +13,10 @@ $display_admins = $manAdmin->display_Admin();
 $display_collection = $manProduct->getCollection();
 $display_promotions = $manPromotion->get_promotions();
 //Edit product
-var_dump($_POST);
 if (isset($_POST['edit_product']) == "submit" && isset($_POST['id_prod']) && !empty($_POST['id_prod'])):
     $Watch2 = new Watch();
     $ProdArray = $manProduct->get_one_product(intval($_POST['id_prod']));
     $Watch2->hydrate($ProdArray);
-    var_dump($Watch2);
     $SetProd = true;
 //    Change both (price & stock)
     if ($SetProd && isset($_POST['newprice']) && !empty($_POST['newprice']) && isset($_POST['newstock']) && !empty($_POST['newstock'])) {
@@ -144,7 +142,7 @@ endif; ?>
                     </div>
                     <?php
                     //DEL PRODUCT
-                    if (isset($_POST['del_product']) && $_POST['del_product'] === 'submit' && isset($_POST['id_prod'])) {
+                    if (isset($_POST['del_product']) && $_POST['del_product'] == 'submit' && isset($_POST['id_prod'])) {
                         $delProd = $manAdmin->delete_product($_POST['id_prod']);
                         if ($delProd === false) {
                             echo "<div class='error_box'>Aucune produit ne correspond à cet identifiant</div>";

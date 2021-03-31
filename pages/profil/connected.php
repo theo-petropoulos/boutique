@@ -104,7 +104,7 @@
                     $orders=$orders->fetchOrders(intval($user->id));
                     if($orders!=='none'){?>
                     <?php for($i=0;isset($orders[$i]) && $orders[$i];$i++){
-                        $url="/boutique/model/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];?>
+                        $url="/boutique/pdf/generatepdf.php?id=".$orders[$i]['id']."&date=".$orders[$i]['date']."&total=".$orders[$i]['total'];?>
                         <div class="order_min">
                             <p class="smalltxt"><?php
                                 $date = DateTime::createFromFormat('Y-m-j', $orders[$i]['date']);

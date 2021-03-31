@@ -36,6 +36,10 @@ html body main#main_profil section#updateip a:hover {
   position: relative;
 }
 
+#main_profil #updateip {
+  min-height: 60vh;
+}
+
 #main_profil .err_occured {
   min-height: 65vh;
   display: -webkit-box;

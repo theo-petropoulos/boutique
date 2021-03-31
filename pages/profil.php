@@ -110,7 +110,7 @@
                 </section>
             <?php }
 
-            //If the user confirm
+            //If the user confirm delete
             else if(isset($_POST['confirmdelete']) && $_POST['confirmdelete']==1){
                 $firstname=$user->firstname;
                 $lastname=$user->lastname;

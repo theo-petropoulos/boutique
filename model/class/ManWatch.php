@@ -29,11 +29,9 @@ class ManWatch extends Manager
                     'reserve' => $value['Reserve'],
                     'etancheite' => $value['Étanchéité']
                 ];
-            } else {
-                return false;
             }
         }
-
+        return false;
     }
 
     /** Retourne tout les produits sous forme de tableau d'objet à mettre en forme sur la page d'UI-admin
