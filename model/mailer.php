@@ -108,7 +108,7 @@ $mail->Host = "smtp.gmail.com";
 $mail->SMTPAuth = true;                          
 //Provide username and password     
 $mail->Username = "contact.vonharper@gmail.com";                 
-$mail->Password = "Plateforme123!";                  
+$mail->Password = //CENSORED;                  
 //If SMTP requires TLS encryption then set it
 //$mail->SMTPSecure = "tls";                           
 //Set TCP port to connect to 
